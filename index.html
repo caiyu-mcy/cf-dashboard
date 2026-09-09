@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>我的 CF 训练工作台 — 麻菜鱼专属</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.0.4/dist/tesseract.min.js"></script>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #18181b;
+    --muted: #71717a;
+    --brand: #18181b;
+    --brand-2: #3f3f46;
+    --line: #e4e4e7;
+    --ok: #16a34a;
+    --warn: #f59e0b;
+    --bad: #dc2626;
+    --shadow: 0 1px 3px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.03);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); }
+  header { background: var(--card); color: var(--text); padding: 20px 28px; border-bottom: 1px solid var(--line); }
+  header h1 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: 0.3px; }
+  header .sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  header .stats { display: flex; gap: 18px; margin-top: 12px; flex-wrap: wrap; }
+  header .stats .pill { background: #f4f4f5; padding: 4px 12px; border-radius: 999px; font-size: 13px; color: var(--text); }
+  nav { background: var(--card); border-bottom: 1px solid var(--line); padding: 0 28px; display: flex; gap: 4px; overflow-x: auto; position: sticky; top: 0; z-index: 50; }
+  nav button { background: transparent; border: none; padding: 14px 16px; font-size: 14px; font-weight: 500; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: all .15s; }
+  nav button:hover { color: var(--text); }
+  nav button.active { color: var(--brand); border-bottom-color: var(--brand); font-weight: 600; }
+  nav button .badge { background: var(--brand); color: white; font-size: 11px; padding: 1px 6px; border-radius: 8px; margin-left: 6px; }
+  main { padding: 24px 28px; max-width: 1400px; margin: 0 auto; }
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadeIn .2s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  .grid { display: grid; gap: 16px; }
+  .grid.cols-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .grid.cols-2 { grid-template-columns: 1.4fr 1fr; }
+  @media (max-width: 900px) { .grid.cols-2 { grid-template-columns: 1fr; } }
+  .card { background: var(--card); border-radius: 12px; padding: 18px; box-shadow: var(--shadow); }
+  .card h3 { margin: 0 0 12px; font-size: 15px; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 8px; }
+  .card h3 .badge { background: var(--bg); color: var(--muted); font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; }
+  .kpi { font-size: 28px; font-weight: 700; color: var(--text); margin: 4px 0 6px; }
+  .kpi .unit { font-size: 13px; color: var(--muted); font-weight: 500; margin-left: 4px; }
+  .label { color: var(--muted); font-size: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 10px 12px; font-weight: 600; color: var(--muted); border-bottom: 1px solid var(--line); white-space: nowrap; }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  tr:hover td { background: #fafafa; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 500; margin-right: 4px; }
+  .tag-big3 { background: #18181b; color: #ffffff; }
+  .tag-olympic { background: #ffffff; color: #18181b; border: 1px solid #18181b; }
+  .tag-gym { background: #e4e4e7; color: #3f3f46; }
+  .tag-cardio { background: #f4f4f5; color: #71717a; }
+  .empty { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; }
+  .empty .icon { font-size: 36px; margin-bottom: 8px; }
+  button.primary, button.ghost { border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; transition: all .15s; }
+  button.primary { background: var(--brand); color: white; }
+  button.primary:hover { background: var(--brand-2); }
+  button.ghost { background: var(--card); color: var(--text); border: 1px solid var(--line); }
+  button.ghost:hover { background: #f4f4f5; }
+  input, select, textarea { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; font-size: 13px; font-family: inherit; background: white; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--brand); }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .cal-cell { aspect-ratio: 1; background: var(--card); border: 1px solid var(--line); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 11px; color: var(--muted); position: relative; }
+  .cal-cell.train { background: #18181b; color: white; font-weight: 600; border-color: transparent; }
+  .cal-cell.today { box-shadow: 0 0 0 2px var(--brand); }
+  .cal-cell.rest { background: #fafafa; }
+  .cal-cell .dot { position: absolute; bottom: 4px; width: 4px; height: 4px; background: currentColor; border-radius: 50%; }
+  .cal-head { font-size: 10px; font-weight: 600; color: var(--muted); text-align: center; padding: 8px 0; text-transform: uppercase; letter-spacing: 0.5px; }
+  #cfmap { width: 100%; height: 500px; border-radius: 12px; }
+  #cfmap .leaflet-tile { filter: grayscale(1) contrast(1.05); }
+  #cfmap .leaflet-container { background: #fafafa; }
+  .ocr-area { border: 2px dashed #d4d4d8; padding: 24px; border-radius: 12px; text-align: center; background: #fafafa; }
+  .ocr-area.drag { border-color: var(--brand); background: #f4f4f5; }
+  .ocr-preview { max-width: 100%; max-height: 280px; border-radius: 8px; margin-top: 12px; box-shadow: var(--shadow); }
+  .ocr-result { background: #18181b; color: #e4e4e7; padding: 14px; border-radius: 8px; font-family: monospace; font-size: 12px; white-space: pre-wrap; margin-top: 12px; max-height: 240px; overflow-y: auto; }
+  .advice-card { background: var(--card); border-left: 3px solid var(--brand); }
+  .progress { background: #e4e4e7; border-radius: 999px; overflow: hidden; height: 6px; margin: 4px 0; }
+  .progress > div { height: 100%; background: var(--brand); transition: width .4s; }
+  .toast { position: fixed; bottom: 24px; right: 24px; background: var(--text); color: white; padding: 12px 18px; border-radius: 8px; font-size: 13px; box-shadow: var(--shadow); transform: translateY(80px); opacity: 0; transition: all .2s; z-index: 9999; }
+  .toast.show { transform: none; opacity: 1; }
+  .legend { display: flex; gap: 12px; font-size: 12px; color: var(--muted); margin-top: 8px; flex-wrap: wrap; }
+  .legend span { display: inline-flex; align-items: center; gap: 4px; }
+  .swatch { width: 10px; height: 10px; border-radius: 3px; }
+  .form-modal { position: fixed; inset: 0; background: rgba(0,0,0,.4); display: none; align-items: center; justify-content: center; z-index: 999; }
+  .form-modal.open { display: flex; }
+  .form-modal .box { background: white; border-radius: 12px; padding: 24px; width: 480px; max-width: 90vw; max-height: 80vh; overflow-y: auto; }
+  .help { font-size: 11px; color: var(--muted); margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏋️ 我的 CF 训练工作台</h1>
+  <div class="sub" id="userBar">麻菜鱼 · COROS · 数据更新于 <span id="lastSync">—</span> | CTL/ATL/TSB <span id="lastCTL">—</span></div>
+  <div class="stats" id="topStats">
+    <div class="pill">📒 训练记录 <strong id="kpiClasses">0</strong></div>
+    <div class="pill">🔥 近 7 天练 <strong id="kpiLast7">0</strong> 天</div>
+    <div class="pill">🏆 PR <strong id="kpiPR">0</strong></div>
+    <div class="pill">💪 Benchmark <strong id="kpiBM">0</strong></div>
+    <div class="pill">📍 馆打卡 <strong id="kpiCK">0</strong></div>
+    <div class="pill">🏁 参赛 <strong id="kpiComp">0</strong></div>
+  </div>
+</header>
+
+<nav id="nav"></nav>
+
+<main>
+
+<!-- Tab 1: 日历 · 上课 -->
+<section class="panel active" data-panel="calendar">
+  <div class="grid cols-2">
+    <div>
+      <div class="card">
+        <h3>📅 训练日历 <span class="badge" id="calMonthLabel">—</span></h3>
+        <div class="calendar" id="calendar"></div>
+        <div class="legend">
+          <span><span class="swatch" style="background: #18181b;"></span>已训练</span>
+          <span><span class="swatch" style="background: #fafafa;border:1px solid #e4e4e7"></span>未训练</span>
+          <span><span class="swatch" style="background: white;outline:2px solid #18181b"></span>今天</span>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>📷 课表照片 OCR 识别 <span class="badge">Tesseract.js 本地</span></h3>
+        <div class="ocr-area" id="ocrDrop">
+          <p style="margin:8px 0">📸 拖拽课表照片到这里 / <button class="ghost" onclick="document.getElementById('ocrFile').click()">选择文件</button></p>
+          <p class="help">支持中文/英文课表。本地识别，不上传服务器。识别后可一键填入"加练"或下次上课记录。</p>
+          <input type="file" id="ocrFile" accept="image/*" style="display:none" />
+          <img id="ocrPreview" class="ocr-preview" style="display:none" />
+          <div id="ocrResult" class="ocr-result" style="display:none"></div>
+          <div id="ocrActions" style="margin-top:12px;display:none">
+            <button class="primary" onclick="fillFromOCR()">✍️ 一键填入"加练内容"</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>📊 近 14 天训练分布 <span class="badge">按心率 + 时长</span></h3>
+        <canvas id="weeklyChart" height="220"></canvas>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>📈 训练负荷趋势 <span class="badge">TL + 卡路里</span></h3>
+        <canvas id="loadChart" height="200"></canvas>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🔥 最近 7 次训练</h3>
+        <table><thead><tr><th>日期</th><th>内容</th><th>时长</th><th>心率</th><th>TL</th></tr></thead>
+          <tbody id="recentClasses"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tab 2: 加练 -->
+<section class="panel" data-panel="extra">
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <h3 style="margin:0">🥇 加练内容 <span class="badge" id="extraCount">0 条</span></h3>
+      <button class="primary" onclick="openForm('extra')">＋ 新建加练</button>
+    </div>
+    <table style="margin-top:14px">
+      <thead><tr><th>日期</th><th>类型</th><th>动作</th><th>组×次×重</th><th>感受</th></tr></thead>
+      <tbody id="extraBody"><tr><td colspan="5" class="empty">还没有加练记录。点击右上角新建，或者从上方"OCR"填入。</td></tr></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Tab 3: PR -->
+<section class="panel" data-panel="pr">
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <h3 style="margin:0">🏆 PR 记录 <span class="badge" id="prCount">0 条</span></h3>
+      <button class="primary" onclick="openForm('pr')">＋ 记录新 PR</button>
+    </div>
+    <table style="margin-top:14px">
+      <thead><tr><th>日期</th><th>类别</th><th>动作</th><th>成绩</th><th>达标</th></tr></thead>
+      <tbody id="prBody"><tr><td colspan="5" class="empty">还没有 PR 记录。点右上"记录新 PR"开始。</td></tr></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Tab 4: Benchmark -->
+<section class="panel" data-panel="benchmark">
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <h3 style="margin:0">💪 Benchmark 成绩 <span class="badge" id="bmCount">0 条</span></h3>
+      <button class="primary" onclick="openForm('benchmark')">＋ 新测 Benchmark</button>
+    </div>
+    <p class="help" style="margin-top:10px">经典 WOD 模板：Cindy / Fran / Helen / Grace / Murph / Diane / Elizabeth / Mary / Nancy / Karen</p>
+    <table style="margin-top:8px">
+      <thead><tr><th>日期</th><th>WOD</th><th>成绩</th><th>回合</th><th>RPE</th><th>对比上次</th></tr></thead>
+      <tbody id="bmBody"><tr><td colspan="6" class="empty">还没有 Benchmark 数据。从头测一个 Cindy 或 Fran 看看？</td></tr></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Tab 5: 馆打卡 -->
+<section class="panel" data-panel="checkin">
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <h3 style="margin:0">📍 全国/全球 CF 馆打卡 <span class="badge" id="ckCount">0 个</span></h3>
+      <button class="primary" onclick="openForm('checkin')">＋ 我来过这</button>
+    </div>
+    <p class="help" style="margin-top:6px">浏览器定位 → Nominatim 反查地名 → 标记到地图。地图用 OpenStreetMap 免 key。</p>
+    <div id="cfmap" style="margin-top:12px"></div>
+    <div id="checkinList" style="margin-top:14px"></div>
+  </div>
+</section>
+
+<!-- Tab 6: 比赛 -->
+<section class="panel" data-panel="competition">
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <h3 style="margin:0">🏁 比赛记录 <span class="badge" id="compCount">0 场</span></h3>
+      <button class="primary" onclick="openForm('competition')">＋ 报名/完赛</button>
+    </div>
+    <table style="margin-top:14px">
+      <thead><tr><th>日期</th><th>赛事</th><th>项目</th><th>成绩/名次</th><th>组别</th><th>奖牌</th></tr></thead>
+      <tbody id="compBody"><tr><td colspan="6" class="empty">还没参加过比赛。下一场 Open 打起！</td></tr></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Tab 7: 智能分析 -->
+<section class="panel" data-panel="advice">
+  <div class="grid cols-4">
+    <div class="card"><h3>HRV 昨晚</h3><div class="kpi" id="kpiHRV">—<span class="unit">ms</span></div><div class="label" id="lblHRVState">—</div></div>
+    <div class="card"><h3>恢复状态</h3><div class="kpi" id="kpiRecovery">—<span class="unit">%</span></div><div class="progress"><div id="barRecovery" style="width:0%"></div></div></div>
+    <div class="card"><h3>训练负荷比</h3><div class="kpi" id="kpiLoad">—<span class="unit">%</span></div><div class="label" id="lblLoadState">—</div></div>
+    <div class="card"><h3>跑步能力</h3><div class="kpi" id="kpiRun">—<span class="unit">VO2</span></div><div class="label" id="lblRunState">—</div></div>
+  </div>
+  <div class="card advice-card" style="margin-top:16px">
+    <h3>🧠 教练视角解读 <span class="badge" id="adviceSource">规则引擎</span></h3>
+    <div id="adviceBody" style="line-height:1.7">正在加载数据…</div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h3>📈 CTL / ATL / TSB（Banister 模型）</h3>
+    <p class="help">CTL = 长期训练负荷（fitness）| ATL = 急性训练负荷（fatigue）| TSB = CTL-ATL（form）</p>
+    <canvas id="ctlChart" height="200"></canvas>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h3>📋 训练建议历史</h3>
+    <table><thead><tr><th>时间</th><th>指标</th><th>建议</th></tr></thead>
+      <tbody id="adviceHistory"><tr><td colspan="3" class="empty">暂无</td></tr></tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<!-- 通用表单弹窗 -->
+<div class="form-modal" id="formModal">
+  <div class="box">
+    <h3 id="formTitle" style="margin-top:0">新建记录</h3>
+    <div id="formFields"></div>
+    <div class="row" style="justify-content:flex-end;margin-top:14px">
+      <button class="ghost" onclick="closeForm()">取消</button>
+      <button class="primary" onclick="submitForm()">保存</button>
+    </div>
+    <p class="help" style="margin-top:10px">💡 当前是静态只读部署。点击保存会写入 localStorage + 提示同步给 WorkBuddy 帮你写到飞书。</p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ════════════════════════════════════════════
+   麻菜鱼 CF 训练工作台 — 主程序
+   数据源：public/data/*.json （每天同步）
+════════════════════════════════════════════ */
+const TABS = [
+  { id:'calendar', label:'📅 日历·上课' },
+  { id:'extra', label:'🥇 加练' },
+  { id:'pr', label:'🏆 PR' },
+  { id:'benchmark', label:'💪 Benchmark' },
+  { id:'checkin', label:'📍 馆打卡' },
+  { id:'competition', label:'🏁 比赛' },
+  { id:'advice', label:'🧠 智能建议' },
+];
+const LS_KEY = 'cf_dashboard_local_v1';
+
+let DATA = {
+  classes: [], extras: [], prs: [], benchmarks: [],
+  checkins: [], competitions: [], advice: [], coros: {}, summary: {}
+};
+let currentPanel = 'calendar';
+let currentForm = null;
+
+/* ─── 加载 JSON 数据 + localStorage 合并 ─────────────── */
+async function loadAll() {
+  const files = {
+    classes: 'data/classes.json',
+    extras: 'data/extras.json',
+    prs: 'data/prs.json',
+    benchmarks: 'data/benchmarks.json',
+    checkins: 'data/checkins.json',
+    competitions: 'data/competitions.json',
+    advice: 'data/advice.json',
+    coros: 'data/coros_kpi.json',
+    summary: 'data/summary.json',
+  };
+  for (const [k, p] of Object.entries(files)) {
+    try {
+      const r = await fetch(p);
+      DATA[k] = await r.json();
+    } catch (e) {
+      console.warn(`加载 ${p} 失败`, e);
+    }
+  }
+  // 合并 localStorage 中用户的本地新增（写而不落地飞书）
+  try {
+    const local = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+    for (const k of ['extras','prs','benchmarks','checkins','competitions','advice']) {
+      if (Array.isArray(local[k])) DATA[k] = DATA[k].concat(local[k]);
+    }
+  } catch {}
+  const t = DATA.summary?.更新于 || DATA.coros?.synced_at;
+  document.getElementById('lastSync').textContent = t ? new Date(t).toLocaleString('zh-CN') : '未同步';
+  const f = DATA.coros?.fitness;
+  document.getElementById('lastCTL').textContent = f ? `${f.ctl}/${f.atl}/${f.tsb}` : '—';
+  updateKPIs();
+  buildNav();
+  showPanel('calendar');
+}
+
+function updateKPIs() {
+  document.getElementById('kpiClasses').textContent = DATA.classes.length;
+  document.getElementById('kpiLast7').textContent = DATA.summary?.近7天训练 ?? 0;
+  document.getElementById('kpiPR').textContent = DATA.prs.length;
+  document.getElementById('kpiBM').textContent = DATA.benchmarks.length;
+  document.getElementById('kpiCK').textContent = DATA.checkins.length;
+  document.getElementById('kpiComp').textContent = DATA.competitions.length;
+}
+
+function buildNav() {
+  const nav = document.getElementById('nav');
+  nav.innerHTML = TABS.map(t => `<button data-tab="${t.id}">${t.label}</button>`).join('');
+  nav.querySelectorAll('button').forEach(b => {
+    b.onclick = () => showPanel(b.dataset.tab);
+  });
+  nav.querySelector(`[data-tab="${currentPanel}"]`)?.classList.add('active');
+}
+
+function showPanel(id) {
+  currentPanel = id;
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.dataset.panel === id));
+  document.querySelectorAll('nav button').forEach(b => b.classList.toggle('active', b.dataset.tab === id));
+  switch(id) {
+    case 'calendar': renderCalendar(); renderCharts(); renderRecent(); break;
+    case 'extra': renderExtras(); break;
+    case 'pr': renderPRs(); break;
+    case 'benchmark': renderBenchmarks(); break;
+    case 'checkin': renderMap(); break;
+    case 'competition': renderCompetitions(); break;
+    case 'advice': renderAdvice(); break;
+  }
+}
+
+/* ─── 日历 ─────────────────────────────────────── */
+function renderCalendar() {
+  const now = new Date();
+  const y = now.getFullYear(), m = now.getMonth();
+  const first = new Date(y, m, 1), last = new Date(y, m + 1, 0);
+  const startDay = first.getDay();
+  const trainDays = new Set(DATA.classes.map(c => c.日期));
+  document.getElementById('calMonthLabel').textContent = `${y} 年 ${m+1} 月`;
+
+  const grid = document.getElementById('calendar');
+  const head = ['日','一','二','三','四','五','六'].map(d => `<div class="cal-head">${d}</div>`).join('');
+  let html = head;
+  for (let i = 0; i < startDay; i++) html += '<div></div>';
+  for (let d = 1; d <= last.getDate(); d++) {
+    const dateStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const trained = trainDays.has(dateStr);
+    const isToday = d === now.getDate();
+    html += `<div class="cal-cell ${trained?'train':''} ${isToday?'today':''}" title="${dateStr}${trained?' · 训练过':''}">${d}${trained?'<span class="dot"></span>':''}</div>`;
+  }
+  grid.innerHTML = html;
+}
+
+/* ─── 图表（心率 / 负荷） ───────────────────────── */
+let _weeklyChart, _loadChart, _ctlChart;
+function parseLoadFromMemo(c) {
+  // COROS 备注格式："训练负荷 20 TL | 166.304 kcal"
+  const memo = c.备注 || '';
+  const tl = (memo.match(/训练负荷\s+(\d+)\s*TL/i) || [])[1];
+  const kcal = (memo.match(/([\d.]+)\s*kcal/i) || [])[1];
+  return { tl: parseInt(tl, 10) || 0, kcal: parseFloat(kcal) || 0 };
+}
+function asNum(v) { return parseFloat(v) || 0; }
+
+function renderCharts() {
+  const sorted = [...DATA.classes].sort((a,b) => (a.日期||'').localeCompare(b.日期||''));
+  const last14 = sorted.slice(-14);
+  if (!last14.length) return;
+  const labels = last14.map(c => (c.日期 || '').slice(5));
+  const hrs = last14.map(c => asNum(c.心率均值));
+  const dur = last14.map(c => asNum(c['训练时长(分钟)']));
+  const loads = last14.map(c => c['训练负荷(TL)'] || parseLoadFromMemo(c).tl);
+  const kcals = last14.map(c => c.卡路里 || parseLoadFromMemo(c).kcal);
+
+  const ctxW = document.getElementById('weeklyChart');
+  _weeklyChart && _weeklyChart.destroy();
+  _weeklyChart = new Chart(ctxW, {
+    type: 'bar',
+    data: { labels, datasets: [
+      { label: '时长 (min)', data: dur, backgroundColor: 'rgba(113,113,122,.4)', borderColor: 'rgba(113,113,122,.9)', borderWidth: 1, yAxisID: 'y' },
+      { label: '心率均值', data: hrs, type: 'line', borderColor: '#18181b', backgroundColor: 'transparent', pointBackgroundColor: '#18181b', yAxisID: 'y1', tension: .3 }
+    ]},
+    options: { responsive: true, plugins: { legend: { position: 'bottom' } },
+      scales: { y: { position: 'left' }, y1: { position: 'right', grid: { drawOnChartArea: false } } }
+    }
+  });
+
+  const ctxL = document.getElementById('loadChart');
+  _loadChart && _loadChart.destroy();
+  _loadChart = new Chart(ctxL, {
+    type: 'line',
+    data: { labels, datasets: [
+      { label: '训练负荷 TL', data: loads, borderColor: '#18181b', backgroundColor: 'rgba(24,24,27,.07)', fill: true, tension: .3 },
+      { label: '卡路里', data: kcals, borderColor: '#a1a1aa', backgroundColor: 'transparent', borderDash: [4,4], tension: .3, yAxisID: 'y1' }
+    ]},
+    options: { responsive: true, plugins: { legend: { position: 'bottom' } },
+      scales: { y: { position: 'left' }, y1: { position: 'right', grid: { drawOnChartArea: false } } }
+    }
+  });
+}
+
+function renderRecent() {
+  const recent = [...DATA.classes].sort((a,b) => (b.日期||'').localeCompare(a.日期||'')).slice(0,7);
+  document.getElementById('recentClasses').innerHTML = recent.map(c => {
+    const load = c['训练负荷(TL)'] || parseLoadFromMemo(c).tl || '—';
+    return `<tr><td>${c.日期||''}</td><td>${c['WOD 名称']||'—'}</td><td>${c['训练时长(分钟)']||0} min</td><td>${c.心率均值||'—'}</td><td>${load}</td></tr>`;
+  }).join('') || '<tr><td colspan="5" class="empty">暂无训练数据</td></tr>';
+}
+
+/* ─── OCR ────────────────────────────────────── */
+const ocrDrop = document.getElementById('ocrDrop');
+ocrDrop.addEventListener('dragover', e => { e.preventDefault(); ocrDrop.classList.add('drag'); });
+ocrDrop.addEventListener('dragleave', () => ocrDrop.classList.remove('drag'));
+ocrDrop.addEventListener('drop', e => {
+  e.preventDefault(); ocrDrop.classList.remove('drag');
+  handleOCR(e.dataTransfer.files[0]);
+});
+document.getElementById('ocrFile').onchange = e => handleOCR(e.target.files[0]);
+
+let ocrText = '';
+async function handleOCR(file) {
+  if (!file) return;
+  const img = document.getElementById('ocrPreview');
+  img.src = URL.createObjectURL(file);
+  img.style.display = 'block';
+  const result = document.getElementById('ocrResult');
+  result.style.display = 'block';
+  result.textContent = '⏳ 识别中…';
+  const { data: { text } } = await Tesseract.recognize(file, 'chi_sim+eng');
+  ocrText = text;
+  result.textContent = text || '(未识别到文字)';
+  document.getElementById('ocrActions').style.display = 'block';
+}
+
+function fillFromOCR() {
+  if (!ocrText) { toast('先识别一张课表'); return; }
+  const lines = ocrText.split('\n').map(s => s.trim()).filter(Boolean);
+  const newRec = {
+    id: 'local_' + Date.now(),
+    日期: new Date().toISOString().slice(0,10),
+    类型: 'OCR 识别',
+    动作: lines.slice(0, 5).join(' / '),
+    '组×次×重': '见备注',
+    备注: lines.join('\n'),
+    数据来源: 'OCR + localStorage'
+  };
+  saveLocal('extras', newRec);
+  toast('✓ 已填入"加练" tab，可在"加练"页面编辑');
+  showPanel('extra');
+}
+
+/* ─── 表单 + 本地存储 ─────────────────────────── */
+const FORM_DEFS = {
+  extra: { title:'新建加练内容', fields:[
+    { name:'日期', type:'date' },
+    { name:'类型', type:'select', options:['力量','有氧','技巧','Open Gym','Mobility'] },
+    { name:'动作', type:'text', ph:'如 Back Squat' },
+    { name:'组×次×重', type:'text', ph:'5x5 @ 100kg' },
+    { name:'备注', type:'textarea' }
+  ]},
+  pr: { title:'记录新 PR', fields:[
+    { name:'日期', type:'date' },
+    { name:'类别', type:'select', options:['Big 3','Olympic','Gymnastics','Endurance'] },
+    { name:'动作', type:'text', ph:'Back Squat' },
+    { name:'成绩', type:'text', ph:'140 kg / 3:24 / 12 reps' },
+    { name:'达标', type:'select', options:['是','否'] }
+  ]},
+  benchmark: { title:'新测 Benchmark', fields:[
+    { name:'日期', type:'date' },
+    { name:'WOD', type:'select', options:['Fran','Helen','Cindy','Grace','Murph','Diane','Elizabeth','Mary','Nancy','Karen','Annie','Jackie','Other'] },
+    { name:'成绩', type:'text', ph:'3:24 / 20 rounds / 200kg' },
+    { name:'回合', type:'text', ph:'6+10' },
+    { name:'RPE', type:'number', ph:'7' },
+    { name:'备注', type:'textarea' }
+  ]},
+  checkin: { title:'打卡 CF 馆', fields:[
+    { name:'日期', type:'date' },
+    { name:'馆名', type:'text', ph:'CrossFit XXX' },
+    { name:'城市', type:'text', ph:'上海' },
+    { name:'经度', type:'text' }, { name:'纬度', type:'text' },
+    { name:'感受', type:'textarea' }
+  ]},
+  competition: { title:'记录比赛', fields:[
+    { name:'日期', type:'date' },
+    { name:'赛事名', type:'text', ph:'CrossFit Open 2026' },
+    { name:'项目', type:'text', ph:'24.1' },
+    { name:'成绩/名次', type:'text', ph:'完赛 / 全球 Top 30%' },
+    { name:'组别', type:'select', options:['RX','Scaled','Teen','Masters','Team'] },
+    { name:'奖牌/证书', type:'text', ph:'附照片/链接' }
+  ]}
+};
+
+function openForm(type) {
+  currentForm = type;
+  const def = FORM_DEFS[type];
+  document.getElementById('formTitle').textContent = def.title;
+  document.getElementById('formFields').innerHTML = def.fields.map(f =>
+    f.type === 'select' ?
+      `<label style="display:block;margin-bottom:10px"><span class="label">${f.name}</span><select name="${f.name}">${f.options.map(o=>`<option>${o}</option>`).join('')}</select></label>`
+      : f.type === 'textarea' ?
+      `<label style="display:block;margin-bottom:10px"><span class="label">${f.name}</span><textarea name="${f.name}" rows="3"></textarea></label>`
+      :
+      `<label style="display:block;margin-bottom:10px"><span class="label">${f.name}</span><input type="${f.type}" name="${f.name}" placeholder="${f.ph||''}" /></label>`
+  ).join('');
+  document.getElementById('formModal').classList.add('open');
+}
+function closeForm() { document.getElementById('formModal').classList.remove('open'); }
+
+function submitForm() {
+  const inputs = document.querySelectorAll('#formFields [name]');
+  const rec = { id: 'local_' + Date.now(), 数据来源: 'localStorage' };
+  inputs.forEach(i => rec[i.name] = i.value);
+  saveLocal(currentForm === 'extra' ? 'extras'
+    : currentForm === 'pr' ? 'prs'
+    : currentForm === 'benchmark' ? 'benchmarks'
+    : currentForm === 'checkin' ? 'checkins'
+    : 'competitions', rec);
+  closeForm();
+  showPanel(currentForm);
+  updateKPIs();
+}
+
+/* ─── 数据渲染：extras / prs / benchmarks / comps ──── */
+function renderExtras() {
+  document.getElementById('extraCount').textContent = `${DATA.extras.length} 条`;
+  document.getElementById('extraBody').innerHTML = DATA.extras.length ?
+    DATA.extras.sort((a,b)=>(b.日期||'').localeCompare(a.日期||'')).map(c =>
+      `<tr><td>${c.日期||'—'}</td><td><span class="tag tag-cardio">${c.类型||'—'}</span></td><td>${c.动作||'—'}</td><td>${c['组×次×重']||'—'}</td><td>${(c.备注||c['心率均值']||'').slice(0,40)}</td></tr>`
+    ).join('') : '<tr><td colspan="5" class="empty">还没有加练记录。点击右上角新建，或从"日历·上课" tab 上传课表照片 OCR 识别</td></tr>';
+}
+function renderPRs() {
+  document.getElementById('prCount').textContent = `${DATA.prs.length} 条`;
+  document.getElementById('prBody').innerHTML = DATA.prs.length ?
+    DATA.prs.sort((a,b)=>(b.日期||'').localeCompare(a.日期||'')).map(p => {
+      const cls = p.类别==='Big 3'?'tag-big3' : p.类别==='Olympic'?'tag-olympic' : p.类别==='Gymnastics'?'tag-gym' : '';
+      return `<tr><td>${p.日期||'—'}</td><td><span class="tag ${cls}">${p.类别||'—'}</span></td><td>${p.动作||'—'}</td><td><strong>${p.成绩||'—'}</strong></td><td>${p.达标||'—'}</td></tr>`;
+    }).join('') : '<tr><td colspan="5" class="empty">还没有 PR 记录。点右上"记录新 PR"开始。<br><br>💡 想要历史 PR？告诉我你的 Big 3 / Olympic / Gymnastics 数字，我帮你批量导入。</td></tr>';
+}
+function renderBenchmarks() {
+  document.getElementById('bmCount').textContent = `${DATA.benchmarks.length} 条`;
+  document.getElementById('bmBody').innerHTML = DATA.benchmarks.length ?
+    DATA.benchmarks.sort((a,b)=>(b.日期||'').localeCompare(a.日期||'')).map(b =>
+      `<tr><td>${b.日期||'—'}</td><td><strong>${b.WOD||'—'}</strong></td><td>${b.成绩||'—'}</td><td>${b.回合||'—'}</td><td>${b.RPE||'—'}</td><td>${b.对比上次||'—'}</td></tr>`
+    ).join('') : '<tr><td colspan="6" class="empty">还没有 Benchmark。从 Cindy / Fran 开始测一个，5-20 分钟就能拿到对比锚点</td></tr>';
+}
+function renderCompetitions() {
+  document.getElementById('compCount').textContent = `${DATA.competitions.length} 场`;
+  document.getElementById('compBody').innerHTML = DATA.competitions.length ?
+    DATA.competitions.sort((a,b)=>(b.日期||'').localeCompare(a.日期||'')).map(c =>
+      `<tr><td>${c.日期||'—'}</td><td>${c.赛事名||c['比赛名']||'—'}</td><td>${c.项目||'—'}</td><td>${c['成绩/名次']||'—'}</td><td>${c.组别||'—'}</td><td>${c.奖牌||c['奖牌/证书']||'—'}</td></tr>`
+    ).join('') : '<tr><td colspan="6" class="empty">还没比赛记录。下一场 Open 完赛我会自动帮你归档。</td></tr>';
+}
+
+/* ─── 地图 ──────────────────────────────────────── */
+let map;
+function renderMap() {
+  setTimeout(() => {  // 等 tab 切完
+    if (!map) {
+      map = L.map('cfmap').setView([31.23, 121.47], 4);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap', maxZoom: 18
+      }).addTo(map);
+    }
+    // 清旧 marker 重绘
+    map.eachLayer(l => { if (l instanceof L.Marker) map.removeLayer(l); });
+    const cks = DATA.checkins || [];
+    if (!cks.length) {
+      document.getElementById('checkinList').innerHTML = '<p class="empty">还没打卡记录。点击右上"我来过这"，浏览器会请求定位 → 自动填经纬度。</p>';
+      return;
+    }
+    const pts = [];
+    cks.forEach(c => {
+      const lat = parseFloat(c.纬度), lng = parseFloat(c.经度);
+      if (Number.isFinite(lat) && Number.isFinite(lng)) {
+        const m = L.circleMarker([lat, lng], { radius: 8, color: '#18181b', weight: 2, fillColor: '#ffffff', fillOpacity: 1 }).addTo(map)
+          .bindPopup(`<b>${c.馆名||'—'}</b><br>${c.城市||''}<br>${c.日期||''}<br>${c.感受||''}`);
+        pts.push([lat, lng]);
+      }
+    });
+    if (pts.length) map.fitBounds(pts, { padding: [30,30] });
+    document.getElementById('checkinList').innerHTML = cks.map(c =>
+      `<div style="padding:8px 0;border-bottom:1px solid var(--line)"><b>${c.馆名||'—'}</b> · ${c.城市||''} · ${c.日期||''}<br><span class="label">${c.感受||''}</span></div>`
+    ).join('');
+  }, 80);
+}
+
+/* ─── 智能分析 ─────────────────────────────────── */
+function renderAdvice() {
+  const corosData = DATA.coros || {};
+  const fit = corosData.fitness || {};
+  const zones = corosData.zones || {};
+  const scores = corosData.scores || {};
+  const series = corosData.last7days || {};
+  const hrv = (series.hrv && series.hrv.length ? series.hrv[series.hrv.length-1].value : null);
+  const rhr = zones.restingHeartRate;
+  const load = fit.trainingLoadRatio;
+  const recovery = (series.recovery && series.recovery.length ? series.recovery[series.recovery.length-1].value : null);
+  const runLevel = scores.aerobicEndurance;
+
+  document.getElementById('kpiHRV').innerHTML = (hrv ?? '—') + '<span class="unit">ms</span>';
+  document.getElementById('lblHRVState').textContent = hrv && hrv >= 70 ? '🟢 正常' : hrv && hrv >= 60 ? '🟡 偏低' : hrv && hrv < 60 ? '🔴 偏低' : '需要数据';
+  document.getElementById('kpiRecovery').innerHTML = (recovery ?? '—') + '<span class="unit">%</span>';
+  document.getElementById('barRecovery').style.width = (recovery ?? 0) + '%';
+  document.getElementById('kpiLoad').innerHTML = (load ?? '—') + '<span class="unit">%</span>';
+  const ideal = load >= 50 && load <= 80;
+  document.getElementById('lblLoadState').textContent = ideal ? '🟢 最佳训练区间' : load > 80 ? '🔴 偏高，注意恢复' : load && load < 50 ? '🟡 偏低，可加量' : '—';
+  document.getElementById('kpiRun').innerHTML = (runLevel ? runLevel.toFixed(1) : '—') + (runLevel ? '<span class="unit">/100</span>' : '');
+  document.getElementById('lblRunState').textContent = runLevel && runLevel >= 75 ? '🟢 优秀' : runLevel && runLevel >= 60 ? '🟡 中等' : runLevel ? '🔴 待提升' : '—';
+
+  // 教练解读（规则引擎）
+  const lines = [];
+  if (recovery != null && recovery < 50) lines.push('恢复偏低（'+recovery+'%），今天建议做 Mobility / 主动恢复 / 技术训练，不做大重量或高强度 MetCon。');
+  else if (recovery != null && recovery >= 80) lines.push('恢复充沛（'+recovery+'%），是冲 PR / 测 Benchmark 的好时机。');
+  if (load > 80) lines.push('负荷比偏高（'+load+'%），建议安排 deload 周 / 减量训练，避免过劳。');
+  if (load && load < 50 && DATA.classes.length >= 5) lines.push('负荷偏低（'+load+'%），最近 7 天虽然训练频次不低，但强度有空间，可以主动 push 一下。');
+  if (hrv != null && hrv < 60) lines.push('HRV 偏低（'+hrv+' ms），睡眠/疲劳信号，注意今早睡眠质量。');
+  // 最近 7 天频率
+  const last7 = new Set(DATA.classes.filter(c => {
+    const d = new Date(c.日期); return (Date.now() - d.getTime()) < 7*86400e3;
+  }).map(c => c.日期)).size;
+  if (last7 >= 6) lines.push('近 7 天训练了 '+last7+' 天，频率很高，建议本周穿插 1 天完整休息。');
+
+  if (!lines.length) lines.push('📊 数据不足（需要 COROS 同步）。告诉 WorkBuddy 你的 HRV/恢复/负荷比，我给你具体建议。');
+
+  document.getElementById('adviceBody').innerHTML = lines.map(l => `<p style="margin:6px 0">• ${l}</p>`).join('');
+
+  // CTL/ATL/TSB 简易估算
+  const sorted = [...DATA.classes].sort((a,b) => (a.日期||'').localeCompare(b.日期||''));
+  const labels = [], ctlSeries=[], atlSeries=[], tsbSeries=[];
+  let ctl = 0, atl = 0;
+  const decay = 1/30;
+  sorted.forEach(c => {
+    const tl = c['训练负荷(TL)'] || parseLoadFromMemo(c).tl || 60;
+    ctl = ctl + decay * (tl - ctl);
+    atl = atl + (1/7) * (tl - atl);
+    labels.push((c.日期||'').slice(5));
+    ctlSeries.push(Math.round(ctl));
+    atlSeries.push(Math.round(atl));
+    tsbSeries.push(Math.round(ctl - atl));
+  });
+  _ctlChart && _ctlChart.destroy();
+  if (labels.length) {
+    _ctlChart = new Chart(document.getElementById('ctlChart'), {
+      type: 'line',
+      data: { labels, datasets: [
+        { label: 'CTL (Fitness)', data: ctlSeries, borderColor: '#18181b', borderWidth: 2, tension: .3 },
+        { label: 'ATL (Fatigue)', data: atlSeries, borderColor: '#a1a1aa', borderWidth: 2, tension: .3 },
+        { label: 'TSB (Form)', data: tsbSeries, borderColor: '#71717a', borderDash: [5,5], tension: .3 }
+      ]},
+      options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+    });
+  } else {
+    document.getElementById('ctlChart').style.display = 'none';
+  }
+
+  // 建议历史
+  document.getElementById('adviceHistory').innerHTML = DATA.advice.length ?
+    DATA.advice.map(a => `<tr><td>${a.时间||a.日期||'—'}</td><td>${a.指标||'—'}</td><td>${a.建议||a.内容||'—'}</td></tr>`).join('')
+    : '<tr><td colspan="3" class="empty">暂无历史建议。每周日会自动生成一次周建议（待自动化配置）</td></tr>';
+}
+
+/* ─── localStorage 持久化 ──────────────────────── */
+function saveLocal(type, rec) {
+  DATA[type].push(rec);
+  const local = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+  if (!local[type]) local[type] = [];
+  local[type].push(rec);
+  localStorage.setItem(LS_KEY, JSON.stringify(local));
+  toast('✓ 已保存到本地。请告诉 WorkBuddy "同步到飞书" 我会写入云端');
+}
+
+/* ─── toast ──────────────────────────────────── */
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._tt);
+  window._tt = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+/* ─── 启动 ─────────────────────────────────────── */
+window.addEventListener("load", loadAll);
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{
+  "synced_at": "2026-09-09T18:20:53",
+  "fitness": {
+    "ctl": 35,
+    "atl": 21,
+    "tsb": 14,
+    "trainingLoadRatio": 60,
+    "tiredRate": 27
+  },
+  "zones": {
+    "maxHr": 190,
+    "lthr": 163,
+    "restingHeartRate": 92
+  },
+  "scores": {
+    "aerobicEndurance": 72.7,
+    "anaerobicCapacity": 72.3,
+    "anaerobicEndurance": 72.4,
+    "lactateThreshold": 72.4
+  },
+  "last7days": {
+    "hrv": [
+      {
+        "date": "2026-08-30",
+        "value": 74
+      },
+      {
+        "date": "2026-07-20",
+        "value": 77
+      },
+      {
+        "date": "2026-07-20",
+        "value": 77
+      },
+      {
+        "date": "2023-03-11",
+        "value": 77
+      }
+    ],
+    "rhr": [
+      {
+        "date": "2026-08-30",
+        "value": 78
+      },
+      {
+        "date": "2026-07-20",
+        "value": 92
+      },
+      {
+        "date": "2026-07-20",
+        "value": 92
+      },
+      {
+        "date": "2023-03-11",
+        "value": 92
+      }
+    ],
+    "recovery": [
+      {
+        "date": "2026-08-30",
+        "value": 80
+      },
+      {
+        "date": "2026-07-20",
+        "value": 95
+      },
+      {
+        "date": "2026-07-20",
+        "value": 95
+      },
+      {
+        "date": "2023-03-11",
+        "value": 95
+      }
+    ]
+  },
+  "state": {
+    "loadState": 2,
+    "tiredState": 2
+  }
+}
