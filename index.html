@@ -139,10 +139,10 @@
         <p class="help" style="margin-top:8px">💡 点击任意日期：查看当日<b>课表 + 手表数据 + 成绩</b>，并可补录 WOD 成绩。手表自动记录身体数据（心率/时长/负荷），课表照片 OCR 补充训练内容，成绩由你确认录入——三方按日期自动汇总。</p>
       </div>
       <div class="card" style="margin-top:16px">
-        <h3>📷 课表照片 OCR 识别 <span class="badge">Tesseract.js 本地</span></h3>
+        <h3>📷 课表照片 OCR 识别 <span class="badge" id="ocrEngine">macOS Vision · 本地识别</span></h3>
         <div class="ocr-area" id="ocrDrop">
           <p style="margin:8px 0">📸 拖拽课表照片到这里 / <button class="ghost" onclick="document.getElementById('ocrFile').click()">选择文件</button></p>
-          <p class="help">支持中文/英文课表。本地识别，不上传服务器。识别后可「存为当日课表」（日历会出现 📋 标记）或填入"加练"。</p>
+          <p class="help">支持中文/英文课表。家里 Wi-Fi 下用 Mac 的 Vision 引擎识别（效果好）；在外面自动回退浏览器识别（效果一般，回家可重新识别）。识别后可「存为当日课表」（日历会出现 📋 标记）或填入"加练"。</p>
           <input type="file" id="ocrFile" accept="image/*" style="display:none" />
           <img id="ocrPreview" class="ocr-preview" style="display:none" />
           <div id="ocrResult" class="ocr-result" style="display:none"></div>
@@ -565,6 +565,14 @@ ocrDrop.addEventListener('drop', e => {
 document.getElementById('ocrFile').onchange = e => handleOCR(e.target.files[0]);
 
 let ocrText = '';
+function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
 async function handleOCR(file) {
   if (!file) return;
   const img = document.getElementById('ocrPreview');
@@ -573,9 +581,46 @@ async function handleOCR(file) {
   const result = document.getElementById('ocrResult');
   result.style.display = 'block';
   result.textContent = '⏳ 识别中…';
-  const { data: { text } } = await Tesseract.recognize(file, 'chi_sim+eng');
-  ocrText = text;
-  result.textContent = text || '(未识别到文字)';
+  let engine = '';
+  // 1) 优先：Mac 本地服务 → macOS Vision 引擎（中文准确率高，纯本地）
+  try {
+    const base = await apiBase();
+    if (base !== false) {
+      result.textContent = '⏳ 识别中（Vision 引擎）…';
+      const dataUrl = await fileToDataUrl(file);
+      const ctl = new AbortController();
+      const t = setTimeout(() => ctl.abort(), 35000);
+      const r = await fetch(base + '/api/ocr', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ image: dataUrl }),
+        signal: ctl.signal
+      });
+      clearTimeout(t);
+      if (r.ok) {
+        const j = await r.json();
+        if (j.ok && j.text) {
+          ocrText = j.text;
+          result.textContent = j.text;
+          document.getElementById('ocrActions').style.display = 'block';
+          document.getElementById('ocrEngine').textContent = '✅ macOS Vision 引擎';
+          return;
+        }
+      }
+    }
+  } catch (e) {
+    console.warn('Vision OCR 不可用，回退 Tesseract', e);
+  }
+  // 2) 回退：浏览器内 Tesseract.js（Mac 不在同一网络时）
+  result.textContent = '⏳ 识别中（浏览器 Tesseract 回退，效果较差）…';
+  try {
+    const { data: { text } } = await Tesseract.recognize(file, 'chi_sim+eng');
+    ocrText = text;
+    result.textContent = text || '(未识别到文字)';
+    document.getElementById('ocrEngine').textContent = '⚠️ Tesseract 回退（连上家里 Wi-Fi 用 Vision 效果更好）';
+  } catch (e) {
+    result.textContent = '❌ 识别失败：' + e;
+  }
   document.getElementById('ocrActions').style.display = 'block';
 }
 
