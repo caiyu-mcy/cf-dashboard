@@ -73,7 +73,15 @@
   .cal-cell.train { background: #18181b; color: white; font-weight: 600; border-color: transparent; }
   .cal-cell.today { box-shadow: 0 0 0 2px var(--brand); }
   .cal-cell.rest { background: #fafafa; }
+  .cal-cell { position: relative; cursor: pointer; }
   .cal-cell .dot { position: absolute; bottom: 4px; width: 4px; height: 4px; background: currentColor; border-radius: 50%; }
+  .cal-cell:hover { border-color: #18181b; }
+  .cal-cell.has-sched::after { content: '📋'; position: absolute; top: 0; right: 2px; font-size: 9px; line-height: 1.2; }
+  .day-sec { border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+  .day-sec h4 { margin: 0 0 8px; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+  .day-wod { font-family: monospace; font-size: 12px; white-space: pre-wrap; background: #fafafa; padding: 10px; border-radius: 8px; max-height: 200px; overflow-y: auto; }
+  .day-stat { display: inline-block; margin: 0 14px 6px 0; }
+  .day-stat b { font-size: 16px; display: block; }
   .cal-head { font-size: 10px; font-weight: 600; color: var(--muted); text-align: center; padding: 8px 0; text-transform: uppercase; letter-spacing: 0.5px; }
   #cfmap { width: 100%; height: 500px; border-radius: 12px; }
   #cfmap .leaflet-tile { filter: grayscale(1) contrast(1.05); }
@@ -96,7 +104,7 @@
   .help { font-size: 11px; color: var(--muted); margin-top: 4px; }
 </style>
 <script id="cf-data">
-const CF_DATA = {"classes.json": "[\n  {\n    \"id\": \"recvuI8Q1dq3Mv\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 20 TL | 166.304 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"120\",\n    \"成绩主指标\": \"23 分钟\",\n    \"日期\": \"2026-09-08\",\n    \"训练时长(分钟)\": \"23\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8R6t21Ko\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 43 TL | 158.506 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"153\",\n    \"成绩主指标\": \"15 分钟\",\n    \"日期\": \"2026-09-07\",\n    \"训练时长(分钟)\": \"15\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8S4FX8lX\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 13 TL | 76.892 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"136\",\n    \"成绩主指标\": \"9 分钟\",\n    \"日期\": \"2026-09-05\",\n    \"训练时长(分钟)\": \"9\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8T6WFE9K\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 71 TL | 209.052 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"162\",\n    \"成绩主指标\": \"19 分钟\",\n    \"日期\": \"2026-09-05\",\n    \"训练时长(分钟)\": \"19\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8U1ChnQT\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 4 TL | 32.732 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"102\",\n    \"成绩主指标\": \"13 分钟\",\n    \"日期\": \"2026-09-02\",\n    \"训练时长(分钟)\": \"13\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8UWRz1WD\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 52 TL | 205.443 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"151\",\n    \"成绩主指标\": \"20 分钟\",\n    \"日期\": \"2026-09-02\",\n    \"训练时长(分钟)\": \"20\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8VVy5ery\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 29 TL | 123.028 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"134\",\n    \"成绩主指标\": \"14 分钟\",\n    \"日期\": \"2026-08-29\",\n    \"训练时长(分钟)\": \"14\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8WNOuRhw\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 47 TL | 166.169 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"154\",\n    \"成绩主指标\": \"16 分钟\",\n    \"日期\": \"2026-08-28\",\n    \"训练时长(分钟)\": \"16\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8XMUCqpw\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 12 TL | 42.296 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"118\",\n    \"成绩主指标\": \"16 分钟\",\n    \"日期\": \"2026-08-25\",\n    \"训练时长(分钟)\": \"16\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8YCsBqYZ\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 82 TL | 373.395 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"142\",\n    \"成绩主指标\": \"40 分钟\",\n    \"日期\": \"2026-08-24\",\n    \"训练时长(分钟)\": \"40\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8ZsJ1s7w\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 36 TL | 146.923 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"147\",\n    \"成绩主指标\": \"15 分钟\",\n    \"日期\": \"2026-08-21\",\n    \"训练时长(分钟)\": \"15\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI90hIxFO0\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 32 TL | 135.096 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"146\",\n    \"成绩主指标\": \"14 分钟\",\n    \"日期\": \"2026-08-20\",\n    \"训练时长(分钟)\": \"14\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI915Fg2aI\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 49 TL | 193.754 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"145\",\n    \"成绩主指标\": \"20 分钟\",\n    \"日期\": \"2026-08-18\",\n    \"训练时长(分钟)\": \"20\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI923Fui2p\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 72 TL | 244.268 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"145\",\n    \"成绩主指标\": \"26 分钟\",\n    \"日期\": \"2026-08-17\",\n    \"训练时长(分钟)\": \"26\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI92ToReVT\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 14 TL | 85.583 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"107\",\n    \"成绩主指标\": \"30 分钟\",\n    \"日期\": \"2026-08-13\",\n    \"训练时长(分钟)\": \"30\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI93OWXZgU\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 21 TL | 107.22 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"137\",\n    \"成绩主指标\": \"12 分钟\",\n    \"日期\": \"2026-08-13\",\n    \"训练时长(分钟)\": \"12\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI94JqDuxG\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 5 TL | 0.0 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"131\",\n    \"成绩主指标\": \"6 分钟\",\n    \"日期\": \"2026-08-12\",\n    \"训练时长(分钟)\": \"6\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI95Dm9OKT\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 42 TL | 181.548 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"144\",\n    \"成绩主指标\": \"19 分钟\",\n    \"日期\": \"2026-08-12\",\n    \"训练时长(分钟)\": \"19\",\n    \"课程类型\": \"Open Gym\"\n  }\n]", "extras.json": "[]", "prs.json": "[]", "benchmarks.json": "[]", "checkins.json": "[]", "competitions.json": "[]", "advice.json": "[]", "coros_recent.json": "{\n  \"synced_at\": \"2026-09-09T18:19:32\",\n  \"dashboard\": {},\n  \"summary\": {},\n  \"cycle\": {},\n  \"profile\": {}\n}", "coros_kpi.json": "{\n  \"synced_at\": \"2026-09-09T18:20:53\",\n  \"fitness\": {\n    \"ctl\": 35,\n    \"atl\": 21,\n    \"tsb\": 14,\n    \"trainingLoadRatio\": 60,\n    \"tiredRate\": 27\n  },\n  \"zones\": {\n    \"maxHr\": 190,\n    \"lthr\": 163,\n    \"restingHeartRate\": 92\n  },\n  \"scores\": {\n    \"aerobicEndurance\": 72.7,\n    \"anaerobicCapacity\": 72.3,\n    \"anaerobicEndurance\": 72.4,\n    \"lactateThreshold\": 72.4\n  },\n  \"last7days\": {\n    \"hrv\": [\n      {\n        \"date\": \"2026-08-30\",\n        \"value\": 74\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 77\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 77\n      },\n      {\n        \"date\": \"2023-03-11\",\n        \"value\": 77\n      }\n    ],\n    \"rhr\": [\n      {\n        \"date\": \"2026-08-30\",\n        \"value\": 78\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 92\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 92\n      },\n      {\n        \"date\": \"2023-03-11\",\n        \"value\": 92\n      }\n    ],\n    \"recovery\": [\n      {\n        \"date\": \"2026-08-30\",\n        \"value\": 80\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 95\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 95\n      },\n      {\n        \"date\": \"2023-03-11\",\n        \"value\": 95\n      }\n    ]\n  },\n  \"state\": {\n    \"loadState\": 2,\n    \"tiredState\": 2\n  }\n}", "summary.json": "{\n  \"训练记录\": 18,\n  \"近7天训练\": 7,\n  \"最近训练日\": \"2026-09-08\",\n  \"PR 记录\": 0,\n  \"达标 PR\": 0,\n  \"Benchmark\": 0,\n  \"打卡馆\": 0,\n  \"参赛\": 0,\n  \"更新于\": \"2026-09-09T18:20:53\"\n}"};
+const CF_DATA = {"classes.json": "[\n  {\n    \"id\": \"recvuI8Q1dq3Mv\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 20 TL | 166.304 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"120\",\n    \"成绩主指标\": \"23 分钟\",\n    \"日期\": \"2026-09-08\",\n    \"训练时长(分钟)\": \"23\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8R6t21Ko\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"153\",\n    \"成绩主指标\": \"15 分钟\",\n    \"日期\": \"2026-09-07\",\n    \"训练时长(分钟)\": \"15\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8S4FX8lX\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 13 TL | 76.892 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"136\",\n    \"成绩主指标\": \"9 分钟\",\n    \"日期\": \"2026-09-05\",\n    \"训练时长(分钟)\": \"9\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8T6WFE9K\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 71 TL | 209.052 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"162\",\n    \"成绩主指标\": \"19 分钟\",\n    \"日期\": \"2026-09-05\",\n    \"训练时长(分钟)\": \"19\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8U1ChnQT\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 4 TL | 32.732 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"102\",\n    \"成绩主指标\": \"13 分钟\",\n    \"日期\": \"2026-09-02\",\n    \"训练时长(分钟)\": \"13\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8UWRz1WD\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 52 TL | 205.443 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"151\",\n    \"成绩主指标\": \"20 分钟\",\n    \"日期\": \"2026-09-02\",\n    \"训练时长(分钟)\": \"20\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8VVy5ery\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 29 TL | 123.028 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"134\",\n    \"成绩主指标\": \"14 分钟\",\n    \"日期\": \"2026-08-29\",\n    \"训练时长(分钟)\": \"14\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8WNOuRhw\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 47 TL | 166.169 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"154\",\n    \"成绩主指标\": \"16 分钟\",\n    \"日期\": \"2026-08-28\",\n    \"训练时长(分钟)\": \"16\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8XMUCqpw\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 12 TL | 42.296 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"118\",\n    \"成绩主指标\": \"16 分钟\",\n    \"日期\": \"2026-08-25\",\n    \"训练时长(分钟)\": \"16\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8YCsBqYZ\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 82 TL | 373.395 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"142\",\n    \"成绩主指标\": \"40 分钟\",\n    \"日期\": \"2026-08-24\",\n    \"训练时长(分钟)\": \"40\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8ZsJ1s7w\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 36 TL | 146.923 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"147\",\n    \"成绩主指标\": \"15 分钟\",\n    \"日期\": \"2026-08-21\",\n    \"训练时长(分钟)\": \"15\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI90hIxFO0\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 32 TL | 135.096 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"146\",\n    \"成绩主指标\": \"14 分钟\",\n    \"日期\": \"2026-08-20\",\n    \"训练时长(分钟)\": \"14\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI915Fg2aI\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 49 TL | 193.754 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"145\",\n    \"成绩主指标\": \"20 分钟\",\n    \"日期\": \"2026-08-18\",\n    \"训练时长(分钟)\": \"20\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI923Fui2p\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 72 TL | 244.268 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"145\",\n    \"成绩主指标\": \"26 分钟\",\n    \"日期\": \"2026-08-17\",\n    \"训练时长(分钟)\": \"26\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI92ToReVT\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 14 TL | 85.583 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"107\",\n    \"成绩主指标\": \"30 分钟\",\n    \"日期\": \"2026-08-13\",\n    \"训练时长(分钟)\": \"30\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI93OWXZgU\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 21 TL | 107.22 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"137\",\n    \"成绩主指标\": \"12 分钟\",\n    \"日期\": \"2026-08-13\",\n    \"训练时长(分钟)\": \"12\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI94JqDuxG\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 5 TL | 0.0 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"131\",\n    \"成绩主指标\": \"6 分钟\",\n    \"日期\": \"2026-08-12\",\n    \"训练时长(分钟)\": \"6\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI95Dm9OKT\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 42 TL | 181.548 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"144\",\n    \"成绩主指标\": \"19 分钟\",\n    \"日期\": \"2026-08-12\",\n    \"训练时长(分钟)\": \"19\",\n    \"课程类型\": \"Open Gym\"\n  }\n]", "extras.json": "[]", "prs.json": "[]", "benchmarks.json": "[]", "checkins.json": "[]", "competitions.json": "[]", "advice.json": "[]", "schedules.json": "[\n  {\n    \"id\": \"recvuIUY5N3gL3\",\n    \"日期\": \"2026-09-10\",\n    \"来源\": \"OCR 课表照片\",\n    \"课表内容\": \"2026-09-10 课表\\nA. Back Squat 5x3 @75%\\nB. MetCon 12min AMRAP\\n10 Burpees\\n15 Wall Balls 9kg\"\n  }\n]", "coros_recent.json": "{\n  \"synced_at\": \"2026-09-09T18:19:32\",\n  \"dashboard\": {},\n  \"summary\": {},\n  \"cycle\": {},\n  \"profile\": {}\n}", "coros_kpi.json": "{\n  \"synced_at\": \"2026-09-09T18:20:53\",\n  \"fitness\": {\n    \"ctl\": 35,\n    \"atl\": 21,\n    \"tsb\": 14,\n    \"trainingLoadRatio\": 60,\n    \"tiredRate\": 27\n  },\n  \"zones\": {\n    \"maxHr\": 190,\n    \"lthr\": 163,\n    \"restingHeartRate\": 92\n  },\n  \"scores\": {\n    \"aerobicEndurance\": 72.7,\n    \"anaerobicCapacity\": 72.3,\n    \"anaerobicEndurance\": 72.4,\n    \"lactateThreshold\": 72.4\n  },\n  \"last7days\": {\n    \"hrv\": [\n      {\n        \"date\": \"2026-08-30\",\n        \"value\": 74\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 77\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 77\n      },\n      {\n        \"date\": \"2023-03-11\",\n        \"value\": 77\n      }\n    ],\n    \"rhr\": [\n      {\n        \"date\": \"2026-08-30\",\n        \"value\": 78\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 92\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 92\n      },\n      {\n        \"date\": \"2023-03-11\",\n        \"value\": 92\n      }\n    ],\n    \"recovery\": [\n      {\n        \"date\": \"2026-08-30\",\n        \"value\": 80\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 95\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 95\n      },\n      {\n        \"date\": \"2023-03-11\",\n        \"value\": 95\n      }\n    ]\n  },\n  \"state\": {\n    \"loadState\": 2,\n    \"tiredState\": 2\n  }\n}", "summary.json": "{\n  \"训练记录\": 18,\n  \"近7天训练\": 7,\n  \"最近训练日\": \"2026-09-08\",\n  \"PR 记录\": 0,\n  \"达标 PR\": 0,\n  \"Benchmark\": 0,\n  \"打卡馆\": 0,\n  \"参赛\": 0,\n  \"更新于\": \"2026-09-09T20:04:12\"\n}"};
 </script>
 </head>
 <body>
@@ -129,18 +137,21 @@ const CF_DATA = {"classes.json": "[\n  {\n    \"id\": \"recvuI8Q1dq3Mv\",\n    \
           <span><span class="swatch" style="background: #18181b;"></span>已训练</span>
           <span><span class="swatch" style="background: #fafafa;border:1px solid #e4e4e7"></span>未训练</span>
           <span><span class="swatch" style="background: white;outline:2px solid #18181b"></span>今天</span>
+          <span>📋 有课表</span>
         </div>
+        <p class="help" style="margin-top:8px">💡 点击任意日期：查看当日<b>课表 + 手表数据 + 成绩</b>，并可补录 WOD 成绩。手表自动记录身体数据（心率/时长/负荷），课表照片 OCR 补充训练内容，成绩由你确认录入——三方按日期自动汇总。</p>
       </div>
       <div class="card" style="margin-top:16px">
         <h3>📷 课表照片 OCR 识别 <span class="badge">Tesseract.js 本地</span></h3>
         <div class="ocr-area" id="ocrDrop">
           <p style="margin:8px 0">📸 拖拽课表照片到这里 / <button class="ghost" onclick="document.getElementById('ocrFile').click()">选择文件</button></p>
-          <p class="help">支持中文/英文课表。本地识别，不上传服务器。识别后可一键填入"加练"或下次上课记录。</p>
+          <p class="help">支持中文/英文课表。本地识别，不上传服务器。识别后可「存为当日课表」（日历会出现 📋 标记）或填入"加练"。</p>
           <input type="file" id="ocrFile" accept="image/*" style="display:none" />
           <img id="ocrPreview" class="ocr-preview" style="display:none" />
           <div id="ocrResult" class="ocr-result" style="display:none"></div>
           <div id="ocrActions" style="margin-top:12px;display:none">
-            <button class="primary" onclick="fillFromOCR()">✍️ 一键填入"加练内容"</button>
+            <button class="primary" onclick="openScheduleForm()">📅 存为当日课表</button>
+            <button class="ghost" onclick="fillFromOCR()">✍️ 填入"加练内容"</button>
           </div>
         </div>
       </div>
@@ -156,7 +167,7 @@ const CF_DATA = {"classes.json": "[\n  {\n    \"id\": \"recvuI8Q1dq3Mv\",\n    \
       </div>
       <div class="card" style="margin-top:16px">
         <h3>🔥 最近 7 次训练</h3>
-        <table><thead><tr><th>日期</th><th>内容</th><th>时长</th><th>心率</th><th>TL</th></tr></thead>
+        <table><thead><tr><th>日期</th><th>内容</th><th>成绩</th><th>时长</th><th>心率</th><th>TL</th></tr></thead>
           <tbody id="recentClasses"></tbody>
         </table>
       </div>
@@ -270,7 +281,33 @@ const CF_DATA = {"classes.json": "[\n  {\n    \"id\": \"recvuI8Q1dq3Mv\",\n    \
       <button class="ghost" onclick="closeForm()">取消</button>
       <button class="primary" onclick="submitForm()">保存</button>
     </div>
-    <p class="help" style="margin-top:10px">💡 当前是静态只读部署。点击保存会写入 localStorage + 提示同步给 WorkBuddy 帮你写到飞书。</p>
+    <p class="help" style="margin-top:10px">💡 点击保存会写入 localStorage + 提示同步给 WorkBuddy 帮你写到飞书。</p>
+  </div>
+</div>
+
+<!-- 当日详情弹窗：课表 + 手表数据 + 成绩补录 -->
+<div class="form-modal" id="dayModal">
+  <div class="box">
+    <h3 id="dayTitle" style="margin-top:0">当日详情</h3>
+    <div id="dayBody"></div>
+    <div class="row" style="justify-content:flex-end;margin-top:14px">
+      <button class="ghost" onclick="document.getElementById('dayModal').classList.remove('open')">关闭</button>
+      <button class="primary" onclick="saveDayResult()">💾 保存成绩</button>
+    </div>
+  </div>
+</div>
+
+<!-- 课表保存弹窗（OCR → 当日课表） -->
+<div class="form-modal" id="schedModal">
+  <div class="box">
+    <h3 style="margin-top:0">📅 存为当日课表</h3>
+    <label style="display:block;margin-bottom:10px"><span class="label">日期（这节课是哪天的）</span><input type="date" id="schedDate" /></label>
+    <label style="display:block;margin-bottom:10px"><span class="label">课表内容（可编辑）</span><textarea id="schedText" rows="8"></textarea></label>
+    <div class="row" style="justify-content:flex-end">
+      <button class="ghost" onclick="document.getElementById('schedModal').classList.remove('open')">取消</button>
+      <button class="primary" onclick="saveSchedule()">💾 保存课表</button>
+    </div>
+    <p class="help" style="margin-top:10px">保存后日历对应日期会出现 📋 标记，点击即可结合手表数据一起查看。</p>
   </div>
 </div>
 
@@ -292,9 +329,50 @@ const TABS = [
 ];
 const LS_KEY = 'cf_dashboard_local_v1';
 
+/* 飞书表 ID（写入成绩/课表用） */
+const TABLE_IDS = {
+  class: 'tblMKD4pFU7t3oTI',
+  schedule: 'tblvNqD1M9fy8fSF',
+};
+
+/* 飞书写入 API 探测：本地 server.js 同源 → 局域网 Mac → 不可写 */
+let _apiBaseCache;
+async function apiBase() {
+  if (_apiBaseCache !== undefined) return _apiBaseCache;
+  const lanHost = localStorage.getItem('cf_lan_host') || '10.19.75.253';
+  const candidates = ['', `http://${lanHost}:3000`];
+  for (const b of candidates) {
+    try {
+      const ctl = new AbortController();
+      const t = setTimeout(() => ctl.abort(), 1500);
+      const r = await fetch(b + '/api/health', { signal: ctl.signal });
+      clearTimeout(t);
+      if (r.ok) { _apiBaseCache = b; return b; }
+    } catch (e) {}
+  }
+  _apiBaseCache = false;
+  return false;
+}
+
+async function larkWrite(method, tableKey, recordId, fields) {
+  const base = await apiBase();
+  if (base === false) return { ok: false, offline: true };
+  const url = base + '/api/feishu/records/' + TABLE_IDS[tableKey] + (recordId ? '/' + recordId : '');
+  try {
+    const r = await fetch(url, {
+      method, headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields })
+    });
+    const j = await r.json();
+    return { ok: !!(j && (j.ok || j.code === 0)), data: j };
+  } catch (e) {
+    return { ok: false, error: String(e) };
+  }
+}
+
 let DATA = {
   classes: [], extras: [], prs: [], benchmarks: [],
-  checkins: [], competitions: [], advice: [], coros: {}, summary: {}
+  checkins: [], competitions: [], advice: [], schedules: [], coros: {}, summary: {}
 };
 let currentPanel = 'calendar';
 let currentForm = null;
@@ -309,13 +387,24 @@ async function loadAll() {
     checkins: 'data/checkins.json',
     competitions: 'data/competitions.json',
     advice: 'data/advice.json',
+    schedules: 'data/schedules.json',
     coros: 'data/coros_kpi.json',
     summary: 'data/summary.json',
   };
   for (const [k, p] of Object.entries(files)) {
     try {
-      const r = await fetch(p);
-      DATA[k] = await r.json();
+      let text;
+      try {
+        const r = await fetch(p);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        text = await r.text();
+      } catch (e) {
+        // fetch 失败（file:// 离线打开等）→ 用内嵌 CF_DATA 兜底（仅 cf-single.html 有）
+        const fn = p.split('/').pop();
+        if (typeof CF_DATA !== 'undefined' && CF_DATA[fn]) text = CF_DATA[fn];
+        else throw e;
+      }
+      DATA[k] = JSON.parse(text);
     } catch (e) {
       console.warn(`加载 ${p} 失败`, e);
     }
@@ -325,6 +414,24 @@ async function loadAll() {
     const local = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
     for (const k of ['extras','prs','benchmarks','checkins','competitions','advice']) {
       if (Array.isArray(local[k])) DATA[k] = DATA[k].concat(local[k]);
+    }
+    // 本地暂存的课表：与飞书按日期去重（飞书优先）
+    if (Array.isArray(local.schedules)) {
+      const remoteDates = new Set(DATA.schedules.map(s => s.日期));
+      DATA.schedules = DATA.schedules.concat(local.schedules.filter(s => !remoteDates.has(s.日期)));
+    }
+    // 本地暂存的成绩（离线时补录的）：合并进对应日期的 class 记录展示
+    if (local.scores && typeof local.scores === 'object') {
+      for (const [date, sc] of Object.entries(local.scores)) {
+        const rec = DATA.classes.find(c => c.日期 === date);
+        if (rec) {
+          if (sc['WOD 名称']) rec['WOD 名称'] = sc['WOD 名称'];
+          if (sc['成绩主指标']) rec['成绩主指标'] = sc['成绩主指标'];
+          if (sc['完成状态']) rec['完成状态'] = sc['完成状态'];
+        } else {
+          DATA.classes.push({ id: 'local_' + date, 日期: date, ...sc, 数据来源: '本地暂存' });
+        }
+      }
     }
   } catch {}
   const t = DATA.summary?.更新于 || DATA.coros?.synced_at;
@@ -376,6 +483,7 @@ function renderCalendar() {
   const first = new Date(y, m, 1), last = new Date(y, m + 1, 0);
   const startDay = first.getDay();
   const trainDays = new Set(DATA.classes.map(c => c.日期));
+  const schedDays = new Set(DATA.schedules.map(s => s.日期));
   document.getElementById('calMonthLabel').textContent = `${y} 年 ${m+1} 月`;
 
   const grid = document.getElementById('calendar');
@@ -385,8 +493,9 @@ function renderCalendar() {
   for (let d = 1; d <= last.getDate(); d++) {
     const dateStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     const trained = trainDays.has(dateStr);
+    const hasSched = schedDays.has(dateStr);
     const isToday = d === now.getDate();
-    html += `<div class="cal-cell ${trained?'train':''} ${isToday?'today':''}" title="${dateStr}${trained?' · 训练过':''}">${d}${trained?'<span class="dot"></span>':''}</div>`;
+    html += `<div class="cal-cell ${trained?'train':''} ${hasSched?'has-sched':''} ${isToday?'today':''}" onclick="showDayDetail('${dateStr}')" title="${dateStr}${trained?' · 已训练（手表）':''}${hasSched?' · 有课表':''}">${d}${trained?'<span class="dot"></span>':''}</div>`;
   }
   grid.innerHTML = html;
 }
@@ -443,8 +552,9 @@ function renderRecent() {
   const recent = [...DATA.classes].sort((a,b) => (b.日期||'').localeCompare(a.日期||'')).slice(0,7);
   document.getElementById('recentClasses').innerHTML = recent.map(c => {
     const load = c['训练负荷(TL)'] || parseLoadFromMemo(c).tl || '—';
-    return `<tr><td>${c.日期||''}</td><td>${c['WOD 名称']||'—'}</td><td>${c['训练时长(分钟)']||0} min</td><td>${c.心率均值||'—'}</td><td>${load}</td></tr>`;
-  }).join('') || '<tr><td colspan="5" class="empty">暂无训练数据</td></tr>';
+    const score = c['成绩主指标'] || '—';
+    return `<tr><td>${c.日期||''}</td><td>${c['WOD 名称']||c['课程类型']||'—'}</td><td>${score}</td><td>${c['训练时长(分钟)']||0} min</td><td>${c.心率均值||'—'}</td><td>${load}</td></tr>`;
+  }).join('') || '<tr><td colspan="6" class="empty">暂无训练数据</td></tr>';
 }
 
 /* ─── OCR ────────────────────────────────────── */
@@ -487,6 +597,145 @@ function fillFromOCR() {
   saveLocal('extras', newRec);
   toast('✓ 已填入"加练" tab，可在"加练"页面编辑');
   showPanel('extra');
+}
+
+/* ─── 当日详情：课表 + 手表数据 + 成绩补录 ─────────── */
+let _dayDate = null;
+function showDayDetail(dateStr) {
+  _dayDate = dateStr;
+  const sched = DATA.schedules.find(s => s.日期 === dateStr);
+  const dayRecs = DATA.classes.filter(c => c.日期 === dateStr);
+  const hasWrist = dayRecs.length > 0;
+
+  // 成绩表单预填：取该日已有成绩字段的记录
+  const scored = dayRecs.find(c => c['成绩主指标'] || c['WOD 名称']) || dayRecs[0] || {};
+
+  document.getElementById('dayTitle').textContent = `${dateStr} 当日详情`;
+
+  let html = '';
+  // 1) 课表
+  html += `<div class="day-sec"><h4>📋 当日课表${sched ? '' : '（暂无 · 可从左侧 OCR 识别后存入）'}</h4>`;
+  html += sched ? `<div class="day-wod">${(sched['课表内容']||'').replace(/</g,'&lt;')}</div>` : '<p class="help" style="margin:0">把馆里拍的课表照片拖到左侧 OCR 区识别，点「存为当日课表」就会出现在这里。</p>';
+  html += '</div>';
+  // 2) 手表数据
+  html += `<div class="day-sec"><h4>⌚ 手表自动记录${hasWrist ? '' : '（当天无训练）'}</h4>`;
+  if (hasWrist) {
+    dayRecs.forEach(c => {
+      const p = parseLoadFromMemo(c);
+      const tl = c['训练负荷(TL)'] || p.tl || 0;
+      const kcal = c.卡路里 || p.kcal || 0;
+      html += `<div style="margin-bottom:8px">
+        <div style="font-weight:600">${c['课程类型']||c['WOD 名称']||'训练'} <span class="tag tag-cardio">${(c['WOD 来源']||'').includes('COROS')||(c.备注||'').includes('COROS')?'COROS 同步':'记录'}</span></div>
+        <span class="day-stat"><b>${c['训练时长(分钟)']||0}</b>分钟</span>
+        <span class="day-stat"><b>${c.心率均值||'—'}</b>平均心率</span>
+        <span class="day-stat"><b>${tl}</b>TL 负荷</span>
+        <span class="day-stat"><b>${kcal||'—'}</b>kcal</span>
+      </div>`;
+    });
+  } else {
+    html += '<p class="help" style="margin:0">手表当天没有训练记录。如果你练了但没戴表，直接在下面补录成绩即可。</p>';
+  }
+  html += '</div>';
+  // 3) 成绩录入
+  html += `<div class="day-sec"><h4>✍️ WOD 成绩（上课内容和成绩记在这里）</h4>
+    <label style="display:block;margin-bottom:8px"><span class="label">WOD 名称 / 训练主题</span><input id="dfWod" value="${(scored['WOD 名称']||'').replace(/"/g,'&quot;')}" placeholder="如 250909 MetCon / Fran / 力量+体能" /></label>
+    <label style="display:block;margin-bottom:8px"><span class="label">成绩主指标</span><input id="dfScore" value="${(scored['成绩主指标']||'').replace(/"/g,'&quot;')}" placeholder="如 8:32 / 21-15-9 RX @60kg / 5 rounds +12 reps" /></label>
+    <label style="display:block;margin-bottom:8px"><span class="label">完成状态</span>
+      <select id="dfStatus">
+        ${['已完成 · RX','已完成 · Scaled','部分完成','未完成','加练(非团课)'].map(o=>`<option ${scored['完成状态']===o?'selected':''}>${o}</option>`).join('')}
+      </select></label>
+    <label style="display:block;margin-bottom:0"><span class="label">备注（感受 / 拆分细节）</span><textarea id="dfNote" rows="2">${(scored['备注']||'').replace(/</g,'&lt;')}</textarea></label>
+  </div>`;
+
+  document.getElementById('dayBody').innerHTML = html;
+  document.getElementById('dayModal').classList.add('open');
+}
+
+async function saveDayResult() {
+  if (!_dayDate) return;
+  const wod = document.getElementById('dfWod').value.trim();
+  const score = document.getElementById('dfScore').value.trim();
+  const status = document.getElementById('dfStatus').value;
+  const note = document.getElementById('dfNote').value.trim();
+  if (!wod && !score) { toast('先填 WOD 名称或成绩'); return; }
+
+  const fields = {};
+  if (wod) fields['WOD 名称'] = wod;
+  if (score) fields['成绩主指标'] = score;
+  if (status) fields['完成状态'] = status;
+  if (note) fields['备注'] = note;
+  fields['WOD 来源'] = '手动补录';
+
+  // 该日已有的飞书记录（COROS 同步的）→ 直接更新那条，避免重复
+  const dayRecs = DATA.classes.filter(c => c.日期 === _dayDate);
+  const target = dayRecs.find(c => c.id && !String(c.id).startsWith('local_'));
+  const res = target
+    ? await larkWrite('PUT', 'class', target.id, fields)
+    : await larkWrite('POST', 'class', null, { ...fields, 日期: Date.parse(_dayDate + 'T00:00:00') });
+
+  if (res.ok) {
+    // 更新本地展示
+    if (target) Object.assign(target, fields);
+    else DATA.classes.push({ id: 'tmp_' + Date.now(), 日期: _dayDate, ...fields });
+    toast('✓ 成绩已写入飞书「上课记录」');
+    document.getElementById('dayModal').classList.remove('open');
+    renderCalendar(); renderCharts(); renderRecent();
+  } else {
+    // 离线兜底：存 localStorage，之后有网时在详情页重存
+    const local = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+    local.scores = local.scores || {};
+    local.scores[_dayDate] = fields;
+    localStorage.setItem(LS_KEY, JSON.stringify(local));
+    const rec = DATA.classes.find(c => c.日期 === _dayDate);
+    if (rec) Object.assign(rec, fields); else DATA.classes.push({ id: 'local_' + _dayDate, 日期: _dayDate, ...fields });
+    toast('📴 连不上同步服务，已先存本机（回家连 Wi-Fi 后重新保存一次即可入飞书）');
+    document.getElementById('dayModal').classList.remove('open');
+    renderCalendar(); renderRecent();
+  }
+}
+
+/* ─── OCR → 当日课表 ──────────────────────────── */
+function parseSchedDate(text) {
+  // 优先找 YYYY-MM-DD
+  let m = text.match(/(20\d{2})[-\/年.](\d{1,2})[-\/月.](\d{1,2})/);
+  if (m) return `${m[1]}-${String(m[2]).padStart(2,'0')}-${String(m[3]).padStart(2,'0')}`;
+  // 再找 9/9、9月9日 这类（默认今年）
+  m = text.match(/(\d{1,2})[月\/\-\.](\d{1,2})日?/);
+  if (m) {
+    const y = new Date().getFullYear();
+    return `${y}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  }
+  return new Date().toISOString().slice(0, 10);
+}
+
+function openScheduleForm() {
+  if (!ocrText) { toast('先识别一张课表'); return; }
+  document.getElementById('schedDate').value = parseSchedDate(ocrText);
+  document.getElementById('schedText').value = ocrText.trim();
+  document.getElementById('schedModal').classList.add('open');
+}
+
+async function saveSchedule() {
+  const date = document.getElementById('schedDate').value;
+  const text = document.getElementById('schedText').value.trim();
+  if (!date || !text) { toast('日期和课表内容都要填'); return; }
+  const fields = { 日期: Date.parse(date + 'T00:00:00'), 课表内容: text, 来源: 'OCR 课表照片' };
+  const res = await larkWrite('POST', 'schedule', null, fields);
+  if (res.ok) {
+    DATA.schedules.push({ 日期: date, 课表内容: text, 来源: 'OCR 课表照片' });
+    toast('✓ 课表已保存，日历上已标记 📋');
+    document.getElementById('schedModal').classList.remove('open');
+    renderCalendar();
+  } else {
+    const local = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+    local.schedules = (local.schedules || []).filter(s => s.日期 !== date);
+    local.schedules.push({ 日期: date, 课表内容: text, 来源: 'OCR(本地)' });
+    localStorage.setItem(LS_KEY, JSON.stringify(local));
+    DATA.schedules = DATA.schedules.filter(s => s.日期 !== date).concat([{ 日期: date, 课表内容: text, 来源: 'OCR(本地)' }]);
+    toast('📴 连不上同步服务，课表已存本机');
+    document.getElementById('schedModal').classList.remove('open');
+    renderCalendar();
+  }
 }
 
 /* ─── 表单 + 本地存储 ─────────────────────────── */
