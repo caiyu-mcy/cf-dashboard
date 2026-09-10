@@ -1,55 +1,23 @@
 {
-  "synced_at": "2026-09-10T17:27:15",
+  "synced_at": "2026-09-10T17:36:31",
   "days_back": 180,
   "totals": {
-    "user_score": 48,
+    "user_score": 63,
     "max_score": 317,
-    "percent": 15.1,
-    "mastered_count": 18,
+    "percent": 19.9,
+    "mastered_count": 23,
     "total_moves": 98
   },
   "categories": [
     {
       "key": "Weightlifting",
       "label_zh": "举重 Weightlifting",
-      "user_score": 47,
+      "user_score": 62,
       "max_score": 117,
-      "percent": 40.2,
-      "mastered_count": 17,
+      "percent": 53.0,
+      "mastered_count": 22,
       "total_moves": 33,
       "moves": [
-        {
-          "name": "KB Swing",
-          "aliases_top3": [
-            "Kettlebell Swing",
-            "KBS",
-            "壶铃摆举"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "Russian KB Swing",
-            "KB Deadlift"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "cues": [
-            "俄式或美式：髋爆发向后向前甩铃",
-            "壶铃借惯性荡至胸口/头顶，手臂只是绳索",
-            "髋铰链为主，不是深蹲"
-          ],
-          "errors": [
-            "用手臂举铃",
-            "壶铃荡得太低砸裆"
-          ],
-          "demo": "https://www.youtube.com/results?search_query=crossfit+KB+Swing+technique",
-          "series": "kb"
-        },
         {
           "name": "Overhead Lunge",
           "aliases_top3": [
@@ -112,97 +80,6 @@
           "series": "squat_bar"
         },
         {
-          "name": "Power Clean",
-          "aliases_top3": [
-            "高翻(力量)"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "Hang Power Clean",
-            "DB Clean"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "cues": [
-            "与 Clean 同发力，接杠时身体只半蹲",
-            "高拉后肘快速转出接杠于肩",
-            "全脚掌快速重新落地站稳"
-          ],
-          "errors": [
-            "蹲太深变成 squat clean",
-            "杠绕身前画弧"
-          ],
-          "demo": "https://www.youtube.com/results?search_query=crossfit+Power+Clean+technique",
-          "series": "clean"
-        },
-        {
-          "name": "Push Jerk",
-          "aliases_top3": [
-            "借力挺"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "Push Press",
-            "DB Push Jerk"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "cues": [
-            "蹬地发力后迅速屈膝下沉接杠",
-            "杠在头顶被接住（手臂瞬间锁定）",
-            "站直即完成，杠锁定在耳后"
-          ],
-          "errors": [
-            "下沉太慢杠下坠砸肩",
-            "肘没锁就站起"
-          ],
-          "demo": "https://www.youtube.com/results?search_query=crossfit+Push+Jerk+technique",
-          "series": "jerk"
-        },
-        {
-          "name": "Push Press",
-          "aliases_top3": [
-            "借力推",
-            "推举"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "Strict Press",
-            "DB Push Press"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "cues": [
-            "杠架肩上，肘略前于杠",
-            "髋快速下沉 5-10cm 后爆发蹬地",
-            "借惯性推杠过头，头穿回杠下锁定"
-          ],
-          "errors": [
-            "蹲太深变成半蹲推举",
-            "推杠时头不穿过、杠停在额前"
-          ],
-          "demo": "https://www.youtube.com/results?search_query=crossfit+Push+Press+technique",
-          "series": "jerk"
-        },
-        {
           "name": "Romanian Deadlift",
           "aliases_top3": [
             "RDL",
@@ -263,35 +140,6 @@
           ],
           "demo": "https://www.youtube.com/results?search_query=crossfit+Split+Jerk+technique",
           "series": "jerk"
-        },
-        {
-          "name": "Sumo Deadlift",
-          "aliases_top3": [
-            "相扑硬拉"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "Conventional Deadlift"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "cues": [
-            "宽站距，脚尖外展 30-45°",
-            "膝盖对准脚尖，双手在腿内侧窄握",
-            "垂直把杠从两腿间拉起锁定"
-          ],
-          "errors": [
-            "膝盖往里夹",
-            "起始臀部过低"
-          ],
-          "demo": "https://www.youtube.com/results?search_query=crossfit+Sumo+Deadlift+technique",
-          "series": "deadlift"
         },
         {
           "name": "Thruster",
@@ -987,6 +835,168 @@
           "series": "clean"
         },
         {
+          "name": "KB Swing",
+          "aliases_top3": [
+            "Kettlebell Swing",
+            "KBS",
+            "壶铃摆举"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Russian KB Swing",
+            "KB Deadlift"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuOawSTegZv",
+          "manual_record_ids": [
+            "recvuOawSTegZv"
+          ],
+          "cues": [
+            "俄式或美式：髋爆发向后向前甩铃",
+            "壶铃借惯性荡至胸口/头顶，手臂只是绳索",
+            "髋铰链为主，不是深蹲"
+          ],
+          "errors": [
+            "用手臂举铃",
+            "壶铃荡得太低砸裆"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+KB+Swing+technique",
+          "series": "kb"
+        },
+        {
+          "name": "Power Clean",
+          "aliases_top3": [
+            "高翻(力量)"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Hang Power Clean",
+            "DB Clean"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuOazX0z4iB",
+          "manual_record_ids": [
+            "recvuOazX0z4iB"
+          ],
+          "cues": [
+            "与 Clean 同发力，接杠时身体只半蹲",
+            "高拉后肘快速转出接杠于肩",
+            "全脚掌快速重新落地站稳"
+          ],
+          "errors": [
+            "蹲太深变成 squat clean",
+            "杠绕身前画弧"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Power+Clean+technique",
+          "series": "clean"
+        },
+        {
+          "name": "Push Jerk",
+          "aliases_top3": [
+            "借力挺"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Push Press",
+            "DB Push Jerk"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuOayoCPMrq",
+          "manual_record_ids": [
+            "recvuOayoCPMrq"
+          ],
+          "cues": [
+            "蹬地发力后迅速屈膝下沉接杠",
+            "杠在头顶被接住（手臂瞬间锁定）",
+            "站直即完成，杠锁定在耳后"
+          ],
+          "errors": [
+            "下沉太慢杠下坠砸肩",
+            "肘没锁就站起"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Push+Jerk+technique",
+          "series": "jerk"
+        },
+        {
+          "name": "Push Press",
+          "aliases_top3": [
+            "借力推",
+            "推举"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Strict Press",
+            "DB Push Press"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuOaCUmGksL",
+          "manual_record_ids": [
+            "recvuOaCUmGksL"
+          ],
+          "cues": [
+            "杠架肩上，肘略前于杠",
+            "髋快速下沉 5-10cm 后爆发蹬地",
+            "借惯性推杠过头，头穿回杠下锁定"
+          ],
+          "errors": [
+            "蹲太深变成半蹲推举",
+            "推杠时头不穿过、杠停在额前"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Push+Press+technique",
+          "series": "jerk"
+        },
+        {
+          "name": "Sumo Deadlift",
+          "aliases_top3": [
+            "相扑硬拉"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Conventional Deadlift"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuOaQvYEfds",
+          "manual_record_ids": [
+            "recvuOaQvYEfds"
+          ],
+          "cues": [
+            "宽站距，脚尖外展 30-45°",
+            "膝盖对准脚尖，双手在腿内侧窄握",
+            "垂直把杠从两腿间拉起锁定"
+          ],
+          "errors": [
+            "膝盖往里夹",
+            "起始臀部过低"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Sumo+Deadlift+technique",
+          "series": "deadlift"
+        },
+        {
           "name": "Hang Squat Clean",
           "aliases_top3": [
             "悬垂深蹲翻"
@@ -1054,14 +1064,19 @@
         "Front Squat",
         "Back Squat",
         "Deadlift",
+        "Sumo Deadlift",
+        "Push Press",
+        "Push Jerk",
         "Strict Press",
         "Bench Press",
         "Clean",
+        "Power Clean",
         "Hang Clean",
         "Hang Power Clean",
         "Hang Squat Clean",
         "Squat Clean",
         "Good Morning",
+        "KB Swing",
         "Russian KB Swing",
         "Goblet Squat",
         "DB Snatch",
@@ -3016,6 +3031,52 @@
   ],
   "series": [
     {
+      "key": "press",
+      "label": "推举系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Strict Press",
+          "level": 1,
+          "earned_level": 1,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "DB Shoulder Press",
+            "Push Press"
+          ]
+        },
+        {
+          "name": "Push Press",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Strict Press",
+            "DB Push Press"
+          ]
+        },
+        {
+          "name": "Push Jerk",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Push Press",
+            "DB Push Jerk"
+          ]
+        }
+      ],
+      "frontier": 3,
+      "next_move": null,
+      "user_score": 7,
+      "max_score": 7,
+      "percent": 100.0
+    },
+    {
       "key": "clean",
       "label": "翻站系",
       "category": "Weightlifting",
@@ -3054,9 +3115,9 @@
         {
           "name": "Power Clean",
           "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
           "subs": [
             "Hang Power Clean",
             "DB Clean"
@@ -3107,11 +3168,68 @@
           ]
         }
       ],
-      "frontier": 3,
-      "next_move": "Power Clean",
-      "user_score": 22,
+      "frontier": 8,
+      "next_move": null,
+      "user_score": 25,
       "max_score": 26,
-      "percent": 84.6
+      "percent": 96.2
+    },
+    {
+      "key": "jerk",
+      "label": "上挺系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Push Press",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Strict Press",
+            "DB Push Press"
+          ]
+        },
+        {
+          "name": "Push Jerk",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Push Press",
+            "DB Push Jerk"
+          ]
+        },
+        {
+          "name": "Split Jerk",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Push Jerk",
+            "DB Split Jerk"
+          ]
+        },
+        {
+          "name": "DB Clean & Jerk",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "DB Clean",
+            "DB Jerk"
+          ]
+        }
+      ],
+      "frontier": 2,
+      "next_move": "Split Jerk",
+      "user_score": 9,
+      "max_score": 12,
+      "percent": 75.0
     },
     {
       "key": "squat_bar",
@@ -3171,6 +3289,51 @@
       "percent": 70.0
     },
     {
+      "key": "deadlift",
+      "label": "硬拉系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Romanian Deadlift",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Good Morning",
+            "Stiff-leg Deadlift"
+          ]
+        },
+        {
+          "name": "Deadlift",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Romanian Deadlift",
+            "Sumo Deadlift"
+          ]
+        },
+        {
+          "name": "Sumo Deadlift",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Conventional Deadlift"
+          ]
+        }
+      ],
+      "frontier": 3,
+      "next_move": null,
+      "user_score": 6,
+      "max_score": 9,
+      "percent": 66.7
+    },
+    {
       "key": "thrust",
       "label": "蹲推系",
       "category": "Weightlifting",
@@ -3216,154 +3379,6 @@
       "percent": 57.1
     },
     {
-      "key": "deadlift",
-      "label": "硬拉系",
-      "category": "Weightlifting",
-      "label_zh": "举重 Weightlifting",
-      "chain": [
-        {
-          "name": "Romanian Deadlift",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Good Morning",
-            "Stiff-leg Deadlift"
-          ]
-        },
-        {
-          "name": "Deadlift",
-          "level": 2,
-          "earned_level": 2,
-          "mastered": true,
-          "manual": true,
-          "subs": [
-            "Romanian Deadlift",
-            "Sumo Deadlift"
-          ]
-        },
-        {
-          "name": "Sumo Deadlift",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Conventional Deadlift"
-          ]
-        }
-      ],
-      "frontier": 2,
-      "next_move": "Sumo Deadlift",
-      "user_score": 3,
-      "max_score": 9,
-      "percent": 33.3
-    },
-    {
-      "key": "jerk",
-      "label": "上挺系",
-      "category": "Weightlifting",
-      "label_zh": "举重 Weightlifting",
-      "chain": [
-        {
-          "name": "Push Press",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Strict Press",
-            "DB Push Press"
-          ]
-        },
-        {
-          "name": "Push Jerk",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Push Press",
-            "DB Push Jerk"
-          ]
-        },
-        {
-          "name": "Split Jerk",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Push Jerk",
-            "DB Split Jerk"
-          ]
-        },
-        {
-          "name": "DB Clean & Jerk",
-          "level": 2,
-          "earned_level": 2,
-          "mastered": true,
-          "manual": true,
-          "subs": [
-            "DB Clean",
-            "DB Jerk"
-          ]
-        }
-      ],
-      "frontier": 4,
-      "next_move": null,
-      "user_score": 3,
-      "max_score": 12,
-      "percent": 25.0
-    },
-    {
-      "key": "press",
-      "label": "推举系",
-      "category": "Weightlifting",
-      "label_zh": "举重 Weightlifting",
-      "chain": [
-        {
-          "name": "Strict Press",
-          "level": 1,
-          "earned_level": 1,
-          "mastered": true,
-          "manual": true,
-          "subs": [
-            "DB Shoulder Press",
-            "Push Press"
-          ]
-        },
-        {
-          "name": "Push Press",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Strict Press",
-            "DB Push Press"
-          ]
-        },
-        {
-          "name": "Push Jerk",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Push Press",
-            "DB Push Jerk"
-          ]
-        }
-      ],
-      "frontier": 1,
-      "next_move": "Push Press",
-      "user_score": 1,
-      "max_score": 7,
-      "percent": 14.3
-    },
-    {
       "key": "kb",
       "label": "壶铃系",
       "category": "Weightlifting",
@@ -3382,9 +3397,9 @@
         {
           "name": "KB Swing",
           "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
           "subs": [
             "Russian KB Swing",
             "KB Deadlift"
@@ -3401,11 +3416,11 @@
           ]
         }
       ],
-      "frontier": 1,
-      "next_move": "KB Swing",
-      "user_score": 1,
+      "frontier": 2,
+      "next_move": "KB Snatch",
+      "user_score": 4,
       "max_score": 10,
-      "percent": 10.0
+      "percent": 40.0
     },
     {
       "key": "snatch",

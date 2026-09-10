@@ -106,5 +106,35 @@
     "动作名": "Bear Crawl",
     "来源": "手动勾选",
     "等级": "L1"
+  },
+  {
+    "id": "recvuOawSTegZv",
+    "动作名": "KB Swing",
+    "来源": "手动勾选",
+    "等级": "L2"
+  },
+  {
+    "id": "recvuOayoCPMrq",
+    "动作名": "Push Jerk",
+    "来源": "手动勾选",
+    "等级": "L2"
+  },
+  {
+    "id": "recvuOazX0z4iB",
+    "动作名": "Power Clean",
+    "来源": "手动勾选",
+    "等级": "L2"
+  },
+  {
+    "id": "recvuOaCUmGksL",
+    "动作名": "Push Press",
+    "来源": "手动勾选",
+    "等级": "L2"
+  },
+  {
+    "id": "recvuOaQvYEfds",
+    "动作名": "Sumo Deadlift",
+    "来源": "手动勾选",
+    "等级": "L2"
   }
 ]
