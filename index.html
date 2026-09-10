@@ -4,8 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>我的 CF 训练工作台 — 麻菜鱼专属</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.0.4/dist/tesseract.min.js"></script>
 <style>
@@ -83,9 +81,12 @@
   .day-stat { display: inline-block; margin: 0 14px 6px 0; }
   .day-stat b { font-size: 16px; display: block; }
   .cal-head { font-size: 10px; font-weight: 600; color: var(--muted); text-align: center; padding: 8px 0; text-transform: uppercase; letter-spacing: 0.5px; }
-  #cfmap { width: 100%; height: 500px; border-radius: 12px; }
-  #cfmap .leaflet-tile { filter: grayscale(1) contrast(1.05); }
-  #cfmap .leaflet-container { background: #fafafa; }
+  #cfmap { width: 100%; height: 500px; border-radius: 12px; overflow: hidden; background: #fafafa; filter: grayscale(0.85) contrast(1.03); }
+  .cf-pin { width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid #18181b; box-shadow: 0 1px 4px rgba(0,0,0,.35); }
+  .mapcfg { padding: 18px; }
+  .mapcfg h4 { margin: 0 0 6px; font-size: 13px; }
+  .mapcfg label { display: block; margin-bottom: 10px; }
+  .mapcfg input { width: 100%; }
   .ocr-area { border: 2px dashed #d4d4d8; padding: 24px; border-radius: 12px; text-align: center; background: #fafafa; }
   .ocr-area.drag { border-color: var(--brand); background: #f4f4f5; }
   .ocr-preview { max-width: 100%; max-height: 280px; border-radius: 8px; margin-top: 12px; box-shadow: var(--shadow); }
@@ -187,7 +188,7 @@
       <button class="primary" onclick="openForm('extra')">＋ 新建加练</button>
     </div>
     <table style="margin-top:14px">
-      <thead><tr><th>日期</th><th>类型</th><th>动作</th><th>组×次×重</th><th>感受</th></tr></thead>
+      <thead><tr><th>日期</th><th>训练类型</th><th>动作</th><th>组×次 / 重量</th><th>备注</th></tr></thead>
       <tbody id="extraBody"><tr><td colspan="5" class="empty">还没有加练记录。点击右上角新建，或者从上方"OCR"填入。</td></tr></tbody>
     </table>
   </div>
@@ -201,7 +202,7 @@
       <button class="primary" onclick="openForm('pr')">＋ 记录新 PR</button>
     </div>
     <table style="margin-top:14px">
-      <thead><tr><th>日期</th><th>类别</th><th>动作</th><th>成绩</th><th>达标</th></tr></thead>
+      <thead><tr><th>达成日期</th><th>动作</th><th>PR</th><th>上次 PR</th><th>备注</th></tr></thead>
       <tbody id="prBody"><tr><td colspan="5" class="empty">还没有 PR 记录。点右上"记录新 PR"开始。</td></tr></tbody>
     </table>
   </div>
@@ -216,7 +217,7 @@
     </div>
     <p class="help" style="margin-top:10px">经典 WOD 模板：Cindy / Fran / Helen / Grace / Murph / Diane / Elizabeth / Mary / Nancy / Karen</p>
     <table style="margin-top:8px">
-      <thead><tr><th>日期</th><th>WOD</th><th>成绩</th><th>回合</th><th>RPE</th><th>对比上次</th></tr></thead>
+      <thead><tr><th>测试日期</th><th>WOD</th><th>成绩</th><th>完成度</th><th>上次成绩</th><th>进步</th></tr></thead>
       <tbody id="bmBody"><tr><td colspan="6" class="empty">还没有 Benchmark 数据。从头测一个 Cindy 或 Fran 看看？</td></tr></tbody>
     </table>
   </div>
@@ -229,7 +230,7 @@
       <h3 style="margin:0">📍 全国/全球 CF 馆打卡 <span class="badge" id="ckCount">0 个</span></h3>
       <button class="primary" onclick="openForm('checkin')">＋ 我来过这</button>
     </div>
-    <p class="help" style="margin-top:6px">浏览器定位 → Nominatim 反查地名 → 标记到地图。地图用 OpenStreetMap 免 key。</p>
+    <p class="help" style="margin-top:6px">点击「我来过这」自动定位并写入飞书 box_checkin 表；地图已换用高德 JS API，首次需配置 Key（免费申请）。</p>
     <div id="cfmap" style="margin-top:12px"></div>
     <div id="checkinList" style="margin-top:14px"></div>
   </div>
@@ -243,7 +244,7 @@
       <button class="primary" onclick="openForm('competition')">＋ 报名/完赛</button>
     </div>
     <table style="margin-top:14px">
-      <thead><tr><th>日期</th><th>赛事</th><th>项目</th><th>成绩/名次</th><th>组别</th><th>奖牌</th></tr></thead>
+      <thead><tr><th>赛事日期</th><th>赛事名称</th><th>项目</th><th>成绩</th><th>名次</th><th>类别</th></tr></thead>
       <tbody id="compBody"><tr><td colspan="6" class="empty">还没参加过比赛。下一场 Open 打起！</td></tr></tbody>
     </table>
   </div>
@@ -285,7 +286,7 @@
       <button class="ghost" onclick="closeForm()">取消</button>
       <button class="primary" onclick="submitForm()">保存</button>
     </div>
-    <p class="help" style="margin-top:10px">💡 点击保存会写入 localStorage + 提示同步给 WorkBuddy 帮你写到飞书。</p>
+    <p class="help" style="margin-top:10px">💡 保存会直接写入飞书对应数据表；连不上同步服务时先存本机，联网后自动补传。</p>
   </div>
 </div>
 
@@ -333,10 +334,20 @@ const TABS = [
 ];
 const LS_KEY = 'cf_dashboard_local_v1';
 
-/* 飞书表 ID（写入成绩/课表用） */
+/* 飞书表 ID（写入用） */
 const TABLE_IDS = {
-  class: 'tblMKD4pFU7t3oTI',
-  schedule: 'tblvNqD1M9fy8fSF',
+  class:       'tblMKD4pFU7t3oTI',  // 上课记录
+  schedule:    'tblvNqD1M9fy8fSF',  // 课表
+  extra:       'tblxsn8OmhJWFJK4',  // 加练
+  pr:          'tbldZUhWClgE4oib',  // PR
+  benchmark:   'tbl3zLiuO3TIz8zc',  // Benchmark
+  checkin:     'tblAzcnZ6lsXAaN9',  // 馆打卡
+  competition: 'tblpnr3phYitT4KK',  // 比赛
+};
+/* 表 → localStorage 数组键（离线暂存与清理用） */
+const LOCAL_KEY_BY_TABLE = {
+  extra: 'extras', pr: 'prs', benchmark: 'benchmarks',
+  checkin: 'checkins', competition: 'competitions',
 };
 
 /* 飞书写入 API 探测：本地 server.js 同源 → 局域网 Mac → 不可写 */
@@ -403,6 +414,11 @@ function pendingClearLocal(item) {
     }
     if (item.tableKey === 'class' && item.date && local.scores) {
       delete local.scores[item.date];
+    }
+    // 加练/PR/Benchmark/打卡/比赛：按本地记录 id 摘除
+    const lk = LOCAL_KEY_BY_TABLE[item.tableKey];
+    if (lk && item.localId) {
+      local[lk] = (local[lk] || []).filter(r => r.id !== item.localId);
     }
     localStorage.setItem(LS_KEY, JSON.stringify(local));
   } catch (e) {}
@@ -704,20 +720,29 @@ async function handleOCR(file) {
   document.getElementById('ocrActions').style.display = 'block';
 }
 
-function fillFromOCR() {
+async function fillFromOCR() {
   if (!ocrText) { toast('先识别一张课表'); return; }
   const lines = ocrText.split('\n').map(s => s.trim()).filter(Boolean);
-  const newRec = {
-    id: 'local_' + Date.now(),
-    日期: new Date().toISOString().slice(0,10),
-    类型: 'OCR 识别',
-    动作: lines.slice(0, 5).join(' / '),
-    '组×次×重': '见备注',
+  const today = new Date().toISOString().slice(0,10);
+  const action = lines.slice(0, 3).join(' / ').slice(0, 200);
+  const fields = {
+    日期: Date.parse(today + 'T00:00:00'),
+    训练类型: 'Metcon',
+    '动作 1': action,
     备注: lines.join('\n'),
-    数据来源: 'OCR + localStorage'
   };
-  saveLocal('extras', newRec);
-  toast('✓ 已填入"加练" tab，可在"加练"页面编辑');
+  const localRec = { id: 'local_' + Date.now(), 日期: today, 训练类型: 'Metcon', '动作 1': action, 备注: lines.join('\n'), 数据来源: '本地暂存' };
+  const res = await larkWrite('POST', 'extra', null, fields);
+  if (res.ok) {
+    toast('✓ 已写入飞书"加练"表');
+  } else {
+    const local = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+    (local.extras = local.extras || []).push(localRec);
+    localStorage.setItem(LS_KEY, JSON.stringify(local));
+    pendingAdd({ tableKey:'extra', method:'POST', recordId:null, fields, matchKey:'extra:'+localRec.id, localId: localRec.id });
+    toast('📴 已填入"加练"并加入待补传队列');
+  }
+  DATA.extras.push(localRec);
   showPanel('extra');
 }
 
@@ -877,43 +902,58 @@ async function saveSchedule() {
 }
 
 /* ─── 表单 + 本地存储 ─────────────────────────── */
+/* 字段名与飞书表字段严格一致，submitForm 会按 type 转换成飞书可接受的值 */
 const FORM_DEFS = {
-  extra: { title:'新建加练内容', fields:[
+  extra: { title:'新建加练内容', table:'extra', dataKey:'extras', fields:[
     { name:'日期', type:'date' },
-    { name:'类型', type:'select', options:['力量','有氧','技巧','Open Gym','Mobility'] },
-    { name:'动作', type:'text', ph:'如 Back Squat' },
-    { name:'组×次×重', type:'text', ph:'5x5 @ 100kg' },
-    { name:'备注', type:'textarea' }
-  ]},
-  pr: { title:'记录新 PR', fields:[
-    { name:'日期', type:'date' },
-    { name:'类别', type:'select', options:['Big 3','Olympic','Gymnastics','Endurance'] },
-    { name:'动作', type:'text', ph:'Back Squat' },
-    { name:'成绩', type:'text', ph:'140 kg / 3:24 / 12 reps' },
-    { name:'达标', type:'select', options:['是','否'] }
-  ]},
-  benchmark: { title:'新测 Benchmark', fields:[
-    { name:'日期', type:'date' },
-    { name:'WOD', type:'select', options:['Fran','Helen','Cindy','Grace','Murph','Diane','Elizabeth','Mary','Nancy','Karen','Annie','Jackie','Other'] },
-    { name:'成绩', type:'text', ph:'3:24 / 20 rounds / 200kg' },
-    { name:'回合', type:'text', ph:'6+10' },
+    { name:'训练类型', type:'select', options:['力量','体操','Metcon','有氧','拉伸','物理治疗'] },
+    { name:'动作 1', type:'text', ph:'如 Back Squat' },
+    { name:'组数×次数', type:'text', ph:'5x5' },
+    { name:'重量/距离', type:'text', ph:'100kg / 5km' },
     { name:'RPE', type:'number', ph:'7' },
+    { name:'总时长(分钟)', type:'number', ph:'60' },
     { name:'备注', type:'textarea' }
   ]},
-  checkin: { title:'打卡 CF 馆', fields:[
-    { name:'日期', type:'date' },
+  pr: { title:'记录新 PR', table:'pr', dataKey:'prs', fields:[
+    { name:'达成日期', type:'date' },
+    { name:'动作', type:'select', options:['Back Squat','Front Squat','Overhead Squat','Deadlift','Bench Press','Strict Press','Push Press','Push Jerk','Split Jerk','Snatch','Clean','Clean & Jerk','Thruster','Wall Ball','Pull-up','Chest-to-bar','Bar Muscle-up','Ring Muscle-up','HSPU','Box Jump','其他'] },
+    { name:'PR 重量/次数', type:'number', ph:'140' },
+    { name:'单位', type:'select', options:['kg','lb','reps','秒'] },
+    { name:'上次 PR', type:'number', ph:'135' },
+    { name:'见证人', type:'text', ph:'教练 / 训练伙伴' },
+    { name:'备注', type:'textarea' }
+  ]},
+  benchmark: { title:'新测 Benchmark', table:'benchmark', dataKey:'benchmarks', fields:[
+    { name:'测试日期', type:'date' },
+    { name:'WOD 名称', type:'select', options:['Fran','Cindy','Murph','Grace','Helen','Diane','Elizabeth','Isabel','Karen','Nancy','Annie','Angie','Barbara','Mary','其他'] },
+    { name:'成绩', type:'text', ph:'3:24 / 20 rounds' },
+    { name:'完成度', type:'select', options:['Rx','Scaled','完成回合','部分完成','DNF'] },
+    { name:'上次成绩', type:'text', ph:'3:40' },
+    { name:'心率均值', type:'number', ph:'165' },
+    { name:'备注', type:'textarea' }
+  ]},
+  checkin: { title:'打卡 CF 馆', table:'checkin', dataKey:'checkins', fields:[
+    { name:'拜访日期', type:'date' },
     { name:'馆名', type:'text', ph:'CrossFit XXX' },
     { name:'城市', type:'text', ph:'上海' },
-    { name:'经度', type:'text' }, { name:'纬度', type:'text' },
-    { name:'感受', type:'textarea' }
+    { name:'国家', type:'text', ph:'中国' },
+    { name:'地址', type:'text', ph:'点下方按钮自动填充' },
+    { name:'__geo', type:'geo' },
+    { name:'拜访目的', type:'select', multi:true, options:['Drop-in','训练课','比赛','探访','旅行'] },
+    { name:'教练/接待人', type:'text' },
+    { name:'备注', type:'textarea' }
   ]},
-  competition: { title:'记录比赛', fields:[
-    { name:'日期', type:'date' },
-    { name:'赛事名', type:'text', ph:'CrossFit Open 2026' },
+  competition: { title:'记录比赛', table:'competition', dataKey:'competitions', fields:[
+    { name:'赛事日期', type:'date' },
+    { name:'赛事名称', type:'text', ph:'CrossFit Open 2026' },
     { name:'项目', type:'text', ph:'24.1' },
-    { name:'成绩/名次', type:'text', ph:'完赛 / 全球 Top 30%' },
-    { name:'组别', type:'select', options:['RX','Scaled','Teen','Masters','Team'] },
-    { name:'奖牌/证书', type:'text', ph:'附照片/链接' }
+    { name:'成绩', type:'text', ph:'完赛' },
+    { name:'我的名次', type:'number', ph:'128' },
+    { name:'参赛人数', type:'number', ph:'5000' },
+    { name:'类别', type:'select', options:['Open','Age Group','Masters','Team','Qualifier'] },
+    { name:'地点', type:'text', ph:'上海' },
+    { name:'队友', type:'text' },
+    { name:'感受/总结', type:'textarea' }
   ]}
 };
 
@@ -921,93 +961,273 @@ function openForm(type) {
   currentForm = type;
   const def = FORM_DEFS[type];
   document.getElementById('formTitle').textContent = def.title;
-  document.getElementById('formFields').innerHTML = def.fields.map(f =>
-    f.type === 'select' ?
-      `<label style="display:block;margin-bottom:10px"><span class="label">${f.name}</span><select name="${f.name}">${f.options.map(o=>`<option>${o}</option>`).join('')}</select></label>`
-      : f.type === 'textarea' ?
-      `<label style="display:block;margin-bottom:10px"><span class="label">${f.name}</span><textarea name="${f.name}" rows="3"></textarea></label>`
-      :
-      `<label style="display:block;margin-bottom:10px"><span class="label">${f.name}</span><input type="${f.type}" name="${f.name}" placeholder="${f.ph||''}" /></label>`
-  ).join('');
+  document.getElementById('formFields').innerHTML = def.fields.map(f => {
+    if (f.type === 'geo') return `
+      <div style="margin-bottom:10px">
+        <span class="label">位置</span>
+        <div style="display:flex;gap:8px;align-items:center;margin-top:4px">
+          <input type="text" name="纬度" placeholder="纬度" style="flex:1" />
+          <input type="text" name="经度" placeholder="经度" style="flex:1" />
+          <button type="button" class="primary" style="flex:none" onclick="locateMe()">📍 获取当前位置</button>
+        </div>
+        <div class="help" id="geoHelp">定位后自动填入，用于在馆打卡地图上打点</div>
+      </div>`;
+    if (f.type === 'select') return `
+      <label style="display:block;margin-bottom:10px"><span class="label">${f.name}</span>
+        <select name="${f.name}"><option value="">— 不填 —</option>${f.options.map(o=>`<option>${o}</option>`).join('')}</select>
+      </label>`;
+    if (f.type === 'textarea') return `
+      <label style="display:block;margin-bottom:10px"><span class="label">${f.name}</span><textarea name="${f.name}" rows="3"></textarea></label>`;
+    if (f.type === 'date') return `
+      <label style="display:block;margin-bottom:10px"><span class="label">${f.name}</span><input type="date" name="${f.name}" value="${new Date().toISOString().slice(0,10)}" /></label>`;
+    return `
+      <label style="display:block;margin-bottom:10px"><span class="label">${f.name}</span><input type="${f.type}" name="${f.name}" placeholder="${f.ph||''}" /></label>`;
+  }).join('');
   document.getElementById('formModal').classList.add('open');
 }
 function closeForm() { document.getElementById('formModal').classList.remove('open'); }
 
-function submitForm() {
-  const inputs = document.querySelectorAll('#formFields [name]');
-  const rec = { id: 'local_' + Date.now(), 数据来源: 'localStorage' };
-  inputs.forEach(i => rec[i.name] = i.value);
-  saveLocal(currentForm === 'extra' ? 'extras'
-    : currentForm === 'pr' ? 'prs'
-    : currentForm === 'benchmark' ? 'benchmarks'
-    : currentForm === 'checkin' ? 'checkins'
-    : 'competitions', rec);
+async function submitForm() {
+  const def = FORM_DEFS[currentForm];
+  if (!def) return;
+  const raw = {};
+  document.querySelectorAll('#formFields [name]').forEach(i => { raw[i.name] = (i.value || '').trim(); });
+
+  const fields = {};                                                     // 写飞书（类型已转换）
+  const localRec = { id: 'local_' + Date.now(), 数据来源: '本地暂存' };   // 本地展示副本（原字符串）
+  for (const f of def.fields) {
+    if (f.type === 'geo') continue;
+    const v = raw[f.name] || '';
+    if (!v) continue;
+    localRec[f.name] = v;
+    if (f.type === 'date') fields[f.name] = Date.parse(v + 'T00:00:00');
+    else if (f.type === 'number') { const n = Number(v); if (Number.isFinite(n)) fields[f.name] = n; }
+    else if (f.multi) fields[f.name] = [v];   // 飞书多选字段必须传数组
+    else fields[f.name] = v;
+  }
+  if (raw['纬度']) { fields['纬度'] = raw['纬度']; localRec['纬度'] = raw['纬度']; }
+  if (raw['经度']) { fields['经度'] = raw['经度']; localRec['经度'] = raw['经度']; }
+
+  if (!Object.keys(fields).length) { toast('请至少填一项'); return; }
+
+  const btn = document.querySelector('#formModal .row .primary');
+  if (btn) { btn.disabled = true; btn.textContent = '保存中…'; }
+  const res = await larkWrite('POST', def.table, null, fields);
+  if (btn) { btn.disabled = false; btn.textContent = '保存'; }
+
+  if (res.ok) {
+    toast('✓ 已写入飞书');
+  } else {
+    const local = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+    const lk = LOCAL_KEY_BY_TABLE[def.table];
+    if (!local[lk]) local[lk] = [];
+    local[lk].push(localRec);
+    localStorage.setItem(LS_KEY, JSON.stringify(local));
+    pendingAdd({
+      tableKey: def.table, method: 'POST', recordId: null,
+      fields, matchKey: def.table + ':' + localRec.id, localId: localRec.id,
+    });
+    toast('📴 连不上同步服务，已存本机并加入待补传队列');
+  }
+  DATA[def.dataKey].push(localRec);
   closeForm();
   showPanel(currentForm);
   updateKPIs();
 }
 
+/* ─── 浏览器定位（WGS-84 → 高德 GCJ-02） ─────────── */
+function locateMe() {
+  if (!navigator.geolocation) { toast('当前浏览器不支持定位'); return; }
+  const help = document.getElementById('geoHelp');
+  if (help) help.textContent = '⏳ 定位中…（首次会弹权限请求）';
+  navigator.geolocation.getCurrentPosition(async pos => {
+    const lng = pos.coords.longitude, lat = pos.coords.latitude;
+    const set = (la, ln, note) => {
+      const li = document.querySelector('#formFields [name="纬度"]');
+      const gi = document.querySelector('#formFields [name="经度"]');
+      if (li) li.value = la.toFixed(6);
+      if (gi) gi.value = ln.toFixed(6);
+      if (help) help.textContent = note;
+    };
+    const ok = await ensureAMap();
+    if (!ok) { set(lat, lng, '⚠️ 未配置高德 Key，已存原始 GPS 坐标（可能与地图有约 500m 偏移）'); toast('已获取位置'); return; }
+    AMap.convertFrom([lng, lat], 'gps', (status, result) => {
+      if (status === 'complete' && result.locations && result.locations.length) {
+        const p = result.locations[0];
+        set(p.lat, p.lng, '✓ 已转换到高德坐标系');
+        // 逆地理编码，顺手把城市/地址填上
+        AMap.plugin('AMap.Geocoder', () => {
+          const geo = new AMap.Geocoder();
+          geo.getAddress([p.lng, p.lat], (s, r) => {
+            if (s === 'complete' && r.regeocode) {
+              const c = r.regeocode.addressComponent || {};
+              const fill = (n, v) => { const el = document.querySelector(`#formFields [name="${n}"]`); if (el && !el.value && v) el.value = v; };
+              fill('城市', c.city || c.province);
+              fill('国家', c.country === '中国' ? '中国' : c.country);
+              fill('地址', r.regeocode.formattedAddress);
+            }
+          });
+        });
+      } else {
+        set(lat, lng, '⚠️ 坐标转换失败，已存原始 GPS 坐标');
+      }
+    });
+    toast('✓ 已获取位置');
+  }, err => {
+    if (help) help.textContent = '❌ 定位失败：' + (err.message || err.code);
+    toast('定位失败，请检查权限');
+  }, { enableHighAccuracy: true, timeout: 12000 });
+}
+
 /* ─── 数据渲染：extras / prs / benchmarks / comps ──── */
+/* 飞书 datetime 可能是毫秒时间戳或字符串，统一成 YYYY-MM-DD 展示 */
+function fmtDate(v) {
+  if (v === undefined || v === null || v === '') return '—';
+  if (typeof v === 'number') { const d = new Date(v); return isNaN(d) ? '—' : d.toISOString().slice(0,10); }
+  const m = String(v).match(/(\d{4})[-/](\d{1,2})[-/](\d{1,2})/);
+  return m ? `${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}` : String(v);
+}
+const byDateDesc = key => (a, b) => String(fmtDate(b[key])).localeCompare(String(fmtDate(a[key])));
+
 function renderExtras() {
   document.getElementById('extraCount').textContent = `${DATA.extras.length} 条`;
   document.getElementById('extraBody').innerHTML = DATA.extras.length ?
-    DATA.extras.sort((a,b)=>(b.日期||'').localeCompare(a.日期||'')).map(c =>
-      `<tr><td>${c.日期||'—'}</td><td><span class="tag tag-cardio">${c.类型||'—'}</span></td><td>${c.动作||'—'}</td><td>${c['组×次×重']||'—'}</td><td>${(c.备注||c['心率均值']||'').slice(0,40)}</td></tr>`
-    ).join('') : '<tr><td colspan="5" class="empty">还没有加练记录。点击右上角新建，或从"日历·上课" tab 上传课表照片 OCR 识别</td></tr>';
+    DATA.extras.slice().sort(byDateDesc('日期')).map(c => {
+      const detail = [c['组数×次数'], c['重量/距离']].filter(Boolean).join(' × ');
+      return `<tr><td>${fmtDate(c.日期)}</td><td><span class="tag tag-cardio">${c.训练类型||'—'}</span></td><td>${c['动作 1']||'—'}</td><td>${detail||'—'}</td><td>${(c.备注||'').slice(0,40)}</td></tr>`;
+    }).join('') : '<tr><td colspan="5" class="empty">还没有加练记录。点右上角新建，或从"日历·上课" tab 上传课表照片 OCR 识别</td></tr>';
 }
 function renderPRs() {
   document.getElementById('prCount').textContent = `${DATA.prs.length} 条`;
   document.getElementById('prBody').innerHTML = DATA.prs.length ?
-    DATA.prs.sort((a,b)=>(b.日期||'').localeCompare(a.日期||'')).map(p => {
-      const cls = p.类别==='Big 3'?'tag-big3' : p.类别==='Olympic'?'tag-olympic' : p.类别==='Gymnastics'?'tag-gym' : '';
-      return `<tr><td>${p.日期||'—'}</td><td><span class="tag ${cls}">${p.类别||'—'}</span></td><td>${p.动作||'—'}</td><td><strong>${p.成绩||'—'}</strong></td><td>${p.达标||'—'}</td></tr>`;
+    DATA.prs.slice().sort(byDateDesc('达成日期')).map(p => {
+      const unit = p.单位 || '';
+      const val = p['PR 重量/次数'] != null ? `${p['PR 重量/次数']}${unit}` : '—';
+      const prev = p['上次 PR'] != null ? `${p['上次 PR']}${unit}` : '—';
+      return `<tr><td>${fmtDate(p.达成日期)}</td><td>${p.动作||'—'}</td><td><strong>${val}</strong></td><td>${prev}</td><td>${(p.备注||'').slice(0,30)}</td></tr>`;
     }).join('') : '<tr><td colspan="5" class="empty">还没有 PR 记录。点右上"记录新 PR"开始。<br><br>💡 想要历史 PR？告诉我你的 Big 3 / Olympic / Gymnastics 数字，我帮你批量导入。</td></tr>';
 }
 function renderBenchmarks() {
   document.getElementById('bmCount').textContent = `${DATA.benchmarks.length} 条`;
   document.getElementById('bmBody').innerHTML = DATA.benchmarks.length ?
-    DATA.benchmarks.sort((a,b)=>(b.日期||'').localeCompare(a.日期||'')).map(b =>
-      `<tr><td>${b.日期||'—'}</td><td><strong>${b.WOD||'—'}</strong></td><td>${b.成绩||'—'}</td><td>${b.回合||'—'}</td><td>${b.RPE||'—'}</td><td>${b.对比上次||'—'}</td></tr>`
+    DATA.benchmarks.slice().sort(byDateDesc('测试日期')).map(b =>
+      `<tr><td>${fmtDate(b.测试日期)}</td><td><strong>${b['WOD 名称']||'—'}</strong></td><td>${b.成绩||'—'}</td><td>${b.完成度||'—'}</td><td>${b['上次成绩']||'—'}</td><td>${b['进步幅度']||'—'}</td></tr>`
     ).join('') : '<tr><td colspan="6" class="empty">还没有 Benchmark。从 Cindy / Fran 开始测一个，5-20 分钟就能拿到对比锚点</td></tr>';
 }
 function renderCompetitions() {
   document.getElementById('compCount').textContent = `${DATA.competitions.length} 场`;
   document.getElementById('compBody').innerHTML = DATA.competitions.length ?
-    DATA.competitions.sort((a,b)=>(b.日期||'').localeCompare(a.日期||'')).map(c =>
-      `<tr><td>${c.日期||'—'}</td><td>${c.赛事名||c['比赛名']||'—'}</td><td>${c.项目||'—'}</td><td>${c['成绩/名次']||'—'}</td><td>${c.组别||'—'}</td><td>${c.奖牌||c['奖牌/证书']||'—'}</td></tr>`
+    DATA.competitions.slice().sort(byDateDesc('赛事日期')).map(c =>
+      `<tr><td>${fmtDate(c.赛事日期)}</td><td>${c.赛事名称||'—'}</td><td>${c.项目||'—'}</td><td>${c.成绩||'—'}</td><td>${c['我的名次']!=null?c['我的名次']:'—'}</td><td>${c.类别||'—'}</td></tr>`
     ).join('') : '<tr><td colspan="6" class="empty">还没比赛记录。下一场 Open 完赛我会自动帮你归档。</td></tr>';
 }
 
-/* ─── 地图 ──────────────────────────────────────── */
-let map;
+/* ─── 馆打卡地图（高德地图 JS API 2.0） ───────────────
+   境内地图服务须用有测绘资质的服务商（高德 / 腾讯 / 百度 / 天地图）。
+   未配置 Key 时地图区显示配置引导，不影响打卡数据本身。 */
+const AMAP_KEY_FALLBACK = '';   // 也可留空，在页面上填写，存在本机 localStorage
+const AMAP_SEC_FALLBACK = '';
+let _amapLoading = null;
+
+function amapKey() { return (localStorage.getItem('cf_amap_key') || AMAP_KEY_FALLBACK || '').trim(); }
+function amapSec() { return (localStorage.getItem('cf_amap_sec') || AMAP_SEC_FALLBACK || '').trim(); }
+
+function ensureAMap() {
+  if (window.AMap) return Promise.resolve(true);
+  const key = amapKey();
+  if (!key) return Promise.resolve(false);
+  if (_amapLoading) return _amapLoading;
+  const sec = amapSec();
+  if (sec) window._AMapSecurityConfig = { securityJsCode: sec };
+  _amapLoading = new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = 'https://webapi.amap.com/maps?v=2.0&key=' + encodeURIComponent(key) +
+            '&plugin=AMap.Geocoder,AMap.PlaceSearch';
+    s.onload = () => resolve(true);
+    s.onerror = () => { _amapLoading = null; reject(new Error('SDK 加载失败')); };
+    document.head.appendChild(s);
+  });
+  return _amapLoading;
+}
+
+function saveAMapCfg() {
+  const k = ((document.getElementById('amapKeyInput') || {}).value || '').trim();
+  const s = ((document.getElementById('amapSecInput') || {}).value || '').trim();
+  if (!k) { toast('请先填入高德 Key'); return; }
+  localStorage.setItem('cf_amap_key', k);
+  localStorage.setItem('cf_amap_sec', s);
+  toast('✓ 已保存，正在加载地图…');
+  setTimeout(() => location.reload(), 600);
+}
+
+function amapCfgHTML() {
+  return `<div class="mapcfg">
+    <h4>馆打卡地图需要配置高德 Key</h4>
+    <p class="help">高德是合规的境内地图服务商，个人开发者免费。约 3 分钟申请，填一次永久生效（存在本机浏览器）。</p>
+    <label><span class="label">Web端(JS API) Key</span><input id="amapKeyInput" placeholder="例如 a1b2c3d4e5f6…" /></label>
+    <label><span class="label">安全密钥 securityJsCode（2.0 必填）</span><input id="amapSecInput" placeholder="例如 9f8e7d6c5b…" /></label>
+    <button class="primary" onclick="saveAMapCfg()">保存并加载地图</button>
+    <p class="help">申请入口：<b>console.amap.com</b> → 应用管理 → 创建应用 → 添加 Key（服务平台选「Web端(JS API)」），同一页面会给出「安全密钥」。</p>
+  </div>`;
+}
+
+let map = null;
+let _mapMarkers = [];
+
+function ensureMapInstance() {
+  const box = document.getElementById('cfmap');
+  if (map && !box.querySelector('.amap-container')) {
+    try { map.destroy(); } catch (e) {}
+    map = null;
+  }
+  if (!map) {
+    box.innerHTML = '';
+    map = new AMap.Map('cfmap', { zoom: 4, center: [104.0, 35.0], viewMode: '2D' });
+  }
+  return map;
+}
+
+function renderCheckinList(cks) {
+  document.getElementById('checkinList').innerHTML = cks.length ?
+    cks.slice().sort(byDateDesc('拜访日期')).map(c =>
+      `<div style="padding:8px 0;border-bottom:1px solid var(--line)"><b>${c.馆名||'—'}</b> · ${[c.城市,c.国家].filter(Boolean).join(' ')||''} · ${fmtDate(c.拜访日期)}<br><span class="label">${c.备注||c['训练内容']||''}</span></div>`
+    ).join('') :
+    '<p class="empty">还没打卡记录。点右上"我来过这"，会自动定位并填好城市 / 地址。</p>';
+}
+
 function renderMap() {
-  setTimeout(() => {  // 等 tab 切完
-    if (!map) {
-      map = L.map('cfmap').setView([31.23, 121.47], 4);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap', maxZoom: 18
-      }).addTo(map);
-    }
-    // 清旧 marker 重绘
-    map.eachLayer(l => { if (l instanceof L.Marker) map.removeLayer(l); });
+  setTimeout(async () => {  // 等 tab 切完
+    const box = document.getElementById('cfmap');
     const cks = DATA.checkins || [];
-    if (!cks.length) {
-      document.getElementById('checkinList').innerHTML = '<p class="empty">还没打卡记录。点击右上"我来过这"，浏览器会请求定位 → 自动填经纬度。</p>';
+    renderCheckinList(cks);
+
+    let ok = false;
+    try { ok = await ensureAMap(); }
+    catch (e) {
+      box.innerHTML = `<div class="mapcfg"><h4>❌ 高德地图加载失败</h4><p class="help">${e.message}。请检查 Key 是否正确、是否开通了「Web端(JS API)」服务。</p></div>`;
       return;
     }
-    const pts = [];
+    if (!ok) { box.innerHTML = amapCfgHTML(); return; }
+
+    ensureMapInstance();
+    map.remove(_mapMarkers);
+    _mapMarkers = [];
+    const info = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -14) });
     cks.forEach(c => {
       const lat = parseFloat(c.纬度), lng = parseFloat(c.经度);
-      if (Number.isFinite(lat) && Number.isFinite(lng)) {
-        const m = L.circleMarker([lat, lng], { radius: 8, color: '#18181b', weight: 2, fillColor: '#ffffff', fillOpacity: 1 }).addTo(map)
-          .bindPopup(`<b>${c.馆名||'—'}</b><br>${c.城市||''}<br>${c.日期||''}<br>${c.感受||''}`);
-        pts.push([lat, lng]);
-      }
+      if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+      const m = new AMap.Marker({
+        position: [lng, lat],
+        content: '<div class="cf-pin"></div>',
+        offset: new AMap.Pixel(-7, -7),
+        map,
+      });
+      m.on('click', () => info.setContent(
+        `<div style="font-size:12px;line-height:1.6"><b>${c.馆名||'—'}</b><br>${[c.城市,c.国家].filter(Boolean).join(' ')}<br>${fmtDate(c.拜访日期)}<br>${c.备注||''}</div>`
+      ).open(map, [lng, lat]));
+      _mapMarkers.push(m);
     });
-    if (pts.length) map.fitBounds(pts, { padding: [30,30] });
-    document.getElementById('checkinList').innerHTML = cks.map(c =>
-      `<div style="padding:8px 0;border-bottom:1px solid var(--line)"><b>${c.馆名||'—'}</b> · ${c.城市||''} · ${c.日期||''}<br><span class="label">${c.感受||''}</span></div>`
-    ).join('');
+    if (_mapMarkers.length) map.setFitView(_mapMarkers, false, [50, 50, 50, 50]);
   }, 80);
 }
 
@@ -1084,16 +1304,6 @@ function renderAdvice() {
   document.getElementById('adviceHistory').innerHTML = DATA.advice.length ?
     DATA.advice.map(a => `<tr><td>${a.时间||a.日期||'—'}</td><td>${a.指标||'—'}</td><td>${a.建议||a.内容||'—'}</td></tr>`).join('')
     : '<tr><td colspan="3" class="empty">暂无历史建议。每周日会自动生成一次周建议（待自动化配置）</td></tr>';
-}
-
-/* ─── localStorage 持久化 ──────────────────────── */
-function saveLocal(type, rec) {
-  DATA[type].push(rec);
-  const local = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
-  if (!local[type]) local[type] = [];
-  local[type].push(rec);
-  localStorage.setItem(LS_KEY, JSON.stringify(local));
-  toast('✓ 已保存到本地。请告诉 WorkBuddy "同步到飞书" 我会写入云端');
 }
 
 /* ─── toast ──────────────────────────────────── */
