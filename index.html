@@ -62,6 +62,11 @@
   .pr-up { color: var(--ok); font-weight: 600; font-size: 13px; }
   .pr-down { color: #dc2626; font-weight: 600; font-size: 13px; }
   .pr-chart-box { background: var(--bg); border-bottom: 1px solid var(--line); padding: 4px 12px; }
+  .pr-recs { border-top: 1px dashed var(--line); margin: 6px 0 2px; padding-top: 6px; }
+  .pr-rec { font-size: 12px; color: #52525b; padding: 4px 2px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px; }
+  .pr-rec b { color: var(--text); }
+  .pr-edit { cursor: pointer; margin-left: auto; font-size: 13px; opacity: .45; padding: 0 4px; flex: none; }
+  .pr-edit:hover { opacity: 1; }
   .empty .icon { font-size: 36px; margin-bottom: 8px; }
   button.primary, button.ghost { border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; transition: all .15s; }
   button.primary { background: var(--brand); color: white; }
@@ -1274,7 +1279,7 @@ const FORM_DEFS = {
   ]},
   pr: { title:'记录新 PR', table:'pr', dataKey:'prs', fields:[
     { name:'达成日期', type:'date' },
-    { name:'动作', type:'select', options:['Back Squat','Front Squat','Overhead Squat','Deadlift','Bench Press','Strict Press','Push Press','Push Jerk','Split Jerk','Snatch','Clean','Clean & Jerk','Thruster','Wall Ball','Pull-up','Chest-to-bar','Bar Muscle-up','Ring Muscle-up','HSPU','Box Jump','其他'] },
+    { name:'动作', type:'select', dynamic:'prMoves' },
     { name:'PR 重量/次数', type:'number', ph:'140' },
     { name:'单位', type:'select', options:['kg','lb','reps','秒'] },
     { name:'上次 PR', type:'number', ph:'135' },
@@ -1315,10 +1320,24 @@ const FORM_DEFS = {
   ]}
 };
 
-function openForm(type) {
+/* PR 动作下拉：动作库全量（按类别分组）∪ 已有 PR 记录中出现过的动作 */
+function prMoveGroups() {
+  const seen = new Set(); const groups = [];
+  (DATA.moves && DATA.moves.categories || []).forEach(c => {
+    const opts = (c.moves || []).map(m => m.name).filter(n => n && !seen.has(n) && seen.add(n));
+    if (opts.length) groups.push({ label: c.label_zh || c.key, opts });
+  });
+  const extra = [...new Set(DATA.prs.map(p => (p.动作 || '').trim()).filter(n => n && !seen.has(n)))];
+  if (extra.length) groups.push({ label: '其他（已有记录）', opts: extra });
+  return groups;
+}
+
+function openForm(type, rec) {
   currentForm = type;
+  /* 编辑模式：传入带飞书 record id（rec 开头）的已有记录 */
+  _editRec = (rec && rec.id && String(rec.id).startsWith('rec')) ? rec : null;
   const def = FORM_DEFS[type];
-  document.getElementById('formTitle').textContent = def.title;
+  document.getElementById('formTitle').textContent = _editRec ? def.title + '（编辑）' : def.title;
   document.getElementById('formFields').innerHTML = def.fields.map(f => {
     if (f.type === 'geo') return `
       <div style="margin-bottom:10px">
@@ -1341,10 +1360,15 @@ function openForm(type) {
           </div>
         </details>
       </div>`;
-    if (f.type === 'select') return `
+    if (f.type === 'select') {
+      const optsHtml = f.dynamic === 'prMoves'
+        ? prMoveGroups().map(g => `<optgroup label="${_prEsc(g.label)}">${g.opts.map(o=>`<option>${_prEsc(o)}</option>`).join('')}</optgroup>`).join('')
+        : f.options.map(o=>`<option>${o}</option>`).join('');
+      return `
       <label style="display:block;margin-bottom:10px"><span class="label">${f.name}</span>
-        <select name="${f.name}"><option value="">— 不填 —</option>${f.options.map(o=>`<option>${o}</option>`).join('')}</select>
+        <select name="${f.name}"><option value="">— 不填 —</option>${optsHtml}</select>
       </label>`;
+    }
     if (f.type === 'textarea') return `
       <label style="display:block;margin-bottom:10px"><span class="label">${f.name}</span><textarea name="${f.name}" rows="3"></textarea></label>`;
     if (f.type === 'date') return `
@@ -1354,9 +1378,22 @@ function openForm(type) {
   }).join('');
   _geoResults = [];                 // 重置上次搜索残留
   if (_geoMiniMap) { try { _geoMiniMap.destroy(); } catch (e) {} _geoMiniMap = null; }
+  const _btn = document.querySelector('#formModal .row .primary');
+  if (_editRec) {
+    /* 预填已有值（仅填非空字段；留空 = 不修改该项） */
+    document.querySelectorAll('#formFields [name]').forEach(i => {
+      const v = _editRec[i.name];
+      if (v == null || v === '') return;
+      i.value = String(v);
+    });
+    if (_btn) _btn.textContent = '💾 保存修改';
+    const help = document.querySelector('#formModal .help');
+    if (help) help.textContent = '💡 编辑：留空的项保持原值不变，只提交填了的字段。直接写入飞书；连不上时进待补传队列。';
+  } else if (_btn) _btn.textContent = '保存';
   document.getElementById('formModal').classList.add('open');
 }
-function closeForm() { document.getElementById('formModal').classList.remove('open'); }
+function closeForm() { document.getElementById('formModal').classList.remove('open'); _editRec = null; }
+let _editRec = null;
 
 async function submitForm() {
   const def = FORM_DEFS[currentForm];
@@ -1380,6 +1417,31 @@ async function submitForm() {
   if (raw['经度']) { fields['经度'] = raw['经度']; localRec['经度'] = raw['经度']; }
 
   if (!Object.keys(fields).length) { toast('请至少填一项'); return; }
+
+  /* ── 编辑模式：PUT 更新已有记录 ── */
+  if (_editRec) {
+    const btn = document.querySelector('#formModal .row .primary');
+    if (btn) { btn.disabled = true; btn.textContent = '保存中…'; }
+    const res = await larkWrite('PUT', def.table, _editRec.id, fields);
+    if (btn) { btn.disabled = false; btn.textContent = '💾 保存修改'; }
+    const applyLocal = () => { for (const k in localRec) if (k !== 'id' && k !== '数据来源') _editRec[k] = localRec[k]; };
+    if (res.ok) {
+      applyLocal();
+      toast('✓ 已更新飞书');
+    } else {
+      applyLocal();
+      pendingAdd({ tableKey: def.table, method: 'PUT', recordId: _editRec.id, fields,
+        matchKey: def.table + ':edit:' + _editRec.id });
+      toast('📴 连不上同步服务，修改已加入待补传队列');
+    }
+    const edited = _editRec;
+    closeForm();
+    showPanel(currentForm);
+    updateKPIs();
+    /* 动作变化会影响解锁进度 → 静默触发一次重算 */
+    if (fields['动作']) refreshMovesQuiet();
+    return;
+  }
 
   const btn = document.querySelector('#formModal .row .primary');
   if (btn) { btn.disabled = true; btn.textContent = '保存中…'; }
@@ -1640,13 +1702,15 @@ function renderPRs() {
     const pts = _prPoints(g);
     const hint = pts.length >= 2 ? '📈' : '';
     const varTag = g.variants.length ? ` <span class="label" style="font-size:11px">· 含 ${_prEsc(g.variants.join(' / '))}</span>` : '';
+    const editCur = cur.id && String(cur.id).startsWith('rec')
+      ? ` <a class="pr-edit" onclick="event.stopPropagation();editPrRec('${cur.id}')" title="编辑这条记录">✏️</a>` : '';
     return `<tr class="pr-row" onclick="togglePrChart(${i})">
         <td><strong>${_prEsc(g.name)}</strong>${varTag} <span class="label" style="font-size:11px">×${g.recs.length}</span></td>
         <td><strong>${curV != null ? curV + unit : (cur['PR 重量/次数'] || '—')}</strong></td>
         <td>${prevV != null ? prevV + unit : (prevRaw != null ? prevRaw : '—')}</td>
         <td>${deltaHtml}</td>
         <td>${fmtDate(cur.达成日期)}</td>
-        <td class="label">${(cur.备注 || '').slice(0, 24)} ${hint}</td>
+        <td class="label">${(cur.备注 || '').slice(0, 24)} ${hint}${editCur}</td>
       </tr><tr id="prchart-${i}" style="display:none"><td colspan="6" style="padding:0"><div class="pr-chart-box"></div></td></tr>`;
   }).join('');
 }
@@ -1681,7 +1745,8 @@ function drawPrChart(box, g) {
   const pts = _prPoints(g);
   const unit = g.recs[0].单位 || '';
   if (pts.length < 2) {
-    box.innerHTML = '<div class="help" style="padding:10px 4px">该动作只有 1 个数据点，再刷一次 PR 就能看到进步曲线 📈</div>';
+    box.innerHTML = '<div class="help" style="padding:10px 4px">该动作只有 1 个数据点，再刷一次 PR 就能看到进步曲线 📈</div>'
+      + prRecsHtml(g);
     return;
   }
   const W = 640, H = 180, P = { l: 54, r: 18, t: 30, b: 32 };
@@ -1710,8 +1775,26 @@ function drawPrChart(box, g) {
       s += `<text x="${x}" y="${H - 10}" text-anchor="middle" font-size="10" fill="#71717a">${d.slice(5)}</text>`;
     }
   });
+  /* 折线下方：该组全部记录（含原始动作名），每条可编辑 */
   box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:720px;display:block;padding:6px 0">${s}</svg>`
+    + prRecsHtml(g)
     + (g.conv ? '<p class="help" style="padding:0 4px 6px">* 历史记录原为 lb，已按 1 lb = 0.4536 kg 换算统一展示</p>' : '');
+}
+/* 记录列表 HTML：日期 · 原始动作 · 值 · 上次 · 备注 · ✏️ 编辑 */
+function prRecsHtml(g) {
+  return `<div class="pr-recs">` + g.recs.map(r => {
+    const canEdit = r.id && String(r.id).startsWith('rec');
+    const prev = (r['上次 PR'] != null && r['上次 PR'] !== '') ? ` · 上次 ${r['上次 PR']}` : '';
+    const note = r.备注 ? ` · ${_prEsc(String(r.备注).slice(0, 36))}` : '';
+    return `<div class="pr-rec">📅 ${fmtDate(r.达成日期)} · <b>${_prEsc(r.动作 || g.name)}</b> · ${_prEsc(String(r['PR 重量/次数'] ?? '—'))}${_prEsc(r.单位 || '')}${prev}${note}`
+      + (canEdit ? ` <a class="pr-edit" onclick="editPrRec('${r.id}')" title="编辑这条记录">✏️</a>` : '') + `</div>`;
+  }).join('') + `</div>`;
+}
+/* 点击 ✏️ 打开编辑表单（用原始记录预填，不用换算副本） */
+function editPrRec(recordId) {
+  const rec = DATA.prs.find(p => p.id === recordId);
+  if (!rec) { toast('⚠️ 找不到这条记录（可能是本地暂存，等同步后可编辑）'); return; }
+  openForm('pr', rec);
 }
 function renderBenchmarks() {
   document.getElementById('bmCount').textContent = `${DATA.benchmarks.length} 条`;
@@ -1835,6 +1918,17 @@ function renderMap() {
     });
     if (_mapMarkers.length) map.setFitView(_mapMarkers, false, [50, 50, 50, 50]);
   }, 80);
+}
+
+/* 编辑 PR 动作等场景：静默重算动作解锁进度（失败不打扰） */
+async function refreshMovesQuiet() {
+  try {
+    const base = await apiBase();
+    if (base === false) return;
+    const r = await fetch(base + '/api/moves-refresh', { method: 'POST', headers: cfHeaders() });
+    const j = await r.json();
+    if (j.ok && j.moves) { DATA.moves = j.moves; }
+  } catch (e) { /* 静默 */ }
 }
 
 /* ─── 🏋️ 动作解锁 ───────────────────────────────── */

@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-10T19:42:31",
+  "synced_at": "2026-09-10T20:14:14",
   "days_back": 180,
   "totals": {
     "user_score": 183,
@@ -348,7 +348,7 @@
             "Hang Power Clean",
             "Hip Clean"
           ],
-          "source_count": 12,
+          "source_count": 11,
           "manual": true,
           "manual_record_id": "recvuO5Ju2r50o",
           "manual_record_ids": [
@@ -923,7 +923,7 @@
             "Hang Power Clean",
             "Power Clean"
           ],
-          "source_count": 6,
+          "source_count": 7,
           "manual": true,
           "manual_record_id": "recvuO5L35xmKs",
           "manual_record_ids": [
