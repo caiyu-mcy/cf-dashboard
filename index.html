@@ -86,6 +86,10 @@
   .day-stat { display: inline-block; margin: 0 14px 6px 0; }
   .day-stat b { font-size: 16px; display: block; }
   .cal-head { font-size: 10px; font-weight: 600; color: var(--muted); text-align: center; padding: 8px 0; text-transform: uppercase; letter-spacing: 0.5px; }
+  .cal-nav { display: inline-flex; align-items: center; gap: 4px; margin-left: 8px; vertical-align: middle; }
+  .cal-nav .mini { padding: 2px 8px; font-size: 12px; line-height: 1.5; }
+  .cal-picker { border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--fg); font: inherit; font-size: 12px; padding: 2px 6px; }
+  .cal-picker:focus { outline: none; border-color: #18181b; }
   #cfmap { width: 100%; height: 500px; border-radius: 12px; overflow: hidden; background: #fafafa; filter: grayscale(0.85) contrast(1.03); }
   .cf-pin { width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid #18181b; box-shadow: 0 1px 4px rgba(0,0,0,.35); }
   .mapcfg { padding: 18px; }
@@ -194,7 +198,17 @@
   <div class="grid cols-2">
     <div>
       <div class="card">
-        <h3>📅 训练日历 <span class="badge" id="calMonthLabel">—</span></h3>
+        <h3>📅 训练日历
+          <span class="cal-nav">
+            <button class="ghost mini" onclick="calShift(-12)" title="上一年">«</button>
+            <button class="ghost mini" onclick="calShift(-1)" title="上一月">‹</button>
+            <input type="month" id="calMonthPicker" class="cal-picker" onchange="calPick(this.value)" title="跳转到指定月份">
+            <button class="ghost mini" onclick="calShift(1)" title="下一月">›</button>
+            <button class="ghost mini" onclick="calShift(12)" title="下一年">»</button>
+            <button class="ghost mini" onclick="calToday()" title="回到本月">今</button>
+            <span class="badge" id="calMonthStats"></span>
+          </span>
+        </h3>
         <div class="calendar" id="calendar"></div>
         <div class="legend">
           <span><span class="swatch" style="background: #18181b;"></span>已训练</span>
@@ -833,14 +847,22 @@ function showPanel(id) {
 }
 
 /* ─── 日历 ─────────────────────────────────────── */
+let calY = null, calM = null;   // 当前查看的年月（null = 跟随今天）
+function calShift(dm) { const d = new Date(calY, calM + dm, 1); calY = d.getFullYear(); calM = d.getMonth(); renderCalendar(); }
+function calPick(v) { if (!v) return; const [y, m] = v.split('-').map(Number); calY = y; calM = m - 1; renderCalendar(); }
+function calToday() { const n = new Date(); calY = n.getFullYear(); calM = n.getMonth(); renderCalendar(); }
 function renderCalendar() {
   const now = new Date();
-  const y = now.getFullYear(), m = now.getMonth();
+  if (calY == null) { calY = now.getFullYear(); calM = now.getMonth(); }
+  const y = calY, m = calM;
   const first = new Date(y, m, 1), last = new Date(y, m + 1, 0);
   const startDay = first.getDay();
   const trainDays = new Set(DATA.classes.map(c => c.日期));
   const schedDays = new Set(DATA.schedules.map(s => s.日期));
-  document.getElementById('calMonthLabel').textContent = `${y} 年 ${m+1} 月`;
+  const picker = document.getElementById('calMonthPicker');
+  if (picker) picker.value = `${y}-${String(m + 1).padStart(2, '0')}`;
+  const isThisMonth = (y === now.getFullYear() && m === now.getMonth());
+  let monthTrained = 0;
 
   const grid = document.getElementById('calendar');
   const head = ['日','一','二','三','四','五','六'].map(d => `<div class="cal-head">${d}</div>`).join('');
@@ -849,11 +871,14 @@ function renderCalendar() {
   for (let d = 1; d <= last.getDate(); d++) {
     const dateStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     const trained = trainDays.has(dateStr);
+    if (trained) monthTrained++;
     const hasSched = schedDays.has(dateStr);
-    const isToday = d === now.getDate();
+    const isToday = isThisMonth && d === now.getDate();
     html += `<div class="cal-cell ${trained?'train':''} ${hasSched?'has-sched':''} ${isToday?'today':''}" onclick="showDayDetail('${dateStr}')" title="${dateStr}${trained?' · 已训练（手表）':''}${hasSched?' · 有课表':''}">${d}${trained?'<span class="dot"></span>':''}</div>`;
   }
   grid.innerHTML = html;
+  const stats = document.getElementById('calMonthStats');
+  if (stats) stats.textContent = monthTrained ? `本月训练 ${monthTrained} 天` : '本月无记录';
 }
 
 /* ─── 图表（心率 / 负荷） ───────────────────────── */
@@ -1568,6 +1593,9 @@ function renderExtras() {
       return `<tr><td>${fmtDate(c.日期)}</td><td><span class="tag tag-cardio">${c.训练类型||'—'}</span></td><td>${c['动作 1']||'—'}</td><td>${detail||'—'}</td><td>${(c.备注||'').slice(0,40)}</td></tr>`;
     }).join('') : '<tr><td colspan="5" class="empty">还没有加练记录。点右上角新建，或从"日历·上课" tab 上传课表照片 OCR 识别</td></tr>';
 }
+/* PR 变体合并（显示层，不改飞书数据）：Power Clean 并入 Clean、Power Snatch 并入 Snatch */
+const PR_MERGE = { 'Power Clean': 'Clean', 'Power Snatch': 'Snatch' };
+const LB2KG = 0.453592;
 function renderPRs() {
   document.getElementById('prCount').textContent = `${DATA.prs.length} 条`;
   const body = document.getElementById('prBody');
@@ -1575,11 +1603,28 @@ function renderPRs() {
     body.innerHTML = '<tr><td colspan="6" class="empty">还没有 PR 记录。点右上"记录新 PR"开始。<br><br>💡 想要历史 PR？告诉我你的 Big 3 / Olympic / Gymnastics 数字，我帮你批量导入。</td></tr>';
     return;
   }
-  // 按动作分组，组内按日期倒序（最新在前）
+  // 按动作分组（变体先归并），组内按日期倒序（最新在前）
   const groups = {};
-  for (const p of DATA.prs) { const n = (p.动作 || '未命名').trim(); (groups[n] = groups[n] || []).push(p); }
-  _prGroups = Object.entries(groups).map(([name, recs]) => ({ name, recs: recs.slice().sort(byDateDesc('达成日期')) }))
-    .sort((a, b) => String(fmtDate(a.recs[0].达成日期)).localeCompare(String(fmtDate(b.recs[0].达成日期))));
+  for (const p of DATA.prs) {
+    const raw = (p.动作 || '未命名').trim();
+    const n = PR_MERGE[raw] || raw;
+    (groups[n] = groups[n] || []).push(p);
+  }
+  _prGroups = Object.entries(groups).map(([name, recs]) => {
+    const sorted = recs.slice().sort(byDateDesc('达成日期'));
+    // 组内同时出现 kg 和 lb 时，统一换算为 kg（主馆单位），仅用于展示
+    const units = new Set(sorted.map(r => String(r.单位 || '').toLowerCase()).filter(u => u === 'kg' || u === 'lb'));
+    let conv = false, norm = sorted;
+    if (units.size > 1) {
+      conv = true;
+      const lbToKg = v => { const n = _prNum(v); return n != null ? Math.round(n * LB2KG * 10) / 10 : v; };
+      norm = sorted.map(r => String(r.单位 || '').toLowerCase() === 'lb'
+        ? { ...r, 'PR 重量/次数': lbToKg(r['PR 重量/次数']), '上次 PR': lbToKg(r['上次 PR']), 单位: 'kg' }
+        : r);
+    }
+    const variants = [...new Set(sorted.map(r => (r.动作 || '').trim()))].filter(v => v !== name);
+    return { name, recs: norm, variants, conv };
+  }).sort((a, b) => String(fmtDate(a.recs[0].达成日期)).localeCompare(String(fmtDate(b.recs[0].达成日期))));
 
   body.innerHTML = _prGroups.map((g, i) => {
     const cur = g.recs[0];
@@ -1587,15 +1632,16 @@ function renderPRs() {
     const curV = _prNum(cur['PR 重量/次数']);
     const prevRaw = (cur['上次 PR'] != null && cur['上次 PR'] !== '') ? cur['上次 PR'] : (g.recs[1] ? g.recs[1]['PR 重量/次数'] : null);
     const prevV = _prNum(prevRaw);
-    const delta = (curV != null && prevV != null) ? curV - prevV : null;
+    const delta = (curV != null && prevV != null) ? Math.round((curV - prevV) * 10) / 10 : null;
     const deltaHtml = delta == null ? '<span class="label">—</span>'
       : delta > 0 ? `<span class="pr-up">▲ +${delta}${unit}</span>`
       : delta < 0 ? `<span class="pr-down">▼ ${delta}${unit}</span>`
       : '<span class="label">=</span>';
     const pts = _prPoints(g);
     const hint = pts.length >= 2 ? '📈' : '';
+    const varTag = g.variants.length ? ` <span class="label" style="font-size:11px">· 含 ${_prEsc(g.variants.join(' / '))}</span>` : '';
     return `<tr class="pr-row" onclick="togglePrChart(${i})">
-        <td><strong>${_prEsc(g.name)}</strong> <span class="label" style="font-size:11px">×${g.recs.length}</span></td>
+        <td><strong>${_prEsc(g.name)}</strong>${varTag} <span class="label" style="font-size:11px">×${g.recs.length}</span></td>
         <td><strong>${curV != null ? curV + unit : (cur['PR 重量/次数'] || '—')}</strong></td>
         <td>${prevV != null ? prevV + unit : (prevRaw != null ? prevRaw : '—')}</td>
         <td>${deltaHtml}</td>
@@ -1664,7 +1710,8 @@ function drawPrChart(box, g) {
       s += `<text x="${x}" y="${H - 10}" text-anchor="middle" font-size="10" fill="#71717a">${d.slice(5)}</text>`;
     }
   });
-  box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:720px;display:block;padding:6px 0">${s}</svg>`;
+  box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:720px;display:block;padding:6px 0">${s}</svg>`
+    + (g.conv ? '<p class="help" style="padding:0 4px 6px">* 历史记录原为 lb，已按 1 lb = 0.4536 kg 换算统一展示</p>' : '');
 }
 function renderBenchmarks() {
   document.getElementById('bmCount').textContent = `${DATA.benchmarks.length} 条`;

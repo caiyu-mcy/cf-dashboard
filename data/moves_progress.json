@@ -1,21 +1,21 @@
 {
-  "synced_at": "2026-09-10T19:37:59",
+  "synced_at": "2026-09-10T19:42:31",
   "days_back": 180,
   "totals": {
-    "user_score": 177,
+    "user_score": 183,
     "max_score": 317,
-    "percent": 55.8,
-    "mastered_count": 45,
+    "percent": 57.7,
+    "mastered_count": 46,
     "total_moves": 98
   },
   "categories": [
     {
       "key": "Weightlifting",
       "label_zh": "举重 Weightlifting",
-      "user_score": 124,
+      "user_score": 130,
       "max_score": 117,
-      "percent": 106.0,
-      "mastered_count": 28,
+      "percent": 111.1,
+      "mastered_count": 29,
       "total_moves": 33,
       "moves": [
         {
@@ -107,36 +107,6 @@
           ],
           "demo": "https://www.youtube.com/results?search_query=crossfit+Hang+Snatch+technique",
           "series": "snatch"
-        },
-        {
-          "name": "KB Snatch",
-          "aliases_top3": [
-            "KBSnatch",
-            "壶铃抓举"
-          ],
-          "level": 3,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 6,
-          "category": "Weightlifting",
-          "subs": [
-            "KB Swing"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "cues": [
-            "单臂甩铃，髋爆发向上",
-            "壶铃贴身翻腕直接锁定头顶",
-            "顶点锁肘、铃不砸前臂"
-          ],
-          "errors": [
-            "铃荡离身打手臂",
-            "接铃时肘弯"
-          ],
-          "demo": "https://www.youtube.com/results?search_query=crossfit+KB+Snatch+technique",
-          "series": "kb"
         },
         {
           "name": "Squat Snatch",
@@ -1003,6 +973,38 @@
           "series": "clean"
         },
         {
+          "name": "KB Snatch",
+          "aliases_top3": [
+            "KBSnatch",
+            "壶铃抓举"
+          ],
+          "level": 3,
+          "earned_level": 3,
+          "earned_points": 6,
+          "max_points": 6,
+          "category": "Weightlifting",
+          "subs": [
+            "KB Swing"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuOGz3j8tCH",
+          "manual_record_ids": [
+            "recvuOGz3j8tCH"
+          ],
+          "cues": [
+            "单臂甩铃，髋爆发向上",
+            "壶铃贴身翻腕直接锁定头顶",
+            "顶点锁肘、铃不砸前臂"
+          ],
+          "errors": [
+            "铃荡离身打手臂",
+            "接铃时肘弯"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+KB+Snatch+technique",
+          "series": "kb"
+        },
+        {
           "name": "Snatch",
           "aliases_top3": [
             "抓举"
@@ -1086,6 +1088,7 @@
         "Good Morning",
         "KB Swing",
         "Russian KB Swing",
+        "KB Snatch",
         "Goblet Squat",
         "DB Snatch",
         "DB Clean",
@@ -3205,6 +3208,50 @@
       "percent": 100.0
     },
     {
+      "key": "kb",
+      "label": "壶铃系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Russian KB Swing",
+          "level": 1,
+          "earned_level": 1,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "KB Deadlift"
+          ]
+        },
+        {
+          "name": "KB Swing",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Russian KB Swing",
+            "KB Deadlift"
+          ]
+        },
+        {
+          "name": "KB Snatch",
+          "level": 3,
+          "earned_level": 3,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "KB Swing"
+          ]
+        }
+      ],
+      "frontier": 3,
+      "next_move": null,
+      "user_score": 10,
+      "max_score": 10,
+      "percent": 100.0
+    },
+    {
       "key": "thrust",
       "label": "蹲推系",
       "category": "Weightlifting",
@@ -3764,50 +3811,6 @@
       "user_score": 1,
       "max_score": 2,
       "percent": 50.0
-    },
-    {
-      "key": "kb",
-      "label": "壶铃系",
-      "category": "Weightlifting",
-      "label_zh": "举重 Weightlifting",
-      "chain": [
-        {
-          "name": "Russian KB Swing",
-          "level": 1,
-          "earned_level": 1,
-          "mastered": true,
-          "manual": true,
-          "subs": [
-            "KB Deadlift"
-          ]
-        },
-        {
-          "name": "KB Swing",
-          "level": 2,
-          "earned_level": 2,
-          "mastered": true,
-          "manual": true,
-          "subs": [
-            "Russian KB Swing",
-            "KB Deadlift"
-          ]
-        },
-        {
-          "name": "KB Snatch",
-          "level": 3,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "KB Swing"
-          ]
-        }
-      ],
-      "frontier": 2,
-      "next_move": "KB Snatch",
-      "user_score": 4,
-      "max_score": 10,
-      "percent": 40.0
     },
     {
       "key": "pushup",
