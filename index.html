@@ -908,7 +908,7 @@ function showDayDetail(dateStr) {
 
   let html = '';
   // 1) 课表
-  html += `<div class="day-sec"><h4>📋 当日课表${sched ? '' : '（暂无 · 可从左侧 OCR 识别后存入）'}</h4>`;
+  html += `<div class="day-sec"><h4>📋 当日课表${sched ? '' : '（暂无）'}</h4>`;
   if (sched) {
     html += `<div class="day-wod">${(sched['课表内容']||'').replace(/</g,'&lt;')}</div>`;
     html += `<div class="row" style="margin-top:8px;gap:6px">
@@ -917,7 +917,10 @@ function showDayDetail(dateStr) {
       ${sched.来源 ? `<span class="help" style="margin-left:auto">来源：${sched.来源}</span>` : ''}
     </div>`;
   } else {
-    html += '<p class="help" style="margin:0">把馆里拍的课表照片拖到左侧 OCR 区识别，点「存为当日课表」就会出现在这里。</p>';
+    html += `<div class="row" style="margin:2px 0 10px">
+      <button class="primary" style="padding:5px 12px;font-size:12px" onclick="addSchedule('${dateStr}')">➕ 添加课表</button>
+    </div>
+    <p class="help" style="margin:0">手动填写即可；也可以把馆里拍的课表照片拖到左侧 OCR 区识别，点「存为当日课表」自动填入。</p>`;
   }
   html += '</div>';
   // 2) 手表数据
@@ -1007,6 +1010,7 @@ async function saveDayResult() {
 
 /* ─── OCR → 当日课表 ──────────────────────────── */
 let _schedEditing = null;   // { recordId, date } 表示正在改已存在的课表
+let _schedSource = '';      // 新建时的来源标记（手动添加 / OCR 课表照片）
 function parseSchedDate(text) {
   // 优先找 YYYY-MM-DD
   let m = text.match(/(20\d{2})[-\/年.](\d{1,2})[-\/月.](\d{1,2})/);
@@ -1020,21 +1024,30 @@ function parseSchedDate(text) {
   return new Date().toISOString().slice(0, 10);
 }
 
-function openScheduleForm(dateStr, recordId, prefillText) {
-  // 三种入口：① OCR 弹窗保存  ② 日历点击 → 修改已有课表  ③ 无 recordId 时（无 OCR 时新建）
+function openScheduleForm(dateStr, recordId, prefillText, source) {
+  // 四种入口：① OCR 弹窗保存  ② 日历点击 → 修改已有课表
+  //           ③ 日历点击 → 新建（手动添加）  ④ 无 dateStr 时兜底用 OCR 文本推断日期
   _schedEditing = (recordId && dateStr) ? { recordId, date: dateStr } : null;
+  _schedSource = _schedEditing ? '手动修改' : (source || (ocrText ? 'OCR 课表照片' : '手动添加'));
   document.getElementById('schedDate').value = dateStr || parseSchedDate(ocrText || '');
   document.getElementById('schedText').value = prefillText != null ? prefillText : (ocrText || '').trim();
-  document.querySelector('#schedModal h3').textContent = _schedEditing ? '✏️ 修改课表' : '📅 存为当日课表';
+  const title = _schedEditing ? '✏️ 修改课表' : (_schedSource === 'OCR 课表照片' ? '📅 存为当日课表' : '📝 添加课表');
+  document.querySelector('#schedModal h3').textContent = title;
   document.querySelector('#schedModal .primary').textContent = _schedEditing ? '💾 保存修改' : '💾 保存课表';
   document.getElementById('schedModal').classList.add('open');
+}
+
+/* 从日历当日详情 → 新建课表（该日还没有课表时） */
+function addSchedule(dateStr) {
+  openScheduleForm(dateStr, null, '', '手动添加');
 }
 
 async function saveSchedule() {
   const date = document.getElementById('schedDate').value;
   const text = document.getElementById('schedText').value.trim();
   if (!date || !text) { toast('日期和课表内容都要填'); return; }
-  const fields = { 日期: Date.parse(date + 'T00:00:00'), 课表内容: text, 来源: _schedEditing ? '手动修改' : 'OCR 课表照片' };
+  const src = _schedEditing ? '手动修改' : (_schedSource || '手动添加');
+  const fields = { 日期: Date.parse(date + 'T00:00:00'), 课表内容: text, 来源: src };
   const isEdit = !!_schedEditing;
   const recordId = _schedEditing ? _schedEditing.recordId : null;
   const method = isEdit ? 'PUT' : 'POST';
@@ -1048,9 +1061,9 @@ async function saveSchedule() {
   } else {
     const local = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
     local.schedules = (local.schedules || []).filter(s => s.日期 !== date);
-    local.schedules.push({ 日期: date, 课表内容: text, 来源: isEdit ? '手动修改(本地)' : 'OCR(本地)' });
+    local.schedules.push({ 日期: date, 课表内容: text, 来源: isEdit ? '手动修改(本地)' : (src + '(本地)') });
     localStorage.setItem(LS_KEY, JSON.stringify(local));
-    DATA.schedules = DATA.schedules.filter(s => s.日期 !== date).concat([{ 日期: date, 课表内容: text, 来源: isEdit ? '手动修改(本地)' : 'OCR(本地)' }]);
+    DATA.schedules = DATA.schedules.filter(s => s.日期 !== date).concat([{ 日期: date, 课表内容: text, 来源: isEdit ? '手动修改(本地)' : (src + '(本地)') }]);
     pendingAdd({
       tableKey: 'schedule',
       method,
