@@ -1,0 +1,144 @@
+{
+  "generated_at": "2026-09-10T16:45:27",
+  "days": 14,
+  "model": "MiniMax-M2.7-highspeed",
+  "stats": {
+    "window_days": 14,
+    "window": "2026-08-27 ~ 2026-09-10",
+    "classes": {
+      "count": 9,
+      "dates": [
+        "2026-08-28",
+        "2026-08-29",
+        "2026-09-02",
+        "2026-09-05",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-10"
+      ],
+      "total_minutes": 157,
+      "avg_hr": 138.6,
+      "max_hr": null,
+      "total_tl": 286.0,
+      "rpe_list": [],
+      "finish_states": {
+        "完成": 8,
+        "已完成 · RX": 1
+      },
+      "wod_names": [
+        "室内有氧",
+        "室内有氧",
+        "室内有氧",
+        "室内有氧",
+        "力量训练",
+        "室内有氧",
+        "室内有氧",
+        "室内有氧",
+        "室内有氧"
+      ],
+      "types": {
+        "Open Gym": 9
+      },
+      "remarks": [
+        "COROS 自动同步",
+        "COROS 自动同步 | 训练负荷 13 TL | 76.892 kcal",
+        "COROS 自动同步 | 训练负荷 71 TL | 209.052 kcal",
+        "COROS 自动同步 | 训练负荷 4 TL | 32.732 kcal",
+        "COROS 自动同步 | 训练负荷 52 TL | 205.443 kcal",
+        "COROS 自动同步 | 训练负荷 29 TL | 123.028 kcal",
+        "COROS 自动同步 | 训练负荷 47 TL | 166.169 kcal",
+        "COROS-AUTO:1788996157 | 训练负荷 50 TL | 240.56 kcal | distance=0m | pace="
+      ]
+    },
+    "extras": {
+      "count": 0,
+      "total_minutes": 0,
+      "rpe_list": [],
+      "focus": {}
+    },
+    "prs": [
+      {
+        "动作": "Clean",
+        "重量": null,
+        "次数": null,
+        "备注": ""
+      }
+    ],
+    "benchmarks": [],
+    "moves": {
+      "percent": 0.9,
+      "mastered": "1/98",
+      "by_category": [
+        {
+          "cat": "举重 Weightlifting",
+          "percent": 2.6,
+          "mastered": "1/33"
+        },
+        {
+          "cat": "体操 Gymnastics",
+          "percent": 0.0,
+          "mastered": "0/49"
+        },
+        {
+          "cat": "Metcon 组合",
+          "percent": 0.0,
+          "mastered": "0/7"
+        },
+        {
+          "cat": "单结构 Mono",
+          "percent": 0.0,
+          "mastered": "0/9"
+        }
+      ],
+      "top_series": [
+        {
+          "series": "翻站系",
+          "percent": 11.5,
+          "frontier": 6,
+          "chain_len": 8
+        },
+        {
+          "series": "引体系",
+          "percent": 0.0,
+          "frontier": 0,
+          "chain_len": 7
+        },
+        {
+          "series": "肌肉系",
+          "percent": 0.0,
+          "frontier": 0,
+          "chain_len": 6
+        },
+        {
+          "series": "臂屈伸系",
+          "percent": 0.0,
+          "frontier": 0,
+          "chain_len": 3
+        },
+        {
+          "series": "推撑系",
+          "percent": 0.0,
+          "frontier": 0,
+          "chain_len": 6
+        },
+        {
+          "series": "倒立系",
+          "percent": 0.0,
+          "frontier": 0,
+          "chain_len": 4
+        }
+      ]
+    },
+    "recovery": {
+      "ctl": 35,
+      "atl": 26,
+      "tsb": 9,
+      "load_ratio_pct": 74,
+      "hrv_last": 77,
+      "recovery_last": 95
+    }
+  },
+  "summary_md": "## 训练量与强度\n两周训练9次，频率保持在合理范围，但157分钟总量拆分到每次只有17分钟左右，平均训练负荷不到32TL——这个量级对CrossFit来说偏轻。单次时长和强度都不足以产生足够的刺激。平均心率138虽然接近有氧上限，但受限于时长，总体代谢压力不够。\n\n## 训练重心\n明显偏向\"室内有氧\"类有氧代谢训练，举重和体操几乎空白。举重解锁率2.6%（翻了Clean的1/33），体操0%，说明基础动作框架还没建立。虽然翻站系frontier推进到6，但整体技能树太窄，短板集中在 Gymnastics（0/49）和 Metcon 组合（0/7）两块。\n\n## 恢复状态\nTSB +9、HRV 77、恢复值95——身体状态很好，疲劳积累低，甚至还有余量增加训练量。这两周的训练强度远没到天花板。\n\n## 下一步建议\n\n• **每次Open Gym至少留足45-60分钟**，目前单次时长太短，力量和技术训练需要足够的热身+主项+辅助，建议主动规划时间分配而不是随意练。\n\n• **把体操提上日程**，引体向上是最高优先级的解锁动作，降阶方案：弹力带辅助引体 → TRX悬挂 → 澳大利亚引体 → 箱式引体。从每天3-5组逐渐堆量。\n\n• **每周至少安排1次正式的力量日**，深蹲、硬拉、推举、俯卧撑这些基础动作需要周期化加载，不用追求重量，先把动作模式解锁完整。\n\n• **有氧训练占比过高**，建议把\"室内有氧\"类训练控制在每周1-2次，其余用举重+体操填充，这样对综合能力的提升效率更高。",
+  "cache": "hit",
+  "feishu_ok": true
+}

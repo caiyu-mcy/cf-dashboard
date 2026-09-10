@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-10T16:14:24",
+  "synced_at": "2026-09-10T17:05:56",
   "days_back": 180,
   "totals": {
     "user_score": 3,
@@ -32,7 +32,10 @@
             "DB Bench Press",
             "Push-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "DB Clean",
@@ -48,7 +51,11 @@
           "subs": [
             "KB Swing"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "clean"
         },
         {
           "name": "Goblet Squat",
@@ -64,7 +71,11 @@
             "Air Squat",
             "Front Squat with 2 DBs"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "squat_bar"
         },
         {
           "name": "Russian KB Swing",
@@ -80,7 +91,11 @@
           "subs": [
             "KB Deadlift"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "kb"
         },
         {
           "name": "Strict Press",
@@ -98,7 +113,11 @@
             "DB Shoulder Press",
             "Push Press"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "press"
         },
         {
           "name": "Back Squat",
@@ -116,7 +135,11 @@
             "Goblet Squat",
             "Front Squat"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "squat_bar"
         },
         {
           "name": "DB Clean & Jerk",
@@ -134,7 +157,11 @@
             "DB Clean",
             "DB Jerk"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "jerk"
         },
         {
           "name": "DB Snatch",
@@ -151,7 +178,11 @@
             "DB Swing",
             "DB Clean"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "snatch"
         },
         {
           "name": "DB Thruster",
@@ -167,7 +198,11 @@
           "subs": [
             "Goblet Squat + DB Press"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "thrust"
         },
         {
           "name": "Deadlift",
@@ -184,7 +219,11 @@
             "Romanian Deadlift",
             "Sumo Deadlift"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "deadlift"
         },
         {
           "name": "Front Squat",
@@ -200,7 +239,11 @@
             "Front Squat with 2 DBs",
             "Goblet Squat"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "squat_bar"
         },
         {
           "name": "Good Morning",
@@ -215,7 +258,10 @@
           "subs": [
             "Romanian Deadlift"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "Hang Clean",
@@ -231,7 +277,11 @@
             "Hang Power Clean",
             "DB Clean"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "clean"
         },
         {
           "name": "Hang Power Clean",
@@ -246,7 +296,11 @@
           "subs": [
             "DB Hang Power Clean"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "clean"
         },
         {
           "name": "KB Swing",
@@ -264,7 +318,11 @@
             "Russian KB Swing",
             "KB Deadlift"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "kb"
         },
         {
           "name": "Overhead Lunge",
@@ -281,7 +339,10 @@
             "Front Rack Lunge",
             "Walking Lunge"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "Overhead Squat",
@@ -298,7 +359,11 @@
             "Snatch Balance",
             "Front Squat"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "squat_bar"
         },
         {
           "name": "Power Clean",
@@ -314,7 +379,11 @@
             "Hang Power Clean",
             "DB Clean"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "clean"
         },
         {
           "name": "Push Jerk",
@@ -330,7 +399,11 @@
             "Push Press",
             "DB Push Jerk"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "jerk"
         },
         {
           "name": "Push Press",
@@ -347,7 +420,11 @@
             "Strict Press",
             "DB Push Press"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "jerk"
         },
         {
           "name": "Romanian Deadlift",
@@ -364,7 +441,11 @@
             "Good Morning",
             "Stiff-leg Deadlift"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "deadlift"
         },
         {
           "name": "Split Jerk",
@@ -381,7 +462,11 @@
             "Push Jerk",
             "DB Split Jerk"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "jerk"
         },
         {
           "name": "Sumo Deadlift",
@@ -396,7 +481,11 @@
           "subs": [
             "Conventional Deadlift"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "deadlift"
         },
         {
           "name": "Thruster",
@@ -412,7 +501,11 @@
             "DB Thruster",
             "Front Squat + Push Press"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "thrust"
         },
         {
           "name": "Hang Power Snatch",
@@ -427,7 +520,11 @@
           "subs": [
             "DB Hang Power Snatch"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "snatch"
         },
         {
           "name": "Hang Snatch",
@@ -442,7 +539,11 @@
           "subs": [
             "Hang Power Snatch"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "snatch"
         },
         {
           "name": "Hang Squat Clean",
@@ -457,7 +558,11 @@
           "subs": [
             "Hang Power Clean"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "clean"
         },
         {
           "name": "KB Snatch",
@@ -473,7 +578,11 @@
           "subs": [
             "KB Swing"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "kb"
         },
         {
           "name": "Power Snatch",
@@ -489,7 +598,11 @@
             "Hang Power Snatch",
             "DB Power Snatch"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "snatch"
         },
         {
           "name": "Snatch",
@@ -505,7 +618,11 @@
             "Hang Power Snatch",
             "DB Snatch"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "snatch"
         },
         {
           "name": "Squat Clean",
@@ -521,7 +638,11 @@
             "Hang Power Clean",
             "Power Clean"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "clean"
         },
         {
           "name": "Squat Snatch",
@@ -537,7 +658,11 @@
             "Hang Power Snatch",
             "Squat Clean + Push Jerk"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "snatch"
         },
         {
           "name": "Clean",
@@ -554,7 +679,11 @@
             "Hang Power Clean",
             "Hip Clean"
           ],
-          "source_count": 1
+          "source_count": 1,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "clean"
         }
       ],
       "mastered_names": [
@@ -586,7 +715,11 @@
             "Box Squat",
             "Squat to Bench"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "squat_bw"
         },
         {
           "name": "Arch Hold",
@@ -602,7 +735,10 @@
           "subs": [
             "Superman"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "Bear Crawl",
@@ -615,7 +751,10 @@
           "max_points": 1,
           "category": "Gymnastics",
           "subs": [],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "Box Jump",
@@ -632,7 +771,11 @@
             "Box Step-up",
             "Lower Box Jump"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "jump"
         },
         {
           "name": "Box Step-up",
@@ -647,7 +790,11 @@
           "subs": [
             "Lunge"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "jump"
         },
         {
           "name": "Hand Release Push-up",
@@ -660,7 +807,11 @@
           "subs": [
             "Push-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "pushup"
         },
         {
           "name": "Hanging Knee Raise",
@@ -675,7 +826,11 @@
           "subs": [
             "Lying Leg Raise"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "core"
         },
         {
           "name": "Hollow Hold",
@@ -692,7 +847,10 @@
             "Dead Bug",
             "Hollow Rock"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "Inchworm",
@@ -703,7 +861,10 @@
           "max_points": 1,
           "category": "Gymnastics",
           "subs": [],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "Jumping Pull-up",
@@ -718,7 +879,11 @@
           "subs": [
             "Ring Row"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "pullup"
         },
         {
           "name": "Jumping Ring Dip",
@@ -731,7 +896,11 @@
           "subs": [
             "Push-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "muscleup"
         },
         {
           "name": "Knee Push-up",
@@ -744,7 +913,11 @@
           "max_points": 1,
           "category": "Gymnastics",
           "subs": [],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "pushup"
         },
         {
           "name": "Lunge",
@@ -761,7 +934,11 @@
             "Reverse Lunge",
             "Step-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "squat_bw"
         },
         {
           "name": "Lying Leg Raise",
@@ -775,7 +952,11 @@
           "max_points": 1,
           "category": "Gymnastics",
           "subs": [],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "core"
         },
         {
           "name": "Plank",
@@ -790,7 +971,10 @@
           "subs": [
             "Knee Plank"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "Push-up",
@@ -807,7 +991,11 @@
             "Knee Push-up",
             "Box Push-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "pushup"
         },
         {
           "name": "Ring Row",
@@ -823,7 +1011,11 @@
             "Bent-over Row",
             "Inverted Row on Bar"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "pullup"
         },
         {
           "name": "Side Plank",
@@ -838,7 +1030,10 @@
           "subs": [
             "Knee Side Plank"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "Sit-up",
@@ -855,7 +1050,11 @@
             "Crunch",
             "Anchored Sit-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "core"
         },
         {
           "name": "Step-up",
@@ -870,7 +1069,11 @@
           "subs": [
             "Lunge"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "jump"
         },
         {
           "name": "Superman",
@@ -883,7 +1086,10 @@
           "max_points": 1,
           "category": "Gymnastics",
           "subs": [],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "Walking Lunge",
@@ -898,7 +1104,11 @@
           "subs": [
             "Lunge"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "squat_bw"
         },
         {
           "name": "Box Jump Over",
@@ -914,7 +1124,11 @@
           "subs": [
             "Box Jump"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "jump"
         },
         {
           "name": "Box Pistol",
@@ -929,7 +1143,11 @@
           "subs": [
             "Air Squat (single leg)"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "squat_bw"
         },
         {
           "name": "Dip",
@@ -947,7 +1165,11 @@
             "Banded Dip",
             "Push-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "dip"
         },
         {
           "name": "GHD Sit-up",
@@ -964,7 +1186,11 @@
             "Sit-up",
             "V-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "core"
         },
         {
           "name": "Hollow Rock",
@@ -977,7 +1203,10 @@
           "subs": [
             "Hollow Hold"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "Kipping Pull-up",
@@ -994,7 +1223,11 @@
             "Strict Pull-up",
             "Banded Pull-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "pullup"
         },
         {
           "name": "Knees-to-Elbows",
@@ -1012,7 +1245,11 @@
             "Hanging Knee Raise",
             "Toes-to-Bar"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "core"
         },
         {
           "name": "Pike Push-up",
@@ -1028,7 +1265,11 @@
             "Push-up",
             "Box Pike Push-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "pushup"
         },
         {
           "name": "Pull-up",
@@ -1046,7 +1287,11 @@
             "Ring Row",
             "Banded Pull-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "pullup"
         },
         {
           "name": "Renegade Row",
@@ -1059,7 +1304,10 @@
           "subs": [
             "Plank + DB Row"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "V-up",
@@ -1074,7 +1322,11 @@
           "subs": [
             "Sit-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "core"
         },
         {
           "name": "Wall Handstand",
@@ -1089,7 +1341,11 @@
           "subs": [
             "Pike Hold"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "handstand"
         },
         {
           "name": "Wall Walk",
@@ -1105,7 +1361,11 @@
             "Bear Crawl",
             "Inchworm"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "handstand"
         },
         {
           "name": "Chest-to-Bar",
@@ -1122,7 +1382,11 @@
             "Kipping Pull-up",
             "Pull-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "pullup"
         },
         {
           "name": "HSPU",
@@ -1140,7 +1404,11 @@
             "Pike Push-up",
             "DB Press"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "pushup"
         },
         {
           "name": "Handstand Hold",
@@ -1156,7 +1424,11 @@
             "Wall Handstand",
             "Plank"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "handstand"
         },
         {
           "name": "Kipping Muscle-up",
@@ -1173,7 +1445,11 @@
             "Strict MU",
             "Chest-to-Bar + Dip"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "muscleup"
         },
         {
           "name": "Muscle-up",
@@ -1190,7 +1466,11 @@
             "Kipping MU",
             "Chest-to-Bar + Dip"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "muscleup"
         },
         {
           "name": "Pistol",
@@ -1207,7 +1487,11 @@
             "Box Pistol",
             "Banded Pistol"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "squat_bw"
         },
         {
           "name": "Ring Dip",
@@ -1223,7 +1507,11 @@
             "Bar Dip",
             "Banded Ring Dip"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "dip"
         },
         {
           "name": "Strict HSPU",
@@ -1239,7 +1527,11 @@
             "Pike Push-up",
             "DB Press"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "pushup"
         },
         {
           "name": "Strict Pull-up",
@@ -1255,7 +1547,11 @@
             "Kipping Pull-up",
             "Banded Pull-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "pullup"
         },
         {
           "name": "Toes-to-Bar",
@@ -1272,7 +1568,11 @@
             "Knees-to-Elbows",
             "Hanging Knee Raise"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "core"
         },
         {
           "name": "Butterfly Pull-up",
@@ -1287,7 +1587,11 @@
           "subs": [
             "Kipping Pull-up"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "pullup"
         },
         {
           "name": "Handstand Walk",
@@ -1304,7 +1608,11 @@
             "Wall Walk",
             "Bear Crawl"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "handstand"
         },
         {
           "name": "Ring Muscle-up",
@@ -1321,7 +1629,11 @@
             "Bar MU",
             "Ring Row → Dip"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "muscleup"
         },
         {
           "name": "Strict Muscle-up",
@@ -1338,7 +1650,11 @@
             "Kipping MU",
             "Band-assisted MU"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "muscleup"
         }
       ],
       "mastered_names": []
@@ -1363,7 +1679,11 @@
           "max_points": 1,
           "category": "Metcon",
           "subs": [],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "wallball"
         },
         {
           "name": "Burpee",
@@ -1379,7 +1699,11 @@
             "Step-back Burpee",
             "Up-down"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "burpee"
         },
         {
           "name": "Medicine Ball Clean",
@@ -1395,7 +1719,11 @@
           "subs": [
             "Wall Ball"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "clean"
         },
         {
           "name": "Up-down",
@@ -1410,7 +1738,11 @@
           "subs": [
             "Burpee"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "burpee"
         },
         {
           "name": "Wall Ball",
@@ -1427,7 +1759,11 @@
             "Sit-up + Goblet Squat",
             "MB Clean"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "wallball"
         },
         {
           "name": "Devil Press",
@@ -1442,7 +1778,11 @@
           "subs": [
             "Burpee + DB Snatch"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "burpee"
         },
         {
           "name": "Man Maker",
@@ -1455,7 +1795,10 @@
           "subs": [
             "Burpee + DB Renegade Row"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         }
       ],
       "mastered_names": []
@@ -1482,7 +1825,10 @@
           "max_points": 1,
           "category": "Monostructural",
           "subs": [],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "Rope Jump",
@@ -1497,7 +1843,11 @@
           "max_points": 1,
           "category": "Monostructural",
           "subs": [],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "rope"
         },
         {
           "name": "Row",
@@ -1512,7 +1862,10 @@
           "max_points": 1,
           "category": "Monostructural",
           "subs": [],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "Run",
@@ -1528,7 +1881,11 @@
           "subs": [
             "Walk"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "run"
         },
         {
           "name": "Skierg",
@@ -1542,7 +1899,10 @@
           "max_points": 1,
           "category": "Monostructural",
           "subs": [],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "Walk",
@@ -1556,7 +1916,11 @@
           "max_points": 1,
           "category": "Monostructural",
           "subs": [],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "run"
         },
         {
           "name": "Double Under",
@@ -1573,7 +1937,11 @@
             "Single Under",
             "Rope Jump"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "rope"
         },
         {
           "name": "Swim",
@@ -1587,7 +1955,10 @@
           "max_points": 3,
           "category": "Monostructural",
           "subs": [],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": []
         },
         {
           "name": "Triple Under",
@@ -1602,11 +1973,1213 @@
           "subs": [
             "Double Under"
           ],
-          "source_count": 0
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "series": "rope"
         }
       ],
       "mastered_names": []
     }
+  ],
+  "series": [
+    {
+      "key": "clean",
+      "label": "翻站系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Medicine Ball Clean",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Wall Ball"
+          ]
+        },
+        {
+          "name": "DB Clean",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "KB Swing"
+          ]
+        },
+        {
+          "name": "Hang Power Clean",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "DB Hang Power Clean"
+          ]
+        },
+        {
+          "name": "Power Clean",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Hang Power Clean",
+            "DB Clean"
+          ]
+        },
+        {
+          "name": "Hang Clean",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Hang Power Clean",
+            "DB Clean"
+          ]
+        },
+        {
+          "name": "Clean",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": false,
+          "subs": [
+            "DB Clean",
+            "Hang Power Clean",
+            "Hip Clean"
+          ]
+        },
+        {
+          "name": "Hang Squat Clean",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Hang Power Clean"
+          ]
+        },
+        {
+          "name": "Squat Clean",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Hang Power Clean",
+            "Power Clean"
+          ]
+        }
+      ],
+      "frontier": 6,
+      "next_move": "Hang Squat Clean",
+      "user_score": 3,
+      "max_score": 26,
+      "percent": 11.5
+    },
+    {
+      "key": "pullup",
+      "label": "引体系",
+      "category": "Gymnastics",
+      "label_zh": "体操 Gymnastics",
+      "chain": [
+        {
+          "name": "Ring Row",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Bent-over Row",
+            "Inverted Row on Bar"
+          ]
+        },
+        {
+          "name": "Jumping Pull-up",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Ring Row"
+          ]
+        },
+        {
+          "name": "Kipping Pull-up",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Strict Pull-up",
+            "Banded Pull-up"
+          ]
+        },
+        {
+          "name": "Pull-up",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Jumping Pull-up",
+            "Ring Row",
+            "Banded Pull-up"
+          ]
+        },
+        {
+          "name": "Strict Pull-up",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Kipping Pull-up",
+            "Banded Pull-up"
+          ]
+        },
+        {
+          "name": "Chest-to-Bar",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Kipping Pull-up",
+            "Pull-up"
+          ]
+        },
+        {
+          "name": "Butterfly Pull-up",
+          "level": 4,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Kipping Pull-up"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Ring Row",
+      "user_score": 0,
+      "max_score": 30,
+      "percent": 0.0
+    },
+    {
+      "key": "muscleup",
+      "label": "肌肉系",
+      "category": "Gymnastics",
+      "label_zh": "体操 Gymnastics",
+      "chain": [
+        {
+          "name": "Jumping Pull-up",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Ring Row"
+          ]
+        },
+        {
+          "name": "Jumping Ring Dip",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Push-up"
+          ]
+        },
+        {
+          "name": "Kipping Muscle-up",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Strict MU",
+            "Chest-to-Bar + Dip"
+          ]
+        },
+        {
+          "name": "Muscle-up",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Kipping MU",
+            "Chest-to-Bar + Dip"
+          ]
+        },
+        {
+          "name": "Strict Muscle-up",
+          "level": 4,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Kipping MU",
+            "Band-assisted MU"
+          ]
+        },
+        {
+          "name": "Ring Muscle-up",
+          "level": 4,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Bar MU",
+            "Ring Row → Dip"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Jumping Pull-up",
+      "user_score": 0,
+      "max_score": 34,
+      "percent": 0.0
+    },
+    {
+      "key": "dip",
+      "label": "臂屈伸系",
+      "category": "Gymnastics",
+      "label_zh": "体操 Gymnastics",
+      "chain": [
+        {
+          "name": "Jumping Ring Dip",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Push-up"
+          ]
+        },
+        {
+          "name": "Dip",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Box Dip",
+            "Banded Dip",
+            "Push-up"
+          ]
+        },
+        {
+          "name": "Ring Dip",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Bar Dip",
+            "Banded Ring Dip"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Jumping Ring Dip",
+      "user_score": 0,
+      "max_score": 10,
+      "percent": 0.0
+    },
+    {
+      "key": "pushup",
+      "label": "推撑系",
+      "category": "Gymnastics",
+      "label_zh": "体操 Gymnastics",
+      "chain": [
+        {
+          "name": "Knee Push-up",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": []
+        },
+        {
+          "name": "Push-up",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Knee Push-up",
+            "Box Push-up"
+          ]
+        },
+        {
+          "name": "Hand Release Push-up",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Push-up"
+          ]
+        },
+        {
+          "name": "Pike Push-up",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Push-up",
+            "Box Pike Push-up"
+          ]
+        },
+        {
+          "name": "HSPU",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Strict HSPU",
+            "Pike Push-up",
+            "DB Press"
+          ]
+        },
+        {
+          "name": "Strict HSPU",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Pike Push-up",
+            "DB Press"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Knee Push-up",
+      "user_score": 0,
+      "max_score": 18,
+      "percent": 0.0
+    },
+    {
+      "key": "handstand",
+      "label": "倒立系",
+      "category": "Gymnastics",
+      "label_zh": "体操 Gymnastics",
+      "chain": [
+        {
+          "name": "Wall Walk",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Bear Crawl",
+            "Inchworm"
+          ]
+        },
+        {
+          "name": "Wall Handstand",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Pike Hold"
+          ]
+        },
+        {
+          "name": "Handstand Hold",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Wall Handstand",
+            "Plank"
+          ]
+        },
+        {
+          "name": "Handstand Walk",
+          "level": 4,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Wall Walk",
+            "Bear Crawl"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Wall Walk",
+      "user_score": 0,
+      "max_score": 22,
+      "percent": 0.0
+    },
+    {
+      "key": "core",
+      "label": "核心系",
+      "category": "Gymnastics",
+      "label_zh": "体操 Gymnastics",
+      "chain": [
+        {
+          "name": "Lying Leg Raise",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": []
+        },
+        {
+          "name": "Hanging Knee Raise",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Lying Leg Raise"
+          ]
+        },
+        {
+          "name": "Sit-up",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Crunch",
+            "Anchored Sit-up"
+          ]
+        },
+        {
+          "name": "V-up",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Sit-up"
+          ]
+        },
+        {
+          "name": "GHD Sit-up",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Sit-up",
+            "V-up"
+          ]
+        },
+        {
+          "name": "Knees-to-Elbows",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Hanging Knee Raise",
+            "Toes-to-Bar"
+          ]
+        },
+        {
+          "name": "Toes-to-Bar",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Knees-to-Elbows",
+            "Hanging Knee Raise"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Lying Leg Raise",
+      "user_score": 0,
+      "max_score": 18,
+      "percent": 0.0
+    },
+    {
+      "key": "squat_bw",
+      "label": "自重蹲系",
+      "category": "Gymnastics",
+      "label_zh": "体操 Gymnastics",
+      "chain": [
+        {
+          "name": "Air Squat",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Box Squat",
+            "Squat to Bench"
+          ]
+        },
+        {
+          "name": "Lunge",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Reverse Lunge",
+            "Step-up"
+          ]
+        },
+        {
+          "name": "Walking Lunge",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Lunge"
+          ]
+        },
+        {
+          "name": "Box Pistol",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Air Squat (single leg)"
+          ]
+        },
+        {
+          "name": "Pistol",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Box Pistol",
+            "Banded Pistol"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Air Squat",
+      "user_score": 0,
+      "max_score": 12,
+      "percent": 0.0
+    },
+    {
+      "key": "squat_bar",
+      "label": "杠铃蹲系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Goblet Squat",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Air Squat",
+            "Front Squat with 2 DBs"
+          ]
+        },
+        {
+          "name": "Back Squat",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Goblet Squat",
+            "Front Squat"
+          ]
+        },
+        {
+          "name": "Front Squat",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Front Squat with 2 DBs",
+            "Goblet Squat"
+          ]
+        },
+        {
+          "name": "Overhead Squat",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Snatch Balance",
+            "Front Squat"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Goblet Squat",
+      "user_score": 0,
+      "max_score": 10,
+      "percent": 0.0
+    },
+    {
+      "key": "snatch",
+      "label": "抓举系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "DB Snatch",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "DB Swing",
+            "DB Clean"
+          ]
+        },
+        {
+          "name": "Hang Power Snatch",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "DB Hang Power Snatch"
+          ]
+        },
+        {
+          "name": "Power Snatch",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Hang Power Snatch",
+            "DB Power Snatch"
+          ]
+        },
+        {
+          "name": "Hang Snatch",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Hang Power Snatch"
+          ]
+        },
+        {
+          "name": "Snatch",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Hang Power Snatch",
+            "DB Snatch"
+          ]
+        },
+        {
+          "name": "Squat Snatch",
+          "level": 4,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Hang Power Snatch",
+            "Squat Clean + Push Jerk"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "DB Snatch",
+      "user_score": 0,
+      "max_score": 37,
+      "percent": 0.0
+    },
+    {
+      "key": "jerk",
+      "label": "上挺系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Push Press",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Strict Press",
+            "DB Push Press"
+          ]
+        },
+        {
+          "name": "Push Jerk",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Push Press",
+            "DB Push Jerk"
+          ]
+        },
+        {
+          "name": "Split Jerk",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Push Jerk",
+            "DB Split Jerk"
+          ]
+        },
+        {
+          "name": "DB Clean & Jerk",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "DB Clean",
+            "DB Jerk"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Push Press",
+      "user_score": 0,
+      "max_score": 12,
+      "percent": 0.0
+    },
+    {
+      "key": "press",
+      "label": "推举系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Strict Press",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "DB Shoulder Press",
+            "Push Press"
+          ]
+        },
+        {
+          "name": "Push Press",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Strict Press",
+            "DB Push Press"
+          ]
+        },
+        {
+          "name": "Push Jerk",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Push Press",
+            "DB Push Jerk"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Strict Press",
+      "user_score": 0,
+      "max_score": 7,
+      "percent": 0.0
+    },
+    {
+      "key": "deadlift",
+      "label": "硬拉系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Romanian Deadlift",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Good Morning",
+            "Stiff-leg Deadlift"
+          ]
+        },
+        {
+          "name": "Deadlift",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Romanian Deadlift",
+            "Sumo Deadlift"
+          ]
+        },
+        {
+          "name": "Sumo Deadlift",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Conventional Deadlift"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Romanian Deadlift",
+      "user_score": 0,
+      "max_score": 9,
+      "percent": 0.0
+    },
+    {
+      "key": "kb",
+      "label": "壶铃系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Russian KB Swing",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "KB Deadlift"
+          ]
+        },
+        {
+          "name": "KB Swing",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Russian KB Swing",
+            "KB Deadlift"
+          ]
+        },
+        {
+          "name": "KB Snatch",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "KB Swing"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Russian KB Swing",
+      "user_score": 0,
+      "max_score": 10,
+      "percent": 0.0
+    },
+    {
+      "key": "thrust",
+      "label": "蹲推系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Goblet Squat",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Air Squat",
+            "Front Squat with 2 DBs"
+          ]
+        },
+        {
+          "name": "DB Thruster",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Goblet Squat + DB Press"
+          ]
+        },
+        {
+          "name": "Thruster",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "DB Thruster",
+            "Front Squat + Push Press"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Goblet Squat",
+      "user_score": 0,
+      "max_score": 7,
+      "percent": 0.0
+    },
+    {
+      "key": "burpee",
+      "label": "波比系",
+      "category": "Metcon",
+      "label_zh": "Metcon 组合",
+      "chain": [
+        {
+          "name": "Up-down",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Burpee"
+          ]
+        },
+        {
+          "name": "Burpee",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Step-back Burpee",
+            "Up-down"
+          ]
+        },
+        {
+          "name": "Devil Press",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Burpee + DB Snatch"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Up-down",
+      "user_score": 0,
+      "max_score": 8,
+      "percent": 0.0
+    },
+    {
+      "key": "wallball",
+      "label": "药球系",
+      "category": "Metcon",
+      "label_zh": "Metcon 组合",
+      "chain": [
+        {
+          "name": "Wall Ball",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Sit-up + Goblet Squat",
+            "MB Clean"
+          ]
+        },
+        {
+          "name": "Ball Slam",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": []
+        },
+        {
+          "name": "Medicine Ball Clean",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Wall Ball"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Wall Ball",
+      "user_score": 0,
+      "max_score": 3,
+      "percent": 0.0
+    },
+    {
+      "key": "jump",
+      "label": "跳箱系",
+      "category": "Gymnastics",
+      "label_zh": "体操 Gymnastics",
+      "chain": [
+        {
+          "name": "Box Step-up",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Lunge"
+          ]
+        },
+        {
+          "name": "Step-up",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Lunge"
+          ]
+        },
+        {
+          "name": "Box Jump",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Box Step-up",
+            "Lower Box Jump"
+          ]
+        },
+        {
+          "name": "Box Jump Over",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Box Jump"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Box Step-up",
+      "user_score": 0,
+      "max_score": 6,
+      "percent": 0.0
+    },
+    {
+      "key": "rope",
+      "label": "跳绳系",
+      "category": "Monostructural",
+      "label_zh": "单结构 Mono",
+      "chain": [
+        {
+          "name": "Rope Jump",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": []
+        },
+        {
+          "name": "Double Under",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Single Under",
+            "Rope Jump"
+          ]
+        },
+        {
+          "name": "Triple Under",
+          "level": 4,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Double Under"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Rope Jump",
+      "user_score": 0,
+      "max_score": 14,
+      "percent": 0.0
+    },
+    {
+      "key": "run",
+      "label": "跑走系",
+      "category": "Monostructural",
+      "label_zh": "单结构 Mono",
+      "chain": [
+        {
+          "name": "Walk",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": []
+        },
+        {
+          "name": "Run",
+          "level": 1,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Walk"
+          ]
+        }
+      ],
+      "frontier": 0,
+      "next_move": "Walk",
+      "user_score": 0,
+      "max_score": 2,
+      "percent": 0.0
+    }
+  ],
+  "standalone": [
+    "Arch Hold",
+    "Bear Crawl",
+    "Hollow Hold",
+    "Inchworm",
+    "Plank",
+    "Side Plank",
+    "Superman",
+    "Hollow Rock",
+    "Renegade Row",
+    "Bench Press",
+    "Good Morning",
+    "Overhead Lunge",
+    "Man Maker",
+    "Bike",
+    "Row",
+    "Skierg",
+    "Swim"
   ],
   "rules": {
     "L1": "在 classes/extras/prs 任一表里出现过动作名（基础）",
