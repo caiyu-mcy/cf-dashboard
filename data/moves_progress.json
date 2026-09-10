@@ -1,21 +1,21 @@
 {
-  "synced_at": "2026-09-10T17:36:31",
+  "synced_at": "2026-09-10T18:05:53",
   "days_back": 180,
   "totals": {
-    "user_score": 63,
+    "user_score": 66,
     "max_score": 317,
-    "percent": 19.9,
-    "mastered_count": 23,
+    "percent": 20.8,
+    "mastered_count": 24,
     "total_moves": 98
   },
   "categories": [
     {
       "key": "Weightlifting",
       "label_zh": "举重 Weightlifting",
-      "user_score": 62,
+      "user_score": 65,
       "max_score": 117,
-      "percent": 53.0,
-      "mastered_count": 22,
+      "percent": 55.6,
+      "mastered_count": 23,
       "total_moves": 33,
       "moves": [
         {
@@ -78,37 +78,6 @@
           ],
           "demo": "https://www.youtube.com/results?search_query=crossfit+Overhead+Squat+technique",
           "series": "squat_bar"
-        },
-        {
-          "name": "Romanian Deadlift",
-          "aliases_top3": [
-            "RDL",
-            "罗马尼亚硬拉"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "Good Morning",
-            "Stiff-leg Deadlift"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "cues": [
-            "膝微屈固定，髋向后做铰链",
-            "杠贴大腿下滑至膝下/胫中",
-            "腘绳肌拉长有感即回拉，腰背平直"
-          ],
-          "errors": [
-            "变成蹲（膝一直弯）",
-            "杠离身太远腰受剪切力"
-          ],
-          "demo": "https://www.youtube.com/results?search_query=crossfit+Romanian+Deadlift+technique",
-          "series": "deadlift"
         },
         {
           "name": "Split Jerk",
@@ -966,6 +935,39 @@
           "series": "jerk"
         },
         {
+          "name": "Romanian Deadlift",
+          "aliases_top3": [
+            "RDL",
+            "罗马尼亚硬拉"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Good Morning",
+            "Stiff-leg Deadlift"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuOieOFpXMA",
+          "manual_record_ids": [
+            "recvuOieOFpXMA"
+          ],
+          "cues": [
+            "膝微屈固定，髋向后做铰链",
+            "杠贴大腿下滑至膝下/胫中",
+            "腘绳肌拉长有感即回拉，腰背平直"
+          ],
+          "errors": [
+            "变成蹲（膝一直弯）",
+            "杠离身太远腰受剪切力"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Romanian+Deadlift+technique",
+          "series": "deadlift"
+        },
+        {
           "name": "Sumo Deadlift",
           "aliases_top3": [
             "相扑硬拉"
@@ -1065,6 +1067,7 @@
         "Back Squat",
         "Deadlift",
         "Sumo Deadlift",
+        "Romanian Deadlift",
         "Push Press",
         "Push Jerk",
         "Strict Press",
@@ -3077,6 +3080,51 @@
       "percent": 100.0
     },
     {
+      "key": "deadlift",
+      "label": "硬拉系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Romanian Deadlift",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Good Morning",
+            "Stiff-leg Deadlift"
+          ]
+        },
+        {
+          "name": "Deadlift",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Romanian Deadlift",
+            "Sumo Deadlift"
+          ]
+        },
+        {
+          "name": "Sumo Deadlift",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Conventional Deadlift"
+          ]
+        }
+      ],
+      "frontier": 3,
+      "next_move": null,
+      "user_score": 9,
+      "max_score": 9,
+      "percent": 100.0
+    },
+    {
       "key": "clean",
       "label": "翻站系",
       "category": "Weightlifting",
@@ -3287,51 +3335,6 @@
       "user_score": 7,
       "max_score": 10,
       "percent": 70.0
-    },
-    {
-      "key": "deadlift",
-      "label": "硬拉系",
-      "category": "Weightlifting",
-      "label_zh": "举重 Weightlifting",
-      "chain": [
-        {
-          "name": "Romanian Deadlift",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Good Morning",
-            "Stiff-leg Deadlift"
-          ]
-        },
-        {
-          "name": "Deadlift",
-          "level": 2,
-          "earned_level": 2,
-          "mastered": true,
-          "manual": true,
-          "subs": [
-            "Romanian Deadlift",
-            "Sumo Deadlift"
-          ]
-        },
-        {
-          "name": "Sumo Deadlift",
-          "level": 2,
-          "earned_level": 2,
-          "mastered": true,
-          "manual": true,
-          "subs": [
-            "Conventional Deadlift"
-          ]
-        }
-      ],
-      "frontier": 3,
-      "next_move": null,
-      "user_score": 6,
-      "max_score": 9,
-      "percent": 66.7
     },
     {
       "key": "thrust",

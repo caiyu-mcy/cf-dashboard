@@ -57,6 +57,11 @@
   .tag-gym { background: #e4e4e7; color: #3f3f46; }
   .tag-cardio { background: #f4f4f5; color: #71717a; }
   .empty { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; }
+  .pr-row { cursor: pointer; transition: background .12s; }
+  .pr-row:hover { background: var(--bg); }
+  .pr-up { color: var(--ok); font-weight: 600; font-size: 13px; }
+  .pr-down { color: #dc2626; font-weight: 600; font-size: 13px; }
+  .pr-chart-box { background: var(--bg); border-bottom: 1px solid var(--line); padding: 4px 12px; }
   .empty .icon { font-size: 36px; margin-bottom: 8px; }
   button.primary, button.ghost { border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; transition: all .15s; }
   button.primary { background: var(--brand); color: white; }
@@ -255,9 +260,10 @@
       <button class="primary" onclick="openForm('pr')">＋ 记录新 PR</button>
     </div>
     <table style="margin-top:14px">
-      <thead><tr><th>达成日期</th><th>动作</th><th>PR</th><th>上次 PR</th><th>备注</th></tr></thead>
-      <tbody id="prBody"><tr><td colspan="5" class="empty">还没有 PR 记录。点右上"记录新 PR"开始。</td></tr></tbody>
+      <thead><tr><th>动作</th><th>当前 PR</th><th>上次 PR</th><th>涨幅</th><th>最近达成</th><th>备注</th></tr></thead>
+      <tbody id="prBody"><tr><td colspan="6" class="empty">还没有 PR 记录。点右上"记录新 PR"开始。</td></tr></tbody>
     </table>
+    <p class="help" style="margin-top:8px">按动作汇总；点击行展开该动作的 PR 趋势图（≥2 个数据点时可用）</p>
   </div>
 </section>
 
@@ -1564,13 +1570,101 @@ function renderExtras() {
 }
 function renderPRs() {
   document.getElementById('prCount').textContent = `${DATA.prs.length} 条`;
-  document.getElementById('prBody').innerHTML = DATA.prs.length ?
-    DATA.prs.slice().sort(byDateDesc('达成日期')).map(p => {
-      const unit = p.单位 || '';
-      const val = p['PR 重量/次数'] != null ? `${p['PR 重量/次数']}${unit}` : '—';
-      const prev = p['上次 PR'] != null ? `${p['上次 PR']}${unit}` : '—';
-      return `<tr><td>${fmtDate(p.达成日期)}</td><td>${p.动作||'—'}</td><td><strong>${val}</strong></td><td>${prev}</td><td>${(p.备注||'').slice(0,30)}</td></tr>`;
-    }).join('') : '<tr><td colspan="5" class="empty">还没有 PR 记录。点右上"记录新 PR"开始。<br><br>💡 想要历史 PR？告诉我你的 Big 3 / Olympic / Gymnastics 数字，我帮你批量导入。</td></tr>';
+  const body = document.getElementById('prBody');
+  if (!DATA.prs.length) {
+    body.innerHTML = '<tr><td colspan="6" class="empty">还没有 PR 记录。点右上"记录新 PR"开始。<br><br>💡 想要历史 PR？告诉我你的 Big 3 / Olympic / Gymnastics 数字，我帮你批量导入。</td></tr>';
+    return;
+  }
+  // 按动作分组，组内按日期倒序（最新在前）
+  const groups = {};
+  for (const p of DATA.prs) { const n = (p.动作 || '未命名').trim(); (groups[n] = groups[n] || []).push(p); }
+  _prGroups = Object.entries(groups).map(([name, recs]) => ({ name, recs: recs.slice().sort(byDateDesc('达成日期')) }))
+    .sort((a, b) => String(fmtDate(a.recs[0].达成日期)).localeCompare(String(fmtDate(b.recs[0].达成日期))));
+
+  body.innerHTML = _prGroups.map((g, i) => {
+    const cur = g.recs[0];
+    const unit = cur.单位 || '';
+    const curV = _prNum(cur['PR 重量/次数']);
+    const prevRaw = (cur['上次 PR'] != null && cur['上次 PR'] !== '') ? cur['上次 PR'] : (g.recs[1] ? g.recs[1]['PR 重量/次数'] : null);
+    const prevV = _prNum(prevRaw);
+    const delta = (curV != null && prevV != null) ? curV - prevV : null;
+    const deltaHtml = delta == null ? '<span class="label">—</span>'
+      : delta > 0 ? `<span class="pr-up">▲ +${delta}${unit}</span>`
+      : delta < 0 ? `<span class="pr-down">▼ ${delta}${unit}</span>`
+      : '<span class="label">=</span>';
+    const pts = _prPoints(g);
+    const hint = pts.length >= 2 ? '📈' : '';
+    return `<tr class="pr-row" onclick="togglePrChart(${i})">
+        <td><strong>${_prEsc(g.name)}</strong> <span class="label" style="font-size:11px">×${g.recs.length}</span></td>
+        <td><strong>${curV != null ? curV + unit : (cur['PR 重量/次数'] || '—')}</strong></td>
+        <td>${prevV != null ? prevV + unit : (prevRaw != null ? prevRaw : '—')}</td>
+        <td>${deltaHtml}</td>
+        <td>${fmtDate(cur.达成日期)}</td>
+        <td class="label">${(cur.备注 || '').slice(0, 24)} ${hint}</td>
+      </tr><tr id="prchart-${i}" style="display:none"><td colspan="6" style="padding:0"><div class="pr-chart-box"></div></td></tr>`;
+  }).join('');
+}
+
+/* ─── PR 趋势图（表格行内展开） ─────────────────── */
+let _prGroups = [];
+const _prEsc = (s) => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const _prNum = (v) => { const n = parseFloat(String(v).replace(/[^\d.\-]/g, '')); return isNaN(n) ? null : n; };
+/* 历史数据点：每条记录的 PR 值 + 首条记录的「上次 PR」作为起点（空心点） */
+function _prPoints(g) {
+  const asc = g.recs.slice().reverse();
+  const pts = [];
+  for (let i = 0; i < asc.length; i++) {
+    const r = asc[i];
+    const v = _prNum(r['PR 重量/次数']);
+    const pv = _prNum(r['上次 PR']);
+    if (pv != null && (pts.length === 0 || pts[pts.length - 1].v !== pv))
+      pts.push({ d: i > 0 ? asc[i - 1].达成日期 : r.达成日期, v: pv, ghost: true });
+    if (v != null) pts.push({ d: r.达成日期, v });
+  }
+  return pts;
+}
+function togglePrChart(i) {
+  const tr = document.getElementById('prchart-' + i);
+  if (!tr) return;
+  const box = tr.querySelector('.pr-chart-box');
+  const show = tr.style.display === 'none';
+  tr.style.display = show ? '' : 'none';
+  if (show && !box.dataset.drawn) { drawPrChart(box, _prGroups[i]); box.dataset.drawn = '1'; }
+}
+function drawPrChart(box, g) {
+  const pts = _prPoints(g);
+  const unit = g.recs[0].单位 || '';
+  if (pts.length < 2) {
+    box.innerHTML = '<div class="help" style="padding:10px 4px">该动作只有 1 个数据点，再刷一次 PR 就能看到进步曲线 📈</div>';
+    return;
+  }
+  const W = 640, H = 180, P = { l: 54, r: 18, t: 30, b: 32 };
+  const vs = pts.map(p => p.v);
+  let vmin = Math.min(...vs), vmax = Math.max(...vs);
+  if (vmax === vmin) { vmax += 1; vmin -= 1; }
+  const pad = (vmax - vmin) * 0.18; vmax += pad; vmin -= pad;
+  const X = i => P.l + (W - P.l - P.r) * (i / (pts.length - 1));
+  const Y = v => P.t + (H - P.t - P.b) * (1 - (v - vmin) / (vmax - vmin));
+  let s = '';
+  for (let k = 0; k <= 2; k++) {          // 3 条横向网格 + Y 轴刻度
+    const v = vmin + (vmax - vmin) * k / 2, yy = Y(v);
+    s += `<line x1="${P.l}" y1="${yy}" x2="${W - P.r}" y2="${yy}" stroke="#e4e4e7" stroke-width="1"/>`;
+    s += `<text x="${P.l - 8}" y="${yy + 4}" text-anchor="end" font-size="11" fill="#71717a">${Math.round(v)}</text>`;
+  }
+  s += `<polyline points="${pts.map((p, i) => `${X(i)},${Y(p.v)}`).join(' ')}" fill="none" stroke="#18181b" stroke-width="2"/>`;
+  const showDate = pts.length > 8 ? 2 : 1;   // 点太多时隔一个显示日期
+  pts.forEach((p, i) => {
+    const x = X(i), y = Y(p.v);
+    s += p.ghost
+      ? `<circle cx="${x}" cy="${y}" r="4" fill="white" stroke="#71717a" stroke-width="1.5"/>`
+      : `<circle cx="${x}" cy="${y}" r="4.5" fill="#18181b"/>`;
+    s += `<text x="${x}" y="${y - 10}" text-anchor="middle" font-size="11" font-weight="600" fill="#18181b">${p.v}${unit}</text>`;
+    if (i % showDate === 0 || i === pts.length - 1) {
+      const d = fmtDate(p.d);
+      s += `<text x="${x}" y="${H - 10}" text-anchor="middle" font-size="10" fill="#71717a">${d.slice(5)}</text>`;
+    }
+  });
+  box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:720px;display:block;padding:6px 0">${s}</svg>`;
 }
 function renderBenchmarks() {
   document.getElementById('bmCount').textContent = `${DATA.benchmarks.length} 条`;
