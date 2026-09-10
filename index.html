@@ -94,6 +94,25 @@
   .advice-card { background: var(--card); border-left: 3px solid var(--brand); }
   .progress { background: #e4e4e7; border-radius: 999px; overflow: hidden; height: 6px; margin: 4px 0; }
   .progress > div { height: 100%; background: var(--brand); transition: width .4s; }
+  /* --- 动作解锁 Tab --- */
+  .move-group { margin-top: 12px; }
+  .move-group > summary { cursor: pointer; font-weight: 600; font-size: 13px; padding: 8px 12px; background: #f4f4f5; border-radius: 6px; user-select: none; list-style: none; }
+  .move-group > summary::-webkit-details-marker { display: none; }
+  .move-group > summary:before { content: '▸ '; color: #a1a1aa; margin-right: 4px; }
+  .move-group[open] > summary:before { content: '▾ '; color: var(--brand); }
+  .move-row { padding: 10px 14px; border-bottom: 1px solid #f4f4f5; font-size: 13px; }
+  .move-row.mastered { background: #f4f4f5; }
+  .move-row .move-head { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .move-row .move-name { font-weight: 600; color: var(--text); }
+  .move-row .alias { color: #a1a1aa; font-size: 12px; }
+  .move-row .lvl-badge { font-size: 11px; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+  .lvl-0 { background: #f4f4f5; color: #a1a1aa; }
+  .lvl-1 { background: #e4e4e7; color: #27272a; }
+  .lvl-2 { background: #d4d4d8; color: #27272a; }
+  .lvl-3 { background: #71717a; color: white; }
+  .lvl-4 { background: var(--brand); color: white; }
+  .move-row .subs { margin-top: 4px; padding-left: 4px; color: #52525b; font-size: 12px; }
+  .move-row .subs.empty { color: #a1a1aa; }
   .toast { position: fixed; bottom: 24px; right: 24px; background: var(--text); color: white; padding: 12px 18px; border-radius: 8px; font-size: 13px; box-shadow: var(--shadow); transform: translateY(80px); opacity: 0; transition: all .2s; z-index: 9999; }
   .toast.show { transform: none; opacity: 1; }
   .legend { display: flex; gap: 12px; font-size: 12px; color: var(--muted); margin-top: 8px; flex-wrap: wrap; }
@@ -299,6 +318,47 @@
   </div>
 </section>
 
+<section class="panel" data-panel="moves">
+  <div class="card" style="margin-bottom:16px">
+    <h3>🏋️ 动作解锁进度
+      <span class="badge" id="movesUpdatedAt">—</span>
+      <span class="badge" id="movesCoverage" style="margin-left:6px"></span>
+    </h3>
+    <div class="grid cols-3" style="margin-top:8px">
+      <div>
+        <div class="label">总进度</div>
+        <div class="kpi" id="movesTotalPercent">0<span class="unit">%</span></div>
+        <div class="label" id="movesTotalScore" style="font-size:12px">0 / 0 分</div>
+      </div>
+      <div>
+        <div class="label">已掌握动作</div>
+        <div class="kpi" id="movesTotalMastered">0<span class="unit">/ 0 个</span></div>
+        <div class="label" style="font-size:12px">含 L1~L4 全部命中</div>
+      </div>
+      <div>
+        <div class="label">规则简述</div>
+        <div style="font-size:12px;color:#71717a;line-height:1.6">
+          L1=1 分 · L2=3 分 · L3=6 分 · L4=10 分<br>
+          命中：PR / 加练 / 课程记录 / Benchmark<br>
+          <span id="movesRulesHint">窗口：近 180 天</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="movesCategories"></div>
+
+  <div class="card" style="margin-top:16px;background:#fafafa">
+    <h3>📝 解锁小贴士</h3>
+    <ul style="line-height:1.8;padding-left:20px;color:#52525b">
+      <li><b>把每条课程/加练的「动作清单」填一下</b>，下次同步时这些动作会自动进入「已掌握」列表。</li>
+      <li>OCR 识别的课表会被自动解析 — 每周拍照后查看本 Tab 即可。</li>
+      <li>对每个已掌握的动作，下方有「降阶建议」 — 学不会新动作时可以从降阶版练起。</li>
+      <li>L4 动作（如 Squat Snatch / Handstand Walk / Strict Ring MU）需要更多专项训练，按需请馆里教练指导。</li>
+    </ul>
+  </div>
+</section>
+
 </main>
 
 <!-- 通用表单弹窗 -->
@@ -371,6 +431,7 @@ const TABS = [
   { id:'benchmark', label:'💪 Benchmark' },
   { id:'checkin', label:'📍 馆打卡' },
   { id:'competition', label:'🏁 比赛' },
+  { id:'moves', label:'🏋️ 动作解锁' },
   { id:'advice', label:'🧠 智能建议' },
 ];
 const LS_KEY = 'cf_dashboard_local_v1';
@@ -601,7 +662,8 @@ async function flushPending(manual) {
 
 let DATA = {
   classes: [], extras: [], prs: [], benchmarks: [],
-  checkins: [], competitions: [], advice: [], schedules: [], coros: {}, summary: {}
+  checkins: [], competitions: [], advice: [], schedules: [], coros: {}, summary: {},
+  moves: { synced_at: '', totals: { user_score: 0, max_score: 0, percent: 0, mastered_count: 0, total_moves: 0 }, categories: [] },
 };
 let currentPanel = 'calendar';
 let currentForm = null;
@@ -635,6 +697,7 @@ async function loadAll() {
     schedules: 'data/schedules.json',
     coros: 'data/coros_kpi.json',
     summary: 'data/summary.json',
+    moves: 'data/moves_progress.json',
   };
   // 连得上同步服务就走实时接口（跨端同步的关键），否则退回 GitHub Pages 静态快照
   const base = await apiBase();
@@ -712,6 +775,7 @@ function showPanel(id) {
     case 'benchmark': renderBenchmarks(); break;
     case 'checkin': renderMap(); break;
     case 'competition': renderCompetitions(); break;
+    case 'moves': renderMoves(); break;
     case 'advice': renderAdvice(); break;
   }
 }
@@ -1584,6 +1648,76 @@ function renderMap() {
     });
     if (_mapMarkers.length) map.setFitView(_mapMarkers, false, [50, 50, 50, 50]);
   }, 80);
+}
+
+/* ─── 🏋️ 动作解锁 ───────────────────────────────── */
+function renderMoves() {
+  const M = DATA.moves;
+  // 顶部
+  if (!M || !M.totals) {
+    document.getElementById('movesTotalPercent').innerHTML = '—';
+    document.getElementById('movesTotalScore').textContent = '未生成';
+    document.getElementById('movesCategories').innerHTML = '<div class="help">动作进度 JSON 还没生成，跑一次 <code>python3 sync_all.py moves</code>。</div>';
+    return;
+  }
+  const t = M.totals;
+  document.getElementById('movesTotalPercent').innerHTML = t.percent + '<span class="unit">%</span>';
+  document.getElementById('movesTotalScore').textContent = `${t.user_score} / ${t.max_score} 分`;
+  document.getElementById('movesTotalMastered').innerHTML = t.mastered_count + '<span class="unit">/ ' + t.total_moves + ' 个</span>';
+  document.getElementById('movesUpdatedAt').textContent = M.synced_at ? '更新于 ' + new Date(M.synced_at).toLocaleString('zh-CN', {month:'numeric',day:'numeric',hour:'numeric',minute:'numeric'}) : '';
+  document.getElementById('movesCoverage').textContent = `窗口：近 ${M.days_back || 180} 天`;
+  document.getElementById('movesRulesHint').textContent = `窗口：近 ${M.days_back || 180} 天`;
+
+  // 分类渲染
+  const wrap = document.getElementById('movesCategories');
+  if (!M.categories || !M.categories.length) {
+    wrap.innerHTML = '<div class="help">暂无分类数据。</div>';
+    return;
+  }
+
+  const esc = (s) => String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const rowHtml = (m) => {
+    const lvl = m.earned_level;   // 0 = 未掌握
+    const cls = lvl ? 'mastered' : 'locked';
+    const lvBadge = lvl
+      ? `<span class="lvl-badge lvl-${lvl}">已 L${lvl}</span>`
+      : `<span class="lvl-badge lvl-0">未解锁</span>`;
+    const bench = lvl && lvl < m.level
+      ? `<span class="help" style="margin-left:6px">（基础已掌握，距 L${m.level} 还差专项）</span>`
+      : '';
+    const subs = m.subs && m.subs.length
+      ? `<div class="subs">降阶：${m.subs.map(s => esc(s)).join(' · ')}</div>`
+      : `<div class="subs empty">（已是 L${m.level} 基础动作）</div>`;
+    const alias = m.aliases_top3 && m.aliases_top3.length
+      ? `<span class="alias">${m.aliases_top3.map(esc).join(' · ')}</span>`
+      : '';
+    return `<div class="move-row ${cls}">
+      <div class="move-head">
+        <span class="move-name">${esc(m.name)}</span>
+        ${alias}
+        ${lvBadge}
+        ${bench}
+      </div>
+      ${subs}
+    </div>`;
+  };
+
+  wrap.innerHTML = M.categories.map(cat => {
+    const masteredHtml = cat.moves.filter(m => m.earned_level > 0).length
+      ? `<details class="move-group"><summary>✅ 已掌握 <b>${cat.mastered_count}</b> 个</summary>${cat.moves.filter(m=>m.earned_level>0).map(rowHtml).join('')}</details>`
+      : '';
+    return `<div class="card" style="margin-bottom:14px">
+      <h3 style="display:flex;align-items:center;justify-content:space-between">
+        <span>${esc(cat.label_zh)}</span>
+        <span style="font-size:13px;font-weight:normal;color:#71717a">${cat.user_score}/${cat.max_score} 分 · ${cat.mastered_count}/${cat.total_moves} 个</span>
+      </h3>
+      <div class="progress" style="margin-bottom:12px"><div style="width:${cat.percent}%"></div></div>
+      ${masteredHtml}
+      <details class="move-group" open><summary>📋 全部动作（共 ${cat.total_moves}，按"未掌握在前、已掌握在后"排序）</summary>
+        ${cat.moves.map(rowHtml).join('')}
+      </details>
+    </div>`;
+  }).join('');
 }
 
 /* ─── 智能分析 ─────────────────────────────────── */

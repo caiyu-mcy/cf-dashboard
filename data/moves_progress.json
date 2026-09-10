@@ -1,0 +1,1623 @@
+{
+  "synced_at": "2026-09-10T16:14:24",
+  "days_back": 180,
+  "totals": {
+    "user_score": 3,
+    "max_score": 317,
+    "percent": 0.9,
+    "mastered_count": 1,
+    "total_moves": 98
+  },
+  "categories": [
+    {
+      "key": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "user_score": 3,
+      "max_score": 117,
+      "percent": 2.6,
+      "mastered_count": 1,
+      "total_moves": 33,
+      "moves": [
+        {
+          "name": "Bench Press",
+          "aliases_top3": [
+            "卧推"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Weightlifting",
+          "subs": [
+            "DB Bench Press",
+            "Push-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "DB Clean",
+          "aliases_top3": [
+            "Dumbbell Clean",
+            "哑铃高翻"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Weightlifting",
+          "subs": [
+            "KB Swing"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Goblet Squat",
+          "aliases_top3": [
+            "高脚杯深蹲"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Weightlifting",
+          "subs": [
+            "Air Squat",
+            "Front Squat with 2 DBs"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Russian KB Swing",
+          "aliases_top3": [
+            "Russian Swing",
+            "俄式摆举"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Weightlifting",
+          "subs": [
+            "KB Deadlift"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Strict Press",
+          "aliases_top3": [
+            "肩上推",
+            "Strict Shoulder Press",
+            "Press"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Weightlifting",
+          "subs": [
+            "DB Shoulder Press",
+            "Push Press"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Back Squat",
+          "aliases_top3": [
+            "后蹲",
+            "High Bar Back Squat",
+            "Low Bar Back Squat"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Goblet Squat",
+            "Front Squat"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "DB Clean & Jerk",
+          "aliases_top3": [
+            "DB Clean and Jerk",
+            "DB C&J",
+            "DB Clean Jerk"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "DB Clean",
+            "DB Jerk"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "DB Snatch",
+          "aliases_top3": [
+            "Dumbbell Snatch",
+            "哑铃抓举"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "DB Swing",
+            "DB Clean"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "DB Thruster",
+          "aliases_top3": [
+            "Dumbbell Thruster",
+            "哑铃推蹲"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Goblet Squat + DB Press"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Deadlift",
+          "aliases_top3": [
+            "硬拉",
+            "Conventional Deadlift"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Romanian Deadlift",
+            "Sumo Deadlift"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Front Squat",
+          "aliases_top3": [
+            "前蹲"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Front Squat with 2 DBs",
+            "Goblet Squat"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Good Morning",
+          "aliases_top3": [
+            "早安"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Romanian Deadlift"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Hang Clean",
+          "aliases_top3": [
+            "悬垂翻"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Hang Power Clean",
+            "DB Clean"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Hang Power Clean",
+          "aliases_top3": [
+            "悬垂借力翻"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "DB Hang Power Clean"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "KB Swing",
+          "aliases_top3": [
+            "Kettlebell Swing",
+            "KBS",
+            "壶铃摆举"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Russian KB Swing",
+            "KB Deadlift"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Overhead Lunge",
+          "aliases_top3": [
+            "OH Lunge",
+            "过头弓步"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Front Rack Lunge",
+            "Walking Lunge"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Overhead Squat",
+          "aliases_top3": [
+            "过头蹲",
+            "OHS"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Snatch Balance",
+            "Front Squat"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Power Clean",
+          "aliases_top3": [
+            "高翻(力量)"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Hang Power Clean",
+            "DB Clean"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Push Jerk",
+          "aliases_top3": [
+            "借力挺"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Push Press",
+            "DB Push Jerk"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Push Press",
+          "aliases_top3": [
+            "借力推",
+            "推举"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Strict Press",
+            "DB Push Press"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Romanian Deadlift",
+          "aliases_top3": [
+            "RDL",
+            "罗马尼亚硬拉"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Good Morning",
+            "Stiff-leg Deadlift"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Split Jerk",
+          "aliases_top3": [
+            "剪蹲挺",
+            "Jerk"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Push Jerk",
+            "DB Split Jerk"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Sumo Deadlift",
+          "aliases_top3": [
+            "相扑硬拉"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Conventional Deadlift"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Thruster",
+          "aliases_top3": [
+            "推蹲"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "DB Thruster",
+            "Front Squat + Push Press"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Hang Power Snatch",
+          "aliases_top3": [
+            "悬垂借力抓"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Weightlifting",
+          "subs": [
+            "DB Hang Power Snatch"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Hang Snatch",
+          "aliases_top3": [
+            "悬垂抓"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Weightlifting",
+          "subs": [
+            "Hang Power Snatch"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Hang Squat Clean",
+          "aliases_top3": [
+            "悬垂深蹲翻"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Weightlifting",
+          "subs": [
+            "Hang Power Clean"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "KB Snatch",
+          "aliases_top3": [
+            "KBSnatch",
+            "壶铃抓举"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Weightlifting",
+          "subs": [
+            "KB Swing"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Power Snatch",
+          "aliases_top3": [
+            "力量抓"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Weightlifting",
+          "subs": [
+            "Hang Power Snatch",
+            "DB Power Snatch"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Snatch",
+          "aliases_top3": [
+            "抓举"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Weightlifting",
+          "subs": [
+            "Hang Power Snatch",
+            "DB Snatch"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Squat Clean",
+          "aliases_top3": [
+            "深蹲翻"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Weightlifting",
+          "subs": [
+            "Hang Power Clean",
+            "Power Clean"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Squat Snatch",
+          "aliases_top3": [
+            "深蹲抓"
+          ],
+          "level": 4,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 10,
+          "category": "Weightlifting",
+          "subs": [
+            "Hang Power Snatch",
+            "Squat Clean + Push Jerk"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Clean",
+          "aliases_top3": [
+            "高翻"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "DB Clean",
+            "Hang Power Clean",
+            "Hip Clean"
+          ],
+          "source_count": 1
+        }
+      ],
+      "mastered_names": [
+        "Clean"
+      ]
+    },
+    {
+      "key": "Gymnastics",
+      "label_zh": "体操 Gymnastics",
+      "user_score": 0,
+      "max_score": 161,
+      "percent": 0.0,
+      "mastered_count": 0,
+      "total_moves": 49,
+      "moves": [
+        {
+          "name": "Air Squat",
+          "aliases_top3": [
+            "Squat",
+            "自重深蹲",
+            "空蹲"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Box Squat",
+            "Squat to Bench"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Arch Hold",
+          "aliases_top3": [
+            "Arch Body",
+            "弓形支撑"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Superman"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Bear Crawl",
+          "aliases_top3": [
+            "熊爬"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [],
+          "source_count": 0
+        },
+        {
+          "name": "Box Jump",
+          "aliases_top3": [
+            "Box Jumps",
+            "跳箱"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Box Step-up",
+            "Lower Box Jump"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Box Step-up",
+          "aliases_top3": [
+            "Box Step Up"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Lunge"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Hand Release Push-up",
+          "aliases_top3": [],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Push-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Hanging Knee Raise",
+          "aliases_top3": [
+            "悬垂屈膝"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Lying Leg Raise"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Hollow Hold",
+          "aliases_top3": [
+            "Hollow Body",
+            "空心支撑"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Dead Bug",
+            "Hollow Rock"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Inchworm",
+          "aliases_top3": [],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [],
+          "source_count": 0
+        },
+        {
+          "name": "Jumping Pull-up",
+          "aliases_top3": [
+            "跳跃引体"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Ring Row"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Jumping Ring Dip",
+          "aliases_top3": [],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Push-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Knee Push-up",
+          "aliases_top3": [
+            "跪姿俯卧撑"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [],
+          "source_count": 0
+        },
+        {
+          "name": "Lunge",
+          "aliases_top3": [
+            "Walking Lunge",
+            "弓步"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Reverse Lunge",
+            "Step-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Lying Leg Raise",
+          "aliases_top3": [
+            "Leg Raise",
+            "仰卧举腿"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [],
+          "source_count": 0
+        },
+        {
+          "name": "Plank",
+          "aliases_top3": [
+            "平板支撑"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Knee Plank"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Push-up",
+          "aliases_top3": [
+            "Pushup",
+            "俯卧撑"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Knee Push-up",
+            "Box Push-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Ring Row",
+          "aliases_top3": [
+            "环上划船"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Bent-over Row",
+            "Inverted Row on Bar"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Side Plank",
+          "aliases_top3": [
+            "侧平板"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Knee Side Plank"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Sit-up",
+          "aliases_top3": [
+            "Situp",
+            "仰卧起坐"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Crunch",
+            "Anchored Sit-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Step-up",
+          "aliases_top3": [
+            "台阶"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Lunge"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Superman",
+          "aliases_top3": [
+            "超人"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [],
+          "source_count": 0
+        },
+        {
+          "name": "Walking Lunge",
+          "aliases_top3": [
+            "行走弓步"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Lunge"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Box Jump Over",
+          "aliases_top3": [
+            "BJO",
+            "Jump over Box"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Gymnastics",
+          "subs": [
+            "Box Jump"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Box Pistol",
+          "aliases_top3": [
+            "Box Pistol Squat"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Gymnastics",
+          "subs": [
+            "Air Squat (single leg)"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Dip",
+          "aliases_top3": [
+            "Bar Dip",
+            "双杠臂屈伸"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Gymnastics",
+          "subs": [
+            "Box Dip",
+            "Banded Dip",
+            "Push-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "GHD Sit-up",
+          "aliases_top3": [
+            "GHD Situp",
+            "GHD SU"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Gymnastics",
+          "subs": [
+            "Sit-up",
+            "V-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Hollow Rock",
+          "aliases_top3": [],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Gymnastics",
+          "subs": [
+            "Hollow Hold"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Kipping Pull-up",
+          "aliases_top3": [
+            "Kipping Pullup",
+            "摆动引体"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Gymnastics",
+          "subs": [
+            "Strict Pull-up",
+            "Banded Pull-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Knees-to-Elbows",
+          "aliases_top3": [
+            "KTE",
+            "K2E",
+            "屈膝触肘"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Gymnastics",
+          "subs": [
+            "Hanging Knee Raise",
+            "Toes-to-Bar"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Pike Push-up",
+          "aliases_top3": [
+            "V 字俯卧撑"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Gymnastics",
+          "subs": [
+            "Push-up",
+            "Box Pike Push-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Pull-up",
+          "aliases_top3": [
+            "Pullup",
+            "引体(自重)"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Gymnastics",
+          "subs": [
+            "Jumping Pull-up",
+            "Ring Row",
+            "Banded Pull-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Renegade Row",
+          "aliases_top3": [],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Gymnastics",
+          "subs": [
+            "Plank + DB Row"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "V-up",
+          "aliases_top3": [
+            "V字起身"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Gymnastics",
+          "subs": [
+            "Sit-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Wall Handstand",
+          "aliases_top3": [
+            "靠墙倒立"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Gymnastics",
+          "subs": [
+            "Pike Hold"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Wall Walk",
+          "aliases_top3": [
+            "爬墙"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Gymnastics",
+          "subs": [
+            "Bear Crawl",
+            "Inchworm"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Chest-to-Bar",
+          "aliases_top3": [
+            "CTB",
+            "胸触杠引体"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Gymnastics",
+          "subs": [
+            "Kipping Pull-up",
+            "Pull-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "HSPU",
+          "aliases_top3": [
+            "Handstand Push-up",
+            "倒立俯卧撑"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Gymnastics",
+          "subs": [
+            "Strict HSPU",
+            "Pike Push-up",
+            "DB Press"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Handstand Hold",
+          "aliases_top3": [
+            "HS Hold"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Gymnastics",
+          "subs": [
+            "Wall Handstand",
+            "Plank"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Kipping Muscle-up",
+          "aliases_top3": [
+            "Kipping MU",
+            "摆动双力臂"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Gymnastics",
+          "subs": [
+            "Strict MU",
+            "Chest-to-Bar + Dip"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Muscle-up",
+          "aliases_top3": [
+            "MU",
+            "双力臂"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Gymnastics",
+          "subs": [
+            "Kipping MU",
+            "Chest-to-Bar + Dip"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Pistol",
+          "aliases_top3": [
+            "Pistol Squat",
+            "单腿蹲"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Gymnastics",
+          "subs": [
+            "Box Pistol",
+            "Banded Pistol"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Ring Dip",
+          "aliases_top3": [
+            "环上臂屈伸"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Gymnastics",
+          "subs": [
+            "Bar Dip",
+            "Banded Ring Dip"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Strict HSPU",
+          "aliases_top3": [
+            "严格倒立俯卧撑"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Gymnastics",
+          "subs": [
+            "Pike Push-up",
+            "DB Press"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Strict Pull-up",
+          "aliases_top3": [
+            "严格引体"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Gymnastics",
+          "subs": [
+            "Kipping Pull-up",
+            "Banded Pull-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Toes-to-Bar",
+          "aliases_top3": [
+            "T2B",
+            "触杠举腿"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Gymnastics",
+          "subs": [
+            "Knees-to-Elbows",
+            "Hanging Knee Raise"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Butterfly Pull-up",
+          "aliases_top3": [
+            "蝶式引体"
+          ],
+          "level": 4,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 10,
+          "category": "Gymnastics",
+          "subs": [
+            "Kipping Pull-up"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Handstand Walk",
+          "aliases_top3": [
+            "HS Walk",
+            "倒立行走"
+          ],
+          "level": 4,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 10,
+          "category": "Gymnastics",
+          "subs": [
+            "Wall Walk",
+            "Bear Crawl"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Ring Muscle-up",
+          "aliases_top3": [
+            "Ring MU",
+            "环上双力臂"
+          ],
+          "level": 4,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 10,
+          "category": "Gymnastics",
+          "subs": [
+            "Bar MU",
+            "Ring Row → Dip"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Strict Muscle-up",
+          "aliases_top3": [
+            "Strict MU",
+            "严格双力臂"
+          ],
+          "level": 4,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 10,
+          "category": "Gymnastics",
+          "subs": [
+            "Kipping MU",
+            "Band-assisted MU"
+          ],
+          "source_count": 0
+        }
+      ],
+      "mastered_names": []
+    },
+    {
+      "key": "Metcon",
+      "label_zh": "Metcon 组合",
+      "user_score": 0,
+      "max_score": 17,
+      "percent": 0.0,
+      "mastered_count": 0,
+      "total_moves": 7,
+      "moves": [
+        {
+          "name": "Ball Slam",
+          "aliases_top3": [
+            "砸球(向下)"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Metcon",
+          "subs": [],
+          "source_count": 0
+        },
+        {
+          "name": "Burpee",
+          "aliases_top3": [
+            "波比"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Metcon",
+          "subs": [
+            "Step-back Burpee",
+            "Up-down"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Medicine Ball Clean",
+          "aliases_top3": [
+            "MB Clean",
+            "药球高翻"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Metcon",
+          "subs": [
+            "Wall Ball"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Up-down",
+          "aliases_top3": [
+            "Up Down"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Metcon",
+          "subs": [
+            "Burpee"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Wall Ball",
+          "aliases_top3": [
+            "砸球",
+            "药球"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Metcon",
+          "subs": [
+            "Sit-up + Goblet Squat",
+            "MB Clean"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Devil Press",
+          "aliases_top3": [
+            "DP"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Metcon",
+          "subs": [
+            "Burpee + DB Snatch"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Man Maker",
+          "aliases_top3": [],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Metcon",
+          "subs": [
+            "Burpee + DB Renegade Row"
+          ],
+          "source_count": 0
+        }
+      ],
+      "mastered_names": []
+    },
+    {
+      "key": "Monostructural",
+      "label_zh": "单结构 Mono",
+      "user_score": 0,
+      "max_score": 22,
+      "percent": 0.0,
+      "mastered_count": 0,
+      "total_moves": 9,
+      "moves": [
+        {
+          "name": "Bike",
+          "aliases_top3": [
+            "Assault Bike",
+            "Echo Bike",
+            "单车"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0
+        },
+        {
+          "name": "Rope Jump",
+          "aliases_top3": [
+            "Single Under",
+            "Double Under",
+            "跳绳"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0
+        },
+        {
+          "name": "Row",
+          "aliases_top3": [
+            "Rowing",
+            "划船机",
+            "Concept2"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0
+        },
+        {
+          "name": "Run",
+          "aliases_top3": [
+            "Running",
+            "跑"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Monostructural",
+          "subs": [
+            "Walk"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Skierg",
+          "aliases_top3": [
+            "Ski Erg",
+            "滑雪机"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0
+        },
+        {
+          "name": "Walk",
+          "aliases_top3": [
+            "Walking",
+            "走"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0
+        },
+        {
+          "name": "Double Under",
+          "aliases_top3": [
+            "DU",
+            "双摇"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Monostructural",
+          "subs": [
+            "Single Under",
+            "Rope Jump"
+          ],
+          "source_count": 0
+        },
+        {
+          "name": "Swim",
+          "aliases_top3": [
+            "Swimming",
+            "游泳"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0
+        },
+        {
+          "name": "Triple Under",
+          "aliases_top3": [
+            "三摇"
+          ],
+          "level": 4,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 10,
+          "category": "Monostructural",
+          "subs": [
+            "Double Under"
+          ],
+          "source_count": 0
+        }
+      ],
+      "mastered_names": []
+    }
+  ],
+  "rules": {
+    "L1": "在 classes/extras/prs 任一表里出现过动作名（基础）",
+    "L2": "PR 表里有此动作，或 ≥2 个独立记录 / Benchmark",
+    "L3": "≥3 个独立记录、或 PR 出现 ≥2 次刷新",
+    "L4": "PR 出现 ≥2 次刷新 + 升级规则生效",
+    "points": {
+      "1": 1,
+      "2": 3,
+      "3": 6,
+      "4": 10
+    }
+  }
+}
