@@ -102,13 +102,20 @@
   .form-modal.open { display: flex; }
   .form-modal .box { background: white; border-radius: 12px; padding: 24px; width: 480px; max-width: 90vw; max-height: 80vh; overflow-y: auto; }
   .help { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .pending-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: #f4f4f5; color: #52525b; border: 1px solid #e4e4e7;
+    border-radius: 999px; padding: 1px 8px; font-size: 11px;
+    cursor: pointer; user-select: none;
+  }
+  .pending-badge:hover { background: #e4e4e7; color: #18181b; }
 </style>
 </head>
 <body>
 
 <header>
   <h1>🏋️ 我的 CF 训练工作台</h1>
-  <div class="sub" id="userBar">麻菜鱼 · COROS · 数据更新于 <span id="lastSync">—</span> | CTL/ATL/TSB <span id="lastCTL">—</span></div>
+  <div class="sub" id="userBar">麻菜鱼 · COROS · 数据更新于 <span id="lastSync">—</span> | CTL/ATL/TSB <span id="lastCTL">—</span> <span class="pending-badge" id="pendingBadge" onclick="flushPending(true)" style="display:none"></span></div>
   <div class="stats" id="topStats">
     <div class="pill">📒 训练记录 <strong id="kpiClasses">0</strong></div>
     <div class="pill">🔥 近 7 天练 <strong id="kpiLast7">0</strong> 天</div>
@@ -367,6 +374,76 @@ async function larkWrite(method, tableKey, recordId, fields) {
   }
 }
 
+/* ─── 离线待同步队列：连不上服务时暂存，恢复后自动补传飞书 ─────
+   条目结构：{ tableKey, method, recordId, fields, matchKey, ts, attempts } */
+const PENDING_KEY = 'cf_pending_v1';
+
+function pendingAll() {
+  try { return JSON.parse(localStorage.getItem(PENDING_KEY) || '[]'); } catch (e) { return []; }
+}
+function pendingSave(list) {
+  localStorage.setItem(PENDING_KEY, JSON.stringify(list));
+  renderPendingBadge();
+}
+function pendingAdd(item) {
+  const list = pendingAll();
+  const key = item.matchKey || (item.tableKey + '|' + (item.recordId || ''));
+  const i = list.findIndex(x => (x.matchKey || (x.tableKey + '|' + (x.recordId || ''))) === key);
+  item.ts = Date.now();
+  item.attempts = 0;
+  if (i >= 0) list[i] = item; else list.push(item);
+  pendingSave(list);
+}
+/* 补传成功后，把 localStorage 里的本地暂存副本清掉，避免重复展示 */
+function pendingClearLocal(item) {
+  try {
+    const local = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+    if (item.tableKey === 'schedule' && item.date) {
+      local.schedules = (local.schedules || []).filter(s => s.日期 !== item.date);
+    }
+    if (item.tableKey === 'class' && item.date && local.scores) {
+      delete local.scores[item.date];
+    }
+    localStorage.setItem(LS_KEY, JSON.stringify(local));
+  } catch (e) {}
+}
+function renderPendingBadge() {
+  const el = document.getElementById('pendingBadge');
+  if (!el) return;
+  const n = pendingAll().length;
+  el.style.display = n ? 'inline-flex' : 'none';
+  el.textContent = `⏳ ${n} 条待同步 · 点此重试`;
+  el.title = '连上同步服务（家里 Wi-Fi + Mac 开机）后会自动补传到飞书';
+}
+async function flushPending(manual) {
+  const list = pendingAll();
+  if (!list.length) { if (manual) toast('没有待补传的数据'); return 0; }
+  _apiBaseCache = undefined; // 每次补传都重新探测，避免缓存住"连不上"的结果
+  const base = await apiBase();
+  if (base === false) {
+    toast(`📴 同步服务不可用，${list.length} 条仍待补传（回家连 Wi-Fi 会自动上传）`);
+    return 0;
+  }
+  let done = 0; const remain = [];
+  for (const it of list) {
+    const r = await larkWrite(it.method || 'POST', it.tableKey, it.recordId, it.fields);
+    if (r.ok) { done++; pendingClearLocal(it); continue; }
+    if (r.offline) { remain.push(it); continue; }
+    it.attempts = (it.attempts || 0) + 1;
+    // 原记录已失效（可能被删/换表）→ 改为新建一条
+    if (it.attempts >= 3 && it.recordId) { it.method = 'POST'; it.recordId = null; }
+    if (it.attempts < 8) remain.push(it);
+  }
+  pendingSave(remain);
+  if (done) {
+    toast(`✓ 已自动补传 ${done} 条到飞书`);
+    await loadAll();
+  } else if (manual) {
+    toast('补传未成功，稍后自动重试');
+  }
+  return done;
+}
+
 let DATA = {
   classes: [], extras: [], prs: [], benchmarks: [],
   checkins: [], competitions: [], advice: [], schedules: [], coros: {}, summary: {}
@@ -438,6 +515,9 @@ async function loadAll() {
   updateKPIs();
   buildNav();
   showPanel('calendar');
+  renderPendingBadge();
+  // 有网络且服务可用时，自动把离线暂存的数据补传飞书（不阻塞渲染，直接调用避免后台标签定时器被节流）
+  if (pendingAll().length) flushPending(false);
 }
 
 function updateKPIs() {
@@ -723,14 +803,22 @@ async function saveDayResult() {
     document.getElementById('dayModal').classList.remove('open');
     renderCalendar(); renderCharts(); renderRecent();
   } else {
-    // 离线兜底：存 localStorage，之后有网时在详情页重存
+    // 离线兜底：存 localStorage + 进入待补传队列（连上服务后自动写入飞书）
     const local = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
     local.scores = local.scores || {};
     local.scores[_dayDate] = fields;
     localStorage.setItem(LS_KEY, JSON.stringify(local));
     const rec = DATA.classes.find(c => c.日期 === _dayDate);
     if (rec) Object.assign(rec, fields); else DATA.classes.push({ id: 'local_' + _dayDate, 日期: _dayDate, ...fields });
-    toast('📴 连不上同步服务，已先存本机（回家连 Wi-Fi 后重新保存一次即可入飞书）');
+    pendingAdd({
+      tableKey: 'class',
+      method: target ? 'PUT' : 'POST',
+      recordId: target ? target.id : null,
+      fields: target ? fields : { ...fields, 日期: Date.parse(_dayDate + 'T00:00:00') },
+      matchKey: 'score:' + _dayDate,
+      date: _dayDate,
+    });
+    toast('📴 连不上同步服务，已存本机并加入待补传队列（回到家里 Wi-Fi 会自动写入飞书）');
     document.getElementById('dayModal').classList.remove('open');
     renderCalendar(); renderRecent();
   }
@@ -774,7 +862,15 @@ async function saveSchedule() {
     local.schedules.push({ 日期: date, 课表内容: text, 来源: 'OCR(本地)' });
     localStorage.setItem(LS_KEY, JSON.stringify(local));
     DATA.schedules = DATA.schedules.filter(s => s.日期 !== date).concat([{ 日期: date, 课表内容: text, 来源: 'OCR(本地)' }]);
-    toast('📴 连不上同步服务，课表已存本机');
+    pendingAdd({
+      tableKey: 'schedule',
+      method: 'POST',
+      recordId: null,
+      fields: { 日期: Date.parse(date + 'T00:00:00'), 课表内容: text, 来源: 'OCR 课表照片' },
+      matchKey: 'schedule:' + date,
+      date: date,
+    });
+    toast('📴 连不上同步服务，课表已存本机并加入待补传队列');
     document.getElementById('schedModal').classList.remove('open');
     renderCalendar();
   }
@@ -1011,6 +1107,16 @@ function toast(msg) {
 
 /* ─── 启动 ─────────────────────────────────────── */
 window.addEventListener("load", loadAll);
+// 从后台切回前台（如回家连上 Wi-Fi 后打开）→ 重探服务并自动补传
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && pendingAll().length) {
+    _apiBaseCache = undefined;
+    flushPending(false);
+  }
+});
+window.addEventListener("online", () => {
+  if (pendingAll().length) { _apiBaseCache = undefined; flushPending(false); }
+});
 </script>
 </body>
 </html>
