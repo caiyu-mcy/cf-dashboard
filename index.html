@@ -497,6 +497,21 @@ async function larkWrite(method, tableKey, recordId, fields) {
   }
 }
 
+/* 删除飞书记录（课表清理用）。失败时把意图挂到 pending 队列，恢复后自动补删 */
+async function larkDelete(tableKey, recordId, extra) {
+  const base = await apiBase();
+  if (base === false) return { ok: false, offline: true };
+  const url = base + '/api/feishu/records/' + TABLE_IDS[tableKey] + '/' + recordId;
+  try {
+    const r = await fetch(url, { method: 'DELETE', headers: cfHeaders() });
+    if (r.status === 401) return { ok: false, needToken: true };
+    const j = await r.json();
+    return { ok: !!(j && (j.ok || j.code === 0)), data: j };
+  } catch (e) {
+    return { ok: false, error: String(e) };
+  }
+}
+
 /* ─── 离线待同步队列：连不上服务时暂存，恢复后自动补传飞书 ─────
    条目结构：{ tableKey, method, recordId, fields, matchKey, ts, attempts } */
 const PENDING_KEY = 'cf_pending_v1';
@@ -554,7 +569,12 @@ async function flushPending(manual) {
   }
   let done = 0; const remain = [];
   for (const it of list) {
-    const r = await larkWrite(it.method || 'POST', it.tableKey, it.recordId, it.fields);
+    let r;
+    if (it.method === 'DELETE') {
+      r = await larkDelete(it.tableKey, it.recordId);
+    } else {
+      r = await larkWrite(it.method || 'POST', it.tableKey, it.recordId, it.fields);
+    }
     if (r.ok) { done++; pendingClearLocal(it); continue; }
     if (r.offline) { remain.push(it); continue; }
     if (r.needToken) {
@@ -562,6 +582,8 @@ async function flushPending(manual) {
       toast('❌ 访问口令缺失或错误，点右上「⚙ 同步」填写后再重试');
       break;
     }
+    // DELETE 的 recordId 失效（被删过/不存在）算成功，直接丢掉
+    if (it.method === 'DELETE') { done++; pendingClearLocal(it); continue; }
     it.attempts = (it.attempts || 0) + 1;
     // 原记录已失效（可能被删/换表）→ 改为新建一条
     if (it.attempts >= 3 && it.recordId) { it.method = 'POST'; it.recordId = null; }
@@ -887,7 +909,16 @@ function showDayDetail(dateStr) {
   let html = '';
   // 1) 课表
   html += `<div class="day-sec"><h4>📋 当日课表${sched ? '' : '（暂无 · 可从左侧 OCR 识别后存入）'}</h4>`;
-  html += sched ? `<div class="day-wod">${(sched['课表内容']||'').replace(/</g,'&lt;')}</div>` : '<p class="help" style="margin:0">把馆里拍的课表照片拖到左侧 OCR 区识别，点「存为当日课表」就会出现在这里。</p>';
+  if (sched) {
+    html += `<div class="day-wod">${(sched['课表内容']||'').replace(/</g,'&lt;')}</div>`;
+    html += `<div class="row" style="margin-top:8px;gap:6px">
+      <button class="ghost" style="padding:4px 10px;font-size:12px" onclick="editSchedule('${dateStr}')">✏️ 修改课表</button>
+      <button class="ghost" style="padding:4px 10px;font-size:12px;color:#dc2626;border-color:#dc2626" onclick="deleteSchedule('${dateStr}')">🗑 删除课表</button>
+      ${sched.来源 ? `<span class="help" style="margin-left:auto">来源：${sched.来源}</span>` : ''}
+    </div>`;
+  } else {
+    html += '<p class="help" style="margin:0">把馆里拍的课表照片拖到左侧 OCR 区识别，点「存为当日课表」就会出现在这里。</p>';
+  }
   html += '</div>';
   // 2) 手表数据
   html += `<div class="day-sec"><h4>⌚ 手表自动记录${hasWrist ? '' : '（当天无训练）'}</h4>`;
@@ -975,6 +1006,7 @@ async function saveDayResult() {
 }
 
 /* ─── OCR → 当日课表 ──────────────────────────── */
+let _schedEditing = null;   // { recordId, date } 表示正在改已存在的课表
 function parseSchedDate(text) {
   // 优先找 YYYY-MM-DD
   let m = text.match(/(20\d{2})[-\/年.](\d{1,2})[-\/月.](\d{1,2})/);
@@ -988,10 +1020,13 @@ function parseSchedDate(text) {
   return new Date().toISOString().slice(0, 10);
 }
 
-function openScheduleForm() {
-  if (!ocrText) { toast('先识别一张课表'); return; }
-  document.getElementById('schedDate').value = parseSchedDate(ocrText);
-  document.getElementById('schedText').value = ocrText.trim();
+function openScheduleForm(dateStr, recordId, prefillText) {
+  // 三种入口：① OCR 弹窗保存  ② 日历点击 → 修改已有课表  ③ 无 recordId 时（无 OCR 时新建）
+  _schedEditing = (recordId && dateStr) ? { recordId, date: dateStr } : null;
+  document.getElementById('schedDate').value = dateStr || parseSchedDate(ocrText || '');
+  document.getElementById('schedText').value = prefillText != null ? prefillText : (ocrText || '').trim();
+  document.querySelector('#schedModal h3').textContent = _schedEditing ? '✏️ 修改课表' : '📅 存为当日课表';
+  document.querySelector('#schedModal .primary').textContent = _schedEditing ? '💾 保存修改' : '💾 保存课表';
   document.getElementById('schedModal').classList.add('open');
 }
 
@@ -999,29 +1034,73 @@ async function saveSchedule() {
   const date = document.getElementById('schedDate').value;
   const text = document.getElementById('schedText').value.trim();
   if (!date || !text) { toast('日期和课表内容都要填'); return; }
-  const fields = { 日期: Date.parse(date + 'T00:00:00'), 课表内容: text, 来源: 'OCR 课表照片' };
-  const res = await larkWrite('POST', 'schedule', null, fields);
+  const fields = { 日期: Date.parse(date + 'T00:00:00'), 课表内容: text, 来源: _schedEditing ? '手动修改' : 'OCR 课表照片' };
+  const isEdit = !!_schedEditing;
+  const recordId = _schedEditing ? _schedEditing.recordId : null;
+  const method = isEdit ? 'PUT' : 'POST';
+  const res = await larkWrite(method, 'schedule', recordId, fields);
   if (res.ok) {
-    DATA.schedules.push({ 日期: date, 课表内容: text, 来源: 'OCR 课表照片' });
-    toast('✓ 课表已保存，日历上已标记 📋');
+    DATA.schedules = DATA.schedules.filter(s => s.日期 !== date).concat([{ id: recordId, 日期: date, 课表内容: text, 来源: fields.来源 }]);
+    toast(isEdit ? '✓ 课表已更新' : '✓ 课表已保存，日历上已标记 📋');
     document.getElementById('schedModal').classList.remove('open');
+    _schedEditing = null;
     renderCalendar();
   } else {
     const local = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
     local.schedules = (local.schedules || []).filter(s => s.日期 !== date);
-    local.schedules.push({ 日期: date, 课表内容: text, 来源: 'OCR(本地)' });
+    local.schedules.push({ 日期: date, 课表内容: text, 来源: isEdit ? '手动修改(本地)' : 'OCR(本地)' });
     localStorage.setItem(LS_KEY, JSON.stringify(local));
-    DATA.schedules = DATA.schedules.filter(s => s.日期 !== date).concat([{ 日期: date, 课表内容: text, 来源: 'OCR(本地)' }]);
+    DATA.schedules = DATA.schedules.filter(s => s.日期 !== date).concat([{ 日期: date, 课表内容: text, 来源: isEdit ? '手动修改(本地)' : 'OCR(本地)' }]);
     pendingAdd({
       tableKey: 'schedule',
-      method: 'POST',
-      recordId: null,
-      fields: { 日期: Date.parse(date + 'T00:00:00'), 课表内容: text, 来源: 'OCR 课表照片' },
+      method,
+      recordId,
+      fields,
       matchKey: 'schedule:' + date,
       date: date,
     });
     toast('📴 连不上同步服务，课表已存本机并加入待补传队列');
     document.getElementById('schedModal').classList.remove('open');
+    _schedEditing = null;
+    renderCalendar();
+  }
+}
+
+/* ─── 修改 / 删除 已存在的课表（从日历当日详情调用） ──────── */
+function editSchedule(dateStr) {
+  const s = DATA.schedules.find(x => x.日期 === dateStr);
+  if (!s) { toast('该日没有课表'); return; }
+  // recordId 在 schedule 表对应字段是 id
+  openScheduleForm(dateStr, s.id, s['课表内容'] || '');
+}
+
+async function deleteSchedule(dateStr) {
+  const s = DATA.schedules.find(x => x.日期 === dateStr);
+  if (!s) return;
+  if (!s.id) { toast('这条课表没有 record_id（可能是本地暂存），无法删除'); return; }
+  if (!confirm(`确认删除 ${dateStr} 的课表？\n\n${(s['课表内容']||'').slice(0, 80)}\n\n（删除后日历的标记也会消失）`)) return;
+  const res = await larkDelete('schedule', s.id);
+  if (res.ok) {
+    DATA.schedules = DATA.schedules.filter(x => x.日期 !== dateStr);
+    // 同步清掉离线队列里关于这条的待写入项（如果有），避免补传后复活
+    let list = pendingAll().filter(x => !(x.tableKey === 'schedule' && x.date === dateStr));
+    pendingSave(list);
+    toast('✓ 课表已删除');
+    document.getElementById('dayModal').classList.remove('open');
+    renderCalendar();
+  } else {
+    // 离线 / 失败：把删除意图挂到 pending 队列，恢复后自动补删
+    pendingAdd({
+      tableKey: 'schedule',
+      method: 'DELETE',
+      recordId: s.id,
+      fields: {},
+      matchKey: 'schedule-delete:' + s.id,
+      date: dateStr,
+    });
+    DATA.schedules = DATA.schedules.filter(x => x.日期 !== dateStr);
+    toast('📴 连不上同步服务，删除已加入待补传队列（回家连上后自动删）');
+    document.getElementById('dayModal').classList.remove('open');
     renderCalendar();
   }
 }
