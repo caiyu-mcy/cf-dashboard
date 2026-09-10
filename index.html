@@ -103,6 +103,24 @@
   .form-modal.open { display: flex; }
   .form-modal .box { background: white; border-radius: 12px; padding: 24px; width: 480px; max-width: 90vw; max-height: 80vh; overflow-y: auto; }
   .help { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  /* 场馆搜索 */
+  .geo-search { display: flex; gap: 8px; align-items: center; margin-top: 4px; }
+  .geo-search input { flex: 1; min-width: 0; }
+  .geo-results { margin-top: 6px; border: 1px solid var(--line); border-radius: 8px; overflow-y: auto; max-height: 216px; }
+  .geo-results:empty { display: none; border: none; }
+  .geo-item { padding: 8px 10px; font-size: 13px; cursor: pointer; border-bottom: 1px solid var(--line); line-height: 1.45; }
+  .geo-item:last-child { border-bottom: none; }
+  .geo-item:hover { background: #f4f4f5; }
+  .geo-item .sub { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
+  .geo-picked { display: none; margin-top: 8px; font-size: 12px; background: #f4f4f5; border-radius: 8px; padding: 8px 10px; line-height: 1.55; }
+  .geo-picked.on { display: block; }
+  .geo-picked .coords { color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; }
+  .geo-picked a { color: var(--muted); cursor: pointer; text-decoration: underline; margin-left: 6px; }
+  .geo-mini { display: none; width: 100%; height: 160px; border-radius: 8px; margin-top: 8px; overflow: hidden; background: #fafafa; filter: grayscale(0.85) contrast(1.03); }
+  .geo-mini.on { display: block; }
+  .geo-adv { margin-top: 10px; }
+  .geo-adv > summary { font-size: 11px; color: var(--muted); cursor: pointer; user-select: none; }
+  .geo-adv > summary:hover { color: var(--text); }
   .pending-badge {
     display: inline-flex; align-items: center; gap: 4px;
     background: #f4f4f5; color: #52525b; border: 1px solid #e4e4e7;
@@ -236,7 +254,7 @@
       <h3 style="margin:0">📍 全国/全球 CF 馆打卡 <span class="badge" id="ckCount">0 个</span></h3>
       <button class="primary" onclick="openForm('checkin')">＋ 我来过这</button>
     </div>
-    <p class="help" style="margin-top:6px">点击「我来过这」自动定位并写入飞书 box_checkin 表；地图已换用高德 JS API，首次需配置 Key（免费申请）。</p>
+    <p class="help" style="margin-top:6px">点「我来过这」→ 搜索场馆名（或点「📍 当前位置」）→ 自动填好馆名 / 城市 / 地址 / 坐标，写入飞书 box_checkin 表。地图用高德 JS API，首次需配置 Key（个人免费）。</p>
     <div id="cfmap" style="margin-top:12px"></div>
     <div id="checkinList" style="margin-top:14px"></div>
   </div>
@@ -1072,12 +1090,23 @@ function openForm(type) {
     if (f.type === 'geo') return `
       <div style="margin-bottom:10px">
         <span class="label">位置</span>
-        <div style="display:flex;gap:8px;align-items:center;margin-top:4px">
-          <input type="text" name="纬度" placeholder="纬度" style="flex:1" />
-          <input type="text" name="经度" placeholder="经度" style="flex:1" />
-          <button type="button" class="primary" style="flex:none" onclick="locateMe()">📍 获取当前位置</button>
+        <div class="geo-search">
+          <input type="text" id="geoQuery" placeholder="搜索场馆名或地点，如 CrossFit 上海" autocomplete="off"
+                 oninput="geoSearchInput()" onkeydown="if(event.key==='Enter'){event.preventDefault();geoSearch();}" />
+          <button type="button" class="ghost" style="flex:none" onclick="geoSearch()">🔍 搜索</button>
+          <button type="button" class="ghost" style="flex:none" onclick="locateMe()">📍 当前位置</button>
         </div>
-        <div class="help" id="geoHelp">定位后自动填入，用于在馆打卡地图上打点</div>
+        <div class="geo-results" id="geoResults"></div>
+        <div class="help" id="geoHelp">搜到场馆 → 点一下，自动填好馆名 / 城市 / 地址 / 坐标</div>
+        <div class="geo-picked" id="geoPicked"></div>
+        <div class="geo-mini" id="geoMini"></div>
+        <details class="geo-adv" id="geoAdv">
+          <summary>手动填写坐标（高级）</summary>
+          <div class="row" style="margin-top:6px">
+            <input type="text" name="纬度" placeholder="纬度" style="flex:1" />
+            <input type="text" name="经度" placeholder="经度" style="flex:1" />
+          </div>
+        </details>
       </div>`;
     if (f.type === 'select') return `
       <label style="display:block;margin-bottom:10px"><span class="label">${f.name}</span>
@@ -1090,6 +1119,8 @@ function openForm(type) {
     return `
       <label style="display:block;margin-bottom:10px"><span class="label">${f.name}</span><input type="${f.type}" name="${f.name}" placeholder="${f.ph||''}" /></label>`;
   }).join('');
+  _geoResults = [];                 // 重置上次搜索残留
+  if (_geoMiniMap) { try { _geoMiniMap.destroy(); } catch (e) {} _geoMiniMap = null; }
   document.getElementById('formModal').classList.add('open');
 }
 function closeForm() { document.getElementById('formModal').classList.remove('open'); }
@@ -1142,33 +1173,158 @@ async function submitForm() {
   updateKPIs();
 }
 
+/* ─── 场馆搜索 + 定位（高德 POI / WGS-84 → GCJ-02） ───
+   主入口是「搜场馆名」，点选结果后自动填馆名/城市/国家/地址/经纬度；
+   「当前位置」作为兜底（没搜到、或在境外馆时用）。 */
+let _geoResults = [];
+let _geoTimer = null;
+let _geoMiniMap = null;
+
+function geoQueryEl() { return document.getElementById('geoQuery'); }
+function geoSetHelp(t) { const h = document.getElementById('geoHelp'); if (h) h.innerHTML = t; }
+function geoFormEl(n) { return document.querySelector(`#formFields [name="${n}"]`); }
+
+/* 坐标写进「高级」里的两个字段，并把摘要更新成可见坐标 */
+function setCoords(lat, lng, note) {
+  const la = Number(lat), ln = Number(lng);
+  if (!Number.isFinite(la) || !Number.isFinite(ln)) return;
+  const li = geoFormEl('纬度'), gi = geoFormEl('经度');
+  if (li) li.value = la.toFixed(6);
+  if (gi) gi.value = ln.toFixed(6);
+  const adv = document.getElementById('geoAdv');
+  if (adv) {
+    const sum = adv.querySelector('summary');
+    if (sum) sum.textContent = `坐标（可手动修改）：${la.toFixed(5)}, ${ln.toFixed(5)}`;
+    adv.open = true;
+  }
+  if (note) geoSetHelp(note);
+}
+
+/* 点选搜索结果 → 回填表单 */
+function geoPick(i) {
+  const p = _geoResults[i];
+  if (!p) return;
+  const loc = p.location || {};
+  const lng = typeof loc.lng === 'number' ? loc.lng : (loc.getLng ? loc.getLng() : NaN);
+  const lat = typeof loc.lat === 'number' ? loc.lat : (loc.getLat ? loc.getLat() : NaN);
+  const city = p.cityname || p.pname || '';
+  const addr = p.address || p.name || '';
+  const set = (n, v) => { const el = geoFormEl(n); if (el && v) el.value = v; };
+  set('馆名', p.name || '');
+  if (city) set('城市', city);
+  if (p.pname) set('国家', '中国');            // 有省份基本可判定在境内
+  if (addr) set('地址', addr);
+
+  const picked = document.getElementById('geoPicked');
+  const sub = [city, p.adname, addr].filter((v, i, a) => v && a.indexOf(v) === i).join(' · ');
+  if (picked) {
+    picked.className = 'geo-picked on';
+    picked.innerHTML = `✓ <b>${p.name || '—'}</b> · ${sub}` +
+      (Number.isFinite(lat) ? ` <span class="coords">${lat.toFixed(5)}, ${lng.toFixed(5)}</span>` : '') +
+      `<a onclick="geoClear()">清除重选</a>`;
+  }
+  const box = document.getElementById('geoResults'); if (box) box.innerHTML = '';
+  if (geoQueryEl()) geoQueryEl().value = p.name || '';
+  if (Number.isFinite(lat) && Number.isFinite(lng)) {
+    setCoords(lat, lng, '✓ 已自动填好，可直接保存（馆名/地址可再微调）');
+    geoMiniShow(lat, lng);
+  } else {
+    geoSetHelp('✓ 已填好文字信息，但这条结果没有坐标，可点「📍 当前位置」补坐标');
+  }
+}
+
+/* 清空重选 */
+function geoClear() {
+  _geoResults = [];
+  const box = document.getElementById('geoResults'); if (box) box.innerHTML = '';
+  const picked = document.getElementById('geoPicked'); if (picked) { picked.className = 'geo-picked'; picked.innerHTML = ''; }
+  const mini = document.getElementById('geoMini'); if (mini) mini.className = 'geo-mini';
+  if (_geoMiniMap) { try { _geoMiniMap.destroy(); } catch (e) {} _geoMiniMap = null; }
+  ['馆名', '城市', '地址', '纬度', '经度'].forEach(n => { const el = geoFormEl(n); if (el) el.value = ''; });
+  const adv = document.getElementById('geoAdv');
+  if (adv) { adv.open = false; const s = adv.querySelector('summary'); if (s) s.textContent = '手动填写坐标（高级）'; }
+  const q = geoQueryEl(); if (q) { q.value = ''; q.focus(); }
+  geoSetHelp('搜到场馆 → 点一下，自动填好馆名 / 城市 / 地址 / 坐标');
+}
+
+/* 小地图预览，确认打点位置对不对 */
+function geoMiniShow(lat, lng) {
+  const el = document.getElementById('geoMini');
+  if (!el || !Number.isFinite(lat) || !Number.isFinite(lng)) return;
+  el.className = 'geo-mini on';
+  if (_geoMiniMap) { try { _geoMiniMap.destroy(); } catch (e) {} _geoMiniMap = null; }
+  requestAnimationFrame(() => {
+    try {
+      _geoMiniMap = new AMap.Map('geoMini', { zoom: 15, center: [lng, lat], viewMode: '2D' });
+      new AMap.Marker({ position: [lng, lat], map: _geoMiniMap, content: '<div class="cf-pin"></div>', offset: new AMap.Pixel(-7, -7) });
+    } catch (e) { el.className = 'geo-mini'; }
+  });
+}
+
+/* 输入防抖 + 搜索 */
+function geoSearchInput() {
+  clearTimeout(_geoTimer);
+  _geoTimer = setTimeout(geoSearch, 450);
+}
+
+async function geoSearch() {
+  const box = document.getElementById('geoResults');
+  if (!box) return;
+  const q = (geoQueryEl() ? geoQueryEl().value : '').trim();
+  if (!q) { box.innerHTML = ''; return; }
+  box.innerHTML = '<div class="geo-item" style="color:var(--muted);cursor:default">搜索中…</div>';
+  let ok = false;
+  try { ok = await ensureAMap(); } catch (e) { ok = false; }
+  if (!ok) {
+    box.innerHTML = '';
+    geoSetHelp('⚠️ 搜索需要高德 Key（个人免费）。可到「📍 馆打卡」页配置，或直接点「📍 当前位置」自动定位。');
+    return;
+  }
+  const ps = new AMap.PlaceSearch({ pageSize: 10, pageIndex: 1, city: '全国', citylimit: false, extensions: 'all' });
+  ps.search(q, (status, result) => {
+    const pois = (status === 'complete' && result && result.poiList && result.poiList.pois) || [];
+    if (!pois.length) {
+      box.innerHTML = '<div class="geo-item" style="color:var(--muted);cursor:default">没搜到。换个关键词试试（可试英文馆名 / 城市名），或点「📍 当前位置」</div>';
+      return;
+    }
+    _geoResults = pois;
+    box.innerHTML = pois.map((p, i) => {
+      const sub = [p.cityname || p.pname, p.adname, p.address].filter((v, j, a) => v && a.indexOf(v) === j).join(' · ');
+      return `<div class="geo-item" onclick="geoPick(${i})"><b>${p.name || '—'}</b><span class="sub">${sub}</span></div>`;
+    }).join('');
+  });
+}
+
 /* ─── 浏览器定位（WGS-84 → 高德 GCJ-02） ─────────── */
 function locateMe() {
   if (!navigator.geolocation) { toast('当前浏览器不支持定位'); return; }
-  const help = document.getElementById('geoHelp');
-  if (help) help.textContent = '⏳ 定位中…（首次会弹权限请求）';
+  geoSetHelp('⏳ 定位中…（首次会弹权限请求）');
   navigator.geolocation.getCurrentPosition(async pos => {
     const lng = pos.coords.longitude, lat = pos.coords.latitude;
-    const set = (la, ln, note) => {
-      const li = document.querySelector('#formFields [name="纬度"]');
-      const gi = document.querySelector('#formFields [name="经度"]');
-      if (li) li.value = la.toFixed(6);
-      if (gi) gi.value = ln.toFixed(6);
-      if (help) help.textContent = note;
-    };
-    const ok = await ensureAMap();
-    if (!ok) { set(lat, lng, '⚠️ 未配置高德 Key，已存原始 GPS 坐标（可能与地图有约 500m 偏移）'); toast('已获取位置'); return; }
+    let ok = false;
+    try { ok = await ensureAMap(); } catch (e) { ok = false; }
+    if (!ok) {
+      setCoords(lat, lng, '⚠️ 未配置高德 Key，已存原始 GPS 坐标（与地图可能有约 500m 偏移）');
+      toast('已获取位置');
+      return;
+    }
     AMap.convertFrom([lng, lat], 'gps', (status, result) => {
       if (status === 'complete' && result.locations && result.locations.length) {
         const p = result.locations[0];
-        set(p.lat, p.lng, '✓ 已转换到高德坐标系');
-        // 逆地理编码，顺手把城市/地址填上
+        setCoords(p.lat, p.lng, '✓ 已定位并转换到高德坐标系');
+        const picked = document.getElementById('geoPicked');
+        if (picked) {
+          picked.className = 'geo-picked on';
+          picked.innerHTML = `📍 当前位置 <span class="coords">${p.lat.toFixed(5)}, ${p.lng.toFixed(5)}</span><a onclick="geoClear()">清除重选</a>`;
+        }
+        geoMiniShow(p.lat, p.lng);
+        // 逆地理编码，顺手把城市 / 国家 / 地址填上
         AMap.plugin('AMap.Geocoder', () => {
           const geo = new AMap.Geocoder();
           geo.getAddress([p.lng, p.lat], (s, r) => {
             if (s === 'complete' && r.regeocode) {
               const c = r.regeocode.addressComponent || {};
-              const fill = (n, v) => { const el = document.querySelector(`#formFields [name="${n}"]`); if (el && !el.value && v) el.value = v; };
+              const fill = (n, v) => { const el = geoFormEl(n); if (el && !el.value && v) el.value = v; };
               fill('城市', c.city || c.province);
               fill('国家', c.country === '中国' ? '中国' : c.country);
               fill('地址', r.regeocode.formattedAddress);
@@ -1176,12 +1332,12 @@ function locateMe() {
           });
         });
       } else {
-        set(lat, lng, '⚠️ 坐标转换失败，已存原始 GPS 坐标');
+        setCoords(lat, lng, '⚠️ 坐标转换失败，已存原始 GPS 坐标');
       }
     });
     toast('✓ 已获取位置');
   }, err => {
-    if (help) help.textContent = '❌ 定位失败：' + (err.message || err.code);
+    geoSetHelp('❌ 定位失败：' + (err.message || err.code));
     toast('定位失败，请检查权限');
   }, { enableHighAccuracy: true, timeout: 12000 });
 }
@@ -1299,7 +1455,7 @@ function renderCheckinList(cks) {
     cks.slice().sort(byDateDesc('拜访日期')).map(c =>
       `<div style="padding:8px 0;border-bottom:1px solid var(--line)"><b>${c.馆名||'—'}</b> · ${[c.城市,c.国家].filter(Boolean).join(' ')||''} · ${fmtDate(c.拜访日期)}<br><span class="label">${c.备注||c['训练内容']||''}</span></div>`
     ).join('') :
-    '<p class="empty">还没打卡记录。点右上"我来过这"，会自动定位并填好城市 / 地址。</p>';
+    '<p class="empty">还没打卡记录。点右上「我来过这」，搜索场馆名即可自动填好城市 / 地址 / 坐标。</p>';
 }
 
 function renderMap() {
