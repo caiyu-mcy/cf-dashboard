@@ -1,307 +1,23 @@
 {
-  "synced_at": "2026-09-10T17:05:56",
+  "synced_at": "2026-09-10T17:27:15",
   "days_back": 180,
   "totals": {
-    "user_score": 3,
+    "user_score": 48,
     "max_score": 317,
-    "percent": 0.9,
-    "mastered_count": 1,
+    "percent": 15.1,
+    "mastered_count": 18,
     "total_moves": 98
   },
   "categories": [
     {
       "key": "Weightlifting",
       "label_zh": "举重 Weightlifting",
-      "user_score": 3,
+      "user_score": 47,
       "max_score": 117,
-      "percent": 2.6,
-      "mastered_count": 1,
+      "percent": 40.2,
+      "mastered_count": 17,
       "total_moves": 33,
       "moves": [
-        {
-          "name": "Bench Press",
-          "aliases_top3": [
-            "卧推"
-          ],
-          "level": 1,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 1,
-          "category": "Weightlifting",
-          "subs": [
-            "DB Bench Press",
-            "Push-up"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": []
-        },
-        {
-          "name": "DB Clean",
-          "aliases_top3": [
-            "Dumbbell Clean",
-            "哑铃高翻"
-          ],
-          "level": 1,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 1,
-          "category": "Weightlifting",
-          "subs": [
-            "KB Swing"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "series": "clean"
-        },
-        {
-          "name": "Goblet Squat",
-          "aliases_top3": [
-            "高脚杯深蹲"
-          ],
-          "level": 1,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 1,
-          "category": "Weightlifting",
-          "subs": [
-            "Air Squat",
-            "Front Squat with 2 DBs"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "series": "squat_bar"
-        },
-        {
-          "name": "Russian KB Swing",
-          "aliases_top3": [
-            "Russian Swing",
-            "俄式摆举"
-          ],
-          "level": 1,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 1,
-          "category": "Weightlifting",
-          "subs": [
-            "KB Deadlift"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "series": "kb"
-        },
-        {
-          "name": "Strict Press",
-          "aliases_top3": [
-            "肩上推",
-            "Strict Shoulder Press",
-            "Press"
-          ],
-          "level": 1,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 1,
-          "category": "Weightlifting",
-          "subs": [
-            "DB Shoulder Press",
-            "Push Press"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "series": "press"
-        },
-        {
-          "name": "Back Squat",
-          "aliases_top3": [
-            "后蹲",
-            "High Bar Back Squat",
-            "Low Bar Back Squat"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "Goblet Squat",
-            "Front Squat"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "series": "squat_bar"
-        },
-        {
-          "name": "DB Clean & Jerk",
-          "aliases_top3": [
-            "DB Clean and Jerk",
-            "DB C&J",
-            "DB Clean Jerk"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "DB Clean",
-            "DB Jerk"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "series": "jerk"
-        },
-        {
-          "name": "DB Snatch",
-          "aliases_top3": [
-            "Dumbbell Snatch",
-            "哑铃抓举"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "DB Swing",
-            "DB Clean"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "series": "snatch"
-        },
-        {
-          "name": "DB Thruster",
-          "aliases_top3": [
-            "Dumbbell Thruster",
-            "哑铃推蹲"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "Goblet Squat + DB Press"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "series": "thrust"
-        },
-        {
-          "name": "Deadlift",
-          "aliases_top3": [
-            "硬拉",
-            "Conventional Deadlift"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "Romanian Deadlift",
-            "Sumo Deadlift"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "series": "deadlift"
-        },
-        {
-          "name": "Front Squat",
-          "aliases_top3": [
-            "前蹲"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "Front Squat with 2 DBs",
-            "Goblet Squat"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "series": "squat_bar"
-        },
-        {
-          "name": "Good Morning",
-          "aliases_top3": [
-            "早安"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "Romanian Deadlift"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": []
-        },
-        {
-          "name": "Hang Clean",
-          "aliases_top3": [
-            "悬垂翻"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "Hang Power Clean",
-            "DB Clean"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "series": "clean"
-        },
-        {
-          "name": "Hang Power Clean",
-          "aliases_top3": [
-            "悬垂借力翻"
-          ],
-          "level": 2,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 3,
-          "category": "Weightlifting",
-          "subs": [
-            "DB Hang Power Clean"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "series": "clean"
-        },
         {
           "name": "KB Swing",
           "aliases_top3": [
@@ -322,6 +38,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "俄式或美式：髋爆发向后向前甩铃",
+            "壶铃借惯性荡至胸口/头顶，手臂只是绳索",
+            "髋铰链为主，不是深蹲"
+          ],
+          "errors": [
+            "用手臂举铃",
+            "壶铃荡得太低砸裆"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+KB+Swing+technique",
           "series": "kb"
         },
         {
@@ -342,7 +68,17 @@
           "source_count": 0,
           "manual": false,
           "manual_record_id": null,
-          "manual_record_ids": []
+          "manual_record_ids": [],
+          "cues": [
+            "杠/哑铃锁定在头顶正上方",
+            "肩胛上旋撑住、锁肘",
+            "重心在脚中，髋向后坐"
+          ],
+          "errors": [
+            "重心前移杠前掉",
+            "弓腰弓背"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Overhead+Lunge+technique"
         },
         {
           "name": "Overhead Squat",
@@ -363,6 +99,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "抓握宽度以杠过头后锁定在头顶后方为准",
+            "杠始终压在脚中正上方不动",
+            "髋向后坐到底，躯干尽量直立"
+          ],
+          "errors": [
+            "杠前移超出脚中面",
+            "下蹲时肘弯曲"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Overhead+Squat+technique",
           "series": "squat_bar"
         },
         {
@@ -383,6 +129,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "与 Clean 同发力，接杠时身体只半蹲",
+            "高拉后肘快速转出接杠于肩",
+            "全脚掌快速重新落地站稳"
+          ],
+          "errors": [
+            "蹲太深变成 squat clean",
+            "杠绕身前画弧"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Power+Clean+technique",
           "series": "clean"
         },
         {
@@ -403,6 +159,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "蹬地发力后迅速屈膝下沉接杠",
+            "杠在头顶被接住（手臂瞬间锁定）",
+            "站直即完成，杠锁定在耳后"
+          ],
+          "errors": [
+            "下沉太慢杠下坠砸肩",
+            "肘没锁就站起"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Push+Jerk+technique",
           "series": "jerk"
         },
         {
@@ -424,6 +190,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "杠架肩上，肘略前于杠",
+            "髋快速下沉 5-10cm 后爆发蹬地",
+            "借惯性推杠过头，头穿回杠下锁定"
+          ],
+          "errors": [
+            "蹲太深变成半蹲推举",
+            "推杠时头不穿过、杠停在额前"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Push+Press+technique",
           "series": "jerk"
         },
         {
@@ -445,6 +221,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "膝微屈固定，髋向后做铰链",
+            "杠贴大腿下滑至膝下/胫中",
+            "腘绳肌拉长有感即回拉，腰背平直"
+          ],
+          "errors": [
+            "变成蹲（膝一直弯）",
+            "杠离身太远腰受剪切力"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Romanian+Deadlift+technique",
           "series": "deadlift"
         },
         {
@@ -466,6 +252,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "预蹲蹬地爆发，双脚同时分跳",
+            "前膝对脚尖、后腿微屈，重心在两脚之间",
+            "先收前腿并拢站直"
+          ],
+          "errors": [
+            "重心落在前脚太靠前",
+            "后腿僵直无缓冲"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Split+Jerk+technique",
           "series": "jerk"
         },
         {
@@ -485,6 +281,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "宽站距，脚尖外展 30-45°",
+            "膝盖对准脚尖，双手在腿内侧窄握",
+            "垂直把杠从两腿间拉起锁定"
+          ],
+          "errors": [
+            "膝盖往里夹",
+            "起始臀部过低"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Sumo+Deadlift+technique",
           "series": "deadlift"
         },
         {
@@ -505,6 +311,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "前蹲到底，杠架肩上",
+            "站起瞬间顺势爆发推杠过头",
+            "髋的动能连贯传递到肩，不做两个动作"
+          ],
+          "errors": [
+            "蹲起后停顿再推（变成两个动作）",
+            "推杠时杠离下巴太远前抛"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Thruster+technique",
           "series": "thrust"
         },
         {
@@ -524,6 +340,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "从悬挂位启动发力",
+            "半蹲位接杠锁定头顶",
+            "接住即站直"
+          ],
+          "errors": [
+            "提前弯臂",
+            "接杠肘未锁定"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Hang+Power+Snatch+technique",
           "series": "snatch"
         },
         {
@@ -543,26 +369,17 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "起点在膝上悬挂位",
+            "髋爆发，杠贴身上行",
+            "快速下蹲到底接杠锁定"
+          ],
+          "errors": [
+            "悬挂位杠荡离身",
+            "下蹲不及时硬接"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Hang+Snatch+technique",
           "series": "snatch"
-        },
-        {
-          "name": "Hang Squat Clean",
-          "aliases_top3": [
-            "悬垂深蹲翻"
-          ],
-          "level": 3,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 6,
-          "category": "Weightlifting",
-          "subs": [
-            "Hang Power Clean"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "series": "clean"
         },
         {
           "name": "KB Snatch",
@@ -582,6 +399,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "单臂甩铃，髋爆发向上",
+            "壶铃贴身翻腕直接锁定头顶",
+            "顶点锁肘、铃不砸前臂"
+          ],
+          "errors": [
+            "铃荡离身打手臂",
+            "接铃时肘弯"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+KB+Snatch+technique",
           "series": "kb"
         },
         {
@@ -602,6 +429,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "与 Snatch 同发力，接杠只半蹲",
+            "高拉后快速翻腕锁定头顶",
+            "重心落在脚中站稳"
+          ],
+          "errors": [
+            "蹲太深",
+            "杠冲过头后方失衡"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Power+Snatch+technique",
           "series": "snatch"
         },
         {
@@ -622,27 +459,17 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "宽握（杠立起时髋高位置）",
+            "慢离地→过膝后爆发伸展全身",
+            "杠贴身上行，主动下蹲锁臂接于头顶"
+          ],
+          "errors": [
+            "杠离身绕弧",
+            "接杠时肘弯撑不住"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Snatch+technique",
           "series": "snatch"
-        },
-        {
-          "name": "Squat Clean",
-          "aliases_top3": [
-            "深蹲翻"
-          ],
-          "level": 3,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 6,
-          "category": "Weightlifting",
-          "subs": [
-            "Hang Power Clean",
-            "Power Clean"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "series": "clean"
         },
         {
           "name": "Squat Snatch",
@@ -662,7 +489,212 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "完整从地面拉起并全蹲接杠",
+            "杠贴身、快速转肩锁臂",
+            "以过顶深蹲姿势站起"
+          ],
+          "errors": [
+            "杠前掉",
+            "支撑时肩胛没上旋"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Squat+Snatch+technique",
           "series": "snatch"
+        },
+        {
+          "name": "Bench Press",
+          "aliases_top3": [
+            "卧推"
+          ],
+          "level": 1,
+          "earned_level": 1,
+          "earned_points": 1,
+          "max_points": 1,
+          "category": "Weightlifting",
+          "subs": [
+            "DB Bench Press",
+            "Push-up"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5pZ8qh3i",
+          "manual_record_ids": [
+            "recvuO5pZ8qh3i"
+          ],
+          "cues": [
+            "肩胛后收下沉，双脚踩实地面",
+            "杠落到胸骨中下段，肘约 45-70°",
+            "推直锁定在肩关节正上方"
+          ],
+          "errors": [
+            "肘完全外展 90°（肩受压）",
+            "臀部离凳借腰"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Bench+Press+technique"
+        },
+        {
+          "name": "DB Clean",
+          "aliases_top3": [
+            "Dumbbell Clean",
+            "哑铃高翻"
+          ],
+          "level": 1,
+          "earned_level": 1,
+          "earned_points": 1,
+          "max_points": 1,
+          "category": "Weightlifting",
+          "subs": [
+            "KB Swing"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5tjyFSsg",
+          "manual_record_ids": [
+            "recvuO5tjyFSsg"
+          ],
+          "cues": [
+            "哑铃在两腿之间，髋爆发站起",
+            "哑铃贴身上行，肘快速收于铃下",
+            "接于肩侧（rack 位）肘抬高"
+          ],
+          "errors": [
+            "弯腰用背硬拉",
+            "哑铃绕弧离身"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+DB+Clean+technique",
+          "series": "clean"
+        },
+        {
+          "name": "Goblet Squat",
+          "aliases_top3": [
+            "高脚杯深蹲"
+          ],
+          "level": 1,
+          "earned_level": 1,
+          "earned_points": 1,
+          "max_points": 1,
+          "category": "Weightlifting",
+          "subs": [
+            "Air Squat",
+            "Front Squat with 2 DBs"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5xMTgBik",
+          "manual_record_ids": [
+            "recvuO5xMTgBik"
+          ],
+          "cues": [
+            "哑铃/壶铃捧于胸口，肘贴身体内侧",
+            "髋向后坐到底，肘在膝盖内侧之间",
+            "躯干直立站起，重量作配重帮助蹲深"
+          ],
+          "errors": [
+            "肘外架不住前倒",
+            "脚跟离地"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Goblet+Squat+technique",
+          "series": "squat_bar"
+        },
+        {
+          "name": "Russian KB Swing",
+          "aliases_top3": [
+            "Russian Swing",
+            "俄式摆举"
+          ],
+          "level": 1,
+          "earned_level": 1,
+          "earned_points": 1,
+          "max_points": 1,
+          "category": "Weightlifting",
+          "subs": [
+            "KB Deadlift"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5zvjsCvQ",
+          "manual_record_ids": [
+            "recvuO5zvjsCvQ"
+          ],
+          "cues": [
+            "髋部爆发，壶铃荡至胸口高度",
+            "顶点时身体站直、臀夹紧",
+            "手臂放松像绳子"
+          ],
+          "errors": [
+            "耸肩用手抬铃",
+            "蹲着甩（应髋铰链）"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Russian+KB+Swing+technique",
+          "series": "kb"
+        },
+        {
+          "name": "Strict Press",
+          "aliases_top3": [
+            "肩上推",
+            "Strict Shoulder Press",
+            "Press"
+          ],
+          "level": 1,
+          "earned_level": 1,
+          "earned_points": 1,
+          "max_points": 1,
+          "category": "Weightlifting",
+          "subs": [
+            "DB Shoulder Press",
+            "Push Press"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5AZwccLW",
+          "manual_record_ids": [
+            "recvuO5AZwccLW"
+          ],
+          "cues": [
+            "杠架锁骨上，肘略前于杠",
+            "收紧臀腹（不借腰）垂直上推",
+            "头穿回杠下，锁定在耳侧"
+          ],
+          "errors": [
+            "借蹬腿或挺腰",
+            "推举轨迹绕头前抛"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Strict+Press+technique",
+          "series": "press"
+        },
+        {
+          "name": "Back Squat",
+          "aliases_top3": [
+            "后蹲",
+            "High Bar Back Squat",
+            "Low Bar Back Squat"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Goblet Squat",
+            "Front Squat"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5rv58AVY",
+          "manual_record_ids": [
+            "recvuO5rv58AVY"
+          ],
+          "cues": [
+            "杠架在上斜方肌（高杠位）",
+            "吸气撑住腹压再下蹲",
+            "髋膝同时屈，深度至髋低于膝"
+          ],
+          "errors": [
+            "膝内扣",
+            "脚跟离地重心跑前"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Back+Squat+technique",
+          "series": "squat_bar"
         },
         {
           "name": "Clean",
@@ -679,24 +711,372 @@
             "Hang Power Clean",
             "Hip Clean"
           ],
+          "source_count": 2,
+          "manual": true,
+          "manual_record_id": "recvuO5Ju2r50o",
+          "manual_record_ids": [
+            "recvuO5Ju2r50o"
+          ],
+          "cues": [
+            "杠贴胫骨，肩过杠，背角保持",
+            "二段发力：慢离地→过膝后爆发伸髋",
+            "耸肘高拉后快速转肘，杠接于肩上"
+          ],
+          "errors": [
+            "提前弯臂硬拉",
+            "接杠肘低、用腕托杠"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Clean+technique",
+          "series": "clean"
+        },
+        {
+          "name": "DB Clean & Jerk",
+          "aliases_top3": [
+            "DB Clean and Jerk",
+            "DB C&J",
+            "DB Clean Jerk"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "DB Clean",
+            "DB Jerk"
+          ],
           "source_count": 1,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
+          "manual": true,
+          "manual_record_id": "recvuO5CvDihf3",
+          "manual_record_ids": [
+            "recvuO5CvDihf3"
+          ],
+          "cues": [
+            "哑铃 clean 至肩侧rack位",
+            "微蹲蹬地爆发把哑铃推过头",
+            "双脚站稳、肘锁定即完成"
+          ],
+          "errors": [
+            "推举时腰过度后仰",
+            "接得不稳就下一轮"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+DB+Clean+&+Jerk+technique",
+          "series": "jerk"
+        },
+        {
+          "name": "DB Snatch",
+          "aliases_top3": [
+            "Dumbbell Snatch",
+            "哑铃抓举"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "DB Swing",
+            "DB Clean"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5EfqFgye",
+          "manual_record_ids": [
+            "recvuO5EfqFgye"
+          ],
+          "cues": [
+            "单臂，哑铃在两腿之间",
+            "髋爆发把哑铃贴身甩起",
+            "快速翻腕锁定头顶，肘伸直"
+          ],
+          "errors": [
+            "哑铃荡离身体打手腕",
+            "用手臂硬拉过头"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+DB+Snatch+technique",
+          "series": "snatch"
+        },
+        {
+          "name": "DB Thruster",
+          "aliases_top3": [
+            "Dumbbell Thruster",
+            "哑铃推蹲"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Goblet Squat + DB Press"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5w5vjgb1",
+          "manual_record_ids": [
+            "recvuO5w5vjgb1"
+          ],
+          "cues": [
+            "哑铃 rack 于肩，深蹲到底",
+            "站起顺势把哑铃推至头顶锁定",
+            "连贯发力：蹲→蹬→推一气呵成"
+          ],
+          "errors": [
+            "蹲起后停顿再推",
+            "哑铃推过头后方失衡"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+DB+Thruster+technique",
+          "series": "thrust"
+        },
+        {
+          "name": "Deadlift",
+          "aliases_top3": [
+            "硬拉",
+            "Conventional Deadlift"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Romanian Deadlift",
+            "Sumo Deadlift"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5uEZj6Zd",
+          "manual_record_ids": [
+            "recvuO5uEZj6Zd"
+          ],
+          "cues": [
+            "杠贴近胫骨，肩在杠正上方略前",
+            "腿推地，杠贴着身体上行",
+            "站直锁定：髋膝展开肩后收，不过度后仰"
+          ],
+          "errors": [
+            "杠离身太远变成拉背",
+            "起身时弓腰"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Deadlift+technique",
+          "series": "deadlift"
+        },
+        {
+          "name": "Front Squat",
+          "aliases_top3": [
+            "前蹲"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Front Squat with 2 DBs",
+            "Goblet Squat"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5FGjTs60",
+          "manual_record_ids": [
+            "recvuO5FGjTs60"
+          ],
+          "cues": [
+            "杠架在三角肌前束，手指放松托杠",
+            "肘尖抬高指向正前方，全程不下坠",
+            "髋垂直下坐，肘始终在膝盖上方"
+          ],
+          "errors": [
+            "肘掉下来杠滚向前",
+            "脚跟离地重心前移"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Front+Squat+technique",
+          "series": "squat_bar"
+        },
+        {
+          "name": "Good Morning",
+          "aliases_top3": [
+            "早安"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Romanian Deadlift"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5HjHyVpM",
+          "manual_record_ids": [
+            "recvuO5HjHyVpM"
+          ],
+          "cues": [
+            "杠架在上背，髋向后铰链",
+            "膝微屈，躯干下放至接近平行地面",
+            "腘绳与臀部发力拉回直立"
+          ],
+          "errors": [
+            "弯腰弓背",
+            "负重过大脊柱代偿"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Good+Morning+technique"
+        },
+        {
+          "name": "Hang Clean",
+          "aliases_top3": [
+            "悬垂翻"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "Hang Power Clean",
+            "DB Clean"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5O6SPalc",
+          "manual_record_ids": [
+            "recvuO5O6SPalc"
+          ],
+          "cues": [
+            "起点在膝上悬挂位",
+            "背部保持张力，髋爆发伸展",
+            "主动快速下蹲到底接杠于肩"
+          ],
+          "errors": [
+            "悬挂位杠荡离身体",
+            "没蹲下去硬接"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Hang+Clean+technique",
+          "series": "clean"
+        },
+        {
+          "name": "Hang Power Clean",
+          "aliases_top3": [
+            "悬垂借力翻"
+          ],
+          "level": 2,
+          "earned_level": 2,
+          "earned_points": 3,
+          "max_points": 3,
+          "category": "Weightlifting",
+          "subs": [
+            "DB Hang Power Clean"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5PPkamRp",
+          "manual_record_ids": [
+            "recvuO5PPkamRp"
+          ],
+          "cues": [
+            "从膝上悬挂位启动",
+            "髋发力高拉，半蹲位接杠",
+            "接住即站直"
+          ],
+          "errors": [
+            "先弯臂用肱二头肌拉",
+            "杠接在指尖"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Hang+Power+Clean+technique",
+          "series": "clean"
+        },
+        {
+          "name": "Hang Squat Clean",
+          "aliases_top3": [
+            "悬垂深蹲翻"
+          ],
+          "level": 3,
+          "earned_level": 3,
+          "earned_points": 6,
+          "max_points": 6,
+          "category": "Weightlifting",
+          "subs": [
+            "Hang Power Clean"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5MHipsHt",
+          "manual_record_ids": [
+            "recvuO5MHipsHt"
+          ],
+          "cues": [
+            "从悬挂位发力拉起",
+            "主动快速下蹲到底接杠于肩",
+            "全脚掌站稳再起杠"
+          ],
+          "errors": [
+            "蹲得慢杠坠前掉",
+            "肘撞膝盖"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Hang+Squat+Clean+technique",
+          "series": "clean"
+        },
+        {
+          "name": "Squat Clean",
+          "aliases_top3": [
+            "深蹲翻"
+          ],
+          "level": 3,
+          "earned_level": 3,
+          "earned_points": 6,
+          "max_points": 6,
+          "category": "Weightlifting",
+          "subs": [
+            "Hang Power Clean",
+            "Power Clean"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5L35xmKs",
+          "manual_record_ids": [
+            "recvuO5L35xmKs"
+          ],
+          "cues": [
+            "完整从地面拉起并全蹲接杠",
+            "杠贴身、肘快速绕杠就位",
+            "以前蹲姿势站起锁定"
+          ],
+          "errors": [
+            "接杠时杠离身",
+            "起身塌腰"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Squat+Clean+technique",
           "series": "clean"
         }
       ],
       "mastered_names": [
-        "Clean"
+        "Front Squat",
+        "Back Squat",
+        "Deadlift",
+        "Strict Press",
+        "Bench Press",
+        "Clean",
+        "Hang Clean",
+        "Hang Power Clean",
+        "Hang Squat Clean",
+        "Squat Clean",
+        "Good Morning",
+        "Russian KB Swing",
+        "Goblet Squat",
+        "DB Snatch",
+        "DB Clean",
+        "DB Clean & Jerk",
+        "DB Thruster"
       ]
     },
     {
       "key": "Gymnastics",
       "label_zh": "体操 Gymnastics",
-      "user_score": 0,
+      "user_score": 1,
       "max_score": 161,
-      "percent": 0.0,
-      "mastered_count": 0,
+      "percent": 0.6,
+      "mastered_count": 1,
       "total_moves": 49,
       "moves": [
         {
@@ -719,6 +1099,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "髋部向后向下坐，像坐椅子",
+            "膝盖始终对准脚尖方向，脚跟踩实",
+            "挺胸、腰椎中立，蹲至大腿低于水平"
+          ],
+          "errors": [
+            "膝内扣（膝盖往里夹）",
+            "脚跟离地或躯干过度前倾"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Air+Squat+technique",
           "series": "squat_bw"
         },
         {
@@ -738,23 +1128,17 @@
           "source_count": 0,
           "manual": false,
           "manual_record_id": null,
-          "manual_record_ids": []
-        },
-        {
-          "name": "Bear Crawl",
-          "aliases_top3": [
-            "熊爬"
+          "manual_record_ids": [],
+          "cues": [
+            "俯卧，四肢同时抬离地面",
+            "胸与大腿离地，肩胛后缩",
+            "目视地面，颈放松"
           ],
-          "level": 1,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 1,
-          "category": "Gymnastics",
-          "subs": [],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": []
+          "errors": [
+            "只抬上身或只抬腿",
+            "仰头用颈发力"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Arch+Hold+technique"
         },
         {
           "name": "Box Jump",
@@ -775,6 +1159,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "髋后蓄力，双臂摆动带动",
+            "全脚掌落箱，膝盖缓冲",
+            "髋完全展开站直再下箱"
+          ],
+          "errors": [
+            "蹲太深蓄力过久",
+            "落箱时膝内扣"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Box+Jump+technique",
           "series": "jump"
         },
         {
@@ -794,6 +1188,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "全脚掌踩箱，髋膝完全伸展站直",
+            "控制下落不弹跳",
+            "可负重但不甩腰"
+          ],
+          "errors": [
+            "借蹬地惯性弹起",
+            "没站直就算次数"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Box+Step-up+technique",
           "series": "jump"
         },
         {
@@ -811,6 +1215,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "胸口完全触地后双手抬离地面",
+            "身体保持刚性平板不松腰",
+            "推起时肘伸直锁定"
+          ],
+          "errors": [
+            "手没离地就推起",
+            "起身时先撅臀抬肩"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Hand+Release+Push-up+technique",
           "series": "pushup"
         },
         {
@@ -830,6 +1244,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "悬垂稳定，肩不耸",
+            "膝盖抬过髋部高度",
+            "控制回落"
+          ],
+          "errors": [
+            "靠甩髋惯性荡",
+            "幅度太小"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Hanging+Knee+Raise+technique",
           "series": "core"
         },
         {
@@ -850,7 +1274,17 @@
           "source_count": 0,
           "manual": false,
           "manual_record_id": null,
-          "manual_record_ids": []
+          "manual_record_ids": [],
+          "cues": [
+            "下背压实地面，肋骨下压",
+            "肩与腿离地，身体呈香蕉形",
+            "手臂贴身先练，再进阶到耳侧"
+          ],
+          "errors": [
+            "腰弓离地（失去训练意义）",
+            "颈肩紧张代偿"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Hollow+Hold+technique"
         },
         {
           "name": "Inchworm",
@@ -864,7 +1298,17 @@
           "source_count": 0,
           "manual": false,
           "manual_record_id": null,
-          "manual_record_ids": []
+          "manual_record_ids": [],
+          "cues": [
+            "手向前爬至平板，腿尽量伸直",
+            "手爬到最远端（可加俯卧撑）",
+            "脚小步走向手，保持腿直"
+          ],
+          "errors": [
+            "膝弯拖着走",
+            "髋高高翘起"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Inchworm+technique"
         },
         {
           "name": "Jumping Pull-up",
@@ -883,6 +1327,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "杠高设在站姿手腕附近",
+            "跳起同时拉杠，下巴过杠",
+            "下落缓冲屈膝，控制节奏"
+          ],
+          "errors": [
+            "站位太远够不到杠",
+            "落地膝盖僵直"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Jumping+Pull-up+technique",
           "series": "pullup"
         },
         {
@@ -900,6 +1354,15 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "脚下垫箱或弹跳借力上到支撑",
+            "下放控制，跳起撑直"
+          ],
+          "errors": [
+            "跳的时机与撑不同步",
+            "环不稳硬撑"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Jumping+Ring+Dip+technique",
           "series": "muscleup"
         },
         {
@@ -917,6 +1380,15 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "跪姿下保持肩-髋-膝一条直线",
+            "胸口落地、肘伸直才算一次"
+          ],
+          "errors": [
+            "塌腰、用头带动作",
+            "臀部后坐变成俯冲"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Knee+Push-up+technique",
           "series": "pushup"
         },
         {
@@ -938,6 +1410,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "前膝对准脚尖，躯干直立",
+            "后膝触地或接近地面",
+            "前脚跟发力站起"
+          ],
+          "errors": [
+            "前膝内扣",
+            "躯干前倾压膝盖"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Lunge+technique",
           "series": "squat_bw"
         },
         {
@@ -956,6 +1438,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "下背压实地面",
+            "腿伸直抬至垂直",
+            "下放时脚不落地"
+          ],
+          "errors": [
+            "腰部离地弓腰",
+            "腿弯借力"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Lying+Leg+Raise+technique",
           "series": "core"
         },
         {
@@ -974,7 +1466,17 @@
           "source_count": 0,
           "manual": false,
           "manual_record_id": null,
-          "manual_record_ids": []
+          "manual_record_ids": [],
+          "cues": [
+            "肘在肩正下方",
+            "肩-髋-踝一条直线，臀部夹紧",
+            "目视地面，颈中立"
+          ],
+          "errors": [
+            "塌腰或撅臀",
+            "肩胛下陷没撑住"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Plank+technique"
         },
         {
           "name": "Push-up",
@@ -995,6 +1497,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "从头到脚一条直线，核心收紧",
+            "肘部与躯干约 45°，不要完全外展",
+            "下到胸口离地一拳，推到肘完全伸直"
+          ],
+          "errors": [
+            "塌腰或撅臀",
+            "只做半程，幅度不够"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Push-up+technique",
           "series": "pushup"
         },
         {
@@ -1015,6 +1527,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "脚跟踩地，身体从头到踝一条直线",
+            "拉环至胸口/锁骨，肩胛后缩",
+            "下放到底，手臂完全伸直"
+          ],
+          "errors": [
+            "用髋部甩动借力",
+            "只拉一半，肘没过肩"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Ring+Row+technique",
           "series": "pullup"
         },
         {
@@ -1033,7 +1555,17 @@
           "source_count": 0,
           "manual": false,
           "manual_record_id": null,
-          "manual_record_ids": []
+          "manual_record_ids": [],
+          "cues": [
+            "肘在肩正下方，身体侧向一条线",
+            "髋部抬起不下沉",
+            "上方手叉腰或指向天花板"
+          ],
+          "errors": [
+            "髋下沉",
+            "身体前后倒"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Side+Plank+technique"
         },
         {
           "name": "Sit-up",
@@ -1054,6 +1586,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "蝶式腿或钩杠固定下肢",
+            "肩胛离地起身，胸口向膝盖",
+            "下放至肩胛触地"
+          ],
+          "errors": [
+            "只抬头颈代偿",
+            "下落没到底"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Sit-up+technique",
           "series": "core"
         },
         {
@@ -1073,6 +1615,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "踩稳平台，膝盖对脚尖",
+            "髋膝完全伸展锁定",
+            "下落控制"
+          ],
+          "errors": [
+            "膝内扣",
+            "重心跑偏踩不稳"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Step-up+technique",
           "series": "jump"
         },
         {
@@ -1089,7 +1641,17 @@
           "source_count": 0,
           "manual": false,
           "manual_record_id": null,
-          "manual_record_ids": []
+          "manual_record_ids": [],
+          "cues": [
+            "四肢同时抬起并短暂保持",
+            "背部与臀部发力",
+            "下放轻触地连续做"
+          ],
+          "errors": [
+            "幅度过小",
+            "憋气不呼吸"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Superman+technique"
         },
         {
           "name": "Walking Lunge",
@@ -1108,6 +1670,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "连续行进步伐等长",
+            "髋完全伸展再迈下一步",
+            "躯干保持直立"
+          ],
+          "errors": [
+            "后膝不落地幅度不足",
+            "重心晃动不稳"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Walking+Lunge+technique",
           "series": "squat_bw"
         },
         {
@@ -1128,6 +1700,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "正向或侧向跳，脚可过箱顶",
+            "越过箱落到另一侧",
+            "不停顿连续过箱"
+          ],
+          "errors": [
+            "脚踩箱沿打滑",
+            "落地震膝不缓冲"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Box+Jump+Over+technique",
           "series": "jump"
         },
         {
@@ -1147,6 +1729,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "蹲到箱上降低难度，仍单腿发力",
+            "臀部轻触箱即站起",
+            "控制离心下坐"
+          ],
+          "errors": [
+            "坐到箱上就放松",
+            "用另一腿蹬地"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Box+Pistol+technique",
           "series": "squat_bw"
         },
         {
@@ -1169,6 +1761,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "肩下沉、肘朝后下方",
+            "下至上臂平行或更低",
+            "推直锁定，身体直立"
+          ],
+          "errors": [
+            "肩耸到耳边",
+            "身体前倾过多变成胸推"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Dip+technique",
           "series": "dip"
         },
         {
@@ -1190,6 +1792,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "脚跟钩牢滚垫，膝盖可微屈",
+            "下放至躯干接近平行地面",
+            "起身时胸找膝盖，手前摆助力"
+          ],
+          "errors": [
+            "下放过深失控砸背",
+            "弓腰起"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+GHD+Sit-up+technique",
           "series": "core"
         },
         {
@@ -1206,7 +1818,17 @@
           "source_count": 0,
           "manual": false,
           "manual_record_id": null,
-          "manual_record_ids": []
+          "manual_record_ids": [],
+          "cues": [
+            "保持 hollow 姿态整体前后摇",
+            "发力在核心，不在四肢",
+            "幅度小、节奏匀"
+          ],
+          "errors": [
+            "塌腰变成游泳打腿",
+            "靠手脚甩动"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Hollow+Rock+technique"
         },
         {
           "name": "Kipping Pull-up",
@@ -1227,6 +1849,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "先练熟空心-弓形(kip)摆动节奏",
+            "弓形时髋发力向前上方荡，借力拉杠",
+            "推开杠再进入下一循环"
+          ],
+          "errors": [
+            "时机不对：髋没发力硬拉",
+            "摆动过大失控撞杠"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Kipping+Pull-up+technique",
           "series": "pullup"
         },
         {
@@ -1249,6 +1881,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "肩胛下压先稳定悬垂",
+            "膝盖主动上提至触肘",
+            "腹肌发力为主，控制摆动"
+          ],
+          "errors": [
+            "只抬腿不收膝",
+            "摆动过大全靠惯性"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Knees-to-Elbows+technique",
           "series": "core"
         },
         {
@@ -1269,6 +1911,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "髋部高抬，身体呈倒 V",
+            "头顶（不是额头）向两手之间下落",
+            "肩推直，肘朝后不外飘"
+          ],
+          "errors": [
+            "身体太平变成普通俯卧撑",
+            "头落在手前方，肩部受力错"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Pike+Push-up+technique",
           "series": "pushup"
         },
         {
@@ -1291,6 +1943,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "肩胛先下沉启动（肩离耳）",
+            "下巴过杠，胸口找杠",
+            "下放到底手臂伸直，控制不摆"
+          ],
+          "errors": [
+            "耸肩用颈代偿",
+            "半程引体幅度不足"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Pull-up+technique",
           "series": "pullup"
         },
         {
@@ -1307,7 +1969,17 @@
           "source_count": 0,
           "manual": false,
           "manual_record_id": null,
-          "manual_record_ids": []
+          "manual_record_ids": [],
+          "cues": [
+            "俯撑位双手握哑铃",
+            "身体保持平板不旋转，单臂划船至髋侧",
+            "两侧交替，另一手撑稳"
+          ],
+          "errors": [
+            "划船时身体侧翻",
+            "髋部旋转借力"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Renegade+Row+technique"
         },
         {
           "name": "V-up",
@@ -1326,6 +1998,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "手脚同时抬，指尖碰脚背",
+            "下放时手脚都不落地",
+            "核心持续保持张力"
+          ],
+          "errors": [
+            "腰离地弓腰",
+            "只抬腿或只抬手"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+V-up+technique",
           "series": "core"
         },
         {
@@ -1345,6 +2027,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "背对墙，手距墙一掌宽",
+            "肩推离耳朵，肋骨下压",
+            "从 30 秒开始累积时长"
+          ],
+          "errors": [
+            "背弓依赖墙支撑",
+            "头探出肩前"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Wall+Handstand+technique",
           "series": "handstand"
         },
         {
@@ -1365,6 +2057,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "俯卧起点：胸口贴墙位置",
+            "手一步步向墙走，脚跟着爬墙",
+            "手到距墙一掌处，身体贴墙成倒立"
+          ],
+          "errors": [
+            "塌腰走过墙（肚子先到）",
+            "脚没跟走全靠手撑"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Wall+Walk+technique",
           "series": "handstand"
         },
         {
@@ -1386,6 +2088,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "比普通引体拉得更高：胸口（锁骨以下）触杠",
+            "肩伸幅度更大，肘往后拉",
+            "kipping 或 strict 均可"
+          ],
+          "errors": [
+            "只拉到下巴就下",
+            "胸没实际触杠"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Chest-to-Bar+technique",
           "series": "pullup"
         },
         {
@@ -1408,6 +2120,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "靠墙倒立收紧核心，头在两手前方形成三角支撑",
+            "有控制地下落，头轻触垫",
+            "快速蹬伸推直双臂"
+          ],
+          "errors": [
+            "下落时砸头/失控",
+            "背弓腰折，靠脊柱代偿"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+HSPU+technique",
           "series": "pushup"
         },
         {
@@ -1428,6 +2150,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "手指张开抓地，肩在腕正上方",
+            "指尖发力控制前后平衡",
+            "身体一条直线收紧"
+          ],
+          "errors": [
+            "背弓腰折",
+            "重心压在掌根无法微调"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Handstand+Hold+technique",
           "series": "handstand"
         },
         {
@@ -1449,6 +2181,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "摆到弓形顶点时髋发力",
+            "环拉向胸口时快速转腕坐起",
+            "前后荡出节奏，不硬拉"
+          ],
+          "errors": [
+            "拉得不够高就转腕",
+            "肩未过环就下沉"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Kipping+Muscle-up+technique",
           "series": "muscleup"
         },
         {
@@ -1470,6 +2212,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "假握(false grip)：手腕压在环/杠上",
+            "高拉至胸口-腹部，肘保持低位",
+            "快速转腕、肩移过支撑点再撑直"
+          ],
+          "errors": [
+            "先拉到顶再硬转肩",
+            "支撑时肘未锁直"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Muscle-up+technique",
           "series": "muscleup"
         },
         {
@@ -1491,6 +2243,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "单腿蹲，另一腿伸直前伸",
+            "重心在全脚掌，髋向后坐",
+            "蹲到底（臀低于踝）站直锁定"
+          ],
+          "errors": [
+            "脚跟离地",
+            "躯干过度前倾失去平衡"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Pistol+technique",
           "series": "squat_bw"
         },
         {
@@ -1511,6 +2273,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "环转到平行（掌心相对朝内）",
+            "下放至上臂平行环索",
+            "推起时环向内压稳定再伸直"
+          ],
+          "errors": [
+            "环乱晃失稳",
+            "半程下放不到位"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Ring+Dip+technique",
           "series": "dip"
         },
         {
@@ -1531,6 +2303,15 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "不借摆动，纯肩臂力量推起",
+            "下落至头顶轻触垫，全程控制"
+          ],
+          "errors": [
+            "用腿蹬墙借力",
+            "半程推起"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Strict+HSPU+technique",
           "series": "pushup"
         },
         {
@@ -1551,6 +2332,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "躯干略后仰 10-15°，用胸口找杠",
+            "全程无蹬腿摆动",
+            "下放控制 2 秒效果更好"
+          ],
+          "errors": [
+            "蹬腿/甩髋借力",
+            "下巴没过杠就下"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Strict+Pull-up+technique",
           "series": "pullup"
         },
         {
@@ -1572,6 +2363,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "肩胛下压，身体保持张力",
+            "髋屈发力把脚背送到杠上",
+            "下放时控制，不失控乱荡"
+          ],
+          "errors": [
+            "膝弯脚没触杠",
+            "只做 knee raise 就标 T2B"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Toes-to-Bar+technique",
           "series": "core"
         },
         {
@@ -1591,6 +2392,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "身体画连续圆弧，胸向前压",
+            "髋部快速驱动，节奏比 kipping 更连贯",
+            "推杠后顺势进入下一次摆动"
+          ],
+          "errors": [
+            "节奏断点、动作分解成两段",
+            "幅度不够下巴没过杠"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Butterfly+Pull-up+technique",
           "series": "pullup"
         },
         {
@@ -1612,6 +2423,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "先能稳定 60 秒靠墙倒立",
+            "重心略移向指尖开始迈手",
+            "小步快移，肩始终在腕上方"
+          ],
+          "errors": [
+            "大步跨手失控",
+            "塌腰弓背走"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Handstand+Walk+technique",
           "series": "handstand"
         },
         {
@@ -1633,6 +2454,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "假握环，身体微后仰起摆",
+            "髋摆到位后拉环贴胸",
+            "转腕、肩过环、撑直——环距与肩同宽"
+          ],
+          "errors": [
+            "环外飘、支撑不稳",
+            "借绳磨手腕发力"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Ring+Muscle-up+technique",
           "series": "muscleup"
         },
         {
@@ -1654,10 +2485,50 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "先具备严格引体+环上撑的力量",
+            "拉至胸口贴环，肘贴近身体转腕",
+            "全程无摆动"
+          ],
+          "errors": [
+            "拉不到位强行转肩",
+            "支撑时弓背塌肩"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Strict+Muscle-up+technique",
           "series": "muscleup"
+        },
+        {
+          "name": "Bear Crawl",
+          "aliases_top3": [
+            "熊爬"
+          ],
+          "level": 1,
+          "earned_level": 1,
+          "earned_points": 1,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuO5RM4QuWs",
+          "manual_record_ids": [
+            "recvuO5RM4QuWs"
+          ],
+          "cues": [
+            "膝盖离地约一拳高",
+            "对侧手脚同步移动",
+            "髋部低平不翘起"
+          ],
+          "errors": [
+            "膝盖几乎拖地",
+            "身体斜成倒 V"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Bear+Crawl+technique"
         }
       ],
-      "mastered_names": []
+      "mastered_names": [
+        "Bear Crawl"
+      ]
     },
     {
       "key": "Metcon",
@@ -1683,6 +2554,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "举球过头全身伸展",
+            "爆发砸地向地面",
+            "随球下蹲捡起，反弹即接"
+          ],
+          "errors": [
+            "只用手臂砸",
+            "砸偏反弹失控"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Ball+Slam+technique",
           "series": "wallball"
         },
         {
@@ -1703,6 +2584,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "胸口和大腿触地",
+            "脚跳至手旁成深蹲位",
+            "起跳击掌、脚离地"
+          ],
+          "errors": [
+            "只俯卧不触地",
+            "起身不跳（除非降阶）"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Burpee+technique",
           "series": "burpee"
         },
         {
@@ -1723,6 +2614,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "球在脚间，髋爆发站起",
+            "球贴身上行，肘快速收于球下",
+            "以深蹲/半蹲位接球于肩前"
+          ],
+          "errors": [
+            "弯腰抱球变成硬拉",
+            "球荡离身体"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Medicine+Ball+Clean+technique",
           "series": "clean"
         },
         {
@@ -1742,6 +2643,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "burpee 的降阶：无俯卧撑无跳",
+            "胸口触地后站直即可",
+            "保持节奏匀速"
+          ],
+          "errors": [
+            "身体没下到地面",
+            "站不直就下一轮"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Up-down+technique",
           "series": "burpee"
         },
         {
@@ -1763,6 +2674,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "持球于下巴下方，深蹲到底",
+            "站起顺势把球投向目标（3m/2.7m）",
+            "接球即入下一次下蹲，连贯不停"
+          ],
+          "errors": [
+            "只蹲一半",
+            "投球只到额头高度"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Wall+Ball+technique",
           "series": "wallball"
         },
         {
@@ -1782,6 +2703,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "俯身双手各持一只哑铃触地",
+            "身体压低（胸口过哑铃）后爆发",
+            "哑铃贴身上摆至过头锁定，再放回地面"
+          ],
+          "errors": [
+            "变成两次单独的 swing",
+            "起跳时哑铃绕弧离身"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Devil+Press+technique",
           "series": "burpee"
         },
         {
@@ -1798,7 +2729,17 @@
           "source_count": 0,
           "manual": false,
           "manual_record_id": null,
-          "manual_record_ids": []
+          "manual_record_ids": [],
+          "cues": [
+            "俯身撑于两哑铃上做一次俯卧撑",
+            "单臂各划一次船",
+            "脚跳至手旁，深蹲翻哑铃至肩，起立推过头"
+          ],
+          "errors": [
+            "俯卧撑/划船幅度不足",
+            "起跳翻铃动作脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Man+Maker+technique"
         }
       ],
       "mastered_names": []
@@ -1828,7 +2769,17 @@
           "source_count": 0,
           "manual": false,
           "manual_record_id": null,
-          "manual_record_ids": []
+          "manual_record_ids": [],
+          "cues": [
+            "手臂与腿同步推拉，全掌踩踏",
+            "节奏先稳后猛，避免一开局爆掉",
+            "躯干微前倾，肩胛稳住不耸"
+          ],
+          "errors": [
+            "只用手臂拉",
+            "转速忽快忽慢能量浪费"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Bike+technique"
         },
         {
           "name": "Rope Jump",
@@ -1847,6 +2798,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "手腕发力摇绳，大臂贴近身体",
+            "跳起 2-3cm 即可，前脚掌落地",
+            "目视前方，节奏均匀"
+          ],
+          "errors": [
+            "整条手臂大幅抡绳",
+            "跳太高浪费体力"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Rope+Jump+technique",
           "series": "rope"
         },
         {
@@ -1865,7 +2826,17 @@
           "source_count": 0,
           "manual": false,
           "manual_record_id": null,
-          "manual_record_ids": []
+          "manual_record_ids": [],
+          "cues": [
+            "顺序：腿→身→臂，回程反之（臂→身→腿）",
+            "发力 60% 来自腿部蹬伸",
+            "手柄拉至下肋，躯干后仰约 11 点钟"
+          ],
+          "errors": [
+            "先弯臂再蹬腿",
+            "回程rush直接屈膝"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Row+technique"
         },
         {
           "name": "Run",
@@ -1885,6 +2856,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "身体微前倾，步频高于步幅",
+            "落地在重心下方，脚中前掌着地",
+            "摆臂前后不越中线，呼吸节奏稳定"
+          ],
+          "errors": [
+            "跨大步脚跟着地刹车",
+            "耸肩握拳过度紧张"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Run+technique",
           "series": "run"
         },
         {
@@ -1902,7 +2883,17 @@
           "source_count": 0,
           "manual": false,
           "manual_record_id": null,
-          "manual_record_ids": []
+          "manual_record_ids": [],
+          "cues": [
+            "下蹲蓄力，双臂下拉贴身",
+            "发力顺序：腿→核心→臂",
+            "手柄拉至髋侧，躯干折叠再复位"
+          ],
+          "errors": [
+            "只用手臂拉",
+            "躯干直立不参与"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Skierg+technique"
         },
         {
           "name": "Walk",
@@ -1920,6 +2911,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "快走训练：步幅自然，脚跟-脚掌滚动落地",
+            "手臂摆动配合步频",
+            "心率区 2 区保持有氧耐力"
+          ],
+          "errors": [
+            "步幅过大变成拖行",
+            "含胸驼背"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Walk+technique",
           "series": "run"
         },
         {
@@ -1941,6 +2942,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "手腕快速发力：绳过脚下两次",
+            "跳起略高、身体保持垂直",
+            "绳长合适：踩绳到手柄腋下"
+          ],
+          "errors": [
+            "用手臂甩绳速度不够",
+            "跳成踢臀打腿式失衡"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Double+Under+technique",
           "series": "rope"
         },
         {
@@ -1958,7 +2969,17 @@
           "source_count": 0,
           "manual": false,
           "manual_record_id": null,
-          "manual_record_ids": []
+          "manual_record_ids": [],
+          "cues": [
+            "自由泳：身体转动发力，高肘抱水",
+            "打腿从髋出发保持节奏",
+            "换气转头不抬头，保持身体流线"
+          ],
+          "errors": [
+            "抬头换气下半身下沉",
+            "划水越过中线"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Swim+technique"
         },
         {
           "name": "Triple Under",
@@ -1977,6 +2998,16 @@
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
+          "cues": [
+            "建立在稳定 DU 基础上",
+            "更高腾空+极限手腕转速",
+            "身体收紧保持垂直"
+          ],
+          "errors": [
+            "DU 都不稳就练 TU",
+            "过度后仰借速"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Triple+Under+technique",
           "series": "rope"
         }
       ],
@@ -2003,9 +3034,9 @@
         {
           "name": "DB Clean",
           "level": 1,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
+          "earned_level": 1,
+          "mastered": true,
+          "manual": true,
           "subs": [
             "KB Swing"
           ]
@@ -2013,9 +3044,9 @@
         {
           "name": "Hang Power Clean",
           "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
           "subs": [
             "DB Hang Power Clean"
           ]
@@ -2034,9 +3065,9 @@
         {
           "name": "Hang Clean",
           "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
           "subs": [
             "Hang Power Clean",
             "DB Clean"
@@ -2047,7 +3078,7 @@
           "level": 2,
           "earned_level": 2,
           "mastered": true,
-          "manual": false,
+          "manual": true,
           "subs": [
             "DB Clean",
             "Hang Power Clean",
@@ -2057,9 +3088,9 @@
         {
           "name": "Hang Squat Clean",
           "level": 3,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
+          "earned_level": 3,
+          "mastered": true,
+          "manual": true,
           "subs": [
             "Hang Power Clean"
           ]
@@ -2067,20 +3098,391 @@
         {
           "name": "Squat Clean",
           "level": 3,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
+          "earned_level": 3,
+          "mastered": true,
+          "manual": true,
           "subs": [
             "Hang Power Clean",
             "Power Clean"
           ]
         }
       ],
-      "frontier": 6,
-      "next_move": "Hang Squat Clean",
-      "user_score": 3,
+      "frontier": 3,
+      "next_move": "Power Clean",
+      "user_score": 22,
       "max_score": 26,
-      "percent": 11.5
+      "percent": 84.6
+    },
+    {
+      "key": "squat_bar",
+      "label": "杠铃蹲系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Goblet Squat",
+          "level": 1,
+          "earned_level": 1,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Air Squat",
+            "Front Squat with 2 DBs"
+          ]
+        },
+        {
+          "name": "Back Squat",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Goblet Squat",
+            "Front Squat"
+          ]
+        },
+        {
+          "name": "Front Squat",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Front Squat with 2 DBs",
+            "Goblet Squat"
+          ]
+        },
+        {
+          "name": "Overhead Squat",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Snatch Balance",
+            "Front Squat"
+          ]
+        }
+      ],
+      "frontier": 3,
+      "next_move": "Overhead Squat",
+      "user_score": 7,
+      "max_score": 10,
+      "percent": 70.0
+    },
+    {
+      "key": "thrust",
+      "label": "蹲推系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Goblet Squat",
+          "level": 1,
+          "earned_level": 1,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Air Squat",
+            "Front Squat with 2 DBs"
+          ]
+        },
+        {
+          "name": "DB Thruster",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Goblet Squat + DB Press"
+          ]
+        },
+        {
+          "name": "Thruster",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "DB Thruster",
+            "Front Squat + Push Press"
+          ]
+        }
+      ],
+      "frontier": 2,
+      "next_move": "Thruster",
+      "user_score": 4,
+      "max_score": 7,
+      "percent": 57.1
+    },
+    {
+      "key": "deadlift",
+      "label": "硬拉系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Romanian Deadlift",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Good Morning",
+            "Stiff-leg Deadlift"
+          ]
+        },
+        {
+          "name": "Deadlift",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "Romanian Deadlift",
+            "Sumo Deadlift"
+          ]
+        },
+        {
+          "name": "Sumo Deadlift",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Conventional Deadlift"
+          ]
+        }
+      ],
+      "frontier": 2,
+      "next_move": "Sumo Deadlift",
+      "user_score": 3,
+      "max_score": 9,
+      "percent": 33.3
+    },
+    {
+      "key": "jerk",
+      "label": "上挺系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Push Press",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Strict Press",
+            "DB Push Press"
+          ]
+        },
+        {
+          "name": "Push Jerk",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Push Press",
+            "DB Push Jerk"
+          ]
+        },
+        {
+          "name": "Split Jerk",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Push Jerk",
+            "DB Split Jerk"
+          ]
+        },
+        {
+          "name": "DB Clean & Jerk",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "DB Clean",
+            "DB Jerk"
+          ]
+        }
+      ],
+      "frontier": 4,
+      "next_move": null,
+      "user_score": 3,
+      "max_score": 12,
+      "percent": 25.0
+    },
+    {
+      "key": "press",
+      "label": "推举系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Strict Press",
+          "level": 1,
+          "earned_level": 1,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "DB Shoulder Press",
+            "Push Press"
+          ]
+        },
+        {
+          "name": "Push Press",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Strict Press",
+            "DB Push Press"
+          ]
+        },
+        {
+          "name": "Push Jerk",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Push Press",
+            "DB Push Jerk"
+          ]
+        }
+      ],
+      "frontier": 1,
+      "next_move": "Push Press",
+      "user_score": 1,
+      "max_score": 7,
+      "percent": 14.3
+    },
+    {
+      "key": "kb",
+      "label": "壶铃系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "Russian KB Swing",
+          "level": 1,
+          "earned_level": 1,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "KB Deadlift"
+          ]
+        },
+        {
+          "name": "KB Swing",
+          "level": 2,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Russian KB Swing",
+            "KB Deadlift"
+          ]
+        },
+        {
+          "name": "KB Snatch",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "KB Swing"
+          ]
+        }
+      ],
+      "frontier": 1,
+      "next_move": "KB Swing",
+      "user_score": 1,
+      "max_score": 10,
+      "percent": 10.0
+    },
+    {
+      "key": "snatch",
+      "label": "抓举系",
+      "category": "Weightlifting",
+      "label_zh": "举重 Weightlifting",
+      "chain": [
+        {
+          "name": "DB Snatch",
+          "level": 2,
+          "earned_level": 2,
+          "mastered": true,
+          "manual": true,
+          "subs": [
+            "DB Swing",
+            "DB Clean"
+          ]
+        },
+        {
+          "name": "Hang Power Snatch",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "DB Hang Power Snatch"
+          ]
+        },
+        {
+          "name": "Power Snatch",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Hang Power Snatch",
+            "DB Power Snatch"
+          ]
+        },
+        {
+          "name": "Hang Snatch",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Hang Power Snatch"
+          ]
+        },
+        {
+          "name": "Snatch",
+          "level": 3,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Hang Power Snatch",
+            "DB Snatch"
+          ]
+        },
+        {
+          "name": "Squat Snatch",
+          "level": 4,
+          "earned_level": 0,
+          "mastered": false,
+          "manual": false,
+          "subs": [
+            "Hang Power Snatch",
+            "Squat Clean + Push Jerk"
+          ]
+        }
+      ],
+      "frontier": 1,
+      "next_move": "Hang Power Snatch",
+      "user_score": 3,
+      "max_score": 37,
+      "percent": 8.1
     },
     {
       "key": "pullup",
@@ -2578,377 +3980,6 @@
       "percent": 0.0
     },
     {
-      "key": "squat_bar",
-      "label": "杠铃蹲系",
-      "category": "Weightlifting",
-      "label_zh": "举重 Weightlifting",
-      "chain": [
-        {
-          "name": "Goblet Squat",
-          "level": 1,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Air Squat",
-            "Front Squat with 2 DBs"
-          ]
-        },
-        {
-          "name": "Back Squat",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Goblet Squat",
-            "Front Squat"
-          ]
-        },
-        {
-          "name": "Front Squat",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Front Squat with 2 DBs",
-            "Goblet Squat"
-          ]
-        },
-        {
-          "name": "Overhead Squat",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Snatch Balance",
-            "Front Squat"
-          ]
-        }
-      ],
-      "frontier": 0,
-      "next_move": "Goblet Squat",
-      "user_score": 0,
-      "max_score": 10,
-      "percent": 0.0
-    },
-    {
-      "key": "snatch",
-      "label": "抓举系",
-      "category": "Weightlifting",
-      "label_zh": "举重 Weightlifting",
-      "chain": [
-        {
-          "name": "DB Snatch",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "DB Swing",
-            "DB Clean"
-          ]
-        },
-        {
-          "name": "Hang Power Snatch",
-          "level": 3,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "DB Hang Power Snatch"
-          ]
-        },
-        {
-          "name": "Power Snatch",
-          "level": 3,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Hang Power Snatch",
-            "DB Power Snatch"
-          ]
-        },
-        {
-          "name": "Hang Snatch",
-          "level": 3,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Hang Power Snatch"
-          ]
-        },
-        {
-          "name": "Snatch",
-          "level": 3,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Hang Power Snatch",
-            "DB Snatch"
-          ]
-        },
-        {
-          "name": "Squat Snatch",
-          "level": 4,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Hang Power Snatch",
-            "Squat Clean + Push Jerk"
-          ]
-        }
-      ],
-      "frontier": 0,
-      "next_move": "DB Snatch",
-      "user_score": 0,
-      "max_score": 37,
-      "percent": 0.0
-    },
-    {
-      "key": "jerk",
-      "label": "上挺系",
-      "category": "Weightlifting",
-      "label_zh": "举重 Weightlifting",
-      "chain": [
-        {
-          "name": "Push Press",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Strict Press",
-            "DB Push Press"
-          ]
-        },
-        {
-          "name": "Push Jerk",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Push Press",
-            "DB Push Jerk"
-          ]
-        },
-        {
-          "name": "Split Jerk",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Push Jerk",
-            "DB Split Jerk"
-          ]
-        },
-        {
-          "name": "DB Clean & Jerk",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "DB Clean",
-            "DB Jerk"
-          ]
-        }
-      ],
-      "frontier": 0,
-      "next_move": "Push Press",
-      "user_score": 0,
-      "max_score": 12,
-      "percent": 0.0
-    },
-    {
-      "key": "press",
-      "label": "推举系",
-      "category": "Weightlifting",
-      "label_zh": "举重 Weightlifting",
-      "chain": [
-        {
-          "name": "Strict Press",
-          "level": 1,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "DB Shoulder Press",
-            "Push Press"
-          ]
-        },
-        {
-          "name": "Push Press",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Strict Press",
-            "DB Push Press"
-          ]
-        },
-        {
-          "name": "Push Jerk",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Push Press",
-            "DB Push Jerk"
-          ]
-        }
-      ],
-      "frontier": 0,
-      "next_move": "Strict Press",
-      "user_score": 0,
-      "max_score": 7,
-      "percent": 0.0
-    },
-    {
-      "key": "deadlift",
-      "label": "硬拉系",
-      "category": "Weightlifting",
-      "label_zh": "举重 Weightlifting",
-      "chain": [
-        {
-          "name": "Romanian Deadlift",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Good Morning",
-            "Stiff-leg Deadlift"
-          ]
-        },
-        {
-          "name": "Deadlift",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Romanian Deadlift",
-            "Sumo Deadlift"
-          ]
-        },
-        {
-          "name": "Sumo Deadlift",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Conventional Deadlift"
-          ]
-        }
-      ],
-      "frontier": 0,
-      "next_move": "Romanian Deadlift",
-      "user_score": 0,
-      "max_score": 9,
-      "percent": 0.0
-    },
-    {
-      "key": "kb",
-      "label": "壶铃系",
-      "category": "Weightlifting",
-      "label_zh": "举重 Weightlifting",
-      "chain": [
-        {
-          "name": "Russian KB Swing",
-          "level": 1,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "KB Deadlift"
-          ]
-        },
-        {
-          "name": "KB Swing",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Russian KB Swing",
-            "KB Deadlift"
-          ]
-        },
-        {
-          "name": "KB Snatch",
-          "level": 3,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "KB Swing"
-          ]
-        }
-      ],
-      "frontier": 0,
-      "next_move": "Russian KB Swing",
-      "user_score": 0,
-      "max_score": 10,
-      "percent": 0.0
-    },
-    {
-      "key": "thrust",
-      "label": "蹲推系",
-      "category": "Weightlifting",
-      "label_zh": "举重 Weightlifting",
-      "chain": [
-        {
-          "name": "Goblet Squat",
-          "level": 1,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Air Squat",
-            "Front Squat with 2 DBs"
-          ]
-        },
-        {
-          "name": "DB Thruster",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "Goblet Squat + DB Press"
-          ]
-        },
-        {
-          "name": "Thruster",
-          "level": 2,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
-          "subs": [
-            "DB Thruster",
-            "Front Squat + Push Press"
-          ]
-        }
-      ],
-      "frontier": 0,
-      "next_move": "Goblet Squat",
-      "user_score": 0,
-      "max_score": 7,
-      "percent": 0.0
-    },
-    {
       "key": "burpee",
       "label": "波比系",
       "category": "Metcon",
@@ -3164,7 +4195,6 @@
   ],
   "standalone": [
     "Arch Hold",
-    "Bear Crawl",
     "Hollow Hold",
     "Inchworm",
     "Plank",
@@ -3172,9 +4202,10 @@
     "Superman",
     "Hollow Rock",
     "Renegade Row",
+    "Bear Crawl",
+    "Overhead Lunge",
     "Bench Press",
     "Good Morning",
-    "Overhead Lunge",
     "Man Maker",
     "Bike",
     "Row",

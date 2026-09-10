@@ -433,6 +433,19 @@
   </div>
 </div>
 
+<!-- 动作要点卡片（系列链 pill / 动作行 ℹ️ 点击弹出） -->
+<div class="form-modal" id="moveInfoModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="box">
+    <h3 id="moveInfoTitle" style="margin-top:0"></h3>
+    <div id="moveInfoMeta" class="help" style="margin-bottom:12px"></div>
+    <div id="moveInfoBody"></div>
+    <div class="row" style="justify-content:flex-end;margin-top:14px">
+      <a id="moveInfoDemo" class="ghost" style="text-decoration:none;padding:6px 12px;border:1px solid #d4d4d8;border-radius:8px;font-size:13px" target="_blank" rel="noopener">▶️ 观看动作 demo</a>
+      <button class="ghost" onclick="document.getElementById('moveInfoModal').classList.remove('open')">关闭</button>
+    </div>
+  </div>
+</div>
+
 <!-- 课表保存弹窗（OCR → 当日课表） -->
 <div class="form-modal" id="schedModal">
   <div class="box">
@@ -1684,6 +1697,46 @@ function renderMap() {
 }
 
 /* ─── 🏋️ 动作解锁 ───────────────────────────────── */
+let _moveInfoMap = null;   // name -> move entry（懒建索引）
+function moveInfoByName(name) {
+  if (!_moveInfoMap) {
+    _moveInfoMap = {};
+    (DATA.moves && DATA.moves.categories || []).forEach(c =>
+      (c.moves || []).forEach(m => { _moveInfoMap[m.name] = m; }));
+  }
+  return _moveInfoMap[name] || null;
+}
+
+/* 动作要点卡片：执行要点 / 常见错误 / 降阶建议 / demo 链接 */
+function showMoveInfo(name) {
+  _moveInfoMap = null;   // 每次重建索引，避免数据刷新后读到旧条目
+  const mm = moveInfoByName(name);
+  if (!mm) { toast('未找到该动作'); return; }
+  const zh = (mm.aliases_top3 || []).filter(a => /[\u4e00-\u9fff]/.test(a));
+  const statusHtml = mm.earned_level
+    ? `<span class="lvl-badge lvl-${mm.earned_level}">已解锁 L${mm.earned_level}</span>${mm.manual ? ' <span class="help">✍️ 手动勾选</span>' : ''}`
+    : '<span class="lvl-badge lvl-0">未解锁</span>';
+  const cuesHtml = (mm.cues || []).length
+    ? `<div style="margin-bottom:12px"><b style="font-size:13px">🎯 执行要点</b>
+        ${(mm.cues).map(c => `<p style="margin:4px 0 4px 10px;font-size:13px">• ${c}</p>`).join('')}</div>`
+    : '';
+  const errsHtml = (mm.errors || []).length
+    ? `<div style="margin-bottom:12px"><b style="font-size:13px">⚠️ 常见错误</b>
+        ${(mm.errors).map(c => `<p style="margin:4px 0 4px 10px;font-size:13px;color:#71717a">• ${c}</p>`).join('')}</div>`
+    : '';
+  const subsHtml = (mm.subs && mm.subs.length)
+    ? `<div style="margin-bottom:6px"><b style="font-size:13px">🪜 降阶建议</b>
+        <p style="margin:4px 0 4px 10px;font-size:13px">${mm.subs.join(' · ')}</p></div>`
+    : `<p class="help" style="font-size:12px">（已是 L${mm.level} 基础动作）</p>`;
+  document.getElementById('moveInfoTitle').textContent = mm.name;
+  document.getElementById('moveInfoMeta').innerHTML =
+    `${zh.length ? zh.join(' · ') + '<br>' : ''}${statusHtml} · 动作等级 L${mm.level} · ${mm.category === 'Gymnastics' ? '体操' : mm.category === 'Weightlifting' ? '举重' : mm.category === 'Metcon' ? '组合' : '单结构'}`;
+  document.getElementById('moveInfoBody').innerHTML = cuesHtml + errsHtml + subsHtml;
+  document.getElementById('moveInfoDemo').href = mm.demo ||
+    'https://www.youtube.com/results?search_query=crossfit+' + encodeURIComponent(mm.name);
+  document.getElementById('moveInfoModal').classList.add('open');
+}
+
 function renderMoves() {
   const M = DATA.moves;
   // 顶部
@@ -1720,7 +1773,7 @@ function renderMoves() {
           const isNext = s.frontier === i && s.frontier < s.chain.length;
           const cls = c.mastered ? 'pill-ok' : (isNext ? 'pill-next' : 'pill-lock');
           const mark = c.mastered ? '✓' : (isNext ? '▸' : '·');
-          return `<span class="pill ${cls}" title="${esc(c.name)}（L${c.level}）${c.subs && c.subs.length ? '；降阶：' + esc(c.subs.join(' / ')) : ''}">
+          return `<span class="pill ${cls}" style="cursor:pointer" onclick="showMoveInfo('${esc(c.name).replace(/'/g,'')}')" title="${esc(c.name)}（L${c.level}）${c.subs && c.subs.length ? '；降阶：' + esc(c.subs.join(' / ')) : ''}">
             ${mark} ${esc(c.name)} <i>L${c.level}</i></span>`;
         }).join('<span class="pill-arrow">→</span>');
         return `<div style="margin:10px 0">
@@ -1762,6 +1815,7 @@ function renderMoves() {
           <span style="font-size:11px;color:#71717a">已解锁</span>
         </label>
         <span class="move-name">${esc(m.name)}</span>
+        <span class="pill" style="cursor:pointer;padding:1px 7px;font-size:11px" onclick="showMoveInfo('${esc(m.name).replace(/'/g,'')}')" title="查看动作要点">ℹ️</span>
         ${alias}
         ${lvBadge}
         ${bench}

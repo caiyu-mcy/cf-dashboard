@@ -1,1 +1,110 @@
-[]
+[
+  {
+    "id": "recvuO5pZ8qh3i",
+    "动作名": "Bench Press",
+    "来源": "手动勾选",
+    "等级": "L1"
+  },
+  {
+    "id": "recvuO5rv58AVY",
+    "动作名": "Back Squat",
+    "来源": "手动勾选",
+    "等级": "L2"
+  },
+  {
+    "id": "recvuO5tjyFSsg",
+    "动作名": "DB Clean",
+    "来源": "手动勾选",
+    "等级": "L1"
+  },
+  {
+    "id": "recvuO5uEZj6Zd",
+    "动作名": "Deadlift",
+    "来源": "手动勾选",
+    "等级": "L2"
+  },
+  {
+    "id": "recvuO5w5vjgb1",
+    "动作名": "DB Thruster",
+    "来源": "手动勾选",
+    "等级": "L2"
+  },
+  {
+    "id": "recvuO5xMTgBik",
+    "动作名": "Goblet Squat",
+    "来源": "手动勾选",
+    "等级": "L1"
+  },
+  {
+    "id": "recvuO5zvjsCvQ",
+    "动作名": "Russian KB Swing",
+    "来源": "手动勾选",
+    "等级": "L1"
+  },
+  {
+    "id": "recvuO5AZwccLW",
+    "动作名": "Strict Press",
+    "来源": "手动勾选",
+    "等级": "L1"
+  },
+  {
+    "id": "recvuO5CvDihf3",
+    "动作名": "DB Clean & Jerk",
+    "来源": "手动勾选",
+    "等级": "L2"
+  },
+  {
+    "id": "recvuO5EfqFgye",
+    "动作名": "DB Snatch",
+    "来源": "手动勾选",
+    "等级": "L2"
+  },
+  {
+    "id": "recvuO5FGjTs60",
+    "动作名": "Front Squat",
+    "来源": "手动勾选",
+    "等级": "L2"
+  },
+  {
+    "id": "recvuO5HjHyVpM",
+    "动作名": "Good Morning",
+    "来源": "手动勾选",
+    "等级": "L2"
+  },
+  {
+    "id": "recvuO5Ju2r50o",
+    "动作名": "Clean",
+    "来源": "手动勾选",
+    "等级": "L2"
+  },
+  {
+    "id": "recvuO5L35xmKs",
+    "动作名": "Squat Clean",
+    "来源": "手动勾选",
+    "等级": "L3"
+  },
+  {
+    "id": "recvuO5MHipsHt",
+    "动作名": "Hang Squat Clean",
+    "来源": "手动勾选",
+    "等级": "L3"
+  },
+  {
+    "id": "recvuO5O6SPalc",
+    "动作名": "Hang Clean",
+    "来源": "手动勾选",
+    "等级": "L2"
+  },
+  {
+    "id": "recvuO5PPkamRp",
+    "动作名": "Hang Power Clean",
+    "来源": "手动勾选",
+    "等级": "L2"
+  },
+  {
+    "id": "recvuO5RM4QuWs",
+    "动作名": "Bear Crawl",
+    "来源": "手动勾选",
+    "等级": "L1"
+  }
+]
