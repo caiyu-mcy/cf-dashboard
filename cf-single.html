@@ -110,16 +110,22 @@
     cursor: pointer; user-select: none;
   }
   .pending-badge:hover { background: #e4e4e7; color: #18181b; }
+  .sync-link {
+    display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 999px;
+    border: 1px solid var(--line); font-size: 11px; color: var(--muted);
+    text-decoration: none; cursor: pointer; transition: all .15s;
+  }
+  .sync-link:hover { background: #f4f4f5; color: #18181b; }
 </style>
 <script id="cf-data">
-const CF_DATA = {"classes.json": "[\n  {\n    \"id\": \"recvuI8Q1dq3Mv\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 20 TL | 166.304 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"120\",\n    \"成绩主指标\": \"23 分钟\",\n    \"日期\": \"2026-09-08\",\n    \"训练时长(分钟)\": \"23\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8R6t21Ko\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"153\",\n    \"成绩主指标\": \"15 分钟\",\n    \"日期\": \"2026-09-07\",\n    \"训练时长(分钟)\": \"15\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8S4FX8lX\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 13 TL | 76.892 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"136\",\n    \"成绩主指标\": \"9 分钟\",\n    \"日期\": \"2026-09-05\",\n    \"训练时长(分钟)\": \"9\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8T6WFE9K\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 71 TL | 209.052 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"162\",\n    \"成绩主指标\": \"19 分钟\",\n    \"日期\": \"2026-09-05\",\n    \"训练时长(分钟)\": \"19\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8U1ChnQT\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 4 TL | 32.732 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"102\",\n    \"成绩主指标\": \"13 分钟\",\n    \"日期\": \"2026-09-02\",\n    \"训练时长(分钟)\": \"13\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8UWRz1WD\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 52 TL | 205.443 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"151\",\n    \"成绩主指标\": \"20 分钟\",\n    \"日期\": \"2026-09-02\",\n    \"训练时长(分钟)\": \"20\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8VVy5ery\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 29 TL | 123.028 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"134\",\n    \"成绩主指标\": \"14 分钟\",\n    \"日期\": \"2026-08-29\",\n    \"训练时长(分钟)\": \"14\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8WNOuRhw\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 47 TL | 166.169 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"154\",\n    \"成绩主指标\": \"16 分钟\",\n    \"日期\": \"2026-08-28\",\n    \"训练时长(分钟)\": \"16\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8XMUCqpw\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 12 TL | 42.296 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"118\",\n    \"成绩主指标\": \"16 分钟\",\n    \"日期\": \"2026-08-25\",\n    \"训练时长(分钟)\": \"16\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8YCsBqYZ\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 82 TL | 373.395 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"142\",\n    \"成绩主指标\": \"40 分钟\",\n    \"日期\": \"2026-08-24\",\n    \"训练时长(分钟)\": \"40\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8ZsJ1s7w\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 36 TL | 146.923 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"147\",\n    \"成绩主指标\": \"15 分钟\",\n    \"日期\": \"2026-08-21\",\n    \"训练时长(分钟)\": \"15\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI90hIxFO0\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 32 TL | 135.096 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"146\",\n    \"成绩主指标\": \"14 分钟\",\n    \"日期\": \"2026-08-20\",\n    \"训练时长(分钟)\": \"14\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI915Fg2aI\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 49 TL | 193.754 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"145\",\n    \"成绩主指标\": \"20 分钟\",\n    \"日期\": \"2026-08-18\",\n    \"训练时长(分钟)\": \"20\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI923Fui2p\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 72 TL | 244.268 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"145\",\n    \"成绩主指标\": \"26 分钟\",\n    \"日期\": \"2026-08-17\",\n    \"训练时长(分钟)\": \"26\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI92ToReVT\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 14 TL | 85.583 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"107\",\n    \"成绩主指标\": \"30 分钟\",\n    \"日期\": \"2026-08-13\",\n    \"训练时长(分钟)\": \"30\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI93OWXZgU\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 21 TL | 107.22 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"137\",\n    \"成绩主指标\": \"12 分钟\",\n    \"日期\": \"2026-08-13\",\n    \"训练时长(分钟)\": \"12\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI94JqDuxG\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 5 TL | 0.0 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"131\",\n    \"成绩主指标\": \"6 分钟\",\n    \"日期\": \"2026-08-12\",\n    \"训练时长(分钟)\": \"6\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI95Dm9OKT\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 42 TL | 181.548 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"144\",\n    \"成绩主指标\": \"19 分钟\",\n    \"日期\": \"2026-08-12\",\n    \"训练时长(分钟)\": \"19\",\n    \"课程类型\": \"Open Gym\"\n  }\n]", "extras.json": "[]", "prs.json": "[]", "benchmarks.json": "[]", "checkins.json": "[]", "competitions.json": "[]", "advice.json": "[\n  {\n    \"id\": \"recvuJo1uQpeVt\",\n    \"HRV 基线\": \"77\",\n    \"HRV 当日值\": \"74\",\n    \"TSB Form\": \"14\",\n    \"创建时间\": \"2026-09-09\",\n    \"建议内容\": \"检测到 9/8 新增训练（室内有氧 23min，HR 120，20 TL）。当前 TSB +14，训练负荷比 60%（最优区间），疲劳率 27（正常）。最近 HRV 74，处于正常范围。身体恢复良好，建议维持当前训练节奏。注意：KPI 中 RHR 显示 92 系 COROS 旧数据残留（最近实际 RHR 78，2026-08-30），非真实异常。\",\n    \"建议类别\": \"正常训练\",\n    \"日期\": \"2026-09-09\",\n    \"规则类型\": \"其他\",\n    \"触发来源\": \"自动规则\"\n  }\n]", "schedules.json": "[\n  {\n    \"id\": \"recvuIUY5N3gL3\",\n    \"日期\": \"2026-09-10\",\n    \"来源\": \"OCR 课表照片\",\n    \"课表内容\": \"2026-09-10 课表\\nA. Back Squat 5x3 @75%\\nB. MetCon 12min AMRAP\\n10 Burpees\\n15 Wall Balls 9kg\"\n  },\n  {\n    \"id\": \"recvuJ3ZrGlzwS\",\n    \"备注\": \"原图识别raw：A:Cn the 2:30 x 6 / Seuat Snateh / 6-4-2-6-4-2 / 6ol 70186 6l 75Y 8c/ ; B. Ch tke 2:eax5 / 1Deaellift @go！ ; C:AMRAP AF / /Pwer Saarh / 2530 al Rov / 6② / Veesble Chneler。已人工校正；重量单位确认为 kg（用户主馆用 kg，外出馆可能 lb）。\",\n    \"日期\": \"2026-09-07\",\n    \"来源\": \"OCR-Vision\",\n    \"课表内容\": \"A. On the 2:30 x 6\\nSquat Snatch\\n6-4-2-6-4-2\\n60% 70% 80% 65% 75% 85%\\n\\nB. On the 2:00 x 5\\n1 Deadlift @ 90%\\n\\nC. AMRAP 15\\n15 Power Snatch 35/25 kg\\n25/20 Cal Row\\n60 Double Under\"\n  }\n]", "coros_recent.json": "{\n  \"synced_at\": \"2026-09-09T18:19:32\",\n  \"dashboard\": {},\n  \"summary\": {},\n  \"cycle\": {},\n  \"profile\": {}\n}", "coros_kpi.json": "{\n  \"synced_at\": \"2026-09-09T21:55:44\",\n  \"fitness\": {\n    \"ctl\": 35,\n    \"atl\": 21,\n    \"tsb\": 14,\n    \"trainingLoadRatio\": 60,\n    \"tiredRate\": 27\n  },\n  \"zones\": {\n    \"maxHr\": 190,\n    \"lthr\": 163,\n    \"restingHeartRate\": 92\n  },\n  \"scores\": {\n    \"aerobicEndurance\": 72.7,\n    \"anaerobicCapacity\": 72.3,\n    \"anaerobicEndurance\": 72.4,\n    \"lactateThreshold\": 72.4\n  },\n  \"last7days\": {\n    \"hrv\": [\n      {\n        \"date\": \"2026-08-30\",\n        \"value\": 74\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 77\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 77\n      },\n      {\n        \"date\": \"2023-03-11\",\n        \"value\": 77\n      }\n    ],\n    \"rhr\": [\n      {\n        \"date\": \"2026-08-30\",\n        \"value\": 78\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 92\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 92\n      },\n      {\n        \"date\": \"2023-03-11\",\n        \"value\": 92\n      }\n    ],\n    \"recovery\": [\n      {\n        \"date\": \"2026-08-30\",\n        \"value\": 80\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 95\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 95\n      },\n      {\n        \"date\": \"2023-03-11\",\n        \"value\": 95\n      }\n    ]\n  },\n  \"state\": {\n    \"loadState\": 2,\n    \"tiredState\": 2\n  }\n}", "summary.json": "{\n  \"训练记录\": 18,\n  \"近7天训练\": 7,\n  \"最近训练日\": \"2026-09-08\",\n  \"PR 记录\": 0,\n  \"达标 PR\": 0,\n  \"Benchmark\": 0,\n  \"打卡馆\": 0,\n  \"参赛\": 0,\n  \"更新于\": \"2026-09-09T21:57:36\"\n}"};
+const CF_DATA = {"classes.json": "[\n  {\n    \"id\": \"recvuI8Q1dq3Mv\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 20 TL | 166.304 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"120\",\n    \"成绩主指标\": \"23 分钟\",\n    \"日期\": \"2026-09-08\",\n    \"训练时长(分钟)\": \"23\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8R6t21Ko\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"153\",\n    \"成绩主指标\": \"15 分钟\",\n    \"日期\": \"2026-09-07\",\n    \"训练时长(分钟)\": \"15\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8S4FX8lX\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 13 TL | 76.892 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"136\",\n    \"成绩主指标\": \"9 分钟\",\n    \"日期\": \"2026-09-05\",\n    \"训练时长(分钟)\": \"9\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8T6WFE9K\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 71 TL | 209.052 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"162\",\n    \"成绩主指标\": \"19 分钟\",\n    \"日期\": \"2026-09-05\",\n    \"训练时长(分钟)\": \"19\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8U1ChnQT\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 4 TL | 32.732 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"102\",\n    \"成绩主指标\": \"13 分钟\",\n    \"日期\": \"2026-09-02\",\n    \"训练时长(分钟)\": \"13\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8UWRz1WD\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 52 TL | 205.443 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"151\",\n    \"成绩主指标\": \"20 分钟\",\n    \"日期\": \"2026-09-02\",\n    \"训练时长(分钟)\": \"20\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8VVy5ery\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 29 TL | 123.028 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"134\",\n    \"成绩主指标\": \"14 分钟\",\n    \"日期\": \"2026-08-29\",\n    \"训练时长(分钟)\": \"14\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8WNOuRhw\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 47 TL | 166.169 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"154\",\n    \"成绩主指标\": \"16 分钟\",\n    \"日期\": \"2026-08-28\",\n    \"训练时长(分钟)\": \"16\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8XMUCqpw\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 12 TL | 42.296 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"118\",\n    \"成绩主指标\": \"16 分钟\",\n    \"日期\": \"2026-08-25\",\n    \"训练时长(分钟)\": \"16\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8YCsBqYZ\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 82 TL | 373.395 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"142\",\n    \"成绩主指标\": \"40 分钟\",\n    \"日期\": \"2026-08-24\",\n    \"训练时长(分钟)\": \"40\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI8ZsJ1s7w\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 36 TL | 146.923 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"147\",\n    \"成绩主指标\": \"15 分钟\",\n    \"日期\": \"2026-08-21\",\n    \"训练时长(分钟)\": \"15\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI90hIxFO0\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 32 TL | 135.096 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"146\",\n    \"成绩主指标\": \"14 分钟\",\n    \"日期\": \"2026-08-20\",\n    \"训练时长(分钟)\": \"14\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI915Fg2aI\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 49 TL | 193.754 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"145\",\n    \"成绩主指标\": \"20 分钟\",\n    \"日期\": \"2026-08-18\",\n    \"训练时长(分钟)\": \"20\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI923Fui2p\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 72 TL | 244.268 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"145\",\n    \"成绩主指标\": \"26 分钟\",\n    \"日期\": \"2026-08-17\",\n    \"训练时长(分钟)\": \"26\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI92ToReVT\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 14 TL | 85.583 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"107\",\n    \"成绩主指标\": \"30 分钟\",\n    \"日期\": \"2026-08-13\",\n    \"训练时长(分钟)\": \"30\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI93OWXZgU\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 21 TL | 107.22 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"137\",\n    \"成绩主指标\": \"12 分钟\",\n    \"日期\": \"2026-08-13\",\n    \"训练时长(分钟)\": \"12\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI94JqDuxG\",\n    \"WOD 名称\": \"力量训练\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 5 TL | 0.0 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"131\",\n    \"成绩主指标\": \"6 分钟\",\n    \"日期\": \"2026-08-12\",\n    \"训练时长(分钟)\": \"6\",\n    \"课程类型\": \"Open Gym\"\n  },\n  {\n    \"id\": \"recvuI95Dm9OKT\",\n    \"WOD 名称\": \"室内有氧\",\n    \"WOD 来源\": \"自定义\",\n    \"修改时间\": \"2026-09-09\",\n    \"创建时间\": \"2026-09-09\",\n    \"备注\": \"COROS 自动同步 | 训练负荷 42 TL | 181.548 kcal\",\n    \"完成状态\": \"完成\",\n    \"心率均值\": \"144\",\n    \"成绩主指标\": \"19 分钟\",\n    \"日期\": \"2026-08-12\",\n    \"训练时长(分钟)\": \"19\",\n    \"课程类型\": \"Open Gym\"\n  }\n]", "extras.json": "[]", "prs.json": "[]", "benchmarks.json": "[]", "checkins.json": "[]", "competitions.json": "[]", "advice.json": "[\n  {\n    \"id\": \"recvuJo1uQpeVt\",\n    \"HRV 基线\": \"77\",\n    \"HRV 当日值\": \"74\",\n    \"TSB Form\": \"14\",\n    \"创建时间\": \"2026-09-09\",\n    \"建议内容\": \"检测到 9/8 新增训练（室内有氧 23min，HR 120，20 TL）。当前 TSB +14，训练负荷比 60%（最优区间），疲劳率 27（正常）。最近 HRV 74，处于正常范围。身体恢复良好，建议维持当前训练节奏。注意：KPI 中 RHR 显示 92 系 COROS 旧数据残留（最近实际 RHR 78，2026-08-30），非真实异常。\",\n    \"建议类别\": \"正常训练\",\n    \"日期\": \"2026-09-09\",\n    \"规则类型\": \"其他\",\n    \"触发来源\": \"自动规则\"\n  }\n]", "schedules.json": "[\n  {\n    \"id\": \"recvuIUY5N3gL3\",\n    \"日期\": \"2026-09-10\",\n    \"来源\": \"OCR 课表照片\",\n    \"课表内容\": \"2026-09-10 课表\\nA. Back Squat 5x3 @75%\\nB. MetCon 12min AMRAP\\n10 Burpees\\n15 Wall Balls 9kg\"\n  },\n  {\n    \"id\": \"recvuJ3ZrGlzwS\",\n    \"备注\": \"原图识别raw：A:Cn the 2:30 x 6 / Seuat Snateh / 6-4-2-6-4-2 / 6ol 70186 6l 75Y 8c/ ; B. Ch tke 2:eax5 / 1Deaellift @go！ ; C:AMRAP AF / /Pwer Saarh / 2530 al Rov / 6② / Veesble Chneler。已人工校正；重量单位确认为 kg（用户主馆用 kg，外出馆可能 lb）。\",\n    \"日期\": \"2026-09-07\",\n    \"来源\": \"OCR-Vision\",\n    \"课表内容\": \"A. On the 2:30 x 6\\nSquat Snatch\\n6-4-2-6-4-2\\n60% 70% 80% 65% 75% 85%\\n\\nB. On the 2:00 x 5\\n1 Deadlift @ 90%\\n\\nC. AMRAP 15\\n15 Power Snatch 35/25 kg\\n25/20 Cal Row\\n60 Double Under\"\n  }\n]", "coros_recent.json": "{\n  \"synced_at\": \"2026-09-09T18:19:32\",\n  \"dashboard\": {},\n  \"summary\": {},\n  \"cycle\": {},\n  \"profile\": {}\n}", "coros_kpi.json": "{\n  \"synced_at\": \"2026-09-09T21:55:44\",\n  \"fitness\": {\n    \"ctl\": 35,\n    \"atl\": 21,\n    \"tsb\": 14,\n    \"trainingLoadRatio\": 60,\n    \"tiredRate\": 27\n  },\n  \"zones\": {\n    \"maxHr\": 190,\n    \"lthr\": 163,\n    \"restingHeartRate\": 92\n  },\n  \"scores\": {\n    \"aerobicEndurance\": 72.7,\n    \"anaerobicCapacity\": 72.3,\n    \"anaerobicEndurance\": 72.4,\n    \"lactateThreshold\": 72.4\n  },\n  \"last7days\": {\n    \"hrv\": [\n      {\n        \"date\": \"2026-08-30\",\n        \"value\": 74\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 77\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 77\n      },\n      {\n        \"date\": \"2023-03-11\",\n        \"value\": 77\n      }\n    ],\n    \"rhr\": [\n      {\n        \"date\": \"2026-08-30\",\n        \"value\": 78\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 92\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 92\n      },\n      {\n        \"date\": \"2023-03-11\",\n        \"value\": 92\n      }\n    ],\n    \"recovery\": [\n      {\n        \"date\": \"2026-08-30\",\n        \"value\": 80\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 95\n      },\n      {\n        \"date\": \"2026-07-20\",\n        \"value\": 95\n      },\n      {\n        \"date\": \"2023-03-11\",\n        \"value\": 95\n      }\n    ]\n  },\n  \"state\": {\n    \"loadState\": 2,\n    \"tiredState\": 2\n  }\n}", "summary.json": "{\n  \"训练记录\": 18,\n  \"近7天训练\": 7,\n  \"最近训练日\": \"2026-09-08\",\n  \"PR 记录\": 0,\n  \"达标 PR\": 0,\n  \"Benchmark\": 0,\n  \"打卡馆\": 0,\n  \"参赛\": 0,\n  \"更新于\": \"2026-09-10T11:42:22\"\n}"};
 </script>
 </head>
 <body>
 
 <header>
   <h1>🏋️ 我的 CF 训练工作台</h1>
-  <div class="sub" id="userBar">麻菜鱼 · COROS · 数据更新于 <span id="lastSync">—</span> | CTL/ATL/TSB <span id="lastCTL">—</span> <span class="pending-badge" id="pendingBadge" onclick="flushPending(true)" style="display:none"></span></div>
+  <div class="sub" id="userBar">麻菜鱼 · COROS · 数据更新于 <span id="lastSync">—</span> | CTL/ATL/TSB <span id="lastCTL">—</span> <span class="pending-badge" id="pendingBadge" onclick="flushPending(true)" style="display:none"></span> <a href="javascript:void(0)" class="sync-link" id="syncLink" onclick="openSyncCfg()">⚙ 同步</a></div>
   <div class="stats" id="topStats">
     <div class="pill">📒 训练记录 <strong id="kpiClasses">0</strong></div>
     <div class="pill">🔥 近 7 天练 <strong id="kpiLast7">0</strong> 天</div>
@@ -305,6 +311,23 @@ const CF_DATA = {"classes.json": "[\n  {\n    \"id\": \"recvuI8Q1dq3Mv\",\n    \
   </div>
 </div>
 
+<!-- 跨端同步设置 -->
+<div class="form-modal" id="syncModal">
+  <div class="box">
+    <h3 style="margin-top:0">🔗 跨端同步设置</h3>
+    <div id="syncStatus" class="help" style="margin-bottom:12px"></div>
+    <label style="display:block;margin-bottom:10px"><span class="label">局域网地址（在家同一 Wi-Fi 用）</span><input type="text" id="cfgLan" placeholder="10.19.75.253" /></label>
+    <label style="display:block;margin-bottom:10px"><span class="label">Tailscale 内网 IP（装了 Tailscale 时填）</span><input type="text" id="cfgTs" placeholder="100.x.x.x" /></label>
+    <label style="display:block;margin-bottom:10px"><span class="label">远程地址（在外面用，ts.net 域名）</span><input type="text" id="cfgRemote" placeholder="https://xxx.tailxxxx.ts.net" /></label>
+    <label style="display:block;margin-bottom:10px"><span class="label">访问口令</span><input type="text" id="cfgToken" placeholder="32 位口令" /></label>
+    <div class="row" style="justify-content:flex-end;margin-top:14px">
+      <button class="ghost" onclick="document.getElementById('syncModal').classList.remove('open')">取消</button>
+      <button class="primary" onclick="saveSyncCfg()">保存并重连</button>
+    </div>
+    <p class="help" style="margin-top:10px">每台设备填一次，存在本机浏览器。手机 / 另一台电脑各填一次即可，之后自动选最快的那条路。</p>
+  </div>
+</div>
+
 <!-- 课表保存弹窗（OCR → 当日课表） -->
 <div class="form-modal" id="schedModal">
   <div class="box">
@@ -353,16 +376,32 @@ const LOCAL_KEY_BY_TABLE = {
   checkin: 'checkins', competition: 'competitions',
 };
 
-/* 飞书写入 API 探测：本地 server.js 同源 → 局域网 Mac → 不可写 */
+/* ─── 同步服务探测 ────────────────────────────────
+   候选顺序：同源（本地打开）→ 局域网 Mac → Tailscale 内网 IP → 远程 ts.net 地址
+   任一可用即采用；都不可用则进入离线队列模式。 */
 let _apiBaseCache;
+function cfToken() { return localStorage.getItem('cf_token_v1') || ''; }
+function cfHeaders(extra) {
+  const h = Object.assign({}, extra || {});
+  const t = cfToken();
+  if (t) h['X-CF-Token'] = t;
+  return h;
+}
+function apiCandidates() {
+  const lanHost = localStorage.getItem('cf_lan_host') || '10.19.75.253';
+  const tsHost  = localStorage.getItem('cf_ts_host') || '';
+  const remote  = (localStorage.getItem('cf_remote_base_v1') || '').replace(/\/+$/, '');
+  const list = ['', `http://${lanHost}:3000`];
+  if (tsHost) list.push(`http://${tsHost}:3000`);
+  if (remote) list.push(remote);
+  return list;
+}
 async function apiBase() {
   if (_apiBaseCache !== undefined) return _apiBaseCache;
-  const lanHost = localStorage.getItem('cf_lan_host') || '10.19.75.253';
-  const candidates = ['', `http://${lanHost}:3000`];
-  for (const b of candidates) {
+  for (const b of apiCandidates()) {
     try {
       const ctl = new AbortController();
-      const t = setTimeout(() => ctl.abort(), 1500);
+      const t = setTimeout(() => ctl.abort(), 2500);
       const r = await fetch(b + '/api/health', { signal: ctl.signal });
       clearTimeout(t);
       if (r.ok) { _apiBaseCache = b; return b; }
@@ -372,15 +411,70 @@ async function apiBase() {
   return false;
 }
 
+/* ─── 跨端同步设置面板 ─────────────────────────── */
+function syncKind(base) {
+  if (base === false) return '离线';
+  if (base === '') return '本机';
+  if (/\.ts\.net/.test(base) || /^https:/.test(base)) return '远程';
+  if (/^http:\/\/100\./.test(base)) return 'Tailscale';
+  return '局域网';
+}
+async function renderSyncState() {
+  const el = document.getElementById('syncLink');
+  if (!el) return;
+  _apiBaseCache = undefined;
+  const b = await apiBase();
+  el.textContent = '⚙ ' + syncKind(b);
+  el.style.color = b === false ? '#a32d2d' : '';
+  el.title = b === false
+    ? '连不上同步服务：数据会先存本机并自动排队，恢复连接后补传飞书'
+    : '已连接（' + syncKind(b) + '）：' + (b || location.origin);
+}
+function openSyncCfg() {
+  document.getElementById('cfgLan').value    = localStorage.getItem('cf_lan_host') || '';
+  document.getElementById('cfgTs').value     = localStorage.getItem('cf_ts_host') || '';
+  document.getElementById('cfgRemote').value = localStorage.getItem('cf_remote_base_v1') || '';
+  document.getElementById('cfgToken').value  = localStorage.getItem('cf_token_v1') || '';
+  document.getElementById('syncStatus').textContent =
+    '当前连接方式：' + syncKind(_apiBaseCache) + '。修改后点保存会自动重新探测。';
+  document.getElementById('syncModal').classList.add('open');
+}
+async function saveSyncCfg() {
+  const set = (k, id) => {
+    const v = (document.getElementById(id).value || '').trim();
+    if (v) localStorage.setItem(k, v); else localStorage.removeItem(k);
+  };
+  set('cf_lan_host', 'cfgLan');
+  set('cf_ts_host', 'cfgTs');
+  set('cf_remote_base_v1', 'cfgRemote');
+  set('cf_token_v1', 'cfgToken');
+  _apiBaseCache = undefined;
+  const b = await apiBase();
+  if (b === false) {
+    toast('⚠️ 仍连不上：检查地址是否正确，或确认 Mac 上的服务已启动');
+  } else {
+    const r = await fetch(b + '/api/data/summary.json', { headers: cfHeaders(), cache: 'no-store' });
+    if (r.status === 401) {
+      toast('❌ 口令不对，请重新核对');
+    } else {
+      toast('✓ 已连接（' + syncKind(b) + '），正在拉取最新数据');
+      await loadAll();
+    }
+  }
+  document.getElementById('syncModal').classList.remove('open');
+  renderSyncState();
+}
+
 async function larkWrite(method, tableKey, recordId, fields) {
   const base = await apiBase();
   if (base === false) return { ok: false, offline: true };
   const url = base + '/api/feishu/records/' + TABLE_IDS[tableKey] + (recordId ? '/' + recordId : '');
   try {
     const r = await fetch(url, {
-      method, headers: { 'Content-Type': 'application/json' },
+      method, headers: cfHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify({ fields })
     });
+    if (r.status === 401) return { ok: false, needToken: true };
     const j = await r.json();
     return { ok: !!(j && (j.ok || j.code === 0)), data: j };
   } catch (e) {
@@ -440,7 +534,7 @@ async function flushPending(manual) {
   _apiBaseCache = undefined; // 每次补传都重新探测，避免缓存住"连不上"的结果
   const base = await apiBase();
   if (base === false) {
-    toast(`📴 同步服务不可用，${list.length} 条仍待补传（回家连 Wi-Fi 会自动上传）`);
+    toast(`📴 同步服务不可用，${list.length} 条仍待补传（点右上「⚙ 同步」可配置远程地址）`);
     return 0;
   }
   let done = 0; const remain = [];
@@ -448,6 +542,11 @@ async function flushPending(manual) {
     const r = await larkWrite(it.method || 'POST', it.tableKey, it.recordId, it.fields);
     if (r.ok) { done++; pendingClearLocal(it); continue; }
     if (r.offline) { remain.push(it); continue; }
+    if (r.needToken) {
+      remain.push(it);
+      toast('❌ 访问口令缺失或错误，点右上「⚙ 同步」填写后再重试');
+      break;
+    }
     it.attempts = (it.attempts || 0) + 1;
     // 原记录已失效（可能被删/换表）→ 改为新建一条
     if (it.attempts >= 3 && it.recordId) { it.method = 'POST'; it.recordId = null; }
@@ -470,6 +569,22 @@ let DATA = {
 let currentPanel = 'calendar';
 let currentForm = null;
 
+/* 取一份数据 JSON：优先实时接口 → 静态快照 → 内嵌 CF_DATA（离线单文件版） */
+async function fetchDataText(base, p) {
+  const fn = p.split('/').pop();
+  const tries = [];
+  if (base !== false) tries.push({ url: base + '/api/data/' + fn, api: true });
+  tries.push({ url: p, api: false });
+  for (const t of tries) {
+    try {
+      const r = await fetch(t.url, { headers: t.api ? cfHeaders() : undefined, cache: 'no-store' });
+      if (r.ok) return await r.text();
+    } catch (e) {}
+  }
+  if (typeof CF_DATA !== 'undefined' && CF_DATA[fn]) return CF_DATA[fn];
+  throw new Error('数据源均不可用: ' + p);
+}
+
 /* ─── 加载 JSON 数据 + localStorage 合并 ─────────────── */
 async function loadAll() {
   const files = {
@@ -484,20 +599,11 @@ async function loadAll() {
     coros: 'data/coros_kpi.json',
     summary: 'data/summary.json',
   };
+  // 连得上同步服务就走实时接口（跨端同步的关键），否则退回 GitHub Pages 静态快照
+  const base = await apiBase();
   for (const [k, p] of Object.entries(files)) {
     try {
-      let text;
-      try {
-        const r = await fetch(p);
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        text = await r.text();
-      } catch (e) {
-        // fetch 失败（file:// 离线打开等）→ 用内嵌 CF_DATA 兜底（仅 cf-single.html 有）
-        const fn = p.split('/').pop();
-        if (typeof CF_DATA !== 'undefined' && CF_DATA[fn]) text = CF_DATA[fn];
-        else throw e;
-      }
-      DATA[k] = JSON.parse(text);
+      DATA[k] = JSON.parse(await fetchDataText(base, p));
     } catch (e) {
       console.warn(`加载 ${p} 失败`, e);
     }
@@ -535,6 +641,7 @@ async function loadAll() {
   buildNav();
   showPanel('calendar');
   renderPendingBadge();
+  renderSyncState();
   // 有网络且服务可用时，自动把离线暂存的数据补传飞书（不阻塞渲染，直接调用避免后台标签定时器被节流）
   if (pendingAll().length) flushPending(false);
 }
