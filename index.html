@@ -47,6 +47,10 @@
   .kpi { font-size: 28px; font-weight: 700; color: var(--text); margin: 4px 0 6px; }
   .kpi .unit { font-size: 13px; color: var(--muted); font-weight: 500; margin-left: 4px; }
   .label { color: var(--muted); font-size: 12px; }
+  .tipdot { display: inline-block; width: 16px; height: 16px; line-height: 16px; text-align: center; border-radius: 50%; background: #f4f4f5; color: var(--muted); font-size: 10px; font-weight: 700; margin-left: 2px; cursor: help; border: 1px solid #e4e4e7; }
+  .tipdot:hover { background: var(--brand); color: white; border-color: var(--brand); }
+  details summary::-webkit-details-marker { color: var(--brand); }
+  details[open] summary { margin-bottom: 8px; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   th { text-align: left; padding: 10px 12px; font-weight: 600; color: var(--muted); border-bottom: 1px solid var(--line); white-space: nowrap; }
   td { padding: 10px 12px; border-bottom: 1px solid var(--line); }
@@ -348,10 +352,16 @@
     <div class="help" id="sumStats" style="margin-top:10px;border-top:1px dashed #e4e4e7;padding-top:8px"></div>
   </div>
   <div class="grid cols-4">
-    <div class="card"><h3>HRV 昨晚</h3><div class="kpi" id="kpiHRV">—<span class="unit">ms</span></div><div class="label" id="lblHRVState">—</div></div>
-    <div class="card"><h3>恢复状态</h3><div class="kpi" id="kpiRecovery">—<span class="unit">%</span></div><div class="progress"><div id="barRecovery" style="width:0%"></div></div></div>
-    <div class="card"><h3>训练负荷比</h3><div class="kpi" id="kpiLoad">—<span class="unit">%</span></div><div class="label" id="lblLoadState">—</div></div>
-    <div class="card"><h3>跑步能力</h3><div class="kpi" id="kpiRun">—<span class="unit">VO2</span></div><div class="label" id="lblRunState">—</div></div>
+    <div class="card"><h3 title="HRV：心率变异性，反映副交感神经张力。值越高=恢复越好；近期持续下降需警惕过度训练">HRV 昨晚 ℹ️</h3><div class="kpi" id="kpiHRV">—<span class="unit">ms</span></div><div class="label" id="lblHRVState">—</div></div>
+    <div class="card"><h3 title="COROS 今日恢复评分（0-100）：综合睡眠/HRV/压力算的。≥80 是冲 PR 的好日子，<50 别硬上">恢复状态 ℹ️</h3><div class="kpi" id="kpiRecovery">—<span class="unit">%</span></div><div class="progress"><div id="barRecovery" style="width:0%"></div></div></div>
+    <div class="card"><h3 title="训练负荷比 = ATL/CTL × 100%。50-80% 甜蜜区（体能涨 + 不过劳），>100% 过训红灯">训练负荷比 ℹ️</h3><div class="kpi" id="kpiLoad">—<span class="unit">%</span></div><div class="label" id="lblLoadState">—</div></div>
+    <div class="card"><h3 title="有氧耐力评分（VO2 Max 近似）。值越高=有氧基础越好；可参考长跑/长划船表现">跑步能力 ℹ️</h3><div class="kpi" id="kpiRun">—<span class="unit">VO2</span></div><div class="label" id="lblRunState">—</div></div>
+  </div>
+  <div class="grid cols-4" style="margin-top:12px">
+    <div class="card"><h3 title="CTL（Chronic Training Load）：长期训练负荷，42 天指数加权平均。代表『体能/有氧基础』水平，值越高基础越扎实" style="color:#2563eb">CTL 体能 ℹ️</h3><div class="kpi" id="kpiCTL">—</div><div class="label" id="lblCTLState">—</div></div>
+    <div class="card"><h3 title="ATL（Acute Training Load）：急性训练负荷，7 天指数加权平均。代表这周累积的『疲劳』，涨得快消得也快" style="color:#dc2626">ATL 疲劳 ℹ️</h3><div class="kpi" id="kpiATL">—</div><div class="label" id="lblATLState">—</div></div>
+    <div class="card"><h3 title="TSB（Training Stress Balance）= CTL − ATL。正值=储备充足/状态好（适合测 PR/比赛），负值=疲劳积累（建议减量）" style="color:#059669">TSB 状态 ℹ️</h3><div class="kpi" id="kpiTSB">—</div><div class="label" id="lblTSBState">—</div></div>
+    <div class="card"><h3 title="RHR：静息心率，起床前安静心率。持续走高 = 疲劳/生病预警；稳定或走低 = 适应良好" style="color:#7c3aed">RHR 静息心率 ℹ️</h3><div class="kpi" id="kpiRHR">—<span class="unit">bpm</span></div><div class="label" id="lblRHRState">—</div></div>
   </div>
   <div class="card advice-card" style="margin-top:16px">
     <h3>🧠 教练视角解读 <span class="badge" id="adviceSource">规则引擎</span></h3>
@@ -359,8 +369,44 @@
   </div>
   <div class="card" style="margin-top:16px">
     <h3>📈 CTL / ATL / TSB（Banister 模型）</h3>
-    <p class="help">CTL = 长期训练负荷（fitness）| ATL = 急性训练负荷（fatigue）| TSB = CTL-ATL（form）</p>
+    <p class="help" style="margin-bottom:10px">COROS 实时数据 · 黑色实线 = 体能（CTL）| 红色实线 = 疲劳（ATL）| 灰色虚线 = 状态（TSB）</p>
     <canvas id="ctlChart" height="200"></canvas>
+
+    <details style="margin-top:14px;border-top:1px dashed #e4e4e7;padding-top:12px">
+      <summary style="cursor:pointer;font-weight:600;color:var(--brand);font-size:14px">📖 这三个数字到底什么意思？点开看通俗解释</summary>
+      <div style="margin-top:10px;line-height:1.75;font-size:13.5px;color:var(--text)">
+
+        <p><b style="color:#2563eb">🟦 CTL（Chronic Training Load，长期训练负荷）</b><br>
+        = 你过去 42 天训练量的「指数加权平均」。可以理解为「<b>你的体能水平/有氧基础</b>」。<br>
+        它涨得很慢——就像存钱罐，每周稳定练才能一点点往上爬。<br>
+        👉 <b>看时机</b>：想知道「我最近是不是变强了？」看 CTL 的趋势——它稳步向上，说明训练在起作用。</p>
+
+        <p><b style="color:#dc2626">🟥 ATL（Acute Training Load，急性训练负荷）</b><br>
+        = 你过去 7 天训练量的「指数加权平均」。可以理解为「<b>你这周累积的疲劳</b>」。<br>
+        它涨得快、消得也快——就像信用卡账单，突击训练几天立刻爆表，休息几天又能清零。<br>
+        👉 <b>看时机</b>：连续几天高强度后看 ATL——飙到比 CTL 还高时，就要主动降量了。</p>
+
+        <p><b style="color:#059669">🟩 TSB（Training Stress Balance，训练压力平衡）</b><br>
+        = <b>CTL − ATL</b>。可以理解为「<b>你今天的身体状态/储备</b>」。<br>
+        • <b>正值越大</b>（如 +15~+30）：身体储备充沛 → <b style="color:#059669">是冲 PR、测 Benchmark、打比赛的好日子</b><br>
+        • <b>接近 0</b>（±10）：训练与恢复平衡，是日常训练的常态<br>
+        • <b>负值越大</b>（如 −20 以下）：疲劳积累 → <b style="color:#dc2626">建议主动减量/deload，否则容易过训或受伤</b><br>
+        👉 <b>看时机</b>：每天早上看一眼 TSB，决定今天「硬上」还是「轻松练」。</p>
+
+        <div style="background:var(--bg);border-left:3px solid var(--brand);padding:10px 14px;margin-top:10px;border-radius:6px">
+          <b>🎯 实战速查表</b><br>
+          • <b>比赛前 1-2 周</b>：想要 TSB 冲到 +15 左右 → 主动减量 30-50%<br>
+          • <b>想持续进步</b>：保持 CTL 缓慢上升（每周加 1-2 点），不要让它平台或下降<br>
+          • <b>感觉累但不知道是不是过训</b>：看 TSB 是否连续多日 &lt;−20，配合 HRV 走低 → 大概率是<br>
+          • <b>今天要不要破 PR</b>：TSB ≥+10 + 恢复% ≥80 + 自感状态好 = 可以冲
+        </div>
+
+        <p style="margin-top:10px;color:var(--muted);font-size:12.5px">
+        💡 <b>这套模型叫 Banister 模型</b>，由运动科学家 Banister 在 1990 年代提出，是 COROS/Garmin/Strava 训练负荷的通用底层逻辑。<br>
+        它<b>不是绝对真理</b>——同一组数字对不同人意义不同，最终还是要结合自感和睡眠质量判断。
+        </p>
+      </div>
+    </details>
   </div>
   <div class="card" style="margin-top:16px">
     <h3>📋 训练建议历史</h3>
@@ -2257,6 +2303,18 @@ function renderAdvice() {
   document.getElementById('lblLoadState').textContent = ideal ? '🟢 最佳训练区间' : load > 80 ? '🔴 偏高，注意恢复' : load && load < 50 ? '🟡 偏低，可加量' : '—';
   document.getElementById('kpiRun').innerHTML = (runLevel ? runLevel.toFixed(1) : '—') + (runLevel ? '<span class="unit">/100</span>' : '');
   document.getElementById('lblRunState').textContent = runLevel && runLevel >= 75 ? '🟢 优秀' : runLevel && runLevel >= 60 ? '🟡 中等' : runLevel ? '🔴 待提升' : '—';
+
+  /* ─── 新增 CTL/ATL/TSB/RHR 4 张卡（取 COROS 真实 fitness 数据） ─── */
+  const fitCtl = fit.ctl, fitAtl = fit.atl, fitTsb = fit.tsb;
+  document.getElementById('kpiCTL').innerHTML = fitCtl != null ? fitCtl : '—';
+  document.getElementById('lblCTLState').textContent = fitCtl == null ? '需要 COROS 数据' : fitCtl >= 50 ? '🟢 体能基础扎实' : fitCtl >= 30 ? '🟡 正在建立' : '🔴 基础偏弱';
+  document.getElementById('kpiATL').innerHTML = fitAtl != null ? fitAtl : '—';
+  document.getElementById('lblATLState').textContent = fitAtl == null ? '需要 COROS 数据' : fitAtl >= fitCtl ? '🔴 疲劳 ≥ 体能（注意减量）' : fitAtl >= 0.7*fitCtl ? '🟡 训练量偏大' : '🟢 节奏合理';
+  document.getElementById('kpiTSB').innerHTML = fitTsb != null ? (fitTsb > 0 ? '+' : '') + fitTsb : '—';
+  document.getElementById('lblTSBState').textContent = fitTsb == null ? '需要 COROS 数据' : fitTsb >= 10 ? '🟢 状态充沛（适合冲 PR）' : fitTsb >= -10 ? '🟡 平稳' : fitTsb >= -25 ? '🟠 有点累' : '🔴 过度疲劳（建议 deload）';
+  const rhrNow = zones.restingHeartRate;
+  document.getElementById('kpiRHR').innerHTML = rhrNow != null ? rhrNow + '<span class="unit">bpm</span>' : '—';
+  document.getElementById('lblRHRState').textContent = rhrNow == null ? '需要 COROS 数据' : rhrNow <= 60 ? '🟢 心肺优秀' : rhrNow <= 70 ? '🟡 正常' : '🟠 偏高';
 
   // 教练解读（规则引擎）
   const lines = [];
