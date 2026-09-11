@@ -1,12 +1,12 @@
 {
-  "synced_at": "2026-09-10T21:56:13",
+  "synced_at": "2026-09-11T10:38:45",
   "days_back": 180,
   "totals": {
-    "user_score": 183,
-    "max_score": 317,
-    "percent": 57.7,
-    "mastered_count": 46,
-    "total_moves": 98
+    "user_score": 186,
+    "max_score": 356,
+    "percent": 52.2,
+    "mastered_count": 49,
+    "total_moves": 112
   },
   "categories": [
     {
@@ -1099,10 +1099,10 @@
     {
       "key": "Gymnastics",
       "label_zh": "体操 Gymnastics",
-      "user_score": 43,
+      "user_score": 44,
       "max_score": 161,
-      "percent": 26.7,
-      "mastered_count": 13,
+      "percent": 27.3,
+      "mastered_count": 14,
       "total_moves": 49,
       "moves": [
         {
@@ -1162,33 +1162,6 @@
           ],
           "demo": "https://www.youtube.com/results?search_query=crossfit+Box+Step-up+technique",
           "series": "jump"
-        },
-        {
-          "name": "Hand Release Push-up",
-          "aliases_top3": [],
-          "level": 1,
-          "earned_level": 0,
-          "earned_points": 0,
-          "max_points": 1,
-          "category": "Gymnastics",
-          "subs": [
-            "Push-up"
-          ],
-          "source_count": 0,
-          "manual": false,
-          "manual_record_id": null,
-          "manual_record_ids": [],
-          "cues": [
-            "胸口完全触地后双手抬离地面",
-            "身体保持刚性平板不松腰",
-            "推起时肘伸直锁定"
-          ],
-          "errors": [
-            "手没离地就推起",
-            "起身时先撅臀抬肩"
-          ],
-          "demo": "https://www.youtube.com/results?search_query=crossfit+Hand+Release+Push-up+technique",
-          "series": "pushup"
         },
         {
           "name": "Hanging Knee Raise",
@@ -2273,6 +2246,35 @@
           "demo": "https://www.youtube.com/results?search_query=crossfit+Bear+Crawl+technique"
         },
         {
+          "name": "Hand Release Push-up",
+          "aliases_top3": [],
+          "level": 1,
+          "earned_level": 1,
+          "earned_points": 1,
+          "max_points": 1,
+          "category": "Gymnastics",
+          "subs": [
+            "Push-up"
+          ],
+          "source_count": 1,
+          "manual": true,
+          "manual_record_id": "recvuSiMJuXySc",
+          "manual_record_ids": [
+            "recvuSiMJuXySc"
+          ],
+          "cues": [
+            "胸口完全触地后双手抬离地面",
+            "身体保持刚性平板不松腰",
+            "推起时肘伸直锁定"
+          ],
+          "errors": [
+            "手没离地就推起",
+            "起身时先撅臀抬肩"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Hand+Release+Push-up+technique",
+          "series": "pushup"
+        },
+        {
           "name": "Sit-up",
           "aliases_top3": [
             "Situp",
@@ -2555,6 +2557,7 @@
       "mastered_names": [
         "Air Squat",
         "Push-up",
+        "Hand Release Push-up",
         "HSPU",
         "Pull-up",
         "Kipping Pull-up",
@@ -2571,12 +2574,39 @@
     {
       "key": "Monostructural",
       "label_zh": "单结构 Mono",
-      "user_score": 9,
-      "max_score": 22,
-      "percent": 40.9,
-      "mastered_count": 3,
-      "total_moves": 9,
+      "user_score": 11,
+      "max_score": 61,
+      "percent": 18.0,
+      "mastered_count": 5,
+      "total_moves": 23,
       "moves": [
+        {
+          "name": "Bike 10cal",
+          "aliases_top3": [
+            "单车 10 卡"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "cues": [
+            "设定好阻力 / 阻力档（划船通常用 5-10，跑步机按坡度）",
+            "前 30 秒控制在目标配速的 80%，避免爆冲",
+            "呼吸节奏稳定，结束时还能再加一组冲刺"
+          ],
+          "errors": [
+            "起手就全力冲刺，前半段透支后半段掉速",
+            "忽略核心稳定，上下肢脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Bike+10cal+technique",
+          "series": "cardio"
+        },
         {
           "name": "Rope Jump",
           "aliases_top3": [
@@ -2607,11 +2637,62 @@
           "series": "rope"
         },
         {
-          "name": "Skierg",
+          "name": "Row 1000m",
           "aliases_top3": [
-            "Ski Erg",
-            "滑雪机"
+            "划船 1000m"
           ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "cues": [
+            "设定好阻力 / 阻力档（划船通常用 5-10，跑步机按坡度）",
+            "前 30 秒控制在目标配速的 80%，避免爆冲",
+            "呼吸节奏稳定，结束时还能再加一组冲刺"
+          ],
+          "errors": [
+            "起手就全力冲刺，前半段透支后半段掉速",
+            "忽略核心稳定，上下肢脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Row+1000m+technique",
+          "series": "cardio"
+        },
+        {
+          "name": "Run 400m",
+          "aliases_top3": [
+            "跑步 400m"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "cues": [
+            "设定好阻力 / 阻力档（划船通常用 5-10，跑步机按坡度）",
+            "前 30 秒控制在目标配速的 80%，避免爆冲",
+            "呼吸节奏稳定，结束时还能再加一组冲刺"
+          ],
+          "errors": [
+            "起手就全力冲刺，前半段透支后半段掉速",
+            "忽略核心稳定，上下肢脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Run+400m+technique",
+          "series": "cardio"
+        },
+        {
+          "name": "Skierg",
+          "aliases_top3": [],
           "level": 1,
           "earned_level": 0,
           "earned_points": 0,
@@ -2632,6 +2713,33 @@
             "躯干直立不参与"
           ],
           "demo": "https://www.youtube.com/results?search_query=crossfit+Skierg+technique"
+        },
+        {
+          "name": "Skierg 500m",
+          "aliases_top3": [
+            "滑雪机 500m"
+          ],
+          "level": 1,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 1,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "cues": [
+            "设定好阻力 / 阻力档（划船通常用 5-10，跑步机按坡度）",
+            "前 30 秒控制在目标配速的 80%，避免爆冲",
+            "呼吸节奏稳定，结束时还能再加一组冲刺"
+          ],
+          "errors": [
+            "起手就全力冲刺，前半段透支后半段掉速",
+            "忽略核心稳定，上下肢脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Skierg+500m+technique",
+          "series": "cardio"
         },
         {
           "name": "Walk",
@@ -2660,6 +2768,33 @@
           ],
           "demo": "https://www.youtube.com/results?search_query=crossfit+Walk+technique",
           "series": "run"
+        },
+        {
+          "name": "Bike 20cal",
+          "aliases_top3": [
+            "单车 20 卡"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "cues": [
+            "设定好阻力 / 阻力档（划船通常用 5-10，跑步机按坡度）",
+            "前 30 秒控制在目标配速的 80%，避免爆冲",
+            "呼吸节奏稳定，结束时还能再加一组冲刺"
+          ],
+          "errors": [
+            "起手就全力冲刺，前半段透支后半段掉速",
+            "忽略核心稳定，上下肢脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Bike+20cal+technique",
+          "series": "cardio"
         },
         {
           "name": "Double Under",
@@ -2693,6 +2828,114 @@
           "series": "rope"
         },
         {
+          "name": "Row 2000m",
+          "aliases_top3": [
+            "划船 2000m"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "cues": [
+            "设定好阻力 / 阻力档（划船通常用 5-10，跑步机按坡度）",
+            "前 30 秒控制在目标配速的 80%，避免爆冲",
+            "呼吸节奏稳定，结束时还能再加一组冲刺"
+          ],
+          "errors": [
+            "起手就全力冲刺，前半段透支后半段掉速",
+            "忽略核心稳定，上下肢脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Row+2000m+technique",
+          "series": "cardio"
+        },
+        {
+          "name": "Row 50cal",
+          "aliases_top3": [
+            "划船 50 卡"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "cues": [
+            "设定好阻力 / 阻力档（划船通常用 5-10，跑步机按坡度）",
+            "前 30 秒控制在目标配速的 80%，避免爆冲",
+            "呼吸节奏稳定，结束时还能再加一组冲刺"
+          ],
+          "errors": [
+            "起手就全力冲刺，前半段透支后半段掉速",
+            "忽略核心稳定，上下肢脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Row+50cal+technique",
+          "series": "cardio"
+        },
+        {
+          "name": "Run 1km",
+          "aliases_top3": [
+            "跑步 1 公里"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "cues": [
+            "设定好阻力 / 阻力档（划船通常用 5-10，跑步机按坡度）",
+            "前 30 秒控制在目标配速的 80%，避免爆冲",
+            "呼吸节奏稳定，结束时还能再加一组冲刺"
+          ],
+          "errors": [
+            "起手就全力冲刺，前半段透支后半段掉速",
+            "忽略核心稳定，上下肢脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Run+1km+technique",
+          "series": "cardio"
+        },
+        {
+          "name": "Skierg 1000m",
+          "aliases_top3": [
+            "滑雪机 1000m"
+          ],
+          "level": 2,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 3,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "cues": [
+            "设定好阻力 / 阻力档（划船通常用 5-10，跑步机按坡度）",
+            "前 30 秒控制在目标配速的 80%，避免爆冲",
+            "呼吸节奏稳定，结束时还能再加一组冲刺"
+          ],
+          "errors": [
+            "起手就全力冲刺，前半段透支后半段掉速",
+            "忽略核心稳定，上下肢脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Skierg+1000m+technique",
+          "series": "cardio"
+        },
+        {
           "name": "Swim",
           "aliases_top3": [
             "Swimming",
@@ -2718,6 +2961,87 @@
             "划水越过中线"
           ],
           "demo": "https://www.youtube.com/results?search_query=crossfit+Swim+technique"
+        },
+        {
+          "name": "Row 100cal",
+          "aliases_top3": [
+            "划船 100 卡"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "cues": [
+            "设定好阻力 / 阻力档（划船通常用 5-10，跑步机按坡度）",
+            "前 30 秒控制在目标配速的 80%，避免爆冲",
+            "呼吸节奏稳定，结束时还能再加一组冲刺"
+          ],
+          "errors": [
+            "起手就全力冲刺，前半段透支后半段掉速",
+            "忽略核心稳定，上下肢脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Row+100cal+technique",
+          "series": "cardio"
+        },
+        {
+          "name": "Row 5000m",
+          "aliases_top3": [
+            "划船 5000m"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "cues": [
+            "设定好阻力 / 阻力档（划船通常用 5-10，跑步机按坡度）",
+            "前 30 秒控制在目标配速的 80%，避免爆冲",
+            "呼吸节奏稳定，结束时还能再加一组冲刺"
+          ],
+          "errors": [
+            "起手就全力冲刺，前半段透支后半段掉速",
+            "忽略核心稳定，上下肢脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Row+5000m+technique",
+          "series": "cardio"
+        },
+        {
+          "name": "Run 5km",
+          "aliases_top3": [
+            "跑步 5 公里"
+          ],
+          "level": 3,
+          "earned_level": 0,
+          "earned_points": 0,
+          "max_points": 6,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 0,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "cues": [
+            "设定好阻力 / 阻力档（划船通常用 5-10，跑步机按坡度）",
+            "前 30 秒控制在目标配速的 80%，避免爆冲",
+            "呼吸节奏稳定，结束时还能再加一组冲刺"
+          ],
+          "errors": [
+            "起手就全力冲刺，前半段透支后半段掉速",
+            "忽略核心稳定，上下肢脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Run+5km+technique",
+          "series": "cardio"
         },
         {
           "name": "Triple Under",
@@ -2789,7 +3113,7 @@
           "max_points": 1,
           "category": "Monostructural",
           "subs": [],
-          "source_count": 7,
+          "source_count": 6,
           "manual": false,
           "manual_record_id": null,
           "manual_record_ids": [],
@@ -2833,12 +3157,68 @@
           ],
           "demo": "https://www.youtube.com/results?search_query=crossfit+Run+technique",
           "series": "run"
+        },
+        {
+          "name": "Row 20cal",
+          "aliases_top3": [
+            "划船 20 卡"
+          ],
+          "level": 1,
+          "earned_level": 1,
+          "earned_points": 1,
+          "max_points": 1,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 1,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "cues": [
+            "设定好阻力 / 阻力档（划船通常用 5-10，跑步机按坡度）",
+            "前 30 秒控制在目标配速的 80%，避免爆冲",
+            "呼吸节奏稳定，结束时还能再加一组冲刺"
+          ],
+          "errors": [
+            "起手就全力冲刺，前半段透支后半段掉速",
+            "忽略核心稳定，上下肢脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Row+20cal+technique",
+          "series": "cardio"
+        },
+        {
+          "name": "Row 500m",
+          "aliases_top3": [
+            "划船 500m"
+          ],
+          "level": 1,
+          "earned_level": 1,
+          "earned_points": 1,
+          "max_points": 1,
+          "category": "Monostructural",
+          "subs": [],
+          "source_count": 1,
+          "manual": false,
+          "manual_record_id": null,
+          "manual_record_ids": [],
+          "cues": [
+            "设定好阻力 / 阻力档（划船通常用 5-10，跑步机按坡度）",
+            "前 30 秒控制在目标配速的 80%，避免爆冲",
+            "呼吸节奏稳定，结束时还能再加一组冲刺"
+          ],
+          "errors": [
+            "起手就全力冲刺，前半段透支后半段掉速",
+            "忽略核心稳定，上下肢脱节"
+          ],
+          "demo": "https://www.youtube.com/results?search_query=crossfit+Row+500m+technique",
+          "series": "cardio"
         }
       ],
       "mastered_names": [
         "Run",
         "Row",
-        "Bike"
+        "Bike",
+        "Row 500m",
+        "Row 20cal"
       ]
     },
     {
@@ -3840,9 +4220,9 @@
         {
           "name": "Hand Release Push-up",
           "level": 1,
-          "earned_level": 0,
-          "mastered": false,
-          "manual": false,
+          "earned_level": 1,
+          "mastered": true,
+          "manual": true,
           "subs": [
             "Push-up"
           ]
@@ -3882,11 +4262,11 @@
           ]
         }
       ],
-      "frontier": 2,
-      "next_move": "Hand Release Push-up",
-      "user_score": 7,
+      "frontier": 3,
+      "next_move": "Pike Push-up",
+      "user_score": 8,
       "max_score": 18,
-      "percent": 38.9
+      "percent": 44.4
     },
     {
       "key": "muscleup",

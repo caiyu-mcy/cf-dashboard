@@ -1658,6 +1658,34 @@ function renderExtras() {
 /* PR 变体合并（显示层，不改飞书数据）：Power Clean 并入 Clean、Power Snatch 并入 Snatch */
 const PR_MERGE = { 'Power Clean': 'Clean', 'Power Snatch': 'Snatch' };
 const LB2KG = 0.453592;
+/* 单位 → 方向判断：true=值小好（时间/热量），false=值大好（重量/距离/次数） */
+const _prIsReverse = (unit) => /秒|time|min|cal\b|卡/i.test(String(unit || '').trim());
+/* mm:ss / ss.m 解析为秒数；普通数字直接 parseFloat */
+const _prNum = (v) => {
+  if (v == null || v === '') return null;
+  const s = String(v).trim();
+  const m = s.match(/^(\d+):(\d{1,2}(?:\.\d+)?)$/);
+  if (m) return parseInt(m[1]) * 60 + parseFloat(m[2]);
+  const n = parseFloat(s.replace(/[^\d.\-]/g, ''));
+  return isNaN(n) ? null : n;
+};
+/* 秒 → mm:ss */
+const _fmtTime = (sec) => {
+  if (sec == null) return '—';
+  const m = Math.floor(sec / 60), s = Math.round((sec - m * 60) * 10) / 10;
+  const sStr = (s % 1 === 0) ? String(s) : s.toFixed(1).replace(/\.0$/, '');
+  return m + ':' + String(sStr).padStart(sStr.includes('.') ? 4 : 2, '0');
+};
+/* 表格/折线图「值」显示：时间型格式化为 mm:ss，否则用原始字符串 */
+const _prDisplay = (r) => {
+  const raw = r['PR 重量/次数'];
+  if (raw == null) return '—';
+  if (_prIsReverse(r.单位)) {
+    const sec = _prNum(raw);
+    return sec != null ? _fmtTime(sec) : String(raw);
+  }
+  return String(raw);
+};
 function renderPRs() {
   document.getElementById('prCount').textContent = `${DATA.prs.length} 条`;
   const body = document.getElementById('prBody');
@@ -1695,19 +1723,26 @@ function renderPRs() {
     const prevRaw = (cur['上次 PR'] != null && cur['上次 PR'] !== '') ? cur['上次 PR'] : (g.recs[1] ? g.recs[1]['PR 重量/次数'] : null);
     const prevV = _prNum(prevRaw);
     const delta = (curV != null && prevV != null) ? Math.round((curV - prevV) * 10) / 10 : null;
-    const deltaHtml = delta == null ? '<span class="label">—</span>'
-      : delta > 0 ? `<span class="pr-up">▲ +${delta}${unit}</span>`
-      : delta < 0 ? `<span class="pr-down">▼ ${delta}${unit}</span>`
-      : '<span class="label">=</span>';
+    const rev = _prIsReverse(unit);
+    let deltaHtml;
+    if (delta == null) deltaHtml = '<span class="label">—</span>';
+    else if (delta === 0) deltaHtml = '<span class="label">=</span>';
+    else {
+      const isGood = rev ? delta < 0 : delta > 0;
+      const arrow = rev ? (delta < 0 ? '▼' : '▲') : (delta > 0 ? '▲' : '▼');
+      deltaHtml = `<span class="${isGood ? 'pr-up' : 'pr-down'}">${arrow} ${Math.abs(delta)}${unit}</span>`;
+    }
     const pts = _prPoints(g);
     const hint = pts.length >= 2 ? '📈' : '';
     const varTag = g.variants.length ? ` <span class="label" style="font-size:11px">· 含 ${_prEsc(g.variants.join(' / '))}</span>` : '';
     const editCur = cur.id && String(cur.id).startsWith('rec')
       ? ` <a class="pr-edit" onclick="event.stopPropagation();editPrRec('${cur.id}')" title="编辑这条记录">✏️</a>` : '';
+    const curDisplay = `${_prDisplay(cur)}${unit}`;
+    const prevDisplay = prevRaw == null ? '—' : `${_prDisplay({ 'PR 重量/次数': prevRaw, 单位: unit })}${unit}`;
     return `<tr class="pr-row" onclick="togglePrChart(${i})">
         <td><strong>${_prEsc(g.name)}</strong>${varTag} <span class="label" style="font-size:11px">×${g.recs.length}</span></td>
-        <td><strong>${curV != null ? curV + unit : (cur['PR 重量/次数'] || '—')}</strong></td>
-        <td>${prevV != null ? prevV + unit : (prevRaw != null ? prevRaw : '—')}</td>
+        <td><strong>${curDisplay}</strong></td>
+        <td>${prevDisplay}</td>
         <td>${deltaHtml}</td>
         <td>${fmtDate(cur.达成日期)}</td>
         <td class="label">${(cur.备注 || '').slice(0, 24)} ${hint}${editCur}</td>
@@ -1718,7 +1753,6 @@ function renderPRs() {
 /* ─── PR 趋势图（表格行内展开） ─────────────────── */
 let _prGroups = [];
 const _prEsc = (s) => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const _prNum = (v) => { const n = parseFloat(String(v).replace(/[^\d.\-]/g, '')); return isNaN(n) ? null : n; };
 /* 历史数据点：每条记录的 PR 值 + 首条记录的「上次 PR」作为起点（空心点） */
 function _prPoints(g) {
   const asc = g.recs.slice().reverse();
@@ -1750,17 +1784,20 @@ function drawPrChart(box, g) {
     return;
   }
   const W = 640, H = 180, P = { l: 54, r: 18, t: 30, b: 32 };
+  const rev = _prIsReverse(unit);   /* 时间/热量型 → 值小画得高 */
   const vs = pts.map(p => p.v);
   let vmin = Math.min(...vs), vmax = Math.max(...vs);
   if (vmax === vmin) { vmax += 1; vmin -= 1; }
   const pad = (vmax - vmin) * 0.18; vmax += pad; vmin -= pad;
   const X = i => P.l + (W - P.l - P.r) * (i / (pts.length - 1));
-  const Y = v => P.t + (H - P.t - P.b) * (1 - (v - vmin) / (vmax - vmin));
+  /* 反向：把 v 映射到「虚拟值」(vmax + vmin - v)，其余逻辑复用 */
+  const Y = v => P.t + (H - P.t - P.b) * (1 - ((rev ? (vmax + vmin - v) : v) - vmin) / (vmax - vmin));
+  const fmtY = (v) => rev ? _fmtTime(v) : String(Math.round(v));
   let s = '';
   for (let k = 0; k <= 2; k++) {          // 3 条横向网格 + Y 轴刻度
     const v = vmin + (vmax - vmin) * k / 2, yy = Y(v);
     s += `<line x1="${P.l}" y1="${yy}" x2="${W - P.r}" y2="${yy}" stroke="#e4e4e7" stroke-width="1"/>`;
-    s += `<text x="${P.l - 8}" y="${yy + 4}" text-anchor="end" font-size="11" fill="#71717a">${Math.round(v)}</text>`;
+    s += `<text x="${P.l - 8}" y="${yy + 4}" text-anchor="end" font-size="11" fill="#71717a">${fmtY(v)}</text>`;
   }
   s += `<polyline points="${pts.map((p, i) => `${X(i)},${Y(p.v)}`).join(' ')}" fill="none" stroke="#18181b" stroke-width="2"/>`;
   const showDate = pts.length > 8 ? 2 : 1;   // 点太多时隔一个显示日期
@@ -1769,7 +1806,8 @@ function drawPrChart(box, g) {
     s += p.ghost
       ? `<circle cx="${x}" cy="${y}" r="4" fill="white" stroke="#71717a" stroke-width="1.5"/>`
       : `<circle cx="${x}" cy="${y}" r="4.5" fill="#18181b"/>`;
-    s += `<text x="${x}" y="${y - 10}" text-anchor="middle" font-size="11" font-weight="600" fill="#18181b">${p.v}${unit}</text>`;
+    const label = rev ? _fmtTime(p.v) : (p.v + unit);
+    s += `<text x="${x}" y="${y - 10}" text-anchor="middle" font-size="11" font-weight="600" fill="#18181b">${label}</text>`;
     if (i % showDate === 0 || i === pts.length - 1) {
       const d = fmtDate(p.d);
       s += `<text x="${x}" y="${H - 10}" text-anchor="middle" font-size="10" fill="#71717a">${d.slice(5)}</text>`;
@@ -1778,7 +1816,8 @@ function drawPrChart(box, g) {
   /* 折线下方：该组全部记录（含原始动作名），每条可编辑 */
   box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:720px;display:block;padding:6px 0">${s}</svg>`
     + prRecsHtml(g)
-    + (g.conv ? '<p class="help" style="padding:0 4px 6px">* 历史记录原为 lb，已按 1 lb = 0.4536 kg 换算统一展示</p>' : '');
+    + (g.conv ? '<p class="help" style="padding:0 4px 6px">* 历史记录原为 lb，已按 1 lb = 0.4536 kg 换算统一展示</p>' : '')
+    + (rev ? `<p class="help" style="padding:0 4px 6px">* 时间型 PR · 纵轴越低越好（▼ 表示变快）</p>` : '');
 }
 /* 记录列表 HTML：日期 · 原始动作 · 值 · 上次 · 备注 · ✏️ 编辑 */
 function prRecsHtml(g) {
