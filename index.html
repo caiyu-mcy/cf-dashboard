@@ -908,7 +908,10 @@ function renderCalendar() {
   const y = calY, m = calM;
   const first = new Date(y, m, 1), last = new Date(y, m + 1, 0);
   const startDay = first.getDay();
-  const trainDays = new Set(DATA.classes.map(c => c.日期));
+  const trainDays = new Set([
+    ...DATA.classes.map(c => c.日期),
+    ...DATA.extras.map(e => e.日期),
+  ]);
   const schedDays = new Set(DATA.schedules.map(s => s.日期));
   const picker = document.getElementById('calMonthPicker');
   if (picker) picker.value = `${y}-${String(m + 1).padStart(2, '0')}`;
@@ -925,7 +928,9 @@ function renderCalendar() {
     if (trained) monthTrained++;
     const hasSched = schedDays.has(dateStr);
     const isToday = isThisMonth && d === now.getDate();
-    html += `<div class="cal-cell ${trained?'train':''} ${hasSched?'has-sched':''} ${isToday?'today':''}" onclick="showDayDetail('${dateStr}')" title="${dateStr}${trained?' · 已训练（手表）':''}${hasSched?' · 有课表':''}">${d}${trained?'<span class="dot"></span>':''}</div>`;
+    const extraDays = new Set(DATA.extras.map(e => e.日期));
+    const isExtra = extraDays.has(dateStr);
+    html += `<div class="cal-cell ${trained?'train':''} ${hasSched?'has-sched':''} ${isToday?'today':''}" onclick="showDayDetail('${dateStr}')" title="${dateStr}${trained?` · 已训练${isExtra?'(含加练)':''}`:''}${hasSched?' · 有课表':''}">${d}${trained?'<span class="dot"></span>':''}</div>`;
   }
   grid.innerHTML = html;
   const stats = document.getElementById('calMonthStats');
@@ -981,11 +986,18 @@ function renderCharts() {
 }
 
 function renderRecent() {
-  const recent = [...DATA.classes].sort((a,b) => (b.日期||'').localeCompare(a.日期||'')).slice(0,7);
-  document.getElementById('recentClasses').innerHTML = recent.map(c => {
-    const load = c['训练负荷(TL)'] || parseLoadFromMemo(c).tl || '—';
-    const score = c['成绩主指标'] || '—';
-    return `<tr><td>${c.日期||''}</td><td>${c['WOD 名称']||c['课程类型']||'—'}</td><td>${score}</td><td>${c['训练时长(分钟)']||0} min</td><td>${c.心率均值||'—'}</td><td>${load}</td></tr>`;
+  // classes (WOD) + extras (加练) 合并，按日期倒序取最近 10 条
+  const merged = [
+    ...DATA.classes.map(c => ({ kind: '上课', date: c.日期 || '', name: c['WOD 名称'] || c['课程类型'] || '—',
+      score: c['成绩主指标'] || '—', mins: c['训练时长(分钟)'] || 0, hr: c['心率均值'] || '—',
+      load: c['训练负荷(TL)'] || parseLoadFromMemo(c).tl || '—' })),
+    ...DATA.extras.map(e => ({ kind: '加练', date: e['日期'] || '', name: e['训练类型'] || '加练',
+      score: e['类别'] || '—', mins: e['总时长(分钟)'] || 0, hr: '—',
+      load: parseLoadFromMemo(e).tl || '—' })),
+  ].sort((a, b) => (b.date || '').localeCompare(a.date || '')).slice(0, 10);
+  document.getElementById('recentClasses').innerHTML = merged.map(c => {
+    const tag = c.kind === '加练' ? '<span class="tag tag-extra">加练</span> ' : '';
+    return `<tr><td>${c.date}</td><td>${tag}${c.name}</td><td>${c.score}</td><td>${c.mins} min</td><td>${c.hr}</td><td>${c.load}</td></tr>`;
   }).join('') || '<tr><td colspan="6" class="empty">暂无训练数据</td></tr>';
 }
 
@@ -1091,7 +1103,9 @@ function showDayDetail(dateStr) {
   _dayDate = dateStr;
   const sched = DATA.schedules.find(s => s.日期 === dateStr);
   const dayRecs = DATA.classes.filter(c => c.日期 === dateStr);
+  const dayExtras = DATA.extras.filter(e => e.日期 === dateStr);
   const hasWrist = dayRecs.length > 0;
+  const hasExtra = dayExtras.length > 0;
 
   // 成绩表单预填：取该日已有成绩字段的记录
   const scored = dayRecs.find(c => c['成绩主指标'] || c['WOD 名称']) || dayRecs[0] || {};
@@ -1134,6 +1148,20 @@ function showDayDetail(dateStr) {
     html += '<p class="help" style="margin:0">手表当天没有训练记录。如果你练了但没戴表，直接在下面补录成绩即可。</p>';
   }
   html += '</div>';
+  // 2b) 加练自动记录
+  if (hasExtra) {
+    html += `<div class="day-sec"><h4>🥇 加练自动记录</h4>`;
+    dayExtras.forEach(e => {
+      const p = parseLoadFromMemo(e);
+      html += `<div style="margin-bottom:8px">
+        <div style="font-weight:600">${e['训练类型']||'加练'} <span class="tag tag-cardio">COROS</span></div>
+        <span class="day-stat"><b>${e['总时长(分钟)']||0}</b>分钟</span>
+        <span class="day-stat"><b>${p.tl}</b>TL 负荷</span>
+        <span class="day-stat"><b>${p.kcal||'—'}</b>kcal</span>
+      </div>`;
+    });
+    html += '</div>';
+  }
   // 3) 成绩录入
   html += `<div class="day-sec"><h4>✍️ WOD 成绩（上课内容和成绩记在这里）</h4>
     <label style="display:block;margin-bottom:8px"><span class="label">WOD 名称 / 训练主题</span><input id="dfWod" value="${(scored['WOD 名称']||'').replace(/"/g,'&quot;')}" placeholder="如 250909 MetCon / Fran / 力量+体能" /></label>
@@ -1698,7 +1726,8 @@ function renderExtras() {
   document.getElementById('extraBody').innerHTML = DATA.extras.length ?
     DATA.extras.slice().sort(byDateDesc('日期')).map(c => {
       const detail = [c['组数×次数'], c['重量/距离']].filter(Boolean).join(' × ');
-      return `<tr><td>${fmtDate(c.日期)}</td><td><span class="tag tag-cardio">${c.训练类型||'—'}</span></td><td>${c['动作 1']||'—'}</td><td>${detail||'—'}</td><td>${(c.备注||'').slice(0,40)}</td></tr>`;
+      const cat = c['类别'] === 'COROS 同步' ? ' <span class="tag tag-cardio">COROS</span>' : '';
+      return `<tr><td>${fmtDate(c.日期)}</td><td><span class="tag tag-cardio">${c.训练类型||'—'}</span>${cat}</td><td>${c['动作 1']||'—'}</td><td>${detail||'—'}</td><td>${(c.备注||'').slice(0,40)}</td></tr>`;
     }).join('') : '<tr><td colspan="5" class="empty">还没有加练记录。点右上角新建，或从"日历·上课" tab 上传课表照片 OCR 识别</td></tr>';
 }
 /* PR 变体合并（显示层，不改飞书数据）：Power Clean 并入 Clean、Power Snatch 并入 Snatch */
