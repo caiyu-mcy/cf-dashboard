@@ -1,15 +1,15 @@
 {
-  "synced_at": "2026-09-22T11:55:53",
+  "synced_at": "2026-10-28T10:53:24",
   "fitness": {
-    "ctl": 36,
-    "atl": 31,
-    "tsb": 5,
-    "trainingLoadRatio": 86,
-    "tiredRate": 41
+    "ctl": 47,
+    "atl": 37,
+    "tsb": 10,
+    "trainingLoadRatio": 78,
+    "tiredRate": 39
   },
   "zones": {
     "maxHr": 190,
-    "lthr": 163,
+    "lthr": 164,
     "restingHeartRate": 92
   },
   "scores": {
@@ -23,10 +23,6 @@
       {
         "date": "2026-08-30",
         "value": 74
-      },
-      {
-        "date": "2026-07-20",
-        "value": 77
       },
       {
         "date": "2026-07-20",
@@ -47,10 +43,6 @@
         "value": 92
       },
       {
-        "date": "2026-07-20",
-        "value": 92
-      },
-      {
         "date": "2023-03-11",
         "value": 92
       }
@@ -65,17 +57,13 @@
         "value": 95
       },
       {
-        "date": "2026-07-20",
-        "value": 95
-      },
-      {
         "date": "2023-03-11",
         "value": 95
       }
     ]
   },
   "state": {
-    "loadState": 3,
+    "loadState": 2,
     "tiredState": 2
   }
 }
