@@ -1,91 +1,87 @@
 {
-  "generated_at": "2026-09-10T18:16:53",
+  "generated_at": "2026-11-04T11:48:40",
   "days": 14,
+  "model": "MiniMax-M2.7-highspeed",
   "stats": {
     "window_days": 14,
-    "window": "2026-08-27 ~ 2026-09-10",
+    "window": "2026-10-21 ~ 2026-11-04",
     "classes": {
-      "count": 9,
+      "count": 5,
       "wod_sessions": {
-        "count": 8,
+        "count": 5,
         "dates": [
-          "2026-08-28",
-          "2026-08-29",
-          "2026-09-02",
-          "2026-09-05",
-          "2026-09-07",
-          "2026-09-08",
-          "2026-09-10"
+          "2026-10-22",
+          "2026-10-23",
+          "2026-10-27",
+          "2026-10-29",
+          "2026-11-03"
         ],
-        "total_minutes_recorded": 144,
-        "avg_hr": 143.1,
+        "total_minutes_recorded": 149,
+        "avg_hr": 118.2,
         "max_hr": null
       },
       "strength_extra_sessions": {
-        "count": 1,
-        "total_minutes": 13,
-        "total_tl": 4.0
+        "count": 2,
+        "total_minutes": 35,
+        "total_tl": 19.0
       },
       "gymnastics_extra_sessions": {
         "count": 0,
         "total_minutes": 0,
         "total_tl": 0
       },
-      "estimated_total_minutes": 493,
-      "total_tl": 286.0,
+      "estimated_total_minutes": 335,
+      "total_tl": 165.0,
       "rpe_list": [],
       "finish_states": {
-        "完成": 8,
-        "已完成 · RX": 1
+        "完成": 5
       },
       "wod_names": [],
       "types": {
-        "WOD": 8,
-        "加练-力量": 1
+        "WOD": 5
       },
       "remarks": []
     },
     "extras": {
-      "count": 0,
-      "total_minutes": 0,
+      "count": 2,
+      "total_minutes": 35,
       "rpe_list": [],
       "focus": {}
     },
-    "prs": [
-      {
-        "动作": "Clean",
-        "重量": null,
-        "次数": null,
-        "备注": ""
-      }
-    ],
+    "prs": [],
     "benchmarks": [],
     "moves": {
-      "percent": 20.8,
-      "mastered": "24/98",
+      "percent": 52.2,
+      "mastered": "49/112",
       "by_category": [
         {
           "cat": "举重 Weightlifting",
-          "percent": 55.6,
-          "mastered": "23/33"
+          "percent": 111.1,
+          "mastered": "29/33"
         },
         {
           "cat": "体操 Gymnastics",
-          "percent": 0.6,
-          "mastered": "1/49"
-        },
-        {
-          "cat": "Metcon 组合",
-          "percent": 0.0,
-          "mastered": "0/7"
+          "percent": 27.3,
+          "mastered": "14/49"
         },
         {
           "cat": "单结构 Mono",
-          "percent": 0.0,
-          "mastered": "0/9"
+          "percent": 18.0,
+          "mastered": "5/23"
+        },
+        {
+          "cat": "Metcon 组合",
+          "percent": 5.9,
+          "mastered": "1/7"
         }
       ],
       "top_series": [
+        {
+          "series": "杠铃蹲系",
+          "percent": 100.0,
+          "frontier": 4,
+          "chain_len": 4
+        },
         {
           "series": "推举系",
           "percent": 100.0,
@@ -99,40 +95,35 @@
           "chain_len": 3
         },
         {
+          "series": "壶铃系",
+          "percent": 100.0,
+          "frontier": 3,
+          "chain_len": 3
+        },
+        {
+          "series": "蹲推系",
+          "percent": 100.0,
+          "frontier": 3,
+          "chain_len": 3
+        },
+        {
           "series": "翻站系",
           "percent": 96.2,
           "frontier": 8,
           "chain_len": 8
-        },
-        {
-          "series": "上挺系",
-          "percent": 75.0,
-          "frontier": 2,
-          "chain_len": 4
-        },
-        {
-          "series": "杠铃蹲系",
-          "percent": 70.0,
-          "frontier": 3,
-          "chain_len": 4
-        },
-        {
-          "series": "蹲推系",
-          "percent": 57.1,
-          "frontier": 2,
-          "chain_len": 3
         }
       ]
     },
     "recovery": {
-      "ctl": 35,
-      "atl": 26,
-      "tsb": 9,
-      "load_ratio_pct": 74,
+      "ctl": 50,
+      "atl": 49,
+      "tsb": 1,
+      "load_ratio_pct": 98,
       "hrv_last": 77,
       "recovery_last": 95
     }
   },
-  "summary_md": null,
-  "cache": null
+  "summary_md": "## 训练量与强度\n14天完成5次WOD，估算总课时335分钟（约5.6小时），总负荷165。手表149分钟仅含WOD段，均值心率118.2；5次均完成，负荷与恢复基本匹配。峰值心率和RPE缺失，无法判断强度上限。\n\n## 训练重心\nWOD约每周2.5次，力量加练2次（35分钟），体操加练为0。举重29/33较完整；体操14/49、单结构5/23、Metcon组合1/7偏弱。\n\n## 恢复状态\nHRV 77、恢复值95、TSB +1，当前疲劳可控；负荷比98%偏高，加量宜保守。连续训练天数缺失。\n\n## 下一步建议\n• 每周增加1次体操加练，20–30分钟；选当前前沿动作的低阶版本，做3组低次数练习。  \n• 单结构每周专项1–2次，先巩固已解锁动作，再留2–3次余力推进下一级。  \n• Metcon组合每周专项1次，先做短时、低强度组合，优先稳定完成。  \n• 保持力量加练2次，避免连续两天高强度；加量后观察HRV和晨间恢复。",
+  "cache": "miss",
+  "feishu_ok": true
 }
