@@ -1,11 +1,11 @@
 {
-  "synced_at": "2026-11-03T22:29:16",
+  "synced_at": "2026-11-04T11:17:36",
   "fitness": {
-    "ctl": 51,
-    "atl": 57,
-    "tsb": -6,
-    "trainingLoadRatio": 111,
-    "tiredRate": 45
+    "ctl": 50,
+    "atl": 49,
+    "tsb": 1,
+    "trainingLoadRatio": 98,
+    "tiredRate": 43
   },
   "zones": {
     "maxHr": 190,
@@ -63,7 +63,7 @@
     ]
   },
   "state": {
-    "loadState": 4,
-    "tiredState": 4
+    "loadState": 3,
+    "tiredState": 3
   }
 }
